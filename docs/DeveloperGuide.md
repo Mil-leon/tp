@@ -337,8 +337,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Clients**: A client in a bakery is a regular or business customer who places orders for baked goods, often in bulk or on a recurring basis.
+* **Customers**: A customer in a bakery is an individual who purchases baked goods for personal consumption.
+* **Ingredients**: Ingredients for a bakery are the raw materials, such as flour, sugar, eggs, and butter, used to create baked goods like bread, cakes, and pastries.
+* **Inventory**: Inventory in a bakery refers to the stock of raw ingredients, packaging materials, and finished baked goods available for production and sale.
+* **Local storage**: Local storage in terms of an application refers to a method of storing data on a user's device, allowing application to save information persistently without requiring a server connection.
+* **Mainstream OS**: Windows, macOS
+* **Orders**: Orders in a bakery refer to customer requests for specific baked goods, either for immediate purchase or scheduled pickup/delivery, often including custom or bulk requests.
+* **Pastries**: Pastries in a bakery refer to baked goods made from dough or batter, often enriched with butter, sugar, and fillings like cream, fruit, or chocolate, including items such as croissants, danishes, and tarts.
+
 
 --------------------------------------------------------------------------------------------------------------------
 

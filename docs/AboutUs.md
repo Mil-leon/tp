@@ -21,15 +21,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Nigel Chan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/cyhni.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/cyhni)]
+[[portfolio](team/cyhni.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Team Baker
+* Responsibilities: Baking
 
 ### Foong Hong Yi
 

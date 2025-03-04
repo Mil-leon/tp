@@ -31,14 +31,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Foong Hong Yi
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/mogmyij.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/mogmyij)] [[portfolio](team/mogmyij.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Backend
 
 ### Emmanuel Chan Shi Hong
 

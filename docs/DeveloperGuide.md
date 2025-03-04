@@ -336,9 +336,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+1. The system shall provide a graphical user interface compatible with macOS and Linux operating systems.
+2. The system must function offline with full capabilities.
+3. All data must persist between sessions, requiring no re-entry of client or pastry information.
+4. Customer data including addresses and payment details must be encrypted using industry-standard encryption.
+5. The interface must be intuitive enough that users unfamiliar with computers can navigate it with minimal confusion.
+6. The system must load order and customer pages in under 2 seconds, even when handling 500+ entries.
+7. Daily automatic backups of order histories and customer data must be performed.
+8. Access to customer details must be restricted to authorized users only.
+9. The system must implement appropriate authentication mechanisms to ensure data security.
 
 *{More to be added}*
 

@@ -1,1 +1,6 @@
-## Mihir Niyogi's Portfolio
+---
+  layout: default.md
+  title: Mihir Niyogi's Project Portfolio Page"
+---
+
+### Project: PowerBake

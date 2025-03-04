@@ -18,4 +18,3 @@ Given below are my contributions to the project.
 * **New Feature**: more stuff
 
 * **Code contributed**: [RepoSense link]()
-* 

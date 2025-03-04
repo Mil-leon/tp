@@ -307,16 +307,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `PowerBake` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: View Customer Details**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to list all customers
+2.  PowerBake shows a list of customers
 
     Use case ends.
 
@@ -326,11 +324,70 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* Use case: Add Customer 
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
 
-      Use case resumes at step 2.
+1.  User types add customer command into PowerBake
+2.  PowerBake adds customer details
+
+    Use case ends.
+
+
+* Use case: Delete Customer
+**MSS**
+
+1.  User types delete customer command (with index) into PowerBake
+2.  PowerBake delete customer details
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Index is invalid
+* 1a1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: View Pastries Details**
+
+**MSS**
+
+1.  User requests to list all pastries
+2.  PowerBake shows a list of pastries
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* Use case: Add Pastries
+
+**MSS**
+
+1.  User types add pastries command into PowerBake
+2.  PowerBake adds pastries details
+
+    Use case ends.
+
+
+* Use case: Delete Pastries
+  **MSS**
+
+1.  User types delete pastries command (with index) into PowerBake
+2.  PowerBake delete pastries details
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Index is invalid
+* 1a1. PowerBake prints error message
+
+  Use case ends.
 
 *{More to be added}*
 

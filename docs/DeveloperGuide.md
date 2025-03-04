@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 Developer Guide
+# PowerBake Developer Guide
 
 <!-- * Table of Contents -->
 <page-nav-print />
@@ -274,27 +274,34 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* is a small home bakery
+* sells their own pastries online through home deliveries
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Keeping track of customers and their orders is hard for small business owners, this provides them with fast access to their orders that they can track.
 
+* Provides a customer list where they are able to track customers and their orders
+* Provides a inventory list so they can keep track of incoming deliveries and current stocks
+* Daily pastry list (Products list)
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
+| Priority | As a …        | I want to …                                          | So that I can…                                                           |
+|----------|---------------|------------------------------------------------------|--------------------------------------------------------------------------|
+| `* * *`  | Bakery Owner  | add client details                                   | I can keep track of their delivery location and order details            |
+| `* * *`  | Bakery Owner  | delete client details                                | I can get rid of irrelevant clients                                      |
+| `* * *`  | Bakery Owner  | I can create new pastries                            | when I make new pastries I can add them to the list of availabe pastries |
+| `* * *`  | Bakery Owner  | I can delete pastries                                | I can remove no longer available pastries                                |
+| `* * *`  | Bakery Owner  | view a list of pasteries                             | I can access the types of pasteries I have                               |
+| `* * *`  | Bakery Owner  | view a list of clients                               | I can access the client information easily                               |
+| `* * *`  | Bakery Owner  | access the system via a GUI on macOS/Linux           | I don’t need specialized hardware/software to manage my business         |
+| `* * *`  | Bakery Owner  | use the system offline                               | I can have access to the system at all times                             |
+| `* *`    | Bakery Owner  | come back to the system with all my previous entries | I do not have to re-enter all client and pasteries entries every time    |
 
 *{More to be added}*
 

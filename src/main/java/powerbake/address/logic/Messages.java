@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import powerbake.address.logic.parser.Prefix;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
 /**
@@ -15,7 +16,9 @@ public class Messages {
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
+    public static final String MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX = "The pastry index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastries listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
 
@@ -45,6 +48,17 @@ public class Messages {
                 .append(person.getAddress())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code pastry} for display to the user.
+     */
+    public static String format(Pastry pastry) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(pastry.getName())
+                .append("; Price: ")
+                .append(pastry.getPrice());
         return builder.toString();
     }
 

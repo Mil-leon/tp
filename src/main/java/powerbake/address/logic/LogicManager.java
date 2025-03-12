@@ -15,6 +15,7 @@ import powerbake.address.logic.parser.AddressBookParser;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.model.Model;
 import powerbake.address.model.ReadOnlyAddressBook;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.storage.Storage;
 
@@ -70,6 +71,12 @@ public class LogicManager implements Logic {
     public ObservableList<Person> getFilteredPersonList() {
         return model.getFilteredPersonList();
     }
+
+    @Override
+    public ObservableList<Pastry> getFilteredPastryList() {
+        return model.getFilteredPastryList();
+    }
+
 
     @Override
     public Path getAddressBookFilePath() {

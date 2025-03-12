@@ -14,9 +14,15 @@ src/main/resources/docs/
 /preferences.json
 /*.log.*
 hs_err_pid[0-9]*.log
+/bin
 
 # Test sandbox files
 src/test/data/sandbox/
+
+# debugger files
+.classpath
+.project
+.settings/
 
 # MacOS custom attributes files created by Finder
 .DS_Store

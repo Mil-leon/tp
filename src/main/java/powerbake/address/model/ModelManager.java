@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import powerbake.address.commons.core.GuiSettings;
 import powerbake.address.commons.core.LogsCenter;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
 /**
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Pastry> filteredPastries;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -34,6 +36,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredPastries = new FilteredList<>(this.addressBook.getPastryList());
     }
 
     public ModelManager() {
@@ -111,6 +114,30 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
+    @Override
+    public boolean hasPastry(Pastry pastry) {
+        requireNonNull(pastry);
+        return addressBook.hasPastry(pastry);
+    }
+
+    @Override
+    public void deletePastry(Pastry target) {
+        addressBook.removePastry(target);
+    }
+
+    @Override
+    public void addPastry(Pastry pastry) {
+        addressBook.addPastry(pastry);
+        updateFilteredPastryList(PREDICATE_SHOW_ALL_PASTRIES);
+    }
+
+    @Override
+    public void setPastry(Pastry target, Pastry editedPastry) {
+        requireAllNonNull(target, editedPastry);
+
+        addressBook.setPastry(target, editedPastry);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**
@@ -122,10 +149,25 @@ public class ModelManager implements Model {
         return filteredPersons;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Pastry} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Pastry> getFilteredPastryList() {
+        return filteredPastries;
+    }
+
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredPastryList(Predicate<Pastry> predicate) {
+        requireNonNull(predicate);
+        filteredPastries.setPredicate(predicate);
     }
 
     @Override
@@ -142,7 +184,8 @@ public class ModelManager implements Model {
         ModelManager otherModelManager = (ModelManager) other;
         return addressBook.equals(otherModelManager.addressBook)
                 && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons);
+                && filteredPersons.equals(otherModelManager.filteredPersons)
+                && filteredPastries.equals(otherModelManager.filteredPastries);
     }
 
 }

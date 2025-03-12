@@ -53,7 +53,7 @@ public class UniquePastryList implements Iterable<Pastry> {
      * {@code target} must exist in the list.
      * The pastry identity of {@code editedPastry} must not be the same as another existing pastry in the list.
      */
-    public void setPerson(Pastry target, Pastry editedPastry) {
+    public void setPastry(Pastry target, Pastry editedPastry) {
         requireAllNonNull(target, editedPastry);
 
         int index = internalList.indexOf(target);

@@ -4,5 +4,12 @@
     "phone": "9482424",
     "email": "invalid@email!3e",
     "address": "4th street"
+  } ],
+  "pastries": [ {
+    "name": "Croissant",
+    "price": "3.50"
+  }, {
+    "name": "Eclair",
+    "price": "2.00"
   } ]
 }

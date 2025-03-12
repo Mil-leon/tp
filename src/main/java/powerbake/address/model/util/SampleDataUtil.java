@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import powerbake.address.model.AddressBook;
 import powerbake.address.model.ReadOnlyAddressBook;
+import powerbake.address.model.pastry.Pastry;
+import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
 import powerbake.address.model.person.Name;
@@ -40,10 +42,21 @@ public class SampleDataUtil {
         };
     }
 
+    public static Pastry[] getSamplePastries() {
+        return new Pastry[] {
+            new Pastry(new powerbake.address.model.pastry.Name("Apple Pie"), new Price("3.50")),
+            new Pastry(new powerbake.address.model.pastry.Name("Brownie"), new Price("2.50")),
+            new Pastry(new powerbake.address.model.pastry.Name("Cheesecake"), new Price("4.00"))
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
+        }
+        for (Pastry samplePastry : getSamplePastries()) {
+            sampleAb.addPastry(samplePastry);
         }
         return sampleAb;
     }

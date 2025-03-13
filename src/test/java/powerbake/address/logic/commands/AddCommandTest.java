@@ -22,6 +22,7 @@ import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
 import powerbake.address.model.ReadOnlyAddressBook;
 import powerbake.address.model.ReadOnlyUserPrefs;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.PersonBuilder;
 
@@ -124,6 +125,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void addPastry(Pastry pastry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -139,7 +145,17 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasPastry(Pastry pastry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deletePastry(Pastry target) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -149,12 +165,27 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setPastry(Pastry target, Pastry editedPastry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
+        public ObservableList<Pastry> getFilteredPastryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredPastryList(Predicate<Pastry> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }

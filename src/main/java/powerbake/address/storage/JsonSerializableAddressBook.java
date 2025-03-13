@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import powerbake.address.commons.exceptions.IllegalValueException;
 import powerbake.address.model.AddressBook;
 import powerbake.address.model.ReadOnlyAddressBook;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
 /**
@@ -20,15 +21,19 @@ import powerbake.address.model.person.Person;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_PASTRY = "Persons list contains duplicate pastry(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedPastry> pastries = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons and pastries.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+            @JsonProperty("pastries") List<JsonAdaptedPastry> pastries) {
         this.persons.addAll(persons);
+        this.pastries.addAll(pastries);
     }
 
     /**
@@ -38,6 +43,7 @@ class JsonSerializableAddressBook {
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        pastries.addAll(source.getPastryList().stream().map(JsonAdaptedPastry::new).collect(Collectors.toList()));
     }
 
     /**
@@ -53,6 +59,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addPerson(person);
+        }
+        for (JsonAdaptedPastry jsonAdaptedPastry : pastries) {
+            Pastry pastry = jsonAdaptedPastry.toModelType();
+            if (addressBook.hasPastry(pastry)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PASTRY);
+            }
+            addressBook.addPastry(pastry);
         }
         return addressBook;
     }

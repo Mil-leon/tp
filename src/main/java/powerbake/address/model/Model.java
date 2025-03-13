@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import powerbake.address.commons.core.GuiSettings;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
 /**
@@ -13,6 +14,9 @@ import powerbake.address.model.person.Person;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Pastry> PREDICATE_SHOW_ALL_PASTRIES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -84,4 +88,37 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Returns true if a pastry with the same identity as {@code pastry} exists in the address book.
+     */
+    boolean hasPastry(Pastry pastry);
+
+    /**
+     * Deletes the given pastry.
+     * The pastry must exist in the address book.
+     */
+    void deletePastry(Pastry target);
+
+    /**
+     * Adds the given pastry.
+     * {@code pastry} must not already exist in the address book.
+     */
+    void addPastry(Pastry pastry);
+
+    /**
+     * Replaces the given pastry {@code target} with {@code editedPastry}.
+     * {@code target} must exist in the address book.
+     * The pastry identity of {@code editedPastry} must not be the same as another existing pastry in the address book.
+     */
+    void setPastry(Pastry target, Pastry editedPastry);
+
+    /** Returns an unmodifiable view of the filtered person list */
+    ObservableList<Pastry> getFilteredPastryList();
+
+    /**
+     * Updates the filter of the filtered pastry list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredPastryList(Predicate<Pastry> predicate);
 }

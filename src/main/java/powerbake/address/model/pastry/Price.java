@@ -18,7 +18,7 @@ public class Price {
     /**
      * Constructs a {@code Price}.
      *
-     * @param price A valid price.
+     * @param amount A valid price.
      */
     public Price(String amount) {
         requireNonNull(amount);
@@ -46,5 +46,10 @@ public class Price {
 
         Price otherPrice = (Price) other;
         return this.amount.equals(otherPrice.amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return amount.hashCode();
     }
 }

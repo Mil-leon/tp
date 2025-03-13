@@ -37,7 +37,6 @@ public class AddPastryCommandParser implements Parser<AddPastryCommand> {
         Name pastryName = ParserUtil.parsePastryName(argMultimap.getValue(PREFIX_PASTRY_NAME).get());
         Price price = ParserUtil.parsePrice(argMultimap.getValue(PREFIX_PRICE).get());
         Pastry pastry = new Pastry(pastryName, price);
-
         return new AddPastryCommand(pastry);
     }
 

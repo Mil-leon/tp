@@ -14,14 +14,14 @@ import powerbake.address.model.pastry.Pastry;
  */
 public class AddPastryCommand extends Command {
 
-    public static final String COMMAND_WORD = "add pastry";
+    public static final String COMMAND_WORD = "addpastry";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a pastry to Powerbake. "
             + "Parameters: "
             + PREFIX_PASTRY_NAME + "NAME "
             + PREFIX_PRICE + "PRICE "
             + PREFIX_PASTRY_NAME + "Croissant "
-            + PREFIX_PRICE + "$5.99 ";
+            + PREFIX_PRICE + "5.99 ";
 
 
     public static final String MESSAGE_SUCCESS = "New pastry added: %1$s";

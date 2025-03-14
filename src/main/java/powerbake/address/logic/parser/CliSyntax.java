@@ -7,7 +7,7 @@ public class CliSyntax {
 
     /* Prefix definitions */
     public static final Prefix PREFIX_CLIENT = new Prefix("client ");
-    public static final Prefix PREFIX_PASTRY = new Prefix("pastry");
+    public static final Prefix PREFIX_PASTRY = new Prefix("pastry ");
     public static final Prefix PREFIX_PHONE = new Prefix("-p ");
     public static final Prefix PREFIX_EMAIL = new Prefix("-e ");
     public static final Prefix PREFIX_ADDRESS = new Prefix("-a ");

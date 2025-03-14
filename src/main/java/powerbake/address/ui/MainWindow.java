@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -57,6 +58,12 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private TabPane tabPane;
+
+    @FXML
+    private Tab clientTab;
+
+    @FXML
+    private Tab pastryTab;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -192,6 +199,14 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            // logic to switch tabs depending on the view command
+            // TODO: we should replicate this for all commands in the future
+            if (commandText.equals("view client")) {
+                tabPane.getSelectionModel().select(clientTab);
+            } else if (commandText.equals("view pastry")) {
+                tabPane.getSelectionModel().select(pastryTab);
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

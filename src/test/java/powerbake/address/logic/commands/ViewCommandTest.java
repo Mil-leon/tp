@@ -1,5 +1,6 @@
 package powerbake.address.logic.commands;
 
+import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -13,12 +14,18 @@ import powerbake.address.model.ModelManager;
 import powerbake.address.model.UserPrefs;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for ViewCommand.
  */
 public class ViewCommandTest {
+    private static final String CLIENT = "client";
+    private static final String PASTRY = "pastry";
+    private static final String MESSAGE_SUCCESS_CLIENT = String.format(ViewCommand.MESSAGE_SUCCESS, CLIENT);
+    private static final String MESSAGE_SUCCESS_PASTRY = String.format(ViewCommand.MESSAGE_SUCCESS, PASTRY);
 
     private Model model;
     private Model expectedModel;
+
+
 
     @BeforeEach
     public void setUp() {
@@ -27,13 +34,26 @@ public class ViewCommandTest {
     }
 
     @Test
-    public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ViewCommand(), model, ViewCommand.MESSAGE_SUCCESS, expectedModel);
+    public void execute_clientListNotFiltered_showsSameList() {
+        assertCommandSuccess(new ViewCommand(CLIENT), model, MESSAGE_SUCCESS_CLIENT, expectedModel);
     }
 
     @Test
-    public void execute_listIsFiltered_showsEverything() {
+    public void execute_pastryListNotFiltered_showsSameList() {
+        assertCommandSuccess(new ViewCommand(PASTRY), model, MESSAGE_SUCCESS_PASTRY, expectedModel);
+    }
+
+    @Test
+    public void execute_clientListFiltered_showsFullList() {
+        // changes model state to filtered list
         showPersonAtIndex(model, INDEX_FIRST_PERSON);
-        assertCommandSuccess(new ViewCommand(), model, ViewCommand.MESSAGE_SUCCESS, expectedModel);
+
+        // testing if view command goes back to showing full list
+        assertCommandSuccess(new ViewCommand(CLIENT), model, MESSAGE_SUCCESS_CLIENT, expectedModel);
+    }
+
+    @Test
+    public void execute_invalidType_throwsCommandException() {
+        assertCommandFailure(new ViewCommand("apple"), model, ViewCommand.MESSAGE_USAGE);
     }
 }

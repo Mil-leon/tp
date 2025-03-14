@@ -84,9 +84,17 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_view() throws Exception {
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD) instanceof ViewCommand);
-        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " 3") instanceof ViewCommand);
+    public void parseCommand_viewClient() throws Exception {
+        // Test for the "client" argument
+        ViewCommand command = (ViewCommand) parser.parseCommand(ViewCommand.COMMAND_WORD + " client");
+        assertEquals(new ViewCommand("client"), command);
+    }
+
+    @Test
+    public void parseCommand_viewPastry() throws Exception {
+        // Test for the "pastry" argument
+        ViewCommand command = (ViewCommand) parser.parseCommand(ViewCommand.COMMAND_WORD + " pastry");
+        assertEquals(new ViewCommand("pastry"), command);
     }
 
     @Test

@@ -66,8 +66,9 @@ public class LogicManagerTest {
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String viewCommand = ViewCommand.COMMAND_WORD;
-        assertCommandSuccess(viewCommand, ViewCommand.MESSAGE_SUCCESS, model);
+        String viewCommand = ViewCommand.COMMAND_WORD + " client";
+        final String messageSuccessClient = String.format(ViewCommand.MESSAGE_SUCCESS, "client");
+        assertCommandSuccess(viewCommand, messageSuccessClient, model);
     }
 
     @Test

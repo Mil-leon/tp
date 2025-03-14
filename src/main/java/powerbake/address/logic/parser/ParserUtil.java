@@ -9,6 +9,7 @@ import java.util.Set;
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.StringUtil;
 import powerbake.address.logic.parser.exceptions.ParseException;
+import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
 import powerbake.address.model.person.Name;
@@ -120,5 +121,34 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String name} into a {@code Name}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static powerbake.address.model.pastry.Name parsePastryName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!Name.isValidName(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        }
+        return new powerbake.address.model.pastry.Name(trimmedName);
+    }
+    /**
+     * Parses a {@code String price} into a {@code Price}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code price} is invalid.
+     */
+    public static Price parsePrice(String price) throws ParseException {
+        requireNonNull(price);
+        String trimmedPrice = price.trim();
+        if (!Price.isValidPrice(trimmedPrice)) {
+            throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+        }
+        return new Price(trimmedPrice);
     }
 }

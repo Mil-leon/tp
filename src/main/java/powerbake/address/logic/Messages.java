@@ -58,7 +58,7 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append(pastry.getName())
                 .append("; Price: ")
-                .append(pastry.getPrice());
+                .append(pastry.getPrice().amount);
         return builder.toString();
     }
 

@@ -25,8 +25,8 @@ import static powerbake.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static powerbake.address.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static powerbake.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -72,7 +72,7 @@ public class AddCommandParserTest {
 
         // multiple names
         assertParseFailure(parser, NAME_DESC_AMY + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CLIENT));
 
         // multiple phones
         assertParseFailure(parser, PHONE_DESC_AMY + validExpectedPersonString,
@@ -90,13 +90,13 @@ public class AddCommandParserTest {
         assertParseFailure(parser,
                 validExpectedPersonString + PHONE_DESC_AMY + EMAIL_DESC_AMY + NAME_DESC_AMY + ADDRESS_DESC_AMY
                         + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME, PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_PHONE));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CLIENT, PREFIX_ADDRESS, PREFIX_EMAIL, PREFIX_PHONE));
 
         // invalid value followed by valid value
 
         // invalid name
         assertParseFailure(parser, INVALID_NAME_DESC + validExpectedPersonString,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CLIENT));
 
         // invalid email
         assertParseFailure(parser, INVALID_EMAIL_DESC + validExpectedPersonString,
@@ -114,7 +114,7 @@ public class AddCommandParserTest {
 
         // invalid name
         assertParseFailure(parser, validExpectedPersonString + INVALID_NAME_DESC,
-                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
+                Messages.getErrorMessageForDuplicatePrefixes(PREFIX_CLIENT));
 
         // invalid email
         assertParseFailure(parser, validExpectedPersonString + INVALID_EMAIL_DESC,

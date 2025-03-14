@@ -2,8 +2,8 @@ package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static powerbake.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
@@ -39,7 +39,7 @@ public class EditCommand extends Command {
             + "by the index number used in the displayed person list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_CLIENT + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "

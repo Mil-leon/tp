@@ -35,14 +35,17 @@ public class Pastry {
      * Returns true if both pastries have the same name AND price.
      * This defines a weaker notion of equality between two pastries.
      */
-    public boolean isSamePastry(Pastry otherPastry) {
-        if (otherPastry == this) {
+    public boolean isSamePastry(Object other) {
+        if (other == this) {
             return true;
         }
 
-        return otherPastry != null
-                && otherPastry.getName().equals(getName())
-                && otherPastry.getPrice().equals(getPrice());
+        if (!(other instanceof Pastry)) {
+            return false;
+        }
+
+        Pastry otherPastry = (Pastry) other;
+        return this.name.equals(otherPastry.name);
     }
 
     /**

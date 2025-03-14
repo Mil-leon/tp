@@ -2,8 +2,8 @@ package powerbake.address.logic.parser;
 
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -31,15 +31,15 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_CLIENT, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_CLIENT, PREFIX_ADDRESS, PREFIX_PHONE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_CLIENT, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS);
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_CLIENT).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         Address address = ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get());

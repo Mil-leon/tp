@@ -5,7 +5,6 @@ import static powerbake.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 import powerbake.address.commons.util.ToStringBuilder;
-import powerbake.address.model.person.Person;
 
 /**
  * Represents a Pastry in the address book.

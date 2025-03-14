@@ -1,7 +1,8 @@
 package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static powerbake.address.logic.parser.CliSyntax.*;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
 
 import powerbake.address.commons.util.ToStringBuilder;
 import powerbake.address.logic.Messages;

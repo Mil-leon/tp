@@ -9,10 +9,10 @@ import java.util.Set;
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.StringUtil;
 import powerbake.address.logic.parser.exceptions.ParseException;
-import powerbake.address.model.person.Name;
-import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
+import powerbake.address.model.person.Name;
+import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Phone;
 import powerbake.address.model.tag.Tag;
 

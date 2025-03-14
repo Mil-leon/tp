@@ -1,13 +1,12 @@
 package powerbake.address.logic.parser;
 
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static powerbake.address.logic.parser.CliSyntax.*;
-
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
 import java.util.stream.Stream;
 
 import powerbake.address.logic.commands.AddPastryCommand;
 import powerbake.address.logic.parser.exceptions.ParseException;
-import powerbake.address.model.pastry.Name;
 import powerbake.address.model.pastry.Name;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Price;

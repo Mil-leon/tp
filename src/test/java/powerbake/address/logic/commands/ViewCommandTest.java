@@ -1,5 +1,8 @@
 package powerbake.address.logic.commands;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -55,5 +58,40 @@ public class ViewCommandTest {
     @Test
     public void execute_invalidType_throwsCommandException() {
         assertCommandFailure(new ViewCommand("apple"), model, ViewCommand.MESSAGE_USAGE);
+    }
+
+    @Test
+    public void equals() {
+        ViewCommand viewClientCommand = new ViewCommand(CLIENT);
+        ViewCommand viewPastryCommand = new ViewCommand(PASTRY);
+
+        // same object -> returns true
+        assertTrue(viewClientCommand.equals(viewClientCommand));
+
+        // same values -> returns true
+        ViewCommand viewClientCommandCopy = new ViewCommand(CLIENT);
+        assertTrue(viewClientCommand.equals(viewClientCommandCopy));
+
+        // different command types -> returns false
+        assertFalse(viewClientCommand.equals(viewPastryCommand));
+
+        // different types -> returns false
+        assertFalse(viewClientCommand.equals(1));
+
+        // null -> returns false
+        assertFalse(viewClientCommand.equals(null));
+    }
+
+    @Test
+    public void toStringMethod() {
+        // Test for the "client" type
+        ViewCommand clientCommand = new ViewCommand(CLIENT);
+        String expectedClientString = ViewCommand.class.getCanonicalName() + "{type=client}";
+        assertEquals(expectedClientString, clientCommand.toString());
+
+        // Test for the "pastry" type
+        ViewCommand pastryCommand = new ViewCommand(PASTRY);
+        String expectedPastryString = ViewCommand.class.getCanonicalName() + "{type=pastry}";
+        assertEquals(expectedPastryString, pastryCommand.toString());
     }
 }

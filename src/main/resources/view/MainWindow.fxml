@@ -49,20 +49,19 @@
         </StackPane>
 
         <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS" styleClass="tab-pane">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
             <tabs>
                 <Tab text="Clients" closable="false" styleClass="tab">
                     <VBox fx:id="personList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-                        <padding>
-                            <Insets top="10" right="10" bottom="10" left="10" />
-                        </padding>
+
                     <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                     </VBox>
                 </Tab>
                 <Tab text="Pastries" closable="false" styleClass="tab">
                     <VBox fx:id="pastryList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
-                        <padding>
-                            <Insets top="10" right="10" bottom="10" left="10" />
-                        </padding>
+
                     <StackPane fx:id="pastryListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                     </VBox>
                 </Tab>

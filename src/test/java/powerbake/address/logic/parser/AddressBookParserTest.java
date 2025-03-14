@@ -21,7 +21,7 @@ import powerbake.address.logic.commands.EditCommand.EditPersonDescriptor;
 import powerbake.address.logic.commands.ExitCommand;
 import powerbake.address.logic.commands.FindCommand;
 import powerbake.address.logic.commands.HelpCommand;
-import powerbake.address.logic.commands.ListCommand;
+import powerbake.address.logic.commands.ViewCommand;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.model.person.NameContainsKeywordsPredicate;
 import powerbake.address.model.person.Person;
@@ -84,9 +84,9 @@ public class AddressBookParserTest {
     }
 
     @Test
-    public void parseCommand_list() throws Exception {
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
-        assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    public void parseCommand_view() throws Exception {
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD) instanceof ViewCommand);
+        assertTrue(parser.parseCommand(ViewCommand.COMMAND_WORD + " 3") instanceof ViewCommand);
     }
 
     @Test

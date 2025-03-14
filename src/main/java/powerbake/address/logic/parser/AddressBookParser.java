@@ -16,7 +16,7 @@ import powerbake.address.logic.commands.EditCommand;
 import powerbake.address.logic.commands.ExitCommand;
 import powerbake.address.logic.commands.FindCommand;
 import powerbake.address.logic.commands.HelpCommand;
-import powerbake.address.logic.commands.ListCommand;
+import powerbake.address.logic.commands.ViewCommand;
 import powerbake.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -68,8 +68,8 @@ public class AddressBookParser {
         case FindCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+        case ViewCommand.COMMAND_WORD:
+            return new ViewCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();

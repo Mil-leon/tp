@@ -1,7 +1,7 @@
 package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
 
 import powerbake.address.commons.util.ToStringBuilder;
@@ -13,15 +13,17 @@ import powerbake.address.model.pastry.Pastry;
 /**
  * Adds a person to the address book.
  */
-public class AddPastryCommand extends Command {
+public class AddPastryCommand extends AddCommand {
 
-    public static final String COMMAND_WORD = "addpastry";
+    public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a pastry to Powerbake. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PREFIX_PASTRY
+            + ": Adds a pastry to Powerbake. "
             + "Parameters: "
-            + PREFIX_PASTRY_NAME + "NAME "
+            + PREFIX_PASTRY + "NAME "
             + PREFIX_PRICE + "PRICE "
-            + PREFIX_PASTRY_NAME + "Croissant "
+            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_PASTRY + "Croissant "
             + PREFIX_PRICE + "5.99 ";
 
 

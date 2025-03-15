@@ -17,6 +17,7 @@ import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.NameContainsKeywordsPredicate;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.EditPersonDescriptorBuilder;
@@ -126,4 +127,35 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredPersonList().size());
     }
 
+    /**
+     * Updates the filtered pastry list in the given {@code model}
+     * to show only the pastry at the specified {@code index}.
+     *
+     * This method retrieves the pastry at the provided zero-based index from the model's filtered pastry list
+     * and updates the filtered list to include only this pastry. After the update, the filtered list is expected
+     * to contain exactly one pastry.
+     *
+     * @param model The {@code Model} whose filtered pastry list is to be updated.
+     * @param index The {@code Index} of the pastry to show in the filtered list.
+     */
+    public static void showPastryAtIndex(Model model, Index index) {
+        Pastry pastry = model.getFilteredPastryList().get(index.getZeroBased());
+        model.updateFilteredPastryList(p -> p.equals(pastry));
+
+        assert model.getFilteredPastryList().size() == 1;
+    }
+
+    /**
+     * Updates the filtered pastry list in the given {@code model} to show no pastries.
+     *
+     * This method clears the filtered pastry list by applying a predicate that matches no pastries.
+     * After the update, the filtered list is expected to be empty.
+     *
+     * @param model The {@code Model} whose filtered pastry list is to be cleared.
+     */
+    public static void showNoPastry(Model model) {
+        model.updateFilteredPastryList(p -> false);
+
+        assertTrue(model.getFilteredPastryList().isEmpty());
+    }
 }

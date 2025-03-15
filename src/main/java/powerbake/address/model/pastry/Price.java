@@ -3,8 +3,6 @@ package powerbake.address.model.pastry;
 import static java.util.Objects.requireNonNull;
 import static powerbake.address.commons.util.AppUtil.checkArgument;
 
-import powerbake.address.model.person.Phone;
-
 /**
  * Represents a Pastry's price in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidPrice(String)}
@@ -40,7 +38,7 @@ public class Price {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof Phone)) {
+        if (!(other instanceof Price)) {
             return false;
         }
 

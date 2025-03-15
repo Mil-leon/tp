@@ -7,8 +7,8 @@ import static powerbake.address.testutil.Assert.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import powerbake.address.commons.exceptions.IllegalValueException;
-import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Name;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Price;
 
 public class JsonAdaptedPastryTest {

@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static powerbake.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static powerbake.address.testutil.Assert.assertThrows;
-import static powerbake.address.testutil.TypicalPersons.ALICE;
 import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
+import static powerbake.address.testutil.TypicalPersons.ALICE;
 
 import java.util.Arrays;
 import java.util.Collection;

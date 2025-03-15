@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
 
 import powerbake.address.commons.core.LogsCenter;
 import powerbake.address.logic.commands.AddCommand;
-import powerbake.address.logic.commands.AddPastryCommand;
 import powerbake.address.logic.commands.ClearCommand;
 import powerbake.address.logic.commands.Command;
 import powerbake.address.logic.commands.DeleteCommand;
@@ -56,9 +55,6 @@ public class AddressBookParser {
 
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
-
-        case AddPastryCommand.COMMAND_WORD:
-            return new AddPastryCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);

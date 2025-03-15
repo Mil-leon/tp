@@ -1,7 +1,7 @@
 package powerbake.address.logic.parser;
 
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
 
 import java.util.stream.Stream;
@@ -26,15 +26,15 @@ public class AddPastryCommandParser implements Parser<AddPastryCommand> {
      */
     public AddPastryCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_PASTRY_NAME, PREFIX_PRICE);
+                ArgumentTokenizer.tokenize(args, PREFIX_PASTRY, PREFIX_PRICE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_PASTRY_NAME, PREFIX_PRICE)
+        if (!arePrefixesPresent(argMultimap, PREFIX_PASTRY, PREFIX_PRICE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddPastryCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PASTRY_NAME, PREFIX_PRICE);
-        Name pastryName = ParserUtil.parsePastryName(argMultimap.getValue(PREFIX_PASTRY_NAME).get());
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PASTRY, PREFIX_PRICE);
+        Name pastryName = ParserUtil.parsePastryName(argMultimap.getValue(PREFIX_PASTRY).get());
         Price price = ParserUtil.parsePrice(argMultimap.getValue(PREFIX_PRICE).get());
         Pastry pastry = new Pastry(pastryName, price);
         return new AddPastryCommand(pastry);

@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -32,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private PastryListPanel pastryListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -45,10 +48,22 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane personListPanelPlaceholder;
 
     @FXML
+    private StackPane pastryListPanelPlaceholder;
+
+    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabPane;
+
+    @FXML
+    private Tab clientTab;
+
+    @FXML
+    private Tab pastryTab;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -113,6 +128,9 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+        pastryListPanel = new PastryListPanel(logic.getFilteredPastryList());
+        pastryListPanelPlaceholder.getChildren().add(pastryListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -167,6 +185,10 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
+    public PastryListPanel getPastryListPanel() {
+        return pastryListPanel;
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -177,6 +199,14 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            // logic to switch tabs depending on the view command
+            // TODO: we should replicate this for all commands in the future
+            if (commandText.equals("view client")) {
+                tabPane.getSelectionModel().select(clientTab);
+            } else if (commandText.equals("view pastry")) {
+                tabPane.getSelectionModel().select(pastryTab);
+            }
 
             if (commandResult.isShowHelp()) {
                 handleHelp();

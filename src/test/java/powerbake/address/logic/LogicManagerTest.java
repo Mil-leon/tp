@@ -20,7 +20,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 import powerbake.address.logic.commands.AddCommand;
 import powerbake.address.logic.commands.CommandResult;
-import powerbake.address.logic.commands.ListCommand;
+import powerbake.address.logic.commands.ViewCommand;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.model.Model;
@@ -66,8 +66,9 @@ public class LogicManagerTest {
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String viewCommand = ViewCommand.COMMAND_WORD + " client";
+        final String messageSuccessClient = String.format(ViewCommand.MESSAGE_SUCCESS, "client");
+        assertCommandSuccess(viewCommand, messageSuccessClient, model);
     }
 
     @Test

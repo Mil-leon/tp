@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import powerbake.address.commons.exceptions.IllegalValueException;
 import powerbake.address.commons.util.JsonUtil;
 import powerbake.address.model.AddressBook;
-import powerbake.address.testutil.TypicalPersons;
+import powerbake.address.testutil.TypicalAddressBook;
 
 public class JsonSerializableAddressBookTest {
 
@@ -25,7 +25,7 @@ public class JsonSerializableAddressBookTest {
         JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
                 JsonSerializableAddressBook.class).get();
         AddressBook addressBookFromFile = dataFromFile.toModelType();
-        AddressBook typicalPersonsAddressBook = TypicalPersons.getTypicalAddressBook();
+        AddressBook typicalPersonsAddressBook = TypicalAddressBook.getTypicalAddressBook();
         assertEquals(addressBookFromFile.getPersonList(), typicalPersonsAddressBook.getPersonList());
     }
 

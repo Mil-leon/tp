@@ -8,7 +8,7 @@ import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSucc
 import static powerbake.address.testutil.TypicalPersons.CARL;
 import static powerbake.address.testutil.TypicalPersons.ELLE;
 import static powerbake.address.testutil.TypicalPersons.FIONA;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collections;

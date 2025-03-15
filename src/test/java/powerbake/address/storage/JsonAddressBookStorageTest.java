@@ -6,7 +6,7 @@ import static powerbake.address.testutil.Assert.assertThrows;
 import static powerbake.address.testutil.TypicalPersons.ALICE;
 import static powerbake.address.testutil.TypicalPersons.HOON;
 import static powerbake.address.testutil.TypicalPersons.IDA;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 
 import java.io.IOException;
 import java.nio.file.Path;

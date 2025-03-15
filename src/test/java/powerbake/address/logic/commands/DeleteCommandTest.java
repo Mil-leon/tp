@@ -8,7 +8,7 @@ import static powerbake.address.logic.commands.CommandTestUtil.showPastryAtIndex
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PASTRY;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 

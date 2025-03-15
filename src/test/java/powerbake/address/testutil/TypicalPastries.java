@@ -24,6 +24,4 @@ public class TypicalPastries {
     public static List<Pastry> getTypicalPastries() {
         return new ArrayList<>(Arrays.asList(CROISSANT, BAGEL, CAKE, SAUSAGEBUN));
     }
-    
 }
-

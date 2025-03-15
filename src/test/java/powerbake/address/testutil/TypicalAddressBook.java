@@ -8,13 +8,13 @@ import powerbake.address.model.person.Person;
 /**
  * A utility class containing a typical {@code AddressBook} object to be used in tests.
  */
-public class TypicalAddressBook{
+public class TypicalAddressBook {
 
-    private TypicalAddressBook(){} //prevent instantiation
+    private TypicalAddressBook() {} //prevent instantiation
 
-     /**
-     * Returns an {@code AddressBook} with all the typical persons and pastries.
-     */
+    /**
+    * Returns an {@code AddressBook} with all the typical persons and pastries.
+    */
     public static AddressBook getTypicalAddressBook() {
         AddressBook ab = new AddressBook();
         for (Person person : TypicalPersons.getTypicalPersons()) {
@@ -26,4 +26,3 @@ public class TypicalAddressBook{
         return ab;
     }
 }
-

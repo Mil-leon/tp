@@ -16,9 +16,14 @@ import powerbake.address.testutil.TypicalAddressBook;
 public class JsonSerializableAddressBookTest {
 
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
+
     private static final Path TYPICAL_PERSONS_FILE = TEST_DATA_FOLDER.resolve("typicalPersonsAddressBook.json");
     private static final Path INVALID_PERSON_FILE = TEST_DATA_FOLDER.resolve("invalidPersonAddressBook.json");
     private static final Path DUPLICATE_PERSON_FILE = TEST_DATA_FOLDER.resolve("duplicatePersonAddressBook.json");
+
+    private static final Path TYPICAL_PASTRIES_FILE = TEST_DATA_FOLDER.resolve("typicalPastriesAddressBook.json");
+    private static final Path INVALID_PASTRY_FILE = TEST_DATA_FOLDER.resolve("invalidPastryAddressBook.json");
+    private static final Path DUPLICATE_PASTRY_FILE = TEST_DATA_FOLDER.resolve("duplicatePastryAddressBook.json");
 
     @Test
     public void toModelType_typicalPersonsFile_success() throws Exception {
@@ -44,4 +49,27 @@ public class JsonSerializableAddressBookTest {
                 dataFromFile::toModelType);
     }
 
+    @Test
+    public void toModelType_typicalPastriesFile_success() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PASTRIES_FILE,
+                JsonSerializableAddressBook.class).get();
+        AddressBook addressBookFromFile = dataFromFile.toModelType();
+        AddressBook typicalPastriesAddressBook = TypicalAddressBook.getTypicalAddressBook();
+        assertEquals(addressBookFromFile.getPastryList(), typicalPastriesAddressBook.getPastryList());
+    }
+
+    @Test
+    public void toModelType_invalidPastryFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(INVALID_PASTRY_FILE,
+                JsonSerializableAddressBook.class).get();
+        assertThrows(IllegalValueException.class, dataFromFile::toModelType);
+    }
+
+    @Test
+    public void toModelType_duplicatePastries_throwsIllegalValueException() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(DUPLICATE_PASTRY_FILE,
+                JsonSerializableAddressBook.class).get();
+        assertThrows(IllegalValueException.class, JsonSerializableAddressBook.MESSAGE_DUPLICATE_PASTRY,
+                dataFromFile::toModelType);
+    }
 }

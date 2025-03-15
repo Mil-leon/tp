@@ -45,10 +45,10 @@
   } ],
   "pastries": [ {
     "name": "Croissant",
-    "price": "4.50"
+    "price": "4A.50"
   }, {
-    "name": "Bagel",
-    "price": "2.50"
+    "name": "",
+    "price": "2.zzz50"
   }, {
     "name": "Cake",
     "price": "8.00"

@@ -7,9 +7,15 @@
   } ],
   "pastries": [ {
     "name": "Croissant",
-    "price": "3.50"
+    "price": "4.50"
   }, {
-    "name": "Eclair",
-    "price": "2.00"
+    "name": "Bagel",
+    "price": "2.50"
+  }, {
+    "name": "Cake",
+    "price": "8.00"
+  }, {
+    "name": "Sausage Bun",
+    "price": "3.00"
   } ]
 }

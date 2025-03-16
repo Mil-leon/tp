@@ -3,10 +3,10 @@ package powerbake.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static powerbake.address.testutil.Assert.assertThrows;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static powerbake.address.testutil.TypicalPersons.ALICE;
 import static powerbake.address.testutil.TypicalPersons.HOON;
 import static powerbake.address.testutil.TypicalPersons.IDA;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.io.IOException;
 import java.nio.file.Path;

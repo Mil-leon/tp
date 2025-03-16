@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static powerbake.address.testutil.TypicalPersons.CARL;
 import static powerbake.address.testutil.TypicalPersons.ELLE;
 import static powerbake.address.testutil.TypicalPersons.FIONA;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collections;

@@ -6,8 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

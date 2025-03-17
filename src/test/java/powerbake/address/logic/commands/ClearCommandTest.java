@@ -1,7 +1,7 @@
 package powerbake.address.logic.commands;
 
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static powerbake.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 

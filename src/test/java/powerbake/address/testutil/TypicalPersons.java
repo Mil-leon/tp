@@ -60,9 +60,9 @@ public class TypicalPersons {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    public static final Pastry CROISSANT = new Pastry(new Name("Croissant"), new Price("4.50"));
-    public static final Pastry BAGEL = new Pastry(new Name("Bagel"), new Price("2.50"));
-    public static final Pastry CAKE = new Pastry(new Name("Cake"), new Price("8.00"));
+    private static final Pastry CROISSANT = new Pastry(new Name("Croissant"), new Price("4.50"));
+    private static final Pastry BAGEL = new Pastry(new Name("Bagel"), new Price("2.50"));
+    private static final Pastry CAKE = new Pastry(new Name("Cake"), new Price("8.00"));
 
     private TypicalPersons() {} // prevents instantiation
 

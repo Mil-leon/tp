@@ -3,8 +3,8 @@ package powerbake.address.model.pastry;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static powerbake.address.testutil.TypicalPersons.BAGEL;
-import static powerbake.address.testutil.TypicalPersons.CROISSANT;
+import static powerbake.address.testutil.TypicalPastries.BAGEL;
+import static powerbake.address.testutil.TypicalPastries.CROISSANT;
 
 import org.junit.jupiter.api.Test;
 

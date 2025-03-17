@@ -19,7 +19,7 @@ import powerbake.address.model.pastry.exceptions.PastryNotFoundException;
 import powerbake.address.testutil.PastryBuilder;
 
 public class UniquePastryListTest {
-    
+
     private UniquePastryList uniquePastryList;
 
     @BeforeEach
@@ -97,7 +97,7 @@ public class UniquePastryListTest {
     }
 
     @Test
-    public void set_editedPastryHasDifferentIdentity_alreadyInList_throwsDuplicatePastryException() {
+    public void set_editedPastryHasDifferentIdentityInList_throwsDuplicatePastryException() {
         uniquePastryList.add(CROISSANT);
         Pastry editedPastry = new PastryBuilder()
                 .withName("Apple Pie")
@@ -108,7 +108,7 @@ public class UniquePastryListTest {
     }
 
     @Test
-    public void set_editedPastryHasDifferentIdentity_notInList_success() {
+    public void set_editedPastryHasDifferentIdentityNotInList_success() {
         uniquePastryList.add(CROISSANT);
         Pastry editedPastry = new PastryBuilder()
                 .withName("Apple Pie")
@@ -172,7 +172,8 @@ public class UniquePastryListTest {
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> uniquePastryList.asUnmodifiableObservableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                uniquePastryList.asUnmodifiableObservableList().remove(0));
     }
 
     @Test

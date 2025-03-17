@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 public class NameTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new Name(null));        
+        assertThrows(NullPointerException.class, () -> new Name(null));
     }
 
     @Test

@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import powerbake.address.model.pastry.UniquePastryList;
 import powerbake.address.model.person.exceptions.DuplicatePersonException;
 import powerbake.address.model.person.exceptions.PersonNotFoundException;
 import powerbake.address.testutil.PersonBuilder;

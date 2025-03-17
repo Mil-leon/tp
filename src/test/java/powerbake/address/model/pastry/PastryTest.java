@@ -26,9 +26,9 @@ public class PastryTest {
         // same object -> returns true
         assertTrue(pastry.isSamePastry(pastry));
 
-        // different price (but same name) -> returns true 
+        // different price (but same name) -> returns true
         assertTrue(pastry.isSamePastry(new PastryBuilder(CROISSANT).withPrice("0.10").build()));
-        
+
         // null -> returns false
         assertFalse(pastry.isSamePastry(null));
 
@@ -37,7 +37,7 @@ public class PastryTest {
 
         // different name -> returns false
         assertFalse(pastry.isSamePastry(new PastryBuilder(CROISSANT).withName("Apple Pie").build()));
-    
+
         // name has trailing spaces, all other attributes same -> returns false
         String nameWithTrailingSpaces = CROISSANT.getName().name + " ";
         Pastry editedCroissant = new PastryBuilder(CROISSANT).withName(nameWithTrailingSpaces).build();
@@ -63,18 +63,20 @@ public class PastryTest {
 
         // different pastry -> returns false
         assertFalse(pastry.equals(new PastryBuilder(BAGEL).build()));
-        
+
         // same name but different price -> returns false
         assertFalse(pastry.equals(new PastryBuilder(CROISSANT).withPrice("0.10").build()));
-    
+
         // different name but same price -> returns false
         assertFalse(pastry.equals(new PastryBuilder(CROISSANT).withName("Apple Pie").build()));
     }
 
     @Test
     public void toStringMethod() {
-        String expected = Pastry.class.getCanonicalName() + "{name=" + CROISSANT.getName() + ", price=" + CROISSANT.getPrice() + "}";
+        String expected = Pastry.class.getCanonicalName()
+                + "{name=" + CROISSANT.getName()
+                + ", price=" + CROISSANT.getPrice()
+                + "}";
         assertTrue(CROISSANT.toString().equals(expected));
     }
-
 }

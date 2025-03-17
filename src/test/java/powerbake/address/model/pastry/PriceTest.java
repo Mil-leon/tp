@@ -45,7 +45,7 @@ public class PriceTest {
     @Test
     public void equals() {
         Price price = new Price("9.70");
-        
+
         // same object -> returns true
         assertTrue(price.equals(price));
 
@@ -54,7 +54,7 @@ public class PriceTest {
 
         // null value -> returns false
         assertFalse(price.equals(null));
-        
+
         // different types -> returns false
         assertFalse(price.equals(5.0f));
 

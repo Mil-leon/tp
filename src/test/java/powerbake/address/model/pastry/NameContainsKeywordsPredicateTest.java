@@ -15,7 +15,7 @@ import powerbake.address.testutil.PastryBuilder;
 public class NameContainsKeywordsPredicateTest {
     @Test
     public void equals() {
-        
+
         List<String> firstKeywordList = Collections.singletonList("first");
         List<String> secondKeywordList = Arrays.asList("first", "second");
 
@@ -32,7 +32,7 @@ public class NameContainsKeywordsPredicateTest {
         // different types -> return false
         assertFalse(firstPredicate.equals(firstKeywordList));
 
-        // null -> return false 
+        // null -> return false
         assertFalse(firstPredicate.equals(null));
 
         // different keywords -> return false
@@ -42,7 +42,8 @@ public class NameContainsKeywordsPredicateTest {
     @Test
     public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Croissant"));
+        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(
+                Collections.singletonList("Croissant"));
         assertTrue(predicate.test(new PastryBuilder().withName("croissant").build()));
 
         // Multiple keywords
@@ -77,7 +78,7 @@ public class NameContainsKeywordsPredicateTest {
     public void test_toStringMethod() {
         List<String> keywords = List.of("keyword1", "keyword2");
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
-        
+
         String expected = NameContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";
         assertEquals(expected, predicate.toString());
     }

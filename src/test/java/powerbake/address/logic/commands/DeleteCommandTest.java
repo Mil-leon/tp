@@ -1,6 +1,7 @@
 package powerbake.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -148,6 +149,84 @@ public class DeleteCommandTest {
         DeleteCommand deleteCommand = new DeleteCommand("client", INDEX_FIRST_PERSON);
 
         assertThrows(CommandException.class, () -> deleteCommand.execute(model));
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code true} when comparing
+     * the same {@code DeleteCommand} object (self-comparison).
+     */
+    @Test
+    public void equals_sameObject_true() {
+        DeleteCommand deleteCommand = new DeleteCommand("client", Index.fromOneBased(1));
+        assertTrue(deleteCommand.equals(deleteCommand)); // Same reference
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code true} when two
+     * {@code DeleteCommand} objects have identical attributes (same
+     * {@code entityType} and {@code targetIndex}).
+     */
+    @Test
+    public void equals_equalAttributes_true() {
+        DeleteCommand deleteCommand1 = new DeleteCommand("client", Index.fromOneBased(1));
+        DeleteCommand deleteCommand2 = new DeleteCommand("client", Index.fromOneBased(1));
+        assertTrue(deleteCommand1.equals(deleteCommand2));
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code false} when a
+     * {@code DeleteCommand} object is compared with an object of a different type.
+     */
+    @Test
+    public void equals_differentType_false() {
+        DeleteCommand deleteCommand = new DeleteCommand("client", Index.fromOneBased(1));
+        String otherType = "NotACommand";
+        assertFalse(deleteCommand.equals(otherType));
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code false} when comparing
+     * two {@code DeleteCommand} objects with different {@code entityType} values.
+     */
+    @Test
+    public void equals_differentEntityType_false() {
+        DeleteCommand deleteClientCommand = new DeleteCommand("client", Index.fromOneBased(1));
+        DeleteCommand deletePastryCommand = new DeleteCommand("pastry", Index.fromOneBased(1));
+        assertFalse(deleteClientCommand.equals(deletePastryCommand));
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code false} when two
+     * {@code DeleteCommand} objects have the same {@code entityType} but
+     * different {@code targetIndex} values.
+     */
+    @Test
+    public void equals_differentTargetIndex_false() {
+        DeleteCommand deleteCommand1 = new DeleteCommand("client", Index.fromOneBased(1));
+        DeleteCommand deleteCommand2 = new DeleteCommand("client", Index.fromOneBased(2));
+        assertFalse(deleteCommand1.equals(deleteCommand2));
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code false} when comparing
+     * two {@code DeleteCommand} objects with completely different attributes
+     * (both {@code entityType} and {@code targetIndex} values are different).
+     */
+    @Test
+    public void equals_differentAttributes_false() {
+        DeleteCommand deleteCommand1 = new DeleteCommand("client", Index.fromOneBased(1));
+        DeleteCommand deleteCommand2 = new DeleteCommand("pastry", Index.fromOneBased(2));
+        assertFalse(deleteCommand1.equals(deleteCommand2));
+    }
+
+    /**
+     * Tests that the {@code equals} method returns {@code false} when
+     * a {@code DeleteCommand} object is compared with {@code null}.
+     */
+    @Test
+    public void equals_nullComparison_false() {
+        DeleteCommand deleteCommand = new DeleteCommand("client", Index.fromOneBased(1));
+        assertFalse(deleteCommand.equals(null));
     }
 
     /**

@@ -58,7 +58,7 @@ public class DeleteCommandParserTest {
      */
     @Test
     public void parse_validPastryIndices() {
-        assertParseSuccess(parser, "pastry 1", new DeleteCommand("pastry", INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, "pastry 1", new DeleteCommand("pastry", INDEX_FIRST_PASTRY));
         assertParseSuccess(parser, "pastry 2", new DeleteCommand("pastry", INDEX_SECOND_PASTRY));
         assertParseSuccess(parser, "pastry 3", new DeleteCommand("pastry", INDEX_THIRD_PASTRY));
     }
@@ -101,7 +101,7 @@ public class DeleteCommandParserTest {
         assertParseSuccess(parser, "CLIENT 1", new DeleteCommand("client", INDEX_FIRST_PERSON));
         assertParseSuccess(parser, "PASTRY 1", new DeleteCommand("pastry", INDEX_FIRST_PASTRY));
 
-        assertParseSuccess(parser, "CLIENT 1", new DeleteCommand("client", INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, "CLIent 1", new DeleteCommand("client", INDEX_FIRST_PERSON));
         assertParseSuccess(parser, "PAStry 2", new DeleteCommand("pastry", INDEX_SECOND_PASTRY));
     }
 

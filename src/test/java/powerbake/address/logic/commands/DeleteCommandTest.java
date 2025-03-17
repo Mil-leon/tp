@@ -230,6 +230,19 @@ public class DeleteCommandTest {
     }
 
     /**
+     * Tests the {@code toString()} method to verify the proper string
+     * representation of the {@code DeleteCommand}.
+     */
+    @Test
+    public void toString_validAttributes() {
+        Index targetIndex = Index.fromOneBased(1);
+        DeleteCommand deleteCommand = new DeleteCommand("client", targetIndex);
+
+        String expectedString = "powerbake.address.logic.commands.DeleteCommand{targetIndex=1}";
+        assertEquals(expectedString, deleteCommand.toString());
+    }
+
+    /**
      * Updates {@code model}'s filtered list to show no one.
      */
     private void showNoPerson(Model model) {

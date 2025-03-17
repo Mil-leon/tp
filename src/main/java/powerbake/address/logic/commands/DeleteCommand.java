@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import powerbake.address.commons.core.index.Index;
+import powerbake.address.commons.util.ToStringBuilder;
 import powerbake.address.logic.Messages;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.Model;
@@ -151,5 +152,17 @@ public class DeleteCommand extends Command {
         DeleteCommand otherDeleteCommand = (DeleteCommand) other;
         return entityType.equals(otherDeleteCommand.entityType)
                 && targetIndex.equals(otherDeleteCommand.targetIndex);
+    }
+
+    /**
+     * Returns the string representation of this command, mainly for debugging.
+     *
+     * @return A string containing the details of the command's target index.
+     */
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .add("targetIndex", targetIndex.getOneBased())
+                .toString();
     }
 }

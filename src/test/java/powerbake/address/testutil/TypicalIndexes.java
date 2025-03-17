@@ -11,5 +11,5 @@ public class TypicalIndexes {
     public static final Index INDEX_THIRD_PERSON = Index.fromOneBased(3);
     public static final Index INDEX_FIRST_PASTRY = Index.fromZeroBased(0);
     public static final Index INDEX_SECOND_PASTRY = Index.fromZeroBased(1);
-
+    public static final Index INDEX_THIRD_PASTRY = Index.fromZeroBased(2);
 }

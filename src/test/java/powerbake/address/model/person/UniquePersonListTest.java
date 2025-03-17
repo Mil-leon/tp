@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import powerbake.address.model.pastry.UniquePastryList;
 import powerbake.address.model.person.exceptions.DuplicatePersonException;
 import powerbake.address.model.person.exceptions.PersonNotFoundException;
 import powerbake.address.testutil.PersonBuilder;
@@ -166,6 +167,24 @@ public class UniquePersonListTest {
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniquePersonList.asUnmodifiableObservableList().remove(0));
+    }
+
+    @Test
+    public void equals() {
+        UniquePersonList personList = new UniquePersonList();
+        personList.add(ALICE);
+
+        // same list -> returns true
+        assertTrue(personList.equals(personList));
+
+        // null -> returns false
+        assertFalse(personList.equals(null));
+
+        // different type -> returns false
+        assertFalse(personList.equals(5));
+
+        // different list -> returns false
+        assertFalse(uniquePersonList.equals(personList));
     }
 
     @Test

@@ -29,10 +29,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
 
         if (isClient) {
-            argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_CLIENT_NOSPACE);
             return new AddClientCommandParser().parse(args);
         } else {
-            argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PASTRY_NOSPACE);
             return new AddPastryCommandParser().parse(args);
         }
     }

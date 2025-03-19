@@ -19,6 +19,9 @@ public class TypicalPastries {
     public static final Pastry CAKE = new Pastry(new Name("Cake"), new Price("8.00"));
     public static final Pastry SAUSAGEBUN = new Pastry(new Name("Sausage Bun"), new Price("3.00"));
 
+    public static final Pastry CHOCOLATECROISSANT = new Pastry(new Name("Chocolate Croissant"), new Price("3.50"));
+    public static final Pastry CINNAMONROLL = new Pastry(new Name("Cinnamon Roll"), new Price("3.00"));
+
     private TypicalPastries() {} // prevents instantiation
 
     public static List<Pastry> getTypicalPastries() {

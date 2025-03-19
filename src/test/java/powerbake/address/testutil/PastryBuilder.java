@@ -10,7 +10,7 @@ import powerbake.address.model.pastry.Price;
  */
 public class PastryBuilder {
 
-    public static final String DEFAULT_NAME = "Croissant";
+    public static final String DEFAULT_NAME = "Chocolate Croissant";
     public static final String DEFAULT_PRICE = "3.50";
 
     private Name name;

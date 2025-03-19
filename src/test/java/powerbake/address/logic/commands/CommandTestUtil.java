@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static powerbake.address.testutil.Assert.assertThrows;
 
@@ -49,11 +51,23 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
+    public static final String VALID_NAME_CHOCOLATECROISSANT = "Chocolate Croissant";
+    public static final String VALID_PRICE_CHOCOLATECROISSANT = "3.50";
+    public static final String VALID_NAME_CINNAMONROLL = "Cinnamon Roll";
+    public static final String VALID_PRICE_CINNAMONROLL = "3.00";
+
+    public static final String NAME_DESC_CHOCOLATECROISSANT = " " + PREFIX_PASTRY + VALID_NAME_CHOCOLATECROISSANT;
+    public static final String PRICE_DESC_CHOCOLATECROISSANT = " " + PREFIX_PRICE + VALID_PRICE_CHOCOLATECROISSANT;
+    public static final String NAME_DESC_CINNAMONROLL = " " + PREFIX_PASTRY + VALID_NAME_CINNAMONROLL;
+    public static final String PRICE_DESC_CINNAMONROLL = " " + PREFIX_PRICE + VALID_PRICE_CINNAMONROLL;
+
     public static final String INVALID_NAME_DESC = " " + PREFIX_CLIENT + "James&"; // '&' not allowed in names
+    public static final String INVALID_PASTRY_DESC = " " + PREFIX_PASTRY + "Chocolate Croissant*";
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
+    public static final String INVALID_PRICE_DESC = " " + PREFIX_PRICE + "3.50a"; // 'a' not allowed in prices
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";

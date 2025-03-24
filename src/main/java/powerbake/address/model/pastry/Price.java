@@ -34,7 +34,7 @@ public class Price {
     /**
      * Returns the value of the price as a double.
      */
-    public double getValueOfAmmount() {
+    public double getValueOfAmount() {
         return Double.valueOf(amount);
     }
 

@@ -38,7 +38,7 @@ public class OrderItem {
      * Calculates the subtotal for this order item (price × quantity).
      */
     public double getSubtotal() {
-        return pastry.getPrice().getValueOfAmmount() * quantity;
+        return pastry.getPrice().getValueOfAmount() * quantity;
     }
 
     @Override

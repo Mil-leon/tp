@@ -31,6 +31,13 @@ public class Price {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns the value of the price as a double.
+     */
+    public double getValueOfAmmount() {
+        return Double.valueOf(amount);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

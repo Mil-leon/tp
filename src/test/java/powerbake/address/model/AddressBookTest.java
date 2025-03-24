@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.model.person.exceptions.DuplicatePersonException;
@@ -86,7 +87,11 @@ public class AddressBookTest {
 
     @Test
     public void toStringMethod() {
-        String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList() + "}";
+        String expected = AddressBook.class.getCanonicalName()
+            + "{persons=" + addressBook.getPersonList() + ", "
+            + "pastries=" + addressBook.getPastryList() + ", "
+            + "orders=" + addressBook.getOrderList() + "}";
+
         assertEquals(expected, addressBook.toString());
     }
 
@@ -96,6 +101,7 @@ public class AddressBookTest {
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Pastry> pastries = FXCollections.observableArrayList();
+        private final ObservableList<Order> orders = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -109,6 +115,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Pastry> getPastryList() {
             return pastries;
+        }
+
+        @Override
+        public ObservableList<Order> getOrderList() {
+            return orders;
         }
     }
 

@@ -3,6 +3,8 @@ package powerbake.address.model.order;
 import java.util.Objects;
 import java.util.UUID;
 
+import powerbake.address.commons.util.CollectionUtil;
+
 /**
  * Represents a unique identifier for an Order.
  * Guarantees: immutable; is valid as declared in {@link #isValidOrderId(String)}
@@ -25,6 +27,8 @@ public class OrderId {
      * @param id A valid order ID.
      */
     public OrderId(String id) {
+        CollectionUtil.requireAllNonNull(id);
+
         if (!isValidOrderId(id)) {
             throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
         }
@@ -36,9 +40,12 @@ public class OrderId {
      */
     public static boolean isValidOrderId(String test) {
         try {
+            CollectionUtil.requireAllNonNull(test);
             UUID.fromString(test);
             return true;
         } catch (IllegalArgumentException e) {
+            return false;
+        } catch (NullPointerException e) {
             return false;
         }
     }

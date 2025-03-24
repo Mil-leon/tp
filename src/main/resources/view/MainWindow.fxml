@@ -65,6 +65,12 @@
                     <StackPane fx:id="pastryListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                     </VBox>
                 </Tab>
+                <Tab fx:id="orderTab" text="Orders" closable="false" styleClass="tab">
+                    <VBox fx:id="orderList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+
+                    <StackPane fx:id="orderListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                </Tab>
             </tabs>
         </TabPane>
 

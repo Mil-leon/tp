@@ -68,60 +68,32 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
     </box>
 
-1. **At the end you should have a empty folder with the `PowerBake.jar` file in it similar to this:** 
+#### At the end you should have a empty folder with the `PowerBake.jar` file in it. just like this: 
 
-    ![folder](images/powerbake_home_folder.png)|
+![folder](images/powerbake_home_folder.png)|
 
 --------------------------------------------------------------------------------------------------------------------
 
 ### Starting PowerBake
 
-Now that you have installed PowerBake, lets learn how to launch it!
+1. Open a [command terminal](#glossary), `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
+   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+   ![Ui](images/Ui.png)
 
-1. Open a [command terminal](#glossary) 
-    - **Windows:** open the start menu and search for `cmd` then press `Enter`
-    - **MacOS:** open spotlight search and search for `Terminal` then press `Enter`
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+   Some example commands you can try:
 
-    <br>
+   * `list` : Lists all contacts.
 
-    <box type="tip" seamless header="**How to use the terminal:**">
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-    If you are unsure about how to use the terminal you can follow this [guide](https://cs.colby.edu/maxwell/courses/tutorials/terminal).
+   * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-    </box>
+   * `clear` : Deletes all contacts.
 
-1. Navigate into the folder you created earlier.
+   * `exit` : Exits the app.
 
-    <box type="info" seamless header="**How to navigate into the folder:**">
-
-    1. Open the command terminal.
-
-    1. Type `cd ` (with a space after `cd`).
-
-    1. Drag the folder into the terminal window.
-
-    1. Press `Enter`.
-
-    </box>
-
-1. run the following command to start PowerBake:
-
-    ```
-    java -jar PowerBake.jar
-    ```
-
-1. After a breif moment, you should see a window similar to this:
-
-    <box type="info" light>
-
-    the first time you run PowerBake, it will contain [sample data](#glossary).<br>
-    This helps you understand how the entries will appear and how the app will feel like when you start using it.
-
-    </box>
-
-    ![PowerBake](images/powerbake_home_page.png)
-
-Now that you have PowerBake running, lets learn how to use it to manage your customers and orders in this [tutorial!](#tutorial)
+1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 

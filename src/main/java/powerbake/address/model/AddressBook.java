@@ -6,6 +6,8 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import powerbake.address.commons.util.ToStringBuilder;
+import powerbake.address.model.order.Order;
+import powerbake.address.model.order.UniqueOrderList;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.UniquePastryList;
 import powerbake.address.model.person.Person;
@@ -19,6 +21,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniquePastryList pastries;
+    private final UniqueOrderList orders;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -30,6 +33,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         pastries = new UniquePastryList();
+        orders = new UniqueOrderList();
     }
 
     public AddressBook() {}
@@ -61,6 +65,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the order list with {@code orders}.
+     * {@code orders} must not contain duplicate pastries.
+     */
+    public void setOrders(List<Order> orders) {
+        this.orders.setOrders(orders);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -68,6 +80,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setPastries(newData.getPastryList());
+        setOrders(newData.getOrderList());
     }
 
     //// person-level operations
@@ -144,6 +157,39 @@ public class AddressBook implements ReadOnlyAddressBook {
         pastries.remove(key);
     }
 
+    /**
+     * Returns true if an order with the same identity as {@code order} exists in the address book.
+     */
+    public boolean hasOrder(Order order) {
+        requireNonNull(order);
+        return orders.contains(order);
+    }
+
+    /**
+     * Adds an order to the address book.
+     * The order must not already exist in the address book.
+     */
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
+
+    /**
+     * Replaces the given order {@code target} in the list with {@code editedOrder}.
+     * {@code target} must exist in the address book.
+     * The order identity of {@code editedOrder} must not be the same as another existing order in the address book.
+     */
+    public void setOrder(Order target, Order editedOrder) {
+        requireNonNull(editedOrder);
+        orders.setOrder(target, editedOrder);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeOrder(Order key) {
+        orders.remove(key);
+    }
 
     //// util methods
 
@@ -151,6 +197,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("persons", persons)
+                .add("pastries", pastries)
+                .add("orders", orders)
                 .toString();
     }
 
@@ -165,6 +213,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public ObservableList<Order> getOrderList() {
+        return orders.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
@@ -176,11 +229,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         AddressBook otherAddressBook = (AddressBook) other;
-        return persons.equals(otherAddressBook.persons) && pastries.equals(otherAddressBook.pastries);
+        return persons.equals(otherAddressBook.persons)
+            && pastries.equals(otherAddressBook.pastries)
+            && orders.equals(otherAddressBook.orders);
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode() + pastries.hashCode();
+        return persons.hashCode() + pastries.hashCode() + orders.hashCode();
     }
 }

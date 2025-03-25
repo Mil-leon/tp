@@ -74,6 +74,9 @@ public class UniqueOrderList implements Iterable<Order> {
         }
     }
 
+    /**
+     * Replaces the contents of this list with replacement {@code UniqueOrderList}.
+     */
     public void setOrders(UniqueOrderList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
@@ -22,6 +23,7 @@ import powerbake.address.model.Model;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.NameContainsKeywordsPredicate;
 import powerbake.address.model.person.Person;
+import powerbake.address.testutil.EditPastryDescriptorBuilder;
 import powerbake.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -40,6 +42,9 @@ public class CommandTestUtil {
     public static final String VALID_TAG_HUSBAND = "husband";
     public static final String VALID_TAG_FRIEND = "friend";
 
+    public static final String INVALID_NAME_JAMES = "James&";
+
+    public static final String NAME_EDIT_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_AMY = " " + PREFIX_CLIENT + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_CLIENT + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -56,6 +61,7 @@ public class CommandTestUtil {
     public static final String VALID_NAME_CINNAMONROLL = "Cinnamon Roll";
     public static final String VALID_PRICE_CINNAMONROLL = "3.00";
 
+    public static final String NAME_EDIT_CHOCOLATECROISSANT = " " + PREFIX_NAME + VALID_NAME_CHOCOLATECROISSANT;
     public static final String NAME_DESC_CHOCOLATECROISSANT = " " + PREFIX_PASTRY + VALID_NAME_CHOCOLATECROISSANT;
     public static final String PRICE_DESC_CHOCOLATECROISSANT = " " + PREFIX_PRICE + VALID_PRICE_CHOCOLATECROISSANT;
     public static final String NAME_DESC_CINNAMONROLL = " " + PREFIX_PASTRY + VALID_NAME_CINNAMONROLL;
@@ -82,6 +88,16 @@ public class CommandTestUtil {
         DESC_BOB = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+    }
+
+    public static final EditCommand.EditPastryDescriptor DESC_CINNAMONROLL;
+    public static final EditCommand.EditPastryDescriptor DESC_CHOCOLATECROISSANT;
+
+    static {
+        DESC_CINNAMONROLL = new EditPastryDescriptorBuilder().withName(VALID_NAME_CINNAMONROLL)
+                .withPrice(VALID_PRICE_CINNAMONROLL).build();
+        DESC_CHOCOLATECROISSANT = new EditPastryDescriptorBuilder().withName(VALID_NAME_CHOCOLATECROISSANT)
+                .withPrice(VALID_PRICE_CHOCOLATECROISSANT).build();
     }
 
     /**

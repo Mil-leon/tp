@@ -85,7 +85,7 @@ public class EditCommand extends Command {
         case "pastry":
             return editPastry(model);
         default:
-            throw new CommandException("Invalid entity specified. Only 'client' and 'pastry' are supported.");
+            throw new CommandException(Messages.MESSAGE_INVALID_ENTITY);
         }
     }
 

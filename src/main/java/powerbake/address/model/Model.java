@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import powerbake.address.commons.core.GuiSettings;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -17,6 +18,9 @@ public interface Model {
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Pastry> PREDICATE_SHOW_ALL_PASTRIES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Order> PREDICATE_SHOW_ALL_ORDERS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -121,4 +125,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPastryList(Predicate<Pastry> predicate);
+
+    /** Returns an unmodifiable view of the filtered order list */
+    ObservableList<Order> getFilteredOrderList();
+
 }

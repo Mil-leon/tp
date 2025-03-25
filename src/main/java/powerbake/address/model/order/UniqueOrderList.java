@@ -2,8 +2,10 @@ package powerbake.address.model.order;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -135,13 +137,20 @@ public class UniqueOrderList implements Iterable<Order> {
      * Returns true if {@code orders} contains only unique orders.
      */
     private boolean ordersAreUnique(List<Order> orders) {
-        for (int i = 0; i < orders.size() - 1; i++) {
-            for (int j = i + 1; j < orders.size(); j++) {
-                if (orders.get(i).equals(orders.get(j))) {
-                    return false;
+        Set<Order> seen = new HashSet<Order>();
+
+        return orders.stream().<Boolean>reduce(
+                true,
+                (prev, curr) -> {
+                    if (seen.contains(curr)){
+                        return false;
+                    } else{
+                        seen.add(curr);
+                        return true;
+                    }
+                }, (a,b) -> {
+                    return a && b;
                 }
-            }
-        }
-        return true;
+                );
     }
 }

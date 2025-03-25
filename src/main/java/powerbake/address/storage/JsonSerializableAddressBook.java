@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import powerbake.address.commons.exceptions.IllegalValueException;
 import powerbake.address.model.AddressBook;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.ReadOnlyAddressBook;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
@@ -22,18 +23,22 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     public static final String MESSAGE_DUPLICATE_PASTRY = "Persons list contains duplicate pastry(s).";
+    public static final String MESSAGE_DUPLICATE_ORDER = "Persons list contains duplicate order(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedPastry> pastries = new ArrayList<>();
+    private final List<JsonAdaptedOrder> orders = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons and pastries.
+     * Constructs a {@code JsonSerializableAddressBook} with the given persons, pastries and orders.
      */
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-            @JsonProperty("pastries") List<JsonAdaptedPastry> pastries) {
+            @JsonProperty("pastries") List<JsonAdaptedPastry> pastries,
+            @JsonProperty("orders") List<JsonAdaptedOrder> orders) {
         this.persons.addAll(persons);
         this.pastries.addAll(pastries);
+        this.orders.addAll(orders);
     }
 
     /**
@@ -44,6 +49,7 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         pastries.addAll(source.getPastryList().stream().map(JsonAdaptedPastry::new).collect(Collectors.toList()));
+        orders.addAll(source.getOrderList().stream().map(JsonAdaptedOrder::new).collect(Collectors.toList()));
     }
 
     /**
@@ -66,6 +72,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PASTRY);
             }
             addressBook.addPastry(pastry);
+        }
+        for (JsonAdaptedOrder jsonAdaptedOrder : orders) {
+            Order order = jsonAdaptedOrder.toModelType();
+            if (addressBook.hasOrder(order)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_ORDER);
+            }
+            addressBook.addOrder(order);
         }
         return addressBook;
     }

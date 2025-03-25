@@ -203,7 +203,7 @@
 }
 
 .processing {
-    -fx-background-color: #46B1E1;
+    -fx-background-color: #3c95be;
 }
 
 .ready {
@@ -216,6 +216,31 @@
 
 .cancelled {
     -fx-background-color: #828282; /* Grey */
+}
+
+
+.order-id-label {
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 15pt;
+}
+
+.order-item-label {
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13pt;
+}
+
+.order-item-list {
+    -fx-padding: 20px;
+}
+
+.order-item-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-style: italic;
+    -fx-font-size: 13pt;
 }
 
 

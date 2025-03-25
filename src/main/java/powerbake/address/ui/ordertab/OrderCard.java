@@ -1,11 +1,11 @@
-package powerbake.address.ui;
+package powerbake.address.ui.ordertab;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import powerbake.address.model.order.Order;
 import powerbake.address.model.order.OrderStatus;
+import powerbake.address.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -41,17 +41,17 @@ public class OrderCard extends UiPart<Region> {
         this.order = order;
         id.setText(displayedIndex + ". ");
         name.setText(String.format(
-            "Order #%s", 
-            order.getOrderId().toString().substring(0,8)));
+            "Order #%s",
+            order.getOrderId().toString().substring(0, 8)));
         client.setText(order.getCustomer().getName().fullName);
-        
+
         OrderStatus orderStatus = order.getStatus();
         status.setText(orderStatus.toString().toUpperCase());
         setStatusColor(orderStatus);
     }
 
     /**
-     * Sets color of status label, depending on order status. 
+     * Sets color of status label, depending on order status.
      */
     private void setStatusColor(OrderStatus orderStatus) {
         status.getStyleClass().clear();
@@ -62,7 +62,7 @@ public class OrderCard extends UiPart<Region> {
             break;
         case PROCESSING:
             status.getStyleClass().addAll("processing");
-        break;
+            break;
         case READY:
             status.getStyleClass().addAll("ready");
             break;

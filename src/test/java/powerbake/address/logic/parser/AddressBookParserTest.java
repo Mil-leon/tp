@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.commands.AddClientCommand;
 import powerbake.address.logic.commands.AddCommand;
 import powerbake.address.logic.commands.ClearCommand;
@@ -56,12 +57,12 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_edit() throws Exception {
-        Person person = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        System.out.println(PersonUtil.getEditPersonDescriptorDetails(descriptor));
-        assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
+        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withPhone("91234567").build();
+        EditCommand clientCommand = new EditCommand("client",
+                Index.fromOneBased(1), descriptor, true);
+        assertEquals(clientCommand, parser.parseCommand("edit client 1 -p 91234567"));
+        assertThrows(ParseException.class, () -> parser.parseCommand("edit client 1 name -p 91234567"));
+        assertThrows(ParseException.class, () -> parser.parseCommand("edit client -p 91234567"));
     }
 
     @Test

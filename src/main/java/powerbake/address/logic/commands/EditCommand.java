@@ -1,12 +1,6 @@
 package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static powerbake.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,87 +15,157 @@ import powerbake.address.commons.util.ToStringBuilder;
 import powerbake.address.logic.Messages;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.Model;
+import powerbake.address.model.pastry.Pastry;
+import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
-import powerbake.address.model.person.Name;
 import powerbake.address.model.person.Person;
 import powerbake.address.model.person.Phone;
 import powerbake.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Represents a command to edit a client or pastry identified by its index number
+ * and optionally update its details using provided parameters.
+ *
+ * The `EditCommand` handles two different types of entities: Client & Pastry.
+ *
+ * Command Usage:
+ * edit client 1 -p 91234567 -e johndoe@example.com
+ * edit pastry 2 -n Croissant -pr 3.50
  */
 public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the client or pastry identified "
+            + "by the index number used in the displayed list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_CLIENT + "NAME] "
-            + "[" + PREFIX_PHONE + "PHONE] "
-            + "[" + PREFIX_EMAIL + "EMAIL] "
-            + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_PHONE + "91234567 "
-            + PREFIX_EMAIL + "johndoe@example.com";
+            + "Parameters: TYPE (client/pastry), INDEX (must be a positive integer), FIELDS\n"
+            + "Example for client: edit client 1 -n John -p 91234567 -e johndoe@example.com\n"
+            + "Example for pastry: edit pastry 2 -n Croissant -pr 3.50";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
+    public static final String MESSAGE_EDIT_PASTRY_SUCCESS = "Edited Pastry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in the bakery.";
 
+    private final String entityType;
     private final Index index;
-    private final EditPersonDescriptor editPersonDescriptor;
+    private final Object editDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
-     * @param editPersonDescriptor details to edit the person with
+     * Creates an EditCommand.
+     *
+     * @param entityType Entity to edit (client or pastry).
+     * @param targetIndex Index of the entity to edit.
+     * @param editDescriptor Details to edit the entity with.
      */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
-        requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
+    public EditCommand(String entityType, Index targetIndex, Object editDescriptor, boolean isClient) {
+        requireNonNull(entityType);
+        requireNonNull(targetIndex);
+        requireNonNull(editDescriptor);
 
-        this.index = index;
-        this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
+        this.entityType = entityType.toLowerCase();
+        this.index = targetIndex;
+        if (isClient) {
+            this.editDescriptor = new EditPersonDescriptor((EditPersonDescriptor) editDescriptor);
+        } else {
+            this.editDescriptor = new EditPastryDescriptor((EditPastryDescriptor) editDescriptor);
+        }
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        switch (entityType) {
+        case "client":
+            return editClient(model);
+        case "pastry":
+            return editPastry(model);
+        default:
+            throw new CommandException(Messages.MESSAGE_INVALID_ENTITY);
+        }
+    }
+
+    /**
+     * Edits a client at the specified index and updates its fields.
+     *
+     * @param model The model containing the client list.
+     * @return The result message indicating a successful edit.
+     * @throws CommandException If the specified index is invalid or if it causes duplication.
+     */
+    private CommandResult editClient(Model model) throws CommandException {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        Person personToEdit = model.getFilteredPersonList().get(index.getZeroBased());
+        Person editedPerson = createEditedPerson(personToEdit, (EditPersonDescriptor) editDescriptor);
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_CLIENT);
         }
 
         model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
+        model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
+        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson)));
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Edits a pastry at the specified index and updates its fields.
+     *
+     * @param model The model containing the pastry list.
+     * @return The result message indicating a successful edit.
+     * @throws CommandException If the specified index is invalid or if it causes duplication.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private CommandResult editPastry(Model model) throws CommandException {
+        List<Pastry> lastShownList = model.getFilteredPastryList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX);
+        }
+
+        Pastry pastryToEdit = model.getFilteredPastryList().get(index.getZeroBased());
+        Pastry editedPastry = createEditedPastry(pastryToEdit, (EditPastryDescriptor) editDescriptor);
+
+        if (!pastryToEdit.isSamePastry(editedPastry) && model.hasPastry(editedPastry)) {
+            throw new CommandException(MESSAGE_DUPLICATE_PASTRY);
+        }
+
+        model.setPastry(pastryToEdit, editedPastry);
+        model.updateFilteredPastryList(Model.PREDICATE_SHOW_ALL_PASTRIES);
+        return new CommandResult(String.format(MESSAGE_EDIT_PASTRY_SUCCESS, Messages.format(editedPastry)));
+    }
+
+    /**
+     * Creates a new Person object with updated details.
+     */
+    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
-        Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        powerbake.address.model.person.Name updatedName = editDescriptor.getName()
+                        .orElse(personToEdit.getName());
+        Phone updatedPhone = editDescriptor.getPhone().orElse(personToEdit.getPhone());
+        Email updatedEmail = editDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Address updatedAddress = editDescriptor.getAddress().orElse(personToEdit.getAddress());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags);
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, personToEdit.getTags());
+    }
+
+    /**
+     * Creates a new Pastry object with updated details.
+     */
+    private static Pastry createEditedPastry(Pastry pastryToEdit, EditPastryDescriptor editDescriptor) {
+        assert pastryToEdit != null;
+
+        powerbake.address.model.pastry.Name updatedName = editDescriptor.getName().orElse(pastryToEdit.getName());
+        Price updatedPrice = editDescriptor.getPrice().orElse(pastryToEdit.getPrice());
+
+        return new Pastry(updatedName, updatedPrice);
     }
 
     @Override
@@ -110,21 +174,22 @@ public class EditCommand extends Command {
             return true;
         }
 
-        // instanceof handles nulls
         if (!(other instanceof EditCommand)) {
             return false;
         }
 
         EditCommand otherEditCommand = (EditCommand) other;
         return index.equals(otherEditCommand.index)
-                && editPersonDescriptor.equals(otherEditCommand.editPersonDescriptor);
+                && entityType.equals(otherEditCommand.entityType)
+                && Objects.equals(editDescriptor, otherEditCommand.editDescriptor);
     }
+
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("index", index)
-                .add("editPersonDescriptor", editPersonDescriptor)
+                .add("editPersonDescriptor", (EditPersonDescriptor) editDescriptor)
                 .toString();
     }
 
@@ -133,7 +198,7 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-        private Name name;
+        private powerbake.address.model.person.Name name;
         private Phone phone;
         private Email email;
         private Address address;
@@ -160,11 +225,11 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyNonNull(name, phone, email, address, tags);
         }
 
-        public void setName(Name name) {
+        public void setName(powerbake.address.model.person.Name name) {
             this.name = name;
         }
 
-        public Optional<Name> getName() {
+        public Optional<powerbake.address.model.person.Name> getName() {
             return Optional.ofNullable(name);
         }
 
@@ -216,11 +281,10 @@ public class EditCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof EditPersonDescriptor)) {
+            if (!(other instanceof EditPersonDescriptor otherEditPersonDescriptor)) {
                 return false;
             }
 
-            EditPersonDescriptor otherEditPersonDescriptor = (EditPersonDescriptor) other;
             return Objects.equals(name, otherEditPersonDescriptor.name)
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
@@ -236,6 +300,101 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("tags", tags)
+                    .toString();
+        }
+    }
+
+    /**
+     * Descriptor for editing the details of a pastry.
+     */
+    public static class EditPastryDescriptor {
+        private powerbake.address.model.pastry.Name name;
+        private Price price;
+
+        /**
+         * Constructs an empty {@code EditPastryDescriptor}.
+         */
+        public EditPastryDescriptor() {}
+
+        /**
+         * Constructs a new {@code EditPastryDescriptor} copied from another {@code EditPastryDescriptor}.
+         *
+         * @param toCopy The {@code EditPastryDescriptor} to copy from.
+         */
+        public EditPastryDescriptor(EditPastryDescriptor toCopy) {
+            setName(toCopy.name);
+            setPrice(toCopy.price);
+        }
+
+        /**
+         * Checks if any field in this descriptor has been edited.
+         *
+         * @return {@code true} if at least one field is edited, {@code false} otherwise.
+         */
+        public boolean isAnyFieldEdited() {
+            return name != null || price != null;
+        }
+
+        /**
+         * Sets the name of the pastry.
+         *
+         * @param name The name to be set.
+         */
+        public void setName(powerbake.address.model.pastry.Name name) {
+            this.name = name;
+        }
+
+        /**
+         * Retrieves the name of the pastry, if set.
+         *
+         * @return An {@code Optional} containing the pastry name, or an empty {@code Optional} if not set.
+         */
+        public Optional<powerbake.address.model.pastry.Name> getName() {
+            return Optional.ofNullable(name);
+        }
+
+        /**
+         * Sets the price of the pastry.
+         *
+         * @param price The price to be set.
+         */
+        public void setPrice(Price price) {
+            this.price = price;
+        }
+
+        /**
+         * Retrieves the price of the pastry, if set.
+         *
+         * @return An {@code Optional} containing the pastry price, or an empty {@code Optional} if not set.
+         */
+        public Optional<Price> getPrice() {
+            return Optional.ofNullable(price);
+        }
+
+        /**
+         * Compares this {@code EditPastryDescriptor} to another object for equality.
+         *
+         * @param other The other object to compare to.
+         * @return {@code true} if the other object is an instance of {@code EditPastryDescriptor} and
+         *         has the same name and price, {@code false} otherwise.
+         */
+        @Override
+        public boolean equals(Object other) {
+            if (other == this) {
+                return true;
+            }
+            if (!(other instanceof EditPastryDescriptor e)) {
+                return false;
+            }
+            return getName().equals(e.getName())
+                    && getPrice().equals(e.getPrice());
+        }
+
+        @Override
+        public String toString() {
+            return new ToStringBuilder(this)
+                    .add("name", name)
+                    .add("price", price)
                     .toString();
         }
     }

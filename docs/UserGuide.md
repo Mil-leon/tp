@@ -76,20 +76,70 @@ Shows a message explaning how to access the help page.
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding A Client: `add client`
 
-Adds a person to the address book.
+The `add client` command is essential in keeping track of your client base.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​`
+It allows you to seamlessly add key details of your client into the record. These details will then be integrated into keeping track of orders in the future.
+
+#### Command Usage
+Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
 
 <box type="tip" seamless>
 
-**Tip:** A person can have any number of tags (including 0)
+**Info:** TAG can be left blank, you can add as many tags as you want.
 </box>
 
-Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+#### Parameters:
+
+1. NAME: The name of your client.
+   * Example: `Luke`, `James`
+2. -a ADDRESS: The address of your client, 5 - 100 characters
+    * Example: `5 Sengkang Street`
+3. -e EMAIL: The email address of you client, follows valid format
+    * Example: `luke@gmail.com`
+4. -p PHONE: 8-digit phone number of your client
+    * Example: `88776655`
+5. -t TAG: Extra details of your client (Optional, any number of tags is allowed)
+    * Example: `Spender`
+
+### Example:
+Adding a client, **Luke**, into Powerbake application. He lives at **5 Sengkang Street** and his email address is **luke@gmail.com**. His phone number is **88776655**.
+
+To add luke, simply type:
+`add client Luke -a 5 Sengkang Street -e luke@gmail.com -p 88776655`
+
+![Adding luke into powerbake](images/addclient1.png)
+
+Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. This allows you to easily keep track of client details systematically and efficiently.
+![Successfully added luke into powerbake](images/addclient2.png)
+
+### Adding A Pastry: `add pastry`
+
+The `add pastry` command is essential in keeping track of your pastry menu.
+
+It allows you to add key details of pastries. These details will then utilised when keeping track of pastry orders in the future.
+
+#### Command Usage
+Command: `add pastry NAME -pr PRICE`
+
+#### Parameters:
+
+1. NAME: The name of your pastry.
+    * Example: `Croissant`
+2. -pr PRICE: The price of your pastry, supports up to 2 decimal places.
+    * Example: `5.50`, '`5`
+
+### Example:
+Adding a pastry, **Croissant**, into Powerbake application. Price is 5.50.
+
+To add the Croissant, simply type
+`add pastry Croissant -pr 5.5`
+
+![Adding Croissant into powerbake](images/addpastry1.png)
+
+Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
+![Successfully added Croissant into powerbake](images/addpastry2.png)
 
 ### Listing all persons : `list`
 

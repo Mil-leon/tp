@@ -140,15 +140,14 @@ public class UniqueOrderList implements Iterable<Order> {
         Set<Order> seen = new HashSet<Order>();
 
         return orders.stream().<Boolean>reduce(
-                true,
-                (prev, curr) -> {
-                    if (seen.contains(curr)){
+                true, (prev, curr) -> {
+                    if (seen.contains(curr)) {
                         return false;
-                    } else{
+                    } else {
                         seen.add(curr);
                         return true;
                     }
-                }, (a,b) -> {
+                }, (a, b) -> {
                     return a && b;
                 }
                 );

@@ -1,6 +1,7 @@
 package powerbake.address.model;
 
 import javafx.collections.ObservableList;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -21,4 +22,9 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Pastry> getPastryList();
 
+    /**
+     * Returns an unmodifiable view of the orders list.
+     * This list will not contain any duplicate orders.
+     */
+    ObservableList<Order> getOrderList();
 }

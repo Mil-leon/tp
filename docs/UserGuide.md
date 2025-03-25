@@ -4,14 +4,175 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# PowerBake User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
-
-<!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
+## **Introduction**
+This User Guide is designed to help you **get started with _PowerBake_**, a valuable tool for managing your bakery's clients, pastries, and orders. 
+
+No matter if you're new to the business or already have experience running a bakery, this guide will be your go-to resource for efficiently tracking clients, pastries, and orders.
+
+![Ui](images/Ui.png)
+
+**_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
+
+To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](#glossary). 
+
+<box type="info" seamless>
+
+If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional GUI-based applications.
+
+</box>
+
+Using **_PowerBake_**, you can efficiently manage your bakery with:
+
+- **Quick Overview**: Instantly access client details, pastry inventory, and order statuses at a glance.
+- **Order Tracking**: Keep track of each order's progress, from placement to delivery or pickup.
+
+
+**_PowerBake_ is the perfect tool for small home bakery owners looking for a simple, efficient way to manage their business.**
+
+#### Prerequisite Knowledge
+
+This guide is designed to be accessible to all users, whether you’re a new or experienced user. 
+
+If you are a **new _PowerBake_** user:
+
+- Do refer to the [Glossary](#glossary) section to understand the key terminologies used in the guide.
+- Check out our [Getting Started](#getting-started) section to get started with using **_PowerBake_**!
+
+If you are an **experienced _PowerBake_** user:
+
+- The [Command Summary](#command-summary) section provides a quick overview of all available commands in **_PowerBake_**.
+- The [Features](#features) section can give more specific insight as to the features of **_PowerBake_** and each command.
+
+Our goal is to make managing your bakery as smooth and efficient as possible, regardless of your level of experience. 
+
+**For additional information**, you may refer to the [FAQ](#faq) section or the [Known Issues](#known-issues) section.
+
+[Back to top](#user-guide)
+
+__________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
+
+## **Understanding the User Guide**
+
+This section outlines the various elements found in this guide and explains what they represent.
+
+#### Navigating the Guide
+
+To quickly jump between sections, use the **Page Navigation** menu located on the right side of the screen.
+
+![Page Navigation Menu Shown](images/tutorial/pageNavShown.png)
+
+On smaller screens, the **Page Navigation** menu is hidden by default. To display it, simply click the three-dot icon in the upper right corner.
+
+![Page Navigation Menu Hidden](images/tutorial/pageNavHidden.png)
+
+#### Hyperlinks
+
+Curious about hyperlinks? [Learn more here!](#glossary)
+
+[Hyperlinks are displayed in this style.](#links)
+
+They can also appear [**in bold**](#links), [_in italics_](#links) or [**_both!_**](#links)
+
+#### Code
+
+`Any code shown within the guide will appear in this style.`
+
+#### Code Blocks
+
+```
+/* Large blocks of code can 
+*/ be displayed in this way as well
+public static printCodeBlock (String code) {
+  // do something
+}
+```
+
+#### Information Boxes
+
+<box>
+
+This is an information box where additional details may be shared.
+
+This guide uses three types of boxes:
+* [Additional Information](#additional-information)
+* [Warning](#warning)
+* [Tips](#tips)
+</box>
+
+#### Additional Information
+
+Additional information are shown as a box with a **"i"** symbol.
+
+Here are some of the different styles of additional information you may see:
+
+<box type="info">
+
+This is an example of additional information.
+</box>
+
+<box type="info" light>
+
+Here’s another version of additional information.
+</box>
+
+<box type="info" seamless>
+
+And yet another style of additional information.
+</box>
+
+#### Warning
+
+Warnings can are shown typically as a box with an exclaimation mark as a symbol. 
+
+Here are some of the different styles of warnings you may see:
+
+<box type="warning">
+
+Warning! Please take caution!
+</box>
+
+<box type="warning" light>
+
+Warning Warning! Be alert!
+</box>
+
+<box type="warning" seamless>
+
+This is another warning style. Stay careful!
+</box>
+
+#### Tips
+
+Similarly, tips are shows within a box with a lightbulb as its symbol. These are useful **optional information** and you may skip these without any consequence.
+
+Here are some of the different styles of tips you may see:
+
+<box type="tip">
+
+Here are some useful tips. You can skip these if you're in a rush!
+</box>
+
+<box type="tip" light>
+
+These are additional tips, presented in a lighter format.
+</box>
+
+<box type="tip" seamless>
+
+And here’s another seamless format for tips.
+</box>
+
+[Return to top](#user-guide)
+
+__________________________________________________________________________________________________________________
 
 ## Quick start
 

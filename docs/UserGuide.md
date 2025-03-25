@@ -4,7 +4,7 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# PowerBake User Guide
 
 AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
 
@@ -16,7 +16,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 ## Getting Started
 
 Lets learn how to get started with **PowerBake**! This guide will walk you through on how to [**install the application**](#installation) and 
-[**how to use it**](#########TODOOOOOOO}}}}}}}}}}) to supercharge your baking experience!
+[**how to use it**](#tutorial) to supercharge your baking experience!
 
 <box header=" **By the end of this section, you will:**">
 
@@ -122,6 +122,8 @@ Now that you have installed PowerBake, lets learn how to launch it!
     ![PowerBake](images/powerbake_home_page.png)
 
 Now that you have PowerBake running, lets learn how to use it to manage your customers and orders in this [tutorial!](#tutorial)
+
+[Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
 

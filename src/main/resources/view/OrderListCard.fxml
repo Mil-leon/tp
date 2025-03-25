@@ -36,7 +36,7 @@
 
       <!--  client label -->
       <Label fx:id="client" styleClass="cell_small_label" text="\$client" />
-  
+
     </VBox>
 
     <VBox alignment="CENTER_RIGHT" minHeight="50" GridPane.columnIndex="1">

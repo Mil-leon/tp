@@ -207,7 +207,7 @@
 }
 
 .ready {
-    -fx-background-color: #00B050 
+    -fx-background-color: #00B050;
 }
 
 .delivered {
@@ -215,7 +215,7 @@
 }
 
 .cancelled {
-    -fx-background-color: #828282; /* Grey */
+    -fx-background-color: #828282;
 }
 
 

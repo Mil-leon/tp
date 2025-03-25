@@ -11,6 +11,7 @@ import powerbake.address.MainApp;
 import powerbake.address.commons.core.LogsCenter;
 import powerbake.address.commons.util.StringUtil;
 import powerbake.address.logic.Logic;
+import powerbake.address.ui.common.MainWindow;
 
 /**
  * The manager of the UI component.

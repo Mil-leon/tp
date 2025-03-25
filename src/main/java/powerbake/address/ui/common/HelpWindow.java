@@ -1,4 +1,4 @@
-package powerbake.address.ui;
+package powerbake.address.ui.common;
 
 import java.util.logging.Logger;
 
@@ -9,6 +9,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import powerbake.address.commons.core.LogsCenter;
+import powerbake.address.ui.UiPart;
 
 /**
  * Controller for a help page

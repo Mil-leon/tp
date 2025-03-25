@@ -1,4 +1,4 @@
-package powerbake.address.ui;
+package powerbake.address.ui.common;
 
 import java.util.logging.Logger;
 
@@ -18,6 +18,11 @@ import powerbake.address.logic.Logic;
 import powerbake.address.logic.commands.CommandResult;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
+import powerbake.address.ui.UiPart;
+import powerbake.address.ui.ordertab.OrderDetailsPanel;
+import powerbake.address.ui.ordertab.OrderListPanel;
+import powerbake.address.ui.pastrytab.PastryListPanel;
+import powerbake.address.ui.persontab.PersonListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -36,6 +41,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private PastryListPanel pastryListPanel;
     private OrderListPanel orderListPanel;
+    private OrderDetailsPanel orderDetailsPanel;
 
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -54,6 +60,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane orderListPanelPlaceholder;
+
+    @FXML
+    private StackPane orderDetailsPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -129,7 +138,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts() {
+    public void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
@@ -138,6 +147,12 @@ public class MainWindow extends UiPart<Stage> {
 
         orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
         orderListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
+
+        orderDetailsPanel = new OrderDetailsPanel();
+        orderDetailsPanelPlaceholder.getChildren().add(orderDetailsPanel.getRoot());
+
+        // binding to selected order
+        orderDetailsPanel.bindToSelectedOrder(orderListPanel.getSelectedOrderProperty());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -173,7 +188,7 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    void show() {
+    public void show() {
         primaryStage.show();
     }
 

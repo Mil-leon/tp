@@ -1,10 +1,11 @@
-package powerbake.address.ui;
+package powerbake.address.ui.common;
 
 import static java.util.Objects.requireNonNull;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Region;
+import powerbake.address.ui.UiPart;
 
 /**
  * A ui for the status bar that is displayed at the header of the application.

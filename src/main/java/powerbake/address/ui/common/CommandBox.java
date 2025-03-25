@@ -1,4 +1,4 @@
-package powerbake.address.ui;
+package powerbake.address.ui.common;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,6 +7,7 @@ import javafx.scene.layout.Region;
 import powerbake.address.logic.commands.CommandResult;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
+import powerbake.address.ui.UiPart;
 
 /**
  * The UI component that is responsible for receiving user command inputs.

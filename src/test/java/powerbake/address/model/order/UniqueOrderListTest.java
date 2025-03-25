@@ -2,6 +2,7 @@ package powerbake.address.model.order;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -213,6 +214,68 @@ public class UniqueOrderListTest {
         assertEquals(1, uniqueOrderList.asUnmodifiableObservableList().size());
     }
 
+
+
+    @Test
+    public void equals_sameObject_returnsTrue() {
+        assertTrue(uniqueOrderList.equals(uniqueOrderList));
+    }
+
+    @Test
+    public void equals_null_returnsFalse() {
+        assertFalse(uniqueOrderList.equals(null));
+    }
+
+    @Test
+    public void equals_differentClass_returnsFalse() {
+        assertFalse(uniqueOrderList.equals("Not a UniqueOrderList"));
+    }
+
+    @Test
+    public void equals_sameContents_returnsTrue() {
+        UniqueOrderList otherList = new UniqueOrderList();
+        Order order = new Order(customer, orderItems);
+
+        uniqueOrderList.add(order);
+        otherList.add(order);
+
+        assertTrue(uniqueOrderList.equals(otherList));
+    }
+
+    @Test
+    public void equals_differentContents_returnsFalse() {
+        UniqueOrderList otherList = new UniqueOrderList();
+        Order order1 = new Order(customer, orderItems);
+        Order order2 = new Order(new PersonBuilder().withName("Different Name").build(), orderItems);
+
+        uniqueOrderList.add(order1);
+        otherList.add(order2);
+
+        assertFalse(uniqueOrderList.equals(otherList));
+    }
+
+    @Test
+    public void hashCode_sameContents_sameHashCode() {
+        UniqueOrderList otherList = new UniqueOrderList();
+        Order order = new Order(customer, orderItems);
+
+        uniqueOrderList.add(order);
+        otherList.add(order);
+
+        assertEquals(uniqueOrderList.hashCode(), otherList.hashCode());
+    }
+
+    @Test
+    public void hashCode_differentContents_differentHashCode() {
+        UniqueOrderList otherList = new UniqueOrderList();
+        Order order1 = new Order(customer, orderItems);
+        Order order2 = new Order(new PersonBuilder().withName("Different Name").build(), orderItems);
+
+        uniqueOrderList.add(order1);
+        otherList.add(order2);
+
+        assertNotEquals(uniqueOrderList.hashCode(), otherList.hashCode());
+    }
     @Test
     public void iterator_hasNextAndNext_worksAsExpected() {
         Order order1 = new Order(customer, orderItems);

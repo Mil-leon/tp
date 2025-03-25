@@ -65,8 +65,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Replaces the contents of the pastry list with {@code pastries}.
-     * {@code pastries} must not contain duplicate pastries.
+     * Replaces the contents of the order list with {@code orders}.
+     * {@code orders} must not contain duplicate pastries.
      */
     public void setOrders(List<Order> orders) {
         this.orders.setOrders(orders);

@@ -26,6 +26,6 @@
     <Label fx:id="totalPriceLabel" styleClass="order-item-label"/>
 
     <!-- Label for status -->
-    <Label fx:id="orderStatusLabel" styleClass="status-box" text="Status" /> 
+    <Label fx:id="orderStatusLabel" styleClass="status-box" text="Status" />
 
 </VBox>

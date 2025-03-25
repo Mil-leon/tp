@@ -15,7 +15,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ## Getting Started
 
-Lets learn how to get started with **PowerBake**! This guide will walk you through on how to [**install the application**](#installation) and 
+Lets learn how to get started with **PowerBake**! This guide will walk you through on how to [**install the application**](#installation) and
 [**how to use it**](#tutorial) to supercharge your baking experience!
 
 <box header=" **By the end of this section, you will:**">
@@ -44,7 +44,7 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 1. Download the **latest** `PowerBake.jar` file from our [Github's latest release](https://github.com/AY2425S2-CS2103T-F13-2/tp/releases/latest).
 
 1. Find the file you have just downloaded. It is called `PowerBake.jar`.
-    - The file is likely to be found in your `Downloads` folder. 
+    - The file is likely to be found in your `Downloads` folder.
     <br>([How to find the downloads folder](https://www.minitool.com/data-recovery/downloads-on-windows-mac-android-ios.html))
 
 1. create a new folder to use as the [_home folder_](#glossary) for PowerBake.
@@ -68,7 +68,7 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
     </box>
 
-1. **At the end you should have a empty folder with the `PowerBake.jar` file in it similar to this:** 
+1. **At the end you should have a empty folder with the `PowerBake.jar` file in it similar to this:**
 
     ![folder](images/powerbake_home_folder.png)|
 
@@ -78,7 +78,7 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
 Now that you have installed PowerBake, lets learn how to launch it!
 
-1. Open a [command terminal](#glossary) 
+1. Open a [command terminal](#glossary)
     - **Windows:** open the start menu and search for `cmd` then press `Enter`
     - **MacOS:** open spotlight search and search for `Terminal` then press `Enter`
 

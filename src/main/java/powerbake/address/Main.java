@@ -23,7 +23,7 @@ import powerbake.address.commons.core.LogsCenter;
  */
 public class Main {
     private static Logger logger = LogsCenter.getLogger(Main.class);
-    
+
     private static boolean assertEnabled = false;
 
     public static void main(String[] args) {
@@ -44,7 +44,7 @@ public class Main {
         } catch (AssertionError e) {
             assertEnabled = true;
         }
-        
+
         logger.info(assertEnabled ? "Assertions enabled." : "Assertions disabled.");
 
         Application.launch(MainApp.class, args);

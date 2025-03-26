@@ -204,37 +204,45 @@ ________________________________________________________________________________
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Features
+## Commands
+
+This section explains the detailed list of commands and its usages which are available for you to use.
+
+<box type="tip" seamless> 
+
+If you are familiar with **_PowerBake_** and just need a **quick refresher** on the commands available, you can [click here](#command-summary) for the Command Summary below.
+
+</box>
 
 <box type="info" seamless>
 
 **Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
+  ```
+   add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS
+  ```
+  `NAME`, `ADDRESS`, `EMAIL`, `PHONE` and `TAGS` are parameters which are to be replaced:
+  ```
+   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client
+  ```
 
-* Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-* If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
+* Words in `[Square Brackets]` are **optional parameters**.<br>
+  ```
+   add client NAME -a ADDRESS -e EMAIL -p PHONE [-t TAGS]
+  ```
+  `TAGS` is optional. You can use it like:
+  ```
+   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client
+  ```
+  OR
+  ```
+   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655
+  ```
+  
+* Extraneous parameters for commands that do not take in parameters (`exit`) will be ignored.<br>
+  e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
 </box>
-
-### Viewing help : `help`
-
-Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
-
-Format: `help`
 
 
 ### Adding A Client: `add client`
@@ -246,9 +254,10 @@ It allows you to seamlessly add key details of your client into the record. Thes
 #### Command Usage
 Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
 
-<box type="tip" seamless>
+<box type="info" seamless>
 
 **Info:** TAG can be left blank, you can add as many tags as you want.
+
 </box>
 
 #### Parameters:
@@ -302,72 +311,90 @@ To add the Croissant, simply type
 Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
 ![Successfully added Croissant into powerbake](images/addpastry2.png)
 
-### Listing all persons : `list`
+[Go to Command Summary](#command-summary)
 
-Shows a list of all persons in the address book.
+---
 
-Format: `list`
+### Deleting Client or Pastry : `delete`
 
-### Editing a person : `edit`
+The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients and pastries.
 
-Edits an existing person in the address book.
+#### Command Usage
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+**Command**: `delete client/pastry INDEX`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+#### Parameters:
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+* **INDEX**: Represents position of the client/pastry list that you wish to remove.
 
-### Locating persons by name: `find`
+<box type="info" seamless>
 
-Finds persons whose names contain any of the given keywords.
+The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
+This corresponds to the position of the client/pastry displayed in list.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+</box>
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+##### Example 1:
+If you want to remove the fifth **client** on the list, the command would look like this:
 
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+```
+ delete client 5
+```
 
-### Deleting a person : `delete`
+**Before:**
+![Delete Command](images/commands/deleteCommand1.png)
 
-Deletes the specified person from the address book.
+After hitting `Enter`, you will see the fifth client removed from the list.
+The remaining pastries will adjust their index numbers accordingly.
 
-Format: `delete INDEX`
+**After:**
+![Delete Command](images/commands/deleteCommand2.png)
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+##### Example 2:
+If you want to remove the second **pastry** on the list, the command would look like this:
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+```
+ delete pastry 2
+```
 
-### Clearing all entries : `clear`
+**Before:**
+![Delete Command](images/commands/deleteCommand3.png)
 
-Clears all entries from the address book.
+After hitting `Enter`, you will see the second pastry removed from the list.
+The remaining pastries will adjust their index numbers accordingly.
 
-Format: `clear`
+**After:**
+![Delete Command](images/commands/deleteCommand4.png)
+
+[Go to Command Summary](#command-summary)
+
+---
+
+### Viewing Client or Pastry : `view`
+
+The `view` command offers a detailed insight of the client and pastry list.
 
 ### Exiting the program : `exit`
 
-Exits the program.
+The `exit` command is designed to let you have a swift way of **closing PowerBake**.
 
-Format: `exit`
+It is a simple command, where the application terminates gracefully while safeguarding all the data and changes you have made.
+
+#### Command Usage
+
+**Command**: `exit`
+
+#### Parameters:
+
+<box type="info" seamless>
+
+The `exit` command does not require any parameters.
+
+</box>
+
+[Go to Command Summary](#command-summary)
+
+---
 
 ### Saving the data
 
@@ -418,13 +445,12 @@ Adding data in the wrong format could lead to potential errors.
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
+| Command                                                | Usage                                                  | Example                                                                       |
+|--------------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------|
+| **[Add Client](#adding-A-client-add-client)**          | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Pastry](#adding-a-pastry-add-pastry)**          | `add pastry NAME -pr PRICE`                            | `add pastry Tart -pr 3.40`                                                    |
+| **[Delete Client](#deleting-client-or-pastry-delete)** | `delete client INDEX`                                  | `delete client 1`                                                             |
+| **[Delete Pastry](#deleting-client-or-pastry-delete)** | `delete pastry INDEX`                                  | `delete pastry 1`                                                             |
+| **[View Client](#viewing-client-or-pastry-view)**      | `view client`                                          | `view client`                                                                 |
+| **[View Pastry](#viewing-client-or-pastry-view)**      | `view pastry`                                          | `view pastry`                                                                 |
 
-Action     | Format, Examples
------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List**   | `list`
-**Help**   | `help`

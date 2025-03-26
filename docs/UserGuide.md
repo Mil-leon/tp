@@ -174,33 +174,117 @@ And here’s another seamless format for tips.
 
 __________________________________________________________________________________________________________________
 
-## Quick start
+## Getting Started
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+Lets learn how to get started with **PowerBake**! This guide will walk you through on how to [**install the application**](#installation) and
+[**how to use it**](#tutorial) to supercharge your baking experience!
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+<box header=" **By the end of this section, you will:**">
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+- Have PowerBake installed on your computer
+- Understand how to run PowerBake
+- Create your first Customer, Pastry and Order!
+- Learn how to manage your Customers and Orders
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar addressbook.jar` command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+</box>
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
 
-   * `list` : Lists all contacts.
+--------------------------------------------------------------------------------------------------------------------
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+### Installation
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+1. Ensure you have Java `17` or above installed.
 
-   * `clear` : Deletes all contacts.
+<box type="info" light>
 
-   * `exit` : Exits the app.
+**Dont Worry!** If you are not sure how to install java you can follow this [guide](https://www.java.com/en/download/help/download_options.html).
+<br>**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Refer to the [Features](#features) below for details of each command.
+</box>
+
+1. Download the **latest** `PowerBake.jar` file from our [Github's latest release](https://github.com/AY2425S2-CS2103T-F13-2/tp/releases/latest).
+
+1. Find the file you have just downloaded. It is called `PowerBake.jar`.
+    - The file is likely to be found in your `Downloads` folder.
+    <br>([How to find the downloads folder](https://www.minitool.com/data-recovery/downloads-on-windows-mac-android-ios.html))
+
+1. create a new folder to use as the [_home folder_](#glossary) for PowerBake.
+    - it is recommended to use a new & empty folder to prevent any data loss.
+
+    <box type="info" seamless>
+
+        This folder can be created anywhere on your computer
+
+    </box>
+
+1. Copy the file to the newly created folder.
+
+    <box type="info" seamless header="**How to copy the file into the new folder:**">
+
+    1. Right click on PowerBake.jar and select **Copy**.
+
+    1. **Navigate** to the newly created folder.
+
+    1. Right click on the folder and select **Paste**.
+
+    </box>
+
+1. **At the end you should have a empty folder with the `PowerBake.jar` file in it similar to this:**
+
+    ![folder](images/powerbake_home_folder.png)|
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Starting PowerBake
+
+Now that you have installed PowerBake, lets learn how to launch it!
+
+1. Open a [command terminal](#glossary)
+    - **Windows:** open the start menu and search for `cmd` then press `Enter`
+    - **MacOS:** open spotlight search and search for `Terminal` then press `Enter`
+
+    <br>
+
+    <box type="tip" seamless header="**How to use the terminal:**">
+
+    If you are unsure about how to use the terminal you can follow this [guide](https://cs.colby.edu/maxwell/courses/tutorials/terminal).
+
+    </box>
+
+1. Navigate into the folder you created earlier.
+
+    <box type="info" seamless header="**How to navigate into the folder:**">
+
+    1. Open the command terminal.
+
+    1. Type `cd ` (with a space after `cd`).
+
+    1. Drag the folder into the terminal window.
+
+    1. Press `Enter`.
+
+    </box>
+
+1. run the following command to start PowerBake:
+
+    ```
+    java -jar PowerBake.jar
+    ```
+
+1. After a breif moment, you should see a window similar to this:
+
+    <box type="info" light>
+
+    the first time you run PowerBake, it will contain [sample data](#glossary).<br>
+    This helps you understand how the entries will appear and how the app will feel like when you start using it.
+
+    </box>
+
+    ![PowerBake](images/powerbake_home_page.png)
+
+Now that you have PowerBake running, lets learn how to use it to manage your customers and orders in this [tutorial!](#tutorial)
+
+[Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -454,3 +538,11 @@ Adding data in the wrong format could lead to potential errors.
 | **[View Client](#viewing-client-or-pastry-view)**      | `view client`                                          | `view client`                                                                 |
 | **[View Pastry](#viewing-client-or-pastry-view)**      | `view pastry`                                          | `view pastry`                                                                 |
 
+--------------------------------------------------------------------------------------------------------------------
+
+## Glossary
+
+Term             | Explanation
+-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Home folder      | The folder where Powerbake's' is saved. The home folder is used to store data files used by Powerbake.
+Command terminal | A text-based interface for interacting with the computer. Examples include the Command Prompt on Windows, Terminal on macOS, and bash on Linux.

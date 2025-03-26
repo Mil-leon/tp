@@ -25,6 +25,10 @@ public class JsonSerializableAddressBookTest {
     private static final Path INVALID_PASTRY_FILE = TEST_DATA_FOLDER.resolve("invalidPastryAddressBook.json");
     private static final Path DUPLICATE_PASTRY_FILE = TEST_DATA_FOLDER.resolve("duplicatePastryAddressBook.json");
 
+    private static final Path TYPICAL_ORDERS_FILE = TEST_DATA_FOLDER.resolve("typicalOrdersAddressBook.json");
+    private static final Path INVALID_ORDER_FILE = TEST_DATA_FOLDER.resolve("invalidOrderAddressBook.json");
+    private static final Path DUPLICATE_ORDER_FILE = TEST_DATA_FOLDER.resolve("duplicateOrderAddressBook.json");
+
     @Test
     public void toModelType_typicalPersonsFile_success() throws Exception {
         JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_PERSONS_FILE,
@@ -71,5 +75,28 @@ public class JsonSerializableAddressBookTest {
                 JsonSerializableAddressBook.class).get();
         assertThrows(IllegalValueException.class, JsonSerializableAddressBook.MESSAGE_DUPLICATE_PASTRY,
                 dataFromFile::toModelType);
+    }
+
+    @Test
+    public void toModelType_typicalOrdersFile_success() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(
+                TYPICAL_ORDERS_FILE, JsonSerializableAddressBook.class).get();
+        AddressBook addressBookFromFile = dataFromFile.toModelType();
+        AddressBook typicalOrdersAddressBook = TypicalAddressBook.getTypicalAddressBook();
+        assertEquals(addressBookFromFile.getOrderList(), typicalOrdersAddressBook.getOrderList());
+    }
+
+    @Test
+    public void toModelType_invalidOrderFile_throwsIllegalValueException() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(
+                INVALID_ORDER_FILE, JsonSerializableAddressBook.class).get();
+        assertThrows(IllegalValueException.class, dataFromFile::toModelType);
+    }
+
+    @Test
+    public void toModelType_duplicateOrders_throwsIllegalValueException() throws Exception {
+        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(
+                DUPLICATE_ORDER_FILE, JsonSerializableAddressBook.class).get();
+        assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 }

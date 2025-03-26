@@ -44,23 +44,14 @@
     "tags" : [ ]
   } ],
   "pastries": [ {
-    "name": "Croissant",
-    "price": "4.50"
-  }, {
-    "name": "Croissant",
-    "price": "4.50"
-  }, {
-    "name": "Cake",
-    "price": "8.00"
-  }, {
     "name": "Sausage Bun",
     "price": "3.00"
   } ],
   "orders": [ {
-    "orderId": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+    "orderId": "not-an-id",
     "customer": {
       "name" : "Benson Meier",
-      "phone" : "98765432",
+      "phone" : "987654asdf32",
       "email" : "johnd@example.com",
       "address" : "311, Clementi Ave 2, #02-25",
       "tags" : [ "owesMoney", "friends" ]
@@ -68,7 +59,7 @@
     "orderItems": [ {
       "pastry": {
         "name": "Cake",
-        "price": "8.00"
+        "price": "8.lll00"
       },
       "quantity": "2"
     } ],

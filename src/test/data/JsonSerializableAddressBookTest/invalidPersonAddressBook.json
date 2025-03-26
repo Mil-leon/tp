@@ -17,5 +17,24 @@
   }, {
     "name": "Sausage Bun",
     "price": "3.00"
+  } ],
+  "orders": [ {
+    "orderId": "f81d4fae-7dec-11d0-a765-00a0c91e6bf6",
+    "customer": {
+      "name" : "Benson Meier",
+      "phone" : "98765432",
+      "email" : "johnd@example.com",
+      "address" : "311, Clementi Ave 2, #02-25",
+      "tags" : [ "owesMoney", "friends" ]
+    },
+    "orderItems": [ {
+      "pastry": {
+        "name": "Cake",
+        "price": "8.00"
+      },
+      "quantity": "2"
+    } ],
+    "orderDate": "2021-10-10T10:00:20",
+    "status": "Pending"
   } ]
 }

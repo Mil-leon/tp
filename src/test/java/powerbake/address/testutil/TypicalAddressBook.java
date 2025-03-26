@@ -1,6 +1,7 @@
 package powerbake.address.testutil;
 
 import powerbake.address.model.AddressBook;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -22,6 +23,9 @@ public class TypicalAddressBook {
         }
         for (Pastry pastry : TypicalPastries.getTypicalPastries()) {
             ab.addPastry(pastry);
+        }
+        for (Order order : TypicalOrders.getTypicalOrders()) {
+            ab.addOrder(order);
         }
         return ab;
     }

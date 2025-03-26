@@ -288,7 +288,7 @@ Now that you have PowerBake running, lets learn how to use it to manage your cus
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Commands
+## Features
 
 This section explains the detailed list of commands and its usages which are available for you to use.
 
@@ -329,7 +329,7 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
 </box>
 
 
-### Adding A Client: `add client`
+### Adding a Client: `add client`
 
 The `add client` command is essential in keeping track of your client base.
 
@@ -368,7 +368,7 @@ To add luke, simply type:
 Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. This allows you to easily keep track of client details systematically and efficiently.
 ![Successfully added luke into powerbake](images/addclient2.png)
 
-### Adding A Pastry: `add pastry`
+### Adding a Pastry: `add pastry`
 
 The `add pastry` command is essential in keeping track of your pastry menu.
 
@@ -382,10 +382,10 @@ Command: `add pastry NAME -pr PRICE`
 1. NAME: The name of your pastry.
     * Example: `Croissant`
 2. -pr PRICE: The price of your pastry, supports up to 2 decimal places.
-    * Example: `5.50`, '`5`
+    * Example: `5.50`, `5`
 
 ### Example:
-Adding a pastry, **Croissant**, into Powerbake application. Price is 5.50.
+Adding a pastry, **Croissant**, into PowerBake application. Price is 5.50.
 
 To add the Croissant, simply type
 `add pastry Croissant -pr 5.5`
@@ -457,6 +457,61 @@ The remaining pastries will adjust their index numbers accordingly.
 ### Viewing Client or Pastry : `view`
 
 The `view` command offers a detailed insight of the client and pastry list.
+
+An in-depth look to access client information easily, or to access the types of pastries available.
+
+#### Command Usage
+
+**Command**: `view client/pastry`
+
+#### Parameters:
+
+* **client**: Access the client list.
+* **pastry**: Access the pastry list.
+
+<box type="info" seamless>
+
+The `view` command allows only either viewing client or viewing pastry.
+
+</box>
+
+##### Example 1:
+If you wish to view the **client** details, the command would be:
+
+```
+ view client
+```
+
+![View Command](images/commands/viewCommand1.png)
+
+After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
+Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
+
+##### Example 2:
+If you wish to view the **pastry** details, the command would be:
+
+```
+ view pastry
+```
+
+![View Command](images/commands/viewCommand2.png)
+
+After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
+Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.
+
+<box type="tip" seamless>
+
+Alternatively, you can switch between **client** and **pastry** by utilising the GUI button.
+
+![View Command](images/commands/viewCommand3.png)
+
+</box>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+
 
 ### Exiting the program : `exit`
 
@@ -531,12 +586,13 @@ Adding data in the wrong format could lead to potential errors.
 ## Command summary
 | Command                                                | Usage                                                  | Example                                                                       |
 |--------------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------|
-| **[Add Client](#adding-A-client-add-client)**          | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Client](#adding-a-client-add-client)**          | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
 | **[Add Pastry](#adding-a-pastry-add-pastry)**          | `add pastry NAME -pr PRICE`                            | `add pastry Tart -pr 3.40`                                                    |
 | **[Delete Client](#deleting-client-or-pastry-delete)** | `delete client INDEX`                                  | `delete client 1`                                                             |
 | **[Delete Pastry](#deleting-client-or-pastry-delete)** | `delete pastry INDEX`                                  | `delete pastry 1`                                                             |
 | **[View Client](#viewing-client-or-pastry-view)**      | `view client`                                          | `view client`                                                                 |
 | **[View Pastry](#viewing-client-or-pastry-view)**      | `view pastry`                                          | `view pastry`                                                                 |
+| **[Exit](#exiting-the-program-exit)**                  | `exit`                                                 | `exit`                                                                        |
 
 --------------------------------------------------------------------------------------------------------------------
 

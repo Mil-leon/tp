@@ -4,14 +4,175 @@
   pageNav: 3
 ---
 
-# AB-3 User Guide
+# PowerBake User Guide
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
-
-<!-- * Table of Contents -->
 <page-nav-print />
 
---------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
+## **Introduction**
+This User Guide is designed to help you **get started with _PowerBake_**, a valuable tool for managing your bakery's clients, pastries, and orders. 
+
+No matter if you're new to the business or already have experience running a bakery, this guide will be your go-to resource for efficiently tracking clients, pastries, and orders.
+
+![Ui](images/Ui.png)
+
+**_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
+
+To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](#glossary). 
+
+<box type="info" seamless>
+
+If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional GUI-based applications.
+
+</box>
+
+Using **_PowerBake_**, you can efficiently manage your bakery with:
+
+- **Quick Overview**: Instantly access client details, pastry inventory, and order statuses at a glance.
+- **Order Tracking**: Keep track of each order's progress, from placement to delivery or pickup.
+
+
+**_PowerBake_ is the perfect tool for small home bakery owners looking for a simple, efficient way to manage their business.**
+
+#### Prerequisite Knowledge
+
+This guide is designed to be accessible to all users, whether you’re a new or experienced user. 
+
+If you are a **new _PowerBake_** user:
+
+- Do refer to the [Glossary](#glossary) section to understand the key terminologies used in the guide.
+- Check out our [Getting Started](#getting-started) section to get started with using **_PowerBake_**!
+
+If you are an **experienced _PowerBake_** user:
+
+- The [Command Summary](#command-summary) section provides a quick overview of all available commands in **_PowerBake_**.
+- The [Features](#features) section can give more specific insight as to the features of **_PowerBake_** and each command.
+
+Our goal is to make managing your bakery as smooth and efficient as possible, regardless of your level of experience. 
+
+**For additional information**, you may refer to the [FAQ](#faq) section or the [Known Issues](#known-issues) section.
+
+[Back to top](#user-guide)
+
+__________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
+
+## **Understanding the User Guide**
+
+This section outlines the various elements found in this guide and explains what they represent.
+
+#### Navigating the Guide
+
+To quickly jump between sections, use the **Page Navigation** menu located on the right side of the screen.
+
+![Page Navigation Menu Shown](images/tutorial/pageNavShown.png)
+
+On smaller screens, the **Page Navigation** menu is hidden by default. To display it, simply click the three-dot icon in the upper right corner.
+
+![Page Navigation Menu Hidden](images/tutorial/pageNavHidden.png)
+
+#### Hyperlinks
+
+Curious about hyperlinks? [Learn more here!](#glossary)
+
+[Hyperlinks are displayed in this style.](#links)
+
+They can also appear [**in bold**](#links), [_in italics_](#links) or [**_both!_**](#links)
+
+#### Code
+
+`Any code shown within the guide will appear in this style.`
+
+#### Code Blocks
+
+```
+/* Large blocks of code can 
+*/ be displayed in this way as well
+public static printCodeBlock (String code) {
+  // do something
+}
+```
+
+#### Information Boxes
+
+<box>
+
+This is an information box where additional details may be shared.
+
+This guide uses three types of boxes:
+* [Additional Information](#additional-information)
+* [Warning](#warning)
+* [Tips](#tips)
+</box>
+
+#### Additional Information
+
+Additional information are shown as a box with a **"i"** symbol.
+
+Here are some of the different styles of additional information you may see:
+
+<box type="info">
+
+This is an example of additional information.
+</box>
+
+<box type="info" light>
+
+Here’s another version of additional information.
+</box>
+
+<box type="info" seamless>
+
+And yet another style of additional information.
+</box>
+
+#### Warning
+
+Warnings can are shown typically as a box with an exclaimation mark as a symbol. 
+
+Here are some of the different styles of warnings you may see:
+
+<box type="warning">
+
+Warning! Please take caution!
+</box>
+
+<box type="warning" light>
+
+Warning Warning! Be alert!
+</box>
+
+<box type="warning" seamless>
+
+This is another warning style. Stay careful!
+</box>
+
+#### Tips
+
+Similarly, tips are shows within a box with a lightbulb as its symbol. These are useful **optional information** and you may skip these without any consequence.
+
+Here are some of the different styles of tips you may see:
+
+<box type="tip">
+
+Here are some useful tips. You can skip these if you're in a rush!
+</box>
+
+<box type="tip" light>
+
+These are additional tips, presented in a lighter format.
+</box>
+
+<box type="tip" seamless>
+
+And here’s another seamless format for tips.
+</box>
+
+[Return to top](#user-guide)
+
+__________________________________________________________________________________________________________________
 
 ## Quick start
 
@@ -83,6 +244,77 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
 </box>
 
+
+### Adding A Client: `add client`
+
+The `add client` command is essential in keeping track of your client base.
+
+It allows you to seamlessly add key details of your client into the record. These details will then be integrated into keeping track of orders in the future.
+
+#### Command Usage
+Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
+
+<box type="info" seamless>
+
+**Info:** TAG can be left blank, you can add as many tags as you want.
+
+</box>
+
+#### Parameters:
+
+1. NAME: The name of your client.
+   * Example: `Luke`, `James`
+2. -a ADDRESS: The address of your client, 5 - 100 characters
+    * Example: `5 Sengkang Street`
+3. -e EMAIL: The email address of you client, follows valid format
+    * Example: `luke@gmail.com`
+4. -p PHONE: 8-digit phone number of your client
+    * Example: `88776655`
+5. -t TAG: Extra details of your client (Optional, any number of tags is allowed)
+    * Example: `Spender`
+
+### Example:
+Adding a client, **Luke**, into Powerbake application. He lives at **5 Sengkang Street** and his email address is **luke@gmail.com**. His phone number is **88776655**.
+
+To add luke, simply type:
+`add client Luke -a 5 Sengkang Street -e luke@gmail.com -p 88776655`
+
+![Adding luke into powerbake](images/addclient1.png)
+
+Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. This allows you to easily keep track of client details systematically and efficiently.
+![Successfully added luke into powerbake](images/addclient2.png)
+
+### Adding A Pastry: `add pastry`
+
+The `add pastry` command is essential in keeping track of your pastry menu.
+
+It allows you to add key details of pastries. These details will then utilised when keeping track of pastry orders in the future.
+
+#### Command Usage
+Command: `add pastry NAME -pr PRICE`
+
+#### Parameters:
+
+1. NAME: The name of your pastry.
+    * Example: `Croissant`
+2. -pr PRICE: The price of your pastry, supports up to 2 decimal places.
+    * Example: `5.50`, '`5`
+
+### Example:
+Adding a pastry, **Croissant**, into Powerbake application. Price is 5.50.
+
+To add the Croissant, simply type
+`add pastry Croissant -pr 5.5`
+
+![Adding Croissant into powerbake](images/addpastry1.png)
+
+Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
+![Successfully added Croissant into powerbake](images/addpastry2.png)
+
+[Go to Command Summary](#command-summary)
+
+---
+
 ### Deleting Client or Pastry : `delete`
 
 The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients and pastries.
@@ -142,59 +374,6 @@ The remaining pastries will adjust their index numbers accordingly.
 
 The `view` command offers a detailed insight of the client and pastry list.
 
-An in-depth look to access client information easily, or to access the types of pastries available.
-
-#### Command Usage
-
-**Command**: `view client/pastry`
-
-#### Parameters:
-
-* **client**: Access the client list.
-* **pastry**: Access the pastry list.
-
-<box type="info" seamless>
-
-The `view` command allows only either viewing client or viewing pastry.
-
-</box>
-
-##### Example 1:
-If you wish to view the **client** details, the command would be:
-
-```
- view client
-```
-
-![View Command](images/commands/viewCommand1.png)
-
-After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
-Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
-
-##### Example 2:
-If you wish to view the **pastry** details, the command would be:
-
-```
- view pastry
-```
-
-![View Command](images/commands/viewCommand2.png)
-
-After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
-Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.
-
-<box type="tip" seamless>
-
-Alternatively, you can switch between **client** and **pastry** by utilising the GUI button.
-
-![View Command](images/commands/viewCommand3.png)
-
-</box>
-
-[Go to Command Summary](#command-summary)
-
----
-
 ### Exiting the program : `exit`
 
 The `exit` command is designed to let you have a swift way of **closing PowerBake**.
@@ -232,9 +411,22 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+## Storage 
 
-_Details coming soon ..._
+This section will go through how order, pastry and customer details are stored.
+
+### Saving Data
+
+*PowerBake* data is saved automatically after any command that adds, deletes or edit. There is no need for any manual saving.
+
+
+### Editing the Data File 
+**CAUTION:**
+Adding data in the wrong format could lead to potential errors.
+
+*PowerBake* data is saved in [FILE LOCATION]/data/addressbook.json, experienced users can add or delete clients and pastries within the json file.
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -255,10 +447,10 @@ _Details coming soon ..._
 ## Command summary
 | Command                                                | Usage                                                  | Example                                                                       |
 |--------------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------|
-| **[Add Client]**                                       | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
-| **[Add Pastry]**                                       | `add pastry NAME -pr PRICE`                            | `add pastry Tart -pr 3.40`                                                    |
+| **[Add Client](#adding-A-client-add-client)**          | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Pastry](#adding-a-pastry-add-pastry)**          | `add pastry NAME -pr PRICE`                            | `add pastry Tart -pr 3.40`                                                    |
 | **[Delete Client](#deleting-client-or-pastry-delete)** | `delete client INDEX`                                  | `delete client 1`                                                             |
 | **[Delete Pastry](#deleting-client-or-pastry-delete)** | `delete pastry INDEX`                                  | `delete pastry 1`                                                             |
-| **[View Client]**                                      | `view client`                                          | `view client`                                                                 |
-| **[View Pastry]**                                      | `view pastry`                                          | `view pastry`                                                                 |
+| **[View Client](#viewing-client-or-pastry-view)**      | `view client`                                          | `view client`                                                                 |
+| **[View Pastry](#viewing-client-or-pastry-view)**      | `view pastry`                                          | `view pastry`                                                                 |
 

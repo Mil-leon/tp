@@ -223,9 +223,22 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-### Archiving data files `[coming in v2.0]`
+## Storage 
 
-_Details coming soon ..._
+This section will go through how order, pastry and customer details are stored.
+
+### Saving Data
+
+*PowerBake* data is saved automatically after any command that adds, deletes or edit. There is no need for any manual saving.
+
+
+### Editing the Data File 
+**CAUTION:**
+Adding data in the wrong format could lead to potential errors.
+
+*PowerBake* data is saved in [FILE LOCATION]/data/addressbook.json, experienced users can add or delete clients and pastries within the json file.
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 

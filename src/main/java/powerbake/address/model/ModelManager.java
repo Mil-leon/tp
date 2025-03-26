@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import powerbake.address.commons.core.GuiSettings;
 import powerbake.address.commons.core.LogsCenter;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -24,6 +25,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Pastry> filteredPastries;
+    private final FilteredList<Order> filteredOrders;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -37,6 +39,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredPastries = new FilteredList<>(this.addressBook.getPastryList());
+        filteredOrders = new FilteredList<>(this.addressBook.getOrderList());
     }
 
     public ModelManager() {
@@ -156,6 +159,15 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Pastry> getFilteredPastryList() {
         return filteredPastries;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Order} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Order> getFilteredOrderList() {
+        return filteredOrders;
     }
 
     @Override

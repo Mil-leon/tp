@@ -1,10 +1,11 @@
-package powerbake.address.ui;
+package powerbake.address.ui.pastrytab;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import powerbake.address.model.pastry.Pastry;
+import powerbake.address.ui.UiPart;
 
 /**
  * An UI component that displays information of a {@code Person}.

@@ -8,6 +8,7 @@ import powerbake.address.logic.commands.CommandResult;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.model.ReadOnlyAddressBook;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -36,6 +37,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of pastries */
     ObservableList<Pastry> getFilteredPastryList();
+
+    /** Returns an unmodifiable view of the filtered list of pastries */
+    ObservableList<Order> getFilteredOrderList();
 
     /**
      * Returns the user prefs' address book file path.

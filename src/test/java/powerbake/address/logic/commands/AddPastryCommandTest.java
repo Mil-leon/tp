@@ -22,6 +22,7 @@ import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
 import powerbake.address.model.ReadOnlyAddressBook;
 import powerbake.address.model.ReadOnlyUserPrefs;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.PastryBuilder;
@@ -177,6 +178,11 @@ public class AddPastryCommandTest {
 
         @Override
         public ObservableList<Pastry> getFilteredPastryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Order> getFilteredOrderList() {
             throw new AssertionError("This method should not be called.");
         }
 

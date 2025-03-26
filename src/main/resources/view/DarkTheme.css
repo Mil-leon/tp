@@ -189,6 +189,61 @@
     -fx-text-fill: white;
 }
 
+/* Styling for the colored status box */
+.status-box {
+    -fx-border-radius: 0px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5 5 5 5; /* top right bottom left */
+    -fx-text-fill: white;
+    -fx-text-alignment: center;
+}
+
+.pending {
+    -fx-background-color: #C04F15;
+}
+
+.processing {
+    -fx-background-color: #3c95be;
+}
+
+.ready {
+    -fx-background-color: #00B050;
+}
+
+.delivered {
+    -fx-background-color: #3b9764;
+}
+
+.cancelled {
+    -fx-background-color: #828282;
+}
+
+
+.order-id-label {
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 15pt;
+}
+
+.order-item-label {
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 13pt;
+}
+
+.order-item-list {
+    -fx-padding: 20px;
+}
+
+.order-item-list .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-style: italic;
+    -fx-font-size: 13pt;
+}
+
+
 .grid-pane {
     -fx-background-color: derive(#1d1d1d, 30%);
     -fx-border-color: derive(#1d1d1d, 30%);

@@ -21,7 +21,7 @@ public class Messages {
     public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastries listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
-
+    public static final String MESSAGE_INVALID_ENTITY = "Invalid entity. Only 'client' and 'pastry' are supported.";
     /**
      * Returns an error message indicating the duplicate prefixes.
      */

@@ -2,13 +2,17 @@ package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.ToStringBuilder;
 import powerbake.address.logic.Messages;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.Model;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -41,8 +45,10 @@ public class DeleteCommand extends Command {
      */
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the client/pastry identified by the index in the displayed list.\n"
-            + "Parameters: TYPE (client/pastry) INDEX (must be a positive integer)\n"
-            + "Example: delete client 1";
+            + "Parameters: TYPE (client/pastry/order) INDEX (must be a positive integer)\n"
+            + "Example: delete client 1\n"
+            + "Example: delete pastry 2\n"
+            + "Example: delete order 3";
 
     /**
      * The success message displayed after deleting a client.
@@ -53,6 +59,18 @@ public class DeleteCommand extends Command {
      * The success message displayed after deleting a pastry.
      */
     public static final String MESSAGE_DELETE_PASTRY_SUCCESS = "Deleted Pastry: %1$s";
+
+    /**
+     * The success message displayed after deleting an order.
+     */
+    public static final String MESSAGE_DELETE_ORDER_SUCCESS = """
+            Deleted Order ID: %1$s\s
+            ---------------------------------------------------------------\s
+            Date:  %2$s\s
+            Client:  %3$s\s
+            Items:  %4$s\s
+            Total Price:  %5$s
+            """;
 
     /**
      * The entity type to be deleted, either "client" or "pastry."
@@ -90,6 +108,7 @@ public class DeleteCommand extends Command {
         return switch (entityType) {
         case "client" -> deleteClient(model);
         case "pastry" -> deletePastry(model);
+        case "order" -> deleteOrder(model);
         default -> throw new CommandException("Invalid entity type for deletion: " + entityType);
         };
     }
@@ -130,6 +149,44 @@ public class DeleteCommand extends Command {
         Pastry pastryToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deletePastry(pastryToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PASTRY_SUCCESS, pastryToDelete.getName()));
+    }
+
+    /**
+     * Deletes an order at the specified index from the displayed order list.
+     *
+     * @param model The model containing the order list.
+     * @return The result message indicating successful deletion.
+     * @throws CommandException If the specified index is invalid or out of bounds.
+     */
+    private CommandResult deleteOrder(Model model) throws CommandException {
+        List<Order> lastShownList = model.getFilteredOrderList();
+
+        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+        }
+
+        Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());
+
+        List<String> orderItemsSummary = orderToDelete.getOrderItems()
+                .stream()
+                .map(item -> item.getQuantity() + "x " + item.getPastry().getName())
+                .collect(Collectors.toList());
+
+        String orderItemsString = String.join(",  ", orderItemsSummary);
+        String price = String.format("$%.2f", orderToDelete.getTotalPrice());
+
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofPattern("EEE, d MMM yyyy hh:mm a")
+                .withLocale(Locale.US);
+        String orderDate = orderToDelete.getOrderDate().format(dateTimeFormatter);
+
+        model.deleteOrder(orderToDelete);
+        return new CommandResult(String.format(MESSAGE_DELETE_ORDER_SUCCESS,
+                orderToDelete.getOrderId(),
+                orderDate,
+                orderToDelete.getCustomer().getName(),
+                orderItemsString,
+                price));
     }
 
     /**

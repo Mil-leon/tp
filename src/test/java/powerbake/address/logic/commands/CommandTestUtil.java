@@ -20,6 +20,7 @@ import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.NameContainsKeywordsPredicate;
 import powerbake.address.model.person.Person;
@@ -176,16 +177,20 @@ public class CommandTestUtil {
     }
 
     /**
-     * Updates the filtered pastry list in the given {@code model} to show no pastries.
+     * Updates the filtered order list in the given {@code model}
+     * to show only the order at the specified {@code index}.
      *
-     * This method clears the filtered pastry list by applying a predicate that matches no pastries.
-     * After the update, the filtered list is expected to be empty.
+     * This method retrieves the order at the provided zero-based index from the model's filtered order list
+     * and updates the filtered list to include only this order. After the update, the filtered list is expected
+     * to contain exactly one order.
      *
-     * @param model The {@code Model} whose filtered pastry list is to be cleared.
+     * @param model The {@code Model} whose filtered order list is to be updated.
+     * @param index The {@code Index} of the order to show in the filtered list.
      */
-    public static void showNoPastry(Model model) {
-        model.updateFilteredPastryList(p -> false);
+    public static void showOrderAtIndex(Model model, Index index) {
+        Order order = model.getFilteredOrderList().get(index.getZeroBased());
+        model.updateFilteredOrderList(o -> o.equals(order));
 
-        assertTrue(model.getFilteredPastryList().isEmpty());
+        assert model.getFilteredOrderList().size() == 1;
     }
 }

@@ -26,15 +26,16 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
      * Parses the given {@code String} of arguments in the context of the {@link DeleteCommand}
      * and returns a new {@link DeleteCommand} object for execution.
      *
-     * The input must contain a valid entity type ("client" or "pastry") followed by an integer index.
+     * The input must contain a valid entity type ("client", "pastry" or "order") followed by an integer index.
      * For example:
      * <pre>
      *     delete client 1
      *     delete pastry 2
+     *     delete order 3
      * </pre>
      *
      * @param args The user input string to parse, expected to contain the entity type
-     *             and index (e.g., "client 1" or "pastry 2").
+     *             and index (e.g., "client", "pastry" or "order").
      * @return A {@link DeleteCommand} object based on the parsed arguments.
      * @throws ParseException If the user input does not conform to the expected format,
      *                        or if the entity type or index is invalid.
@@ -53,11 +54,6 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
 
         try {
             Index index = ParserUtil.parseIndex(indexString);
-
-            if (!entityType.equals("client") && !entityType.equals("pastry")) {
-                throw new ParseException(
-                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
-            }
 
             return new DeleteCommand(entityType, index);
         } catch (ParseException pe) {

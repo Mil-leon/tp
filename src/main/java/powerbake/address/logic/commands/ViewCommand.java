@@ -90,7 +90,11 @@ public class ViewCommand extends Command {
         }
 
         ViewCommand otherViewCommand = (ViewCommand) other;
-        return this.type.equals(otherViewCommand.type) && this.index.equals(otherViewCommand.index);
+        if (this.index == null || otherViewCommand.index == null) {
+            return this.type.equals(otherViewCommand.type) && otherViewCommand.index == null && this.index == null;
+        } else {
+            return this.type.equals(otherViewCommand.type) && this.index.equals(otherViewCommand.index);
+        }
     }
 
     @Override

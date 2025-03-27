@@ -79,6 +79,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private Tab pastryTab;
 
+    @FXML
+    private Tab orderTab;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -233,6 +236,9 @@ public class MainWindow extends UiPart<Stage> {
                 tabPane.getSelectionModel().select(clientTab);
             } else if (commandResult.isShowPastry()) {
                 tabPane.getSelectionModel().select(pastryTab);
+            } else if (commandResult.isShowOrder()) {
+                tabPane.getSelectionModel().select(orderTab);
+                orderListPanel.selectList(commandResult.getOrderIndex());
             }
 
             if (commandResult.isShowHelp()) {

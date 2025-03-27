@@ -44,6 +44,10 @@ public class OrderListPanel extends UiPart<Region> {
         return selectedOrderProperty;
     }
 
+    public void selectList(int index) {
+        orderListView.getSelectionModel().select(index);
+    }
+
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Order} using a {@code OrderCard}.
      */

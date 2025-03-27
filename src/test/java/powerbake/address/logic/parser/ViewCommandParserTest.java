@@ -1,5 +1,6 @@
 package powerbake.address.logic.parser;
 
+import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static powerbake.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -29,12 +30,14 @@ public class ViewCommandParserTest {
     @Test
     public void parse_compulsoryFieldMissing_failure() {
         // missing field
-        assertParseFailure(parser, "", ViewCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, "",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_invalidArgument_failure() {
         // invalid value
-        assertParseFailure(parser, "invalid_nonsense", ViewCommand.MESSAGE_USAGE);
+        assertParseFailure(parser, "invalid_nonsense",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
     }
 }

@@ -10,6 +10,16 @@ import powerbake.address.commons.util.ToStringBuilder;
  * Represents the result of a command execution.
  */
 public class CommandResult {
+    /** The application is running to show client. */
+    private static boolean showClient = true;
+
+    /** The application is running to show pastry. */
+    private static boolean showPastry = false;
+
+    /** The application is running to show order. */
+    private static boolean showOrder = false;
+
+    private static int orderIndex = 0;
 
     private final String feedbackToUser;
 
@@ -19,14 +29,19 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
-    /** The application is running to show client. */
-    private static boolean showClient = true;
-
-    /** The application is running to show pastry. */
-    private static boolean showPastry = false;
-
-    /** The application is running to show order. */
-    private static boolean showOrder = false;
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showClient,
+            boolean showPastry, boolean showOrder, int orderIndex) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        CommandResult.showClient = showClient;
+        CommandResult.showPastry = showPastry;
+        CommandResult.showOrder = showOrder;
+        CommandResult.orderIndex = orderIndex;
+    }
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -82,6 +97,10 @@ public class CommandResult {
         return CommandResult.showOrder;
     }
 
+    public int getOrderIndex() {
+        return CommandResult.orderIndex;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -96,15 +115,12 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit
-                && showClient == otherCommandResult.showClient
-                && showPastry == otherCommandResult.showPastry
-                && showOrder == otherCommandResult.showOrder;
+                && exit == otherCommandResult.exit;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit, showClient, showPastry, showOrder);
+        return Objects.hash(feedbackToUser, showHelp, exit, showClient, showPastry, showOrder, orderIndex);
     }
 
     @Override
@@ -116,6 +132,7 @@ public class CommandResult {
                 .add("showClient", showClient)
                 .add("showPastry", showPastry)
                 .add("showOrder", showOrder)
+                .add("orderIndex", orderIndex)
                 .toString();
     }
 

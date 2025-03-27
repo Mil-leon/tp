@@ -154,7 +154,6 @@ public interface Model {
      * The pastry identity of {@code editedOrder} must not be the same as another existing order in the address book.
      */
     void setOrder(Order target, Order editedOrder);
-    
     /**
      * Updates the filter of the filtered order list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

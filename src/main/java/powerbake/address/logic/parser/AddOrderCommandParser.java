@@ -1,20 +1,15 @@
 package powerbake.address.logic.parser;
 
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static powerbake.address.logic.parser.CliSyntax.*;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
 
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.stream.Stream;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.commands.AddOrderCommand;
-import powerbake.address.logic.commands.DeleteCommand;
 import powerbake.address.logic.parser.exceptions.ParseException;
-import powerbake.address.model.order.Order;
-import powerbake.address.model.order.OrderItem;
-import powerbake.address.model.person.Name;
-import powerbake.address.model.person.Person;
 
 /**
  * Parses input arguments and creates a new AddOrderCommand object

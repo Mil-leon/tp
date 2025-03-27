@@ -1,9 +1,8 @@
 package powerbake.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static powerbake.address.logic.parser.CliSyntax.*;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -12,12 +11,10 @@ import java.util.Set;
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.StringUtil;
 import powerbake.address.logic.parser.exceptions.ParseException;
-import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
 import powerbake.address.model.person.Name;
-import powerbake.address.model.person.Person;
 import powerbake.address.model.person.Phone;
 import powerbake.address.model.tag.Tag;
 
@@ -157,6 +154,12 @@ public class ParserUtil {
         return new Price(trimmedPrice);
     }
 
+    /**
+     * Parses a {@code String orderInfo} into a {@code ArrayList<String>}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code orderInfo} is invalid.
+     */
     public static ArrayList<String> parseUnformattedOrder(String orderInfo) throws ParseException {
         requireNonNull(orderInfo);
         String trimmedOrder = orderInfo.trim();

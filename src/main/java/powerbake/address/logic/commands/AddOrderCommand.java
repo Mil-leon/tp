@@ -5,6 +5,9 @@ import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.ToStringBuilder;
 import powerbake.address.logic.Messages;
@@ -14,9 +17,6 @@ import powerbake.address.model.order.Order;
 import powerbake.address.model.order.OrderItem;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Adds an order to the address book.

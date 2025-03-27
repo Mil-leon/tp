@@ -1,8 +1,9 @@
 package powerbake.address.logic.commands;
 
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
+
 /**
  * Adds a person, pastry or order to the address book.
  */

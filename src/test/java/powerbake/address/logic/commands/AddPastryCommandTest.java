@@ -132,6 +132,11 @@ public class AddPastryCommandTest {
         }
 
         @Override
+        public void addOrder(Order order) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setAddressBook(ReadOnlyAddressBook newData) {
             throw new AssertionError("This method should not be called.");
         }
@@ -152,6 +157,11 @@ public class AddPastryCommandTest {
         }
 
         @Override
+        public boolean hasOrder(Order order) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -162,12 +172,22 @@ public class AddPastryCommandTest {
         }
 
         @Override
+        public void deleteOrder(Order order) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void setPerson(Person target, Person editedPerson) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void setPastry(Pastry target, Pastry editedPastry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setOrder(Order target, Order editedOrder) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -193,6 +213,11 @@ public class AddPastryCommandTest {
 
         @Override
         public void updateFilteredPastryList(Predicate<Pastry> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredOrderList(Predicate<Order> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }

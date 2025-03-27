@@ -35,10 +35,6 @@ public class ViewCommandParser implements Parser<ViewCommand> {
         boolean isOrder = parts[0].equalsIgnoreCase("order");
         Index index = null;
 
-        if (!(isClient || isPastry || isOrder)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
-        }
-
         if ((isClient || isPastry) && parts.length == 2) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
         }

@@ -89,4 +89,11 @@ public class ViewCommandParserTest {
         assertParseFailure(parser, "pastry 1",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
     }
+
+    @Test
+    public void parse_invalidArgumentOrder_failure() {
+        // invalid value
+        assertParseFailure(parser, "order 1 2",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
+    }
 }

@@ -3,6 +3,7 @@ package powerbake.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static powerbake.address.logic.Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
@@ -67,6 +68,11 @@ public class ViewCommandTest {
     @Test
     public void execute_invalidType_throwsCommandException() {
         assertCommandFailure(new ViewCommand("apple"), model, ViewCommand.MESSAGE_USAGE);
+    }
+
+    @Test
+    public void execute_invalidIndex_throwsCommandException() {
+        assertCommandFailure(new ViewCommand(Index.fromOneBased(9999)), model, MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
     }
 
     @Test

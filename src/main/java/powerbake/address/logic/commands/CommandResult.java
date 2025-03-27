@@ -19,6 +19,28 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** The application is running to show client. */
+    private static boolean showClient = true;
+
+    /** The application is running to show pastry. */
+    private static boolean showPastry = false;
+
+    /** The application is running to show order. */
+    private static boolean showOrder = false;
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, boolean showClient,
+            boolean showPastry, boolean showOrder) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        CommandResult.showClient = showClient;
+        CommandResult.showPastry = showPastry;
+        CommandResult.showOrder = showOrder;
+    }
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -48,6 +70,18 @@ public class CommandResult {
         return exit;
     }
 
+    public boolean isShowClient() {
+        return CommandResult.showClient;
+    }
+
+    public boolean isShowPastry() {
+        return CommandResult.showPastry;
+    }
+
+    public boolean isShowOrder() {
+        return CommandResult.showOrder;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -62,12 +96,15 @@ public class CommandResult {
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
                 && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                && exit == otherCommandResult.exit
+                && showClient == otherCommandResult.showClient
+                && showPastry == otherCommandResult.showPastry
+                && showOrder == otherCommandResult.showOrder;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(feedbackToUser, showHelp, exit);
+        return Objects.hash(feedbackToUser, showHelp, exit, showClient, showPastry, showOrder);
     }
 
     @Override
@@ -76,6 +113,9 @@ public class CommandResult {
                 .add("feedbackToUser", feedbackToUser)
                 .add("showHelp", showHelp)
                 .add("exit", exit)
+                .add("showClient", showClient)
+                .add("showPastry", showPastry)
+                .add("showOrder", showOrder)
                 .toString();
     }
 

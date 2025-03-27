@@ -41,7 +41,8 @@ public class ViewCommand extends Command {
             // invalid type
             throw new CommandException(MESSAGE_USAGE);
         }
-        return new CommandResult(String.format(MESSAGE_SUCCESS, type));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, type), false, false,
+                type.equals("client"), type.equals("pastry"), false);
     }
 
     @Override

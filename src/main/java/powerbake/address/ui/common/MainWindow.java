@@ -229,9 +229,9 @@ public class MainWindow extends UiPart<Stage> {
 
             // logic to switch tabs depending on the view command
             // TODO: we should replicate this for all commands in the future
-            if (commandText.equals("view client")) {
+            if (commandResult.isShowClient()) {
                 tabPane.getSelectionModel().select(clientTab);
-            } else if (commandText.equals("view pastry")) {
+            } else if (commandResult.isShowPastry()) {
                 tabPane.getSelectionModel().select(pastryTab);
             }
 

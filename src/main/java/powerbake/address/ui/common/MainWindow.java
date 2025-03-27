@@ -79,6 +79,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private Tab pastryTab;
 
+    @FXML
+    private Tab orderTab;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -229,10 +232,13 @@ public class MainWindow extends UiPart<Stage> {
 
             // logic to switch tabs depending on the view command
             // TODO: we should replicate this for all commands in the future
-            if (commandText.equals("view client")) {
+            if (commandResult.isShowClient()) {
                 tabPane.getSelectionModel().select(clientTab);
-            } else if (commandText.equals("view pastry")) {
+            } else if (commandResult.isShowPastry()) {
                 tabPane.getSelectionModel().select(pastryTab);
+            } else if (commandResult.isShowOrder()) {
+                tabPane.getSelectionModel().select(orderTab);
+                orderListPanel.selectList(commandResult.getOrderIndex());
             }
 
             if (commandResult.isShowHelp()) {

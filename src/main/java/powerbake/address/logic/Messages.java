@@ -1,10 +1,13 @@
 package powerbake.address.logic;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import powerbake.address.logic.parser.Prefix;
+import powerbake.address.model.order.Order;
+import powerbake.address.model.order.OrderItem;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -17,6 +20,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX = "The pastry index provided is invalid";
+    public static final String MESSAGE_INVALID_PASTRY_DISPLAYED = "The pastry name provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastries listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
@@ -59,6 +63,23 @@ public class Messages {
         builder.append(pastry.getName())
                 .append("; Price: ")
                 .append(pastry.getPrice().amount);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code order} for display to the user.
+     */
+    public static String format(Order order) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("; Client Name: ")
+                .append(order.getCustomer().getName().toString());
+        List<OrderItem> orderList = order.getOrderItems();
+        for (OrderItem orderItem : orderList) {
+            builder.append("; Pastry Name: ")
+                    .append(orderItem.getPastry().getName())
+                    .append("; Quantity: ")
+                    .append(orderItem.getQuantity());
+        }
         return builder.toString();
     }
 

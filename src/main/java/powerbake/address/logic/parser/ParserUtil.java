@@ -1,7 +1,9 @@
 package powerbake.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -151,4 +153,50 @@ public class ParserUtil {
         }
         return new Price(trimmedPrice);
     }
+
+    /**
+     * Parses a {@code String orderInfo} into a {@code ArrayList<String>}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code orderInfo} is invalid.
+     */
+    public static ArrayList<String> parseUnformattedOrder(String orderInfo) throws ParseException {
+        requireNonNull(orderInfo);
+        String trimmedOrder = orderInfo.trim();
+        String[] splitOrder = trimmedOrder.split(PREFIX_QUANTITY.getPrefix());
+        // quantity must be exactly 1
+        if (splitOrder.length != 2) {
+            // change this in v1.5
+            throw new ParseException("Order must contain at least one quantity");
+        }
+        String trimmedPastryName = splitOrder[0].trim();
+        String trimmedQuantity = splitOrder[1].trim();
+        // check if quantity is an integer
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedQuantity)) {
+            // change this in v1.5
+            throw new ParseException("Quantity must be a positive integer");
+        }
+        ArrayList<String> unformattedOrder = new ArrayList<>() {
+            {
+                add(trimmedPastryName);
+                add(trimmedQuantity);
+            }
+        };
+        return unformattedOrder;
+    }
+
+    /**
+     * Parses {@code Collection<String> order} into a {@code ArrayList<ArrayList<String>>}.
+     */
+    public static ArrayList<ArrayList<String>> parseUnformattedOrders(Collection<String> orders) throws ParseException {
+        requireNonNull(orders);
+        final ArrayList<ArrayList<String>> unformattedOrderList = new ArrayList<>();
+        for (String order : orders) {
+            ArrayList<String> unformattedOrder = parseUnformattedOrder(order);
+            unformattedOrderList.add(unformattedOrder);
+        }
+        return unformattedOrderList;
+    }
+
+
 }

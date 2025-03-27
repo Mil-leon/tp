@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import powerbake.address.commons.core.GuiSettings;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -18,6 +19,8 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Pastry> PREDICATE_SHOW_ALL_PASTRIES = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Order> PREDICATE_SHOW_ALL_ORDERS = unused -> true;
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -121,4 +124,41 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPastryList(Predicate<Pastry> predicate);
+
+    /**
+     * Deletes the given order
+     * The order must exist in the address book.
+     */
+    void deleteOrder(Order target);
+
+    /**
+     * Adds the given order.
+     * {@code order} must not already exist in the address book.
+     */
+    void addOrder(Order order);
+
+    /**
+     * Returns true if an order with the same identity as {@code order} exists in the address book.
+     *
+     * @return
+     */
+    boolean hasOrder(Order order);
+
+    /**
+     * Replaces the given order {@code target} with {@code editedOrder}.
+     * {@code target} must exist in the address book.
+     * The pastry identity of {@code editedOrder} must not be the same as another existing order in the address book.
+     */
+    void setOrder(Order target, Order editedOrder);
+
+    /** Returns an unmodifiable view of the filtered order list */
+    ObservableList<Order> getFilteredOrderList();
+
+    /**
+     * Updates the filter of the filtered order list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredOrderList(Predicate<Order> predicate);
+
+
 }

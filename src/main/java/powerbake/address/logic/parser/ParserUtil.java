@@ -1,7 +1,10 @@
 package powerbake.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static powerbake.address.logic.parser.CliSyntax.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,10 +12,12 @@ import java.util.Set;
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.StringUtil;
 import powerbake.address.logic.parser.exceptions.ParseException;
+import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
 import powerbake.address.model.person.Name;
+import powerbake.address.model.person.Person;
 import powerbake.address.model.person.Phone;
 import powerbake.address.model.tag.Tag;
 
@@ -151,4 +156,44 @@ public class ParserUtil {
         }
         return new Price(trimmedPrice);
     }
+
+    public static ArrayList<String> parseUnformattedOrder(String orderInfo) throws ParseException {
+        requireNonNull(orderInfo);
+        String trimmedOrder = orderInfo.trim();
+        String[] splitOrder = trimmedOrder.split(PREFIX_QUANTITY.getPrefix());
+        // check if quantity is attached
+        if (splitOrder.length < 2) {
+            // change this in v1.5
+            throw new ParseException("Order must contain at least one quantity");
+        }
+        String trimmedPastryName = splitOrder[0].trim();
+        String trimmedQuantity = splitOrder[1].trim();
+        // check if quantity is an integer
+        if (!StringUtil.isNonZeroUnsignedInteger(trimmedQuantity)) {
+            // change this in v1.5
+            throw new ParseException("Quantity must be a positive integer");
+        }
+        ArrayList<String> unformattedOrder = new ArrayList<>() {
+            {
+                add(trimmedPastryName);
+                add(trimmedQuantity);
+            }
+        };
+        return unformattedOrder;
+    }
+
+    /**
+     * Parses {@code Collection<String> order} into a {@code ArrayList<ArrayList<String>>}.
+     */
+    public static ArrayList<ArrayList<String>> parseUnformattedOrders(Collection<String> orders) throws ParseException {
+        requireNonNull(orders);
+        final ArrayList<ArrayList<String>> unformattedOrderList = new ArrayList<>();
+        for (String order : orders) {
+            ArrayList<String> unformattedOrder = parseUnformattedOrder(order);
+            unformattedOrderList.add(unformattedOrder);
+        }
+        return unformattedOrderList;
+    }
+
+
 }

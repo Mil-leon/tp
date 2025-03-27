@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import powerbake.address.logic.parser.Prefix;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -59,6 +60,15 @@ public class Messages {
         builder.append(pastry.getName())
                 .append("; Price: ")
                 .append(pastry.getPrice().amount);
+        return builder.toString();
+    }
+
+    /**
+     * Formats the {@code order} for display to the user.
+     */
+    public static String format(Order order) {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(order.getOrderId());
         return builder.toString();
     }
 

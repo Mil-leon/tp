@@ -83,7 +83,7 @@ public class AddOrderCommand extends AddCommand {
         ArrayList<OrderItem> orderItems = new ArrayList<>();
         for (ArrayList<String> order : unformattedOrderList) {
             if (lastShownList.stream().noneMatch(pastry -> pastry.getName().toString().equals(order.get(0)))) {
-                throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX);
+                throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED);
             }
             // let any positive quantity pass by for now, fix by v1.5
             Pastry pastry = lastShownList.stream().filter(p -> p.getName().toString().equals(order.get(0)))

@@ -1,4 +1,4 @@
-package powerbake.address.ui;
+package powerbake.address.ui.pastrytab;
 
 import java.util.logging.Logger;
 
@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import powerbake.address.commons.core.LogsCenter;
 import powerbake.address.model.pastry.Pastry;
+import powerbake.address.ui.UiPart;
 
 /**
  * Panel containing the list of pastries.

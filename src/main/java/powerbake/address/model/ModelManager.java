@@ -137,8 +137,30 @@ public class ModelManager implements Model {
     @Override
     public void setPastry(Pastry target, Pastry editedPastry) {
         requireAllNonNull(target, editedPastry);
-
         addressBook.setPastry(target, editedPastry);
+    }
+
+    @Override
+    public void addOrder(Order order) {
+        addressBook.addOrder(order);
+        updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+    };
+
+    @Override
+    public boolean hasOrder(Order order) {
+        requireNonNull(order);
+        return addressBook.hasOrder(order);
+    }
+
+    @Override
+    public void setOrder(Order target, Order editedOrder) {
+        requireAllNonNull(target, editedOrder);
+        addressBook.setOrder(target, editedOrder);
+    }
+
+    @Override
+    public void deleteOrder(Order target) {
+        addressBook.removeOrder(target);
     }
 
     //=========== Filtered Person List Accessors =============================================================

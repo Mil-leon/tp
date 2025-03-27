@@ -69,4 +69,8 @@ shadowJar {
     archiveFileName = 'powerbake.jar'
 }
 
+run {
+    enableAssertions = true
+}
+
 defaultTasks 'clean', 'test'

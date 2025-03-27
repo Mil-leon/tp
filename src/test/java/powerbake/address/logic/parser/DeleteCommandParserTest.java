@@ -4,14 +4,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.fail;
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PASTRY;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_SECOND_PASTRY;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_THIRD_PASTRY;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +33,7 @@ import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
 import powerbake.address.model.ModelManager;
 import powerbake.address.model.UserPrefs;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.TypicalAddressBook;
@@ -48,9 +58,12 @@ public class DeleteCommandParserTest {
      */
     @Test
     public void parse_validClientIndices() {
-        assertParseSuccess(parser, "client 1", new DeleteCommand("client", INDEX_FIRST_PERSON));
-        assertParseSuccess(parser, "client 2", new DeleteCommand("client", INDEX_SECOND_PERSON));
-        assertParseSuccess(parser, "client 3", new DeleteCommand("client", INDEX_THIRD_PERSON));
+        assertParseSuccess(parser, PREFIX_CLIENT + "1",
+                new DeleteCommand(PREFIX_CLIENT.toString().trim(), INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, PREFIX_CLIENT + "2",
+                new DeleteCommand(PREFIX_CLIENT.toString().trim(), INDEX_SECOND_PERSON));
+        assertParseSuccess(parser, PREFIX_CLIENT + "3",
+                new DeleteCommand(PREFIX_CLIENT.toString().trim(), INDEX_THIRD_PERSON));
     }
 
     /**
@@ -58,38 +71,69 @@ public class DeleteCommandParserTest {
      */
     @Test
     public void parse_validPastryIndices() {
-        assertParseSuccess(parser, "pastry 1", new DeleteCommand("pastry", INDEX_FIRST_PASTRY));
-        assertParseSuccess(parser, "pastry 2", new DeleteCommand("pastry", INDEX_SECOND_PASTRY));
-        assertParseSuccess(parser, "pastry 3", new DeleteCommand("pastry", INDEX_THIRD_PASTRY));
+        assertParseSuccess(parser, PREFIX_PASTRY + "1",
+                new DeleteCommand(PREFIX_PASTRY.toString().trim(), INDEX_FIRST_PASTRY));
+        assertParseSuccess(parser, PREFIX_PASTRY + "2",
+                new DeleteCommand(PREFIX_PASTRY.toString().trim(), INDEX_SECOND_PASTRY));
+        assertParseSuccess(parser, PREFIX_PASTRY + "3",
+                new DeleteCommand(PREFIX_PASTRY.toString().trim(), INDEX_THIRD_PASTRY));
     }
 
     /**
-     * Tests that invalid arguments for deleting clients (non-integer or missing index) throw a {@link ParseException}.
+     * Tests that valid arguments for deleting orders at various indices are successfully parsed.
+     */
+    @Test
+    public void parse_validOrderIndices() {
+        assertParseSuccess(parser, PREFIX_ORDER + "1",
+                new DeleteCommand(PREFIX_ORDER.toString().trim(), INDEX_FIRST_PASTRY));
+        assertParseSuccess(parser, PREFIX_ORDER + "2",
+                new DeleteCommand(PREFIX_ORDER.toString().trim(), INDEX_SECOND_PASTRY));
+        assertParseSuccess(parser, PREFIX_ORDER + "3",
+                new DeleteCommand(PREFIX_ORDER.toString().trim(), INDEX_THIRD_PASTRY));
+    }
+
+    /**
+     * Tests that invalid arguments for deleting clients (non-integer or missing index).
      */
     @Test
     public void parse_invalidArgs_throwsParseException() {
-        assertParseFailure(parser, "client a",
+        assertParseFailure(parser, PREFIX_CLIENT + "a",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, "client",
+        assertParseFailure(parser, PREFIX_CLIENT.toString().trim(),
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, "client 1 extraStuffHere",
+        assertParseFailure(parser, PREFIX_CLIENT + "1 extraStuffHere",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 
     /**
-     * Tests that invalid arguments for deleting pastries (non-integer or missing index) throw a {@link ParseException}.
+     * Tests that invalid arguments for deleting pastries (non-integer or missing index).
      */
     @Test
     public void parse_invalidPastryArgs_throwsParseException() {
-        assertParseFailure(parser, "pastry a",
+        assertParseFailure(parser, PREFIX_PASTRY + "a",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, "pastry",
+        assertParseFailure(parser, PREFIX_PASTRY.toString().trim(),
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, "pastry 1 extraStuffHere",
+        assertParseFailure(parser, PREFIX_PASTRY + "1 extraStuffHere",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+    }
+
+    /**
+     * Tests that invalid arguments for deleting orders (non-integer or missing index).
+     */
+    @Test
+    public void parse_invalidOrderArgs_throwsParseException() {
+        assertParseFailure(parser, PREFIX_ORDER + "a",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+
+        assertParseFailure(parser, PREFIX_ORDER.toString().trim(),
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+
+        assertParseFailure(parser, PREFIX_ORDER + "1 extraStuffHere",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 
@@ -98,42 +142,48 @@ public class DeleteCommandParserTest {
      */
     @Test
     public void parse_caseInsensitiveEntityType() {
-        assertParseSuccess(parser, "CLIENT 1", new DeleteCommand("client", INDEX_FIRST_PERSON));
-        assertParseSuccess(parser, "PASTRY 1", new DeleteCommand("pastry", INDEX_FIRST_PASTRY));
+        assertParseSuccess(parser, "CLIENT 1",
+                new DeleteCommand(PREFIX_CLIENT.toString().trim(), INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, "PASTRY 1",
+                new DeleteCommand(PREFIX_PASTRY.toString().trim(), INDEX_FIRST_PASTRY));
+        assertParseSuccess(parser, "ORDER 1",
+                new DeleteCommand(PREFIX_ORDER.toString().trim(), INDEX_FIRST_ORDER));
 
-        assertParseSuccess(parser, "CLIent 1", new DeleteCommand("client", INDEX_FIRST_PERSON));
-        assertParseSuccess(parser, "PAStry 2", new DeleteCommand("pastry", INDEX_SECOND_PASTRY));
+
+        assertParseSuccess(parser, "CLIent 1",
+                new DeleteCommand(PREFIX_CLIENT.toString().trim(), INDEX_FIRST_PERSON));
+        assertParseSuccess(parser, "PAStry 2",
+                new DeleteCommand(PREFIX_PASTRY.toString().trim(), INDEX_SECOND_PASTRY));
+        assertParseSuccess(parser, "oRdEr 1",
+                new DeleteCommand(PREFIX_ORDER.toString().trim(), INDEX_FIRST_ORDER));
     }
 
     /**
-     * Tests that invalid arguments with negative indices throw a {@link ParseException}.
+     * Tests that invalid arguments with negative indices.
      */
     @Test
     public void parse_negativeIndex_throwsParseException() {
-        assertParseFailure(parser, "client -1",
+        assertParseFailure(parser, PREFIX_CLIENT + "-1",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
-        assertParseFailure(parser, "pastry -1",
+        assertParseFailure(parser, PREFIX_PASTRY + "-1",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, PREFIX_ORDER + "-1",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
     }
 
     /**
-     * Tests that invalid arguments with zero as the index throw a {@link ParseException}.
+     * Tests that invalid arguments with zero as the index.
      */
     @Test
     public void parse_zeroIndex_throwsParseException() {
-        assertParseFailure(parser, "client 0",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
-        assertParseFailure(parser, "pastry 0",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
-    }
+        assertParseFailure(parser, PREFIX_CLIENT + "0", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteCommand.MESSAGE_USAGE));
 
-    /**
-     * Tests that an invalid entity type (e.g., "invalidEntity") throws a {@link ParseException}.
-     */
-    @Test
-    public void parse_invalidEntityType_throwsParseException() {
-        assertParseFailure(parser, "deleteMe 1",
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, PREFIX_PASTRY + "0", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteCommand.MESSAGE_USAGE));
+
+        assertParseFailure(parser, PREFIX_ORDER + "0", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                DeleteCommand.MESSAGE_USAGE));
     }
 
     /**
@@ -177,6 +227,45 @@ public class DeleteCommandParserTest {
     }
 
     /**
+     * Tests that successfully deleting an order removes it from the address book.
+     *
+     * @throws Exception if the delete operation encounters an error.
+     */
+    @Test
+    public void execute_deleteOrder_success() throws Exception {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBook();
+        Model model = new ModelManager(addressBook, new UserPrefs());
+
+        DeleteCommand deleteCommand = new DeleteCommand(PREFIX_ORDER.toString().trim(), INDEX_FIRST_ORDER);
+        Order orderToDelete = model.getFilteredOrderList().get(0);
+
+        List<String> orderItemsSummary = orderToDelete.getOrderItems()
+                .stream()
+                .map(item -> item.getQuantity() + "x " + item.getPastry().getName())
+                .collect(Collectors.toList());
+
+        String orderItemsString = String.join(",  ", orderItemsSummary);
+        String price = String.format("$%.2f", orderToDelete.getTotalPrice());
+
+        final DateTimeFormatter dateTimeFormatter = DateTimeFormatter
+                .ofPattern("EEE, d MMM yyyy hh:mm a")
+                .withLocale(Locale.US);
+        String orderDate = orderToDelete.getOrderDate().format(dateTimeFormatter);
+
+        CommandResult result = deleteCommand.execute(model);
+
+        String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_ORDER_SUCCESS,
+                orderToDelete.getOrderId(),
+                orderDate,
+                orderToDelete.getCustomer().getName(),
+                orderItemsString,
+                price);
+
+        assertEquals(expectedMessage, result.getFeedbackToUser());
+        assertFalse(model.getFilteredOrderList().contains(orderToDelete));
+    }
+
+    /**
      * Tests that attempting to delete from an empty address book throws a {@link CommandException}.
      */
     @Test
@@ -184,7 +273,7 @@ public class DeleteCommandParserTest {
         AddressBook emptyAddressBook = new AddressBook();
         Model model = new ModelManager(emptyAddressBook, new UserPrefs());
 
-        DeleteCommand deleteCommand = new DeleteCommand("client", INDEX_FIRST_PERSON);
+        DeleteCommand deleteCommand = new DeleteCommand(PREFIX_CLIENT.toString().trim(), INDEX_FIRST_PERSON);
 
         try {
             deleteCommand.execute(model);
@@ -203,7 +292,7 @@ public class DeleteCommandParserTest {
         Model model = new ModelManager(addressBook, new UserPrefs());
 
         Index idx = Index.fromOneBased(model.getFilteredPastryList().size() + 1);
-        DeleteCommand deleteCommand = new DeleteCommand("pastry", idx);
+        DeleteCommand deleteCommand = new DeleteCommand(PREFIX_PASTRY.toString().trim(), idx);
 
         try {
             deleteCommand.execute(model);
@@ -222,13 +311,32 @@ public class DeleteCommandParserTest {
         Model model = new ModelManager(addressBook, new UserPrefs());
 
         Index idx = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-        DeleteCommand deleteCommand = new DeleteCommand("client", idx);
+        DeleteCommand deleteCommand = new DeleteCommand(PREFIX_CLIENT.toString().trim(), idx);
 
         try {
             deleteCommand.execute(model);
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
             assertEquals(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, e.getMessage());
+        }
+    }
+
+    /**
+     * Tests that attempting to delete an order using an invalid index throws a {@link CommandException}.
+     */
+    @Test
+    public void execute_deleteOrderInvalidIndex_throwsCommandException() {
+        AddressBook addressBook = TypicalAddressBook.getTypicalAddressBook();
+        Model model = new ModelManager(addressBook, new UserPrefs());
+
+        Index idx = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        DeleteCommand deleteCommand = new DeleteCommand(PREFIX_ORDER.toString().trim(), idx);
+
+        try {
+            deleteCommand.execute(model);
+            fail("Expected CommandException to be thrown");
+        } catch (CommandException e) {
+            assertEquals(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX, e.getMessage());
         }
     }
 }

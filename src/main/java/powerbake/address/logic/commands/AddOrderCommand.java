@@ -15,7 +15,6 @@ import powerbake.address.model.order.OrderItem;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,13 +38,14 @@ public class AddOrderCommand extends AddCommand {
     public static final String MESSAGE_SUCCESS = "New order added: %1$s";
     public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in the address book";
 
-    private Order toAdd;
+    private Order toAddOrder;
 
     private final Index clientIndex;
 
     private final ArrayList<ArrayList<String>> unformattedOrderList;
+
     /**
-     * Creates an AddClientCommand to add the specified {@code Person}
+     * Creates an AddOrderCommand to add the specified {@code Order}
      */
     public AddOrderCommand(Index index, ArrayList<ArrayList<String>> unformattedOrderList) {
         requireNonNull(index);
@@ -58,14 +58,14 @@ public class AddOrderCommand extends AddCommand {
         requireNonNull(model);
         Person personWhoOrdered = getValidClient(model);
         ArrayList<OrderItem> orderList = getValidOrderItems(model);
-        toAdd = new Order(personWhoOrdered, orderList);
+        toAddOrder = new Order(personWhoOrdered, orderList);
 
-        if (model.hasOrder(toAdd)) {
+        if (model.hasOrder(toAddOrder)) {
             throw new CommandException(MESSAGE_DUPLICATE_ORDER);
         }
 
-        model.addOrder(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        model.addOrder(toAddOrder);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddOrder)));
     }
 
     private Person getValidClient(Model model) throws CommandException {
@@ -108,13 +108,13 @@ public class AddOrderCommand extends AddCommand {
         }
 
         AddOrderCommand otherOrderCommand = (AddOrderCommand) other;
-        return toAdd.equals(otherOrderCommand.toAdd);
+        return toAddOrder.equals(otherOrderCommand.toAddOrder);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .add("toAdd", toAdd)
+                .add("toAddOrder", toAddOrder)
                 .toString();
     }
 }

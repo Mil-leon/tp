@@ -1,11 +1,13 @@
 package powerbake.address.logic;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import powerbake.address.logic.parser.Prefix;
 import powerbake.address.model.order.Order;
+import powerbake.address.model.order.OrderItem;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 
@@ -68,7 +70,15 @@ public class Messages {
      */
     public static String format(Order order) {
         final StringBuilder builder = new StringBuilder();
-        builder.append(order.getOrderId());
+        builder.append("; Client Name: ")
+                .append(order.getCustomer().getName().toString());
+        List<OrderItem> orderList = order.getOrderItems();
+        for (OrderItem orderItem : orderList) {
+            builder.append("; Pastry Name: ")
+                    .append(orderItem.getPastry().getName())
+                    .append("; Quantity: ")
+                    .append(orderItem.getQuantity());
+        }
         return builder.toString();
     }
 

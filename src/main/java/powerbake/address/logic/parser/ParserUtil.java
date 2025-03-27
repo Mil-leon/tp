@@ -161,8 +161,8 @@ public class ParserUtil {
         requireNonNull(orderInfo);
         String trimmedOrder = orderInfo.trim();
         String[] splitOrder = trimmedOrder.split(PREFIX_QUANTITY.getPrefix());
-        // check if quantity is attached
-        if (splitOrder.length < 2) {
+        // quantity must be exactly 1
+        if (splitOrder.length != 2) {
             // change this in v1.5
             throw new ParseException("Order must contain at least one quantity");
         }

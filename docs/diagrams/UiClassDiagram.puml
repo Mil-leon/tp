@@ -59,10 +59,10 @@ OrderListPanel -down-> "*" OrderCard
 ' StatusBarFooter --|> UiPart
 ' HelpWindow --|> UiPart
 
-PersonCard .> Model
-PastryCard .> Model
-OrderCard .> Model
-OrderDetailsPanel -down.> Model
+PersonCard ..> Model
+PastryCard ..> Model
+OrderCard ..> Model
+OrderDetailsPanel ..> Model
 UiManager -right-> Logic
 MainWindow -right-> Logic
 

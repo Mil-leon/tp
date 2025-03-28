@@ -12,6 +12,7 @@ Class AddressBook
 Class ModelManager
 Class UserPrefs
 
+Package Person as ModelPerson <<Rectangle>>{
 Class UniquePersonList
 Class Person
 Class Address
@@ -19,19 +20,23 @@ Class Email
 Class Name
 Class Phone
 Class Tag
+}
 
+Package Pastry as ModelPastry <<Rectangle>> {
 Class UniquePastryList
 Class Pastry
 Class "Name" as PName
 Class Price
+}
 
+Package Order as ModelOrder<<Rectangle>> {
 Class UniqueOrderList
 Class Order
 Class OrderId
 Class OrderStatus
 Class LocalDateTime
 Class OrderItem
-
+}
 
 
 Class I #FFFFFF

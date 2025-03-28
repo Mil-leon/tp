@@ -48,11 +48,11 @@ HiddenOutside ..> Model
 AddressBook .up.|> ReadOnlyAddressBook
 
 ModelManager .up.|> Model
-Model .right.> ReadOnlyUserPrefs
-Model .up.> ReadOnlyAddressBook
-ModelManager -left-> "1" AddressBook
-ModelManager -right-> "1" UserPrefs
-ModelManager -left[hidden]- UniqueOrderList
+Model ..> ReadOnlyUserPrefs
+Model ..> ReadOnlyAddressBook
+ModelManager --> "1" AddressBook
+ModelManager --> "1" UserPrefs
+ModelManager -[hidden]- UniqueOrderList
 UserPrefs .up.|> ReadOnlyUserPrefs
 
 ModelManager --> "~* filtered" Person

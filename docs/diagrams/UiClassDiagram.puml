@@ -49,7 +49,20 @@ PersonListPanel -down-> "*" PersonCard
 PastryListPanel -down-> "*" PastryCard
 OrderListPanel -down-> "*" OrderCard
 
-PersonCard ..> Model
+MainWindow -left-|> UiPart
+ResultDisplay -d-|> UiPart
+CommandBox -d-|> UiPart
+PersonListPanel -d-|> UiPart
+PersonCard -d-|> UiPart
+PastryCard -d-|> UiPart
+StatusBarFooter -d-|> UiPart
+HelpWindow -d-|> UiPart
+OrderListPanel -d-|> UiPart
+OrderCard -d-|> UiPart
+OrderDetailsPanel -d-|> UiPart
+PastryListPanel -d-|> UiPart
+
+PersonCard ...> Model
 PastryCard ..> Model
 OrderCard ..> Model
 OrderDetailsPanel ..> Model
@@ -67,18 +80,5 @@ MainWindow -[hidden]left- CommandBox
 CommandBox -[hidden]right- StatusBarFooter
 StatusBarFooter -[hidden]right- ResultDisplay
 ResultDisplay -[hidden]right- HelpWindow
-
-MainWindow -left-|> UiPart
-ResultDisplay --d-|> UiPart
-CommandBox -d-|> UiPart
-PersonListPanel -d-|> UiPart
-PersonCard -d-|> UiPart
-PastryCard -d-|> UiPart
-StatusBarFooter -d-|> UiPart
-HelpWindow -d-|> UiPart
-OrderListPanel -d-|> UiPart
-OrderCard -d-|> UiPart
-OrderDetailsPanel -d-|> UiPart
-PastryListPanel -d-|> UiPart
 
 @enduml

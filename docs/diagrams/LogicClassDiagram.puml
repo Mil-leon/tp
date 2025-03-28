@@ -8,9 +8,11 @@ package Logic as LogicPackage {
 
 package "Parser Classes" as ParserClasses{
 }
+package "Commands" as CommandClasses{
 Class XYZCommand
 Class CommandResult
 Class "{abstract}\nCommand" as Command
+}
 
 
 Class "<<interface>>\nLogic" as Logic
@@ -28,11 +30,11 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Logic
 
 LogicManager .right.|> Logic
-LogicManager -right->"1" ParserClasses
-ParserClasses ..> XYZCommand : <<create>>
+LogicManager -down->"1" ParserClasses
+ParserClasses ..> XYZCommand : creates >
 
 XYZCommand -up-|> Command
-LogicManager .left.> Command : <<call>>
+LogicManager .left.> Command : executes >
 
 LogicManager --> Model
 LogicManager --> Storage
@@ -43,5 +45,5 @@ note right of XYZCommand: XYZCommand = AddCommand, \nFindCommand, etc
 
 Logic ..> CommandResult
 LogicManager .down.> CommandResult
-Command .up.> CommandResult : <<create>>
+Command .left.> CommandResult
 @enduml

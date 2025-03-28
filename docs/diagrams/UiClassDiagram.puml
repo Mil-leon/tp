@@ -49,16 +49,6 @@ PersonListPanel -down-> "*" PersonCard
 PastryListPanel -down-> "*" PastryCard
 OrderListPanel -down-> "*" OrderCard
 
-' commented out UiPart inheritance for now, for cleaner diagram
-' MainWindow -left-|> UiPart
-' ResultDisplay --|> UiPart
-' CommandBox --|> UiPart
-' PersonListPanel --|> UiPart
-' PersonCard --|> UiPart
-' PastryCard --|> UiPart
-' StatusBarFooter --|> UiPart
-' HelpWindow --|> UiPart
-
 PersonCard ..> Model
 PastryCard ..> Model
 OrderCard ..> Model
@@ -77,5 +67,18 @@ MainWindow -[hidden]left- CommandBox
 CommandBox -[hidden]right- StatusBarFooter
 StatusBarFooter -[hidden]right- ResultDisplay
 ResultDisplay -[hidden]right- HelpWindow
+
+MainWindow -left-|> UiPart
+ResultDisplay --d-|> UiPart
+CommandBox -d-|> UiPart
+PersonListPanel -d-|> UiPart
+PersonCard -d-|> UiPart
+PastryCard -d-|> UiPart
+StatusBarFooter -d-|> UiPart
+HelpWindow -d-|> UiPart
+OrderListPanel -d-|> UiPart
+OrderCard -d-|> UiPart
+OrderDetailsPanel -d-|> UiPart
+PastryListPanel -d-|> UiPart
 
 @enduml

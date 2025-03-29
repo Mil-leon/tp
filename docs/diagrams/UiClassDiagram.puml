@@ -5,56 +5,80 @@ skinparam arrowColor UI_COLOR_T4
 skinparam classBackgroundColor UI_COLOR
 
 package UI <<Rectangle>>{
-Class "<<interface>>\nUi" as Ui
-Class "{abstract}\nUiPart" as UiPart
-Class UiManager
-Class MainWindow
-Class HelpWindow
-Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
-Class StatusBarFooter
-Class CommandBox
+    Class "<<interface>>\nUi" as Ui
+    Class "{abstract}\nUiPart" as UiPart
+    Class UiManager
+    Class MainWindow
+    Class HelpWindow
+    Class ResultDisplay
+    Class PersonListPanel
+    Class PastryListPanel
+    Class OrderListPanel
+    Class OrderDetailsPanel
+    Class PersonCard
+    Class PastryCard
+    Class OrderCard
+    Class StatusBarFooter
+    Class CommandBox
 }
 
 package Model <<Rectangle>> {
-Class HiddenModel #FFFFFF
+    Class HiddenModel #FFFFFF
 }
 
 package Logic <<Rectangle>> {
-Class HiddenLogic #FFFFFF
+    Class HiddenLogic #FFFFFF
 }
 
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Ui
 
-UiManager .left.|> Ui
+UiManager .up.|> Ui
 UiManager -down-> "1" MainWindow
-MainWindow *-down->  "1" CommandBox
-MainWindow *-down-> "1" ResultDisplay
+
+MainWindow *-up->  "1" CommandBox
+MainWindow -up-> "0..1" HelpWindow
+MainWindow *-up-> "1" ResultDisplay
+MainWindow *-up-> "1" StatusBarFooter
 MainWindow *-down-> "1" PersonListPanel
-MainWindow *-down-> "1" StatusBarFooter
-MainWindow --> "0..1" HelpWindow
+MainWindow *-down-> "1" PastryListPanel
+MainWindow *-down-> "1" OrderListPanel
+MainWindow *-down-> "1" OrderDetailsPanel
 
 PersonListPanel -down-> "*" PersonCard
+PastryListPanel -down-> "*" PastryCard
+OrderListPanel -down-> "*" OrderCard
 
 MainWindow -left-|> UiPart
+ResultDisplay -d-|> UiPart
+CommandBox -d-|> UiPart
+PersonListPanel -d-|> UiPart
+PersonCard -d-|> UiPart
+PastryCard -d-|> UiPart
+StatusBarFooter -d-|> UiPart
+HelpWindow -d-|> UiPart
+OrderListPanel -d-|> UiPart
+OrderCard -d-|> UiPart
+OrderDetailsPanel -d-|> UiPart
+PastryListPanel -d-|> UiPart
 
-ResultDisplay --|> UiPart
-CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
-StatusBarFooter --|> UiPart
-HelpWindow --|> UiPart
-
-PersonCard ..> Model
+PersonCard ...> Model
+PastryCard ..> Model
+OrderCard ..> Model
+OrderDetailsPanel ..> Model
 UiManager -right-> Logic
-MainWindow -left-> Logic
+MainWindow -right-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
-CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
+PersonListPanel -[hidden]left- PastryListPanel
+PastryListPanel -[hidden]left- OrderListPanel
 
-MainWindow -[hidden]-|> UiPart
+PersonCard -[hidden]left- PastryCard
+PastryCard -[hidden]left- OrderCard
+OrderCard -[hidden]left- OrderDetailsPanel
+
+MainWindow -[hidden]left- CommandBox
+CommandBox -[hidden]right- StatusBarFooter
+StatusBarFooter -[hidden]right- ResultDisplay
+ResultDisplay -[hidden]right- HelpWindow
+
 @enduml

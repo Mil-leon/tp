@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.ui.UiPart;
 
@@ -25,8 +26,6 @@ public class PastryCard extends UiPart<Region> {
     public final Pastry pastry;
 
     @FXML
-    private HBox cardPane;
-    @FXML
     private Label name;
     @FXML
     private Label id;
@@ -41,6 +40,6 @@ public class PastryCard extends UiPart<Region> {
         this.pastry = pastry;
         id.setText(displayedIndex + ". ");
         name.setText(pastry.getName().name);
-        price.setText(pastry.getPrice().amount);
+        price.setText("$" + pastry.getPrice().amount);
     }
 }

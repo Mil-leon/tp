@@ -1,9 +1,11 @@
 package powerbake.address.ui.common;
 
+import javafx.animation.FadeTransition;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import javafx.util.Duration;
 import powerbake.address.logic.commands.CommandResult;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
@@ -30,6 +32,9 @@ public class CommandBox extends UiPart<Region> {
         this.commandExecutor = commandExecutor;
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
         commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+
+        // adds fade effect to command box.
+        addFocusFadeEffect();
     }
 
     /**
@@ -68,6 +73,18 @@ public class CommandBox extends UiPart<Region> {
         }
 
         styleClass.add(ERROR_STYLE_CLASS);
+    }
+
+    /**
+     * Adds a fade effect to the command text field when it gains or loses focus.
+     */
+    private void addFocusFadeEffect() {
+        commandTextField.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            FadeTransition fadeTransition = new FadeTransition(Duration.millis(200), commandTextField);
+            fadeTransition.setFromValue(newVal ? 0.65 : 1.0);  // Start slightly faded if gaining focus
+            fadeTransition.setToValue(newVal ? 1.0 : 0.65);    // Fade in when focused, fade out otherwise
+            fadeTransition.play();
+        });
     }
 
     /**

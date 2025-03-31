@@ -10,79 +10,71 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
 <fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="PowerBake" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
+
     <Image url="@/images/address_book_32.png" />
   </icons>
   <scene>
     <Scene>
       <stylesheets>
-        <URL value="@DarkTheme.css" />
+        <URL value="@Main.css" />
         <URL value="@Extensions.css" />
       </stylesheets>
-
       <VBox>
-        <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
-          <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
-          </Menu>
-        </MenuBar>
-
-        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
-
-        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
-
-        <TabPane fx:id="tabPane" styleClass="tab-pane" VBox.vgrow="ALWAYS">
+        <children>
+          <!--   MenuBar -->
+          <MenuBar fx:id="menuBar">
+            <VBox.margin>
+              <Insets left="10.0" right="10.0" />
+            </VBox.margin>
+            <Menu mnemonicParsing="false" text="File">
+              <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+              <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
+            </Menu>
+          </MenuBar>
+          <!--   CommandBox Placeholder -->
+          <AnchorPane fx:id="commandBoxPlaceholder" prefHeight="50.0" prefWidth="200.0">
+            <VBox.margin>
+              <Insets left="10.0" right="10.0" />
+            </VBox.margin>
+          </AnchorPane>
+          <!--   ResultDisplay Placeholder -->
+          <AnchorPane fx:id="resultDisplayPlaceholder" prefHeight="100.0" prefWidth="200.0">
             <padding>
-                <Insets bottom="10" left="10" right="10" top="10" />
+              <Insets left="10.0" right="10.0" top="10.0" />
             </padding>
+          </AnchorPane>
+          <!-- TabPane -->
+          <TabPane fx:id="tabPane" styleClass="tab-pane" VBox.vgrow="ALWAYS">
             <tabs>
-                <Tab fx:id="clientTab" closable="false" styleClass="tab" text="Clients">
-                    <VBox fx:id="personList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-
-                    <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-                    </VBox>
-                </Tab>
-                <Tab fx:id="pastryTab" closable="false" styleClass="tab" text="Pastries">
-                    <VBox fx:id="pastryList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-
-                        <StackPane fx:id="pastryListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-                    </VBox>
-                </Tab>
-                <Tab fx:id="orderTab" closable="false" styleClass="tab" text="Orders">
-                    <SplitPane dividerPositions="0.1">
-
-                        <!-- list of order -->
-                        <VBox fx:id="orderList" minWidth="100" prefWidth="100" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-                            <StackPane fx:id="orderListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-                        </VBox>
-
-                        <!-- view selected order -->
-                        <StackPane fx:id="orderDetailsPanelPlaceholder" VBox.vgrow="ALWAYS" />
-
-                    </SplitPane>
-                </Tab>
+              <Tab fx:id="clientTab" closable="false" text="Clients">
+                <StackPane fx:id="personListPanelPlaceholder" />
+              </Tab>
+              <Tab fx:id="pastryTab" closable="false" text="Pastries">
+                <StackPane fx:id="pastryListPanelPlaceholder" />
+              </Tab>
+              <Tab fx:id="orderTab" closable="false" text="Orders">
+                <SplitPane id="splitPane" fx:id="splitPane" dividerPositions="0.5">
+                  <StackPane fx:id="orderListPanelPlaceholder" />
+                  <StackPane fx:id="orderDetailsPanelPlaceholder" />
+                </SplitPane>
+              </Tab>
             </tabs>
-        </TabPane>
-
-
-
-        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
+            <VBox.margin>
+              <Insets left="10.0" right="10.0" top="10.0" />
+            </VBox.margin>
+          </TabPane>
+          <!--   StatusBar Placeholder -->
+          <AnchorPane id="statusbarPlaceholder" fx:id="statusbarPlaceholder" maxHeight="5.0" VBox.vgrow="NEVER" />
+        </children>
       </VBox>
     </Scene>
   </scene>

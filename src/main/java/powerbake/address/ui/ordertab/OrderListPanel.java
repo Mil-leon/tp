@@ -61,6 +61,10 @@ public class OrderListPanel extends UiPart<Region> {
                 setText(null);
             } else {
                 setGraphic(new OrderCard(order, getIndex() + 1).getRoot());
+                setPrefHeight(70.0);
+                if (getIndex() == 0) {
+                    setStyle("-fx-border-width: 1px 1px 1px 1px;");
+                }
             }
         }
     }

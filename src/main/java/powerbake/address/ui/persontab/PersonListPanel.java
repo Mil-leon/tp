@@ -43,6 +43,9 @@ public class PersonListPanel extends UiPart<Region> {
                 setText(null);
             } else {
                 setGraphic(new PersonCard(person, getIndex() + 1).getRoot());
+                if (getIndex() == 0) {
+                    setStyle("-fx-border-width: 1.5px 1.5px 1.5px 1.5px;");
+                }
             }
         }
     }

@@ -81,8 +81,8 @@ public class CommandBox extends UiPart<Region> {
     private void addFocusFadeEffect() {
         commandTextField.focusedProperty().addListener((obs, oldVal, newVal) -> {
             FadeTransition fadeTransition = new FadeTransition(Duration.millis(200), commandTextField);
-            fadeTransition.setFromValue(newVal ? 0.65 : 1.0);  // Start slightly faded if gaining focus
-            fadeTransition.setToValue(newVal ? 1.0 : 0.65);    // Fade in when focused, fade out otherwise
+            fadeTransition.setFromValue(newVal ? 0.65 : 1.0); // Start slightly faded if gaining focus
+            fadeTransition.setToValue(newVal ? 1.0 : 0.65); // Fade in when focused, fade out otherwise
             fadeTransition.play();
         });
     }

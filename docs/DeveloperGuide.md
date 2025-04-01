@@ -35,7 +35,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 **Main components of the architecture**
 
-**`Main`** (consisting of classes [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java)) is in charge of the app launch and shut down.
+**`Main`** (consisting of classes [`Main`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/Main.java) and [`MainApp`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/MainApp.java)) is in charge of the app launch and shut down.
 * At app launch, it initializes the other components in the correct sequence, and connects them up with each other.
 * At shut down, it shuts down the other components and invokes cleanup methods where necessary.
 
@@ -67,13 +67,22 @@ The sections below give more details of each component.
 
 ### UI component
 
-The **API** of this component is specified in [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+The **API** of this component is specified in [`Ui.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Due to the sheer number of components inhering from `UIPart`, the inheritance has not been shown. To be clear, the classes inheriting from the abstract `UIPart` are:
+* `MainWindow`
+* `CommandBox`
+* `StatusBarFooter`
+* `ResultDisplay`
+* `HelpWindow`
+* `PersonListPanel` and its child `PersonCard`
+* `PastryListPanel` and its child `PastryCard`
+* `OrderListPanel` and its child `OrderCard`
+* `OrderDetailsPanel`
 
-The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/ui/common/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,7 +93,7 @@ The `UI` component,
 
 ### Logic component
 
-**API** : [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+**API** : [`Logic.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/logic/Logic.java)
 
 Here's a (partial) class diagram of the `Logic` component:
 
@@ -116,7 +125,7 @@ How the parsing works:
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
 ### Model component
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="1000" />
 
@@ -143,18 +152,18 @@ The `Model` component,
 
 ### Storage component
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/storage/Storage.java)
 
-<puml src="diagrams/StorageClassDiagram.puml" width="550" />
+<puml src="diagrams/StorageClassDiagram.puml" width="750" />
 
 The `Storage` component,
-* can save both address book data and user preference data in JSON format, and read them back into corresponding objects.
+* can save both address book data and user preference data in [JSON](#glossary) format, and read them back into corresponding objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.address.commons` package.
+Classes used by multiple components are in the `powerbake.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 

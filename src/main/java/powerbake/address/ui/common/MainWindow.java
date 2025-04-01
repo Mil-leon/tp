@@ -4,12 +4,15 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import powerbake.address.commons.core.GuiSettings;
@@ -47,10 +50,16 @@ public class MainWindow extends UiPart<Stage> {
     private HelpWindow helpWindow;
 
     @FXML
-    private StackPane commandBoxPlaceholder;
+    private MenuBar menuBar;
 
     @FXML
     private MenuItem helpMenuItem;
+
+    @FXML
+    private AnchorPane commandBoxPlaceholder;
+
+    @FXML
+    private AnchorPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane personListPanelPlaceholder;
@@ -64,11 +73,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane orderDetailsPanelPlaceholder;
 
-    @FXML
-    private StackPane resultDisplayPlaceholder;
 
     @FXML
-    private StackPane statusbarPlaceholder;
+    private AnchorPane statusbarPlaceholder;
 
     @FXML
     private TabPane tabPane;
@@ -81,6 +88,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private Tab orderTab;
+
+    @FXML
+    private SplitPane splitPane;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -165,6 +175,26 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        AnchorPane.setTopAnchor(commandBox.getRoot(), 0.0);
+        AnchorPane.setBottomAnchor(commandBox.getRoot(), 0.0);
+        AnchorPane.setLeftAnchor(commandBox.getRoot(), 0.0);
+        AnchorPane.setRightAnchor(commandBox.getRoot(), 0.0);
+
+        AnchorPane.setTopAnchor(resultDisplay.getRoot(), 0.0);
+        AnchorPane.setBottomAnchor(resultDisplay.getRoot(), 0.0);
+        AnchorPane.setLeftAnchor(resultDisplay.getRoot(), 0.0);
+        AnchorPane.setRightAnchor(resultDisplay.getRoot(), 0.0);
+
+        AnchorPane.setTopAnchor(statusBarFooter.getRoot(), 0.0);
+        AnchorPane.setBottomAnchor(statusBarFooter.getRoot(), 0.0);
+        AnchorPane.setLeftAnchor(statusBarFooter.getRoot(), 0.0);
+        AnchorPane.setRightAnchor(statusBarFooter.getRoot(), 0.0);
+
+        splitPane.setDividerPositions(0.4);
+        SplitPane.setResizableWithParent(orderListPanelPlaceholder, false);
+        SplitPane.setResizableWithParent(orderDetailsPanelPlaceholder, false);
+
     }
 
     /**
@@ -231,7 +261,6 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             // logic to switch tabs depending on the view command
-            // TODO: we should replicate this for all commands in the future
             if (commandResult.isShowClient()) {
                 tabPane.getSelectionModel().select(clientTab);
             } else if (commandResult.isShowPastry()) {

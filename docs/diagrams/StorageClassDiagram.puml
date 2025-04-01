@@ -4,6 +4,8 @@ skinparam arrowThickness 1.1
 skinparam arrowColor STORAGE_COLOR
 skinparam classBackgroundColor STORAGE_COLOR
 
+
+
 package Storage as StoragePackage {
 
 package "UserPrefs Storage" #F4F6F6{
@@ -20,6 +22,9 @@ Class JsonAddressBookStorage
 Class JsonSerializableAddressBook
 Class JsonAdaptedPerson
 Class JsonAdaptedTag
+Class JsonAdaptedPastry
+Class JsonAdaptedOrder
+Class JsonAdaptedOrderItem
 }
 
 }
@@ -34,10 +39,15 @@ StorageManager -up-> "1" AddressBookStorage
 Storage -left-|> UserPrefsStorage
 Storage -right-|> AddressBookStorage
 
+JsonAdaptedOrderItem -[hidden]down- JsonAdaptedPastry
+
 JsonUserPrefsStorage .up.|> UserPrefsStorage
 JsonAddressBookStorage .up.|> AddressBookStorage
 JsonAddressBookStorage ..> JsonSerializableAddressBook
 JsonSerializableAddressBook --> "*" JsonAdaptedPerson
 JsonAdaptedPerson --> "*" JsonAdaptedTag
-
+JsonSerializableAddressBook --> "*" JsonAdaptedPastry
+JsonSerializableAddressBook --> "*" JsonAdaptedOrder
+JsonAdaptedOrder --> "*" JsonAdaptedOrderItem
+JsonAdaptedOrderItem "*" --> "1" JsonAdaptedPastry
 @enduml

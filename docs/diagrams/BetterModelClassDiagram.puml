@@ -32,7 +32,7 @@ Class OrderItem
 
 AddressBook *--> "1" UniqueTagList
 UniqueTagList -[hidden]- UniquePersonList
-UniqueTagList --> "*" Tag
+UniqueTagList -up-> "*" Tag
 UniquePersonList --> Person
 
 Person -up-> "*" Tag

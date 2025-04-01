@@ -13,7 +13,7 @@
 /* ************** */
 
 .menu-bar {
-    -fx-background-color: -dark-gray; 
+    -fx-background-color: -dark-gray;
     -fx-padding: 0;
 }
 
@@ -75,7 +75,7 @@
 
 .text-area .content {
     -fx-background-color: -dark-gray;
-    -fx-border-color: transparent; 
+    -fx-border-color: transparent;
     -fx-border-width: 0;
 }
 
@@ -284,7 +284,7 @@
 
 .split-pane-divider {
     -fx-background-color: transparent;
-    -fx-divider-width: 0.1px; 
+    -fx-divider-width: 0.1px;
 }
 
 /* ********************** */
@@ -333,7 +333,7 @@
 
 #orderListView .list-cell > * {
     -fx-background-color: transparent;
-    -fx-padding: 0 0 0 0;  
+    -fx-padding: 0 0 0 0;
 }
 
 #orderListView .list-cell:filled {
@@ -431,7 +431,7 @@
     -fx-padding: 16 8 16 8;
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;    
+    -fx-text-fill: white;
 }
 
 /* ********************** */

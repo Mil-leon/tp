@@ -3,10 +3,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 
-<HBox 
-    id="statusbarHBox" 
-    xmlns="http://javafx.com/javafx/17" 
-    xmlns:fx="http://javafx.com/fxml/1" 
+<HBox
+    id="statusbarHBox"
+    xmlns="http://javafx.com/javafx/17"
+    xmlns:fx="http://javafx.com/fxml/1"
     alignment="CENTER_LEFT">
   <Label fx:id="saveLocationStatus" id="saveLocationStatus"/>
 </HBox>

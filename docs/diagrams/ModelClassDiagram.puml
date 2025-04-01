@@ -19,8 +19,8 @@ Class Address
 Class Email
 Class Name
 Class Phone
-Class Tag
 }
+Class Tag
 
 Package Pastry as ModelPastry <<Rectangle>> {
 Class UniquePastryList
@@ -52,7 +52,6 @@ Model ..> ReadOnlyUserPrefs
 Model ..> ReadOnlyAddressBook
 ModelManager --> "1" AddressBook
 ModelManager --> "1" UserPrefs
-ModelManager -[hidden]- UniqueOrderList
 UserPrefs .up.|> ReadOnlyUserPrefs
 
 ModelManager --> "~* filtered" Person

@@ -155,7 +155,7 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
 6. **At the end you should have a empty folder with the `powerbake.jar` file in it similar to this:**
 
-    ![folder](images/powerbake_home_folder.png)|
+    <img src="images/powerbake_home_folder.png" alt="add client command" width="800"/>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -197,7 +197,7 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
 1. After a brief moment, you should see a window similar to this:
 
-    ![PowerBake](images/powerbake_home_page.png)
+    <img src="images/powerbake_home_page.png" alt="add client command" width="800"/>
 
     <box type="info" seamless>
 
@@ -235,7 +235,7 @@ To add him to PowerBake, use this [command](#glossary) in the Command Box
 
 ```add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
 
-![Adding luke into powerbake](images/add_luke.png)
+<img src="images/add_luke.png" alt="Add Luke" width="800"/>
 
 This command specifies the following details about Luke:
 - **Name:** Luke
@@ -245,7 +245,7 @@ This command specifies the following details about Luke:
 
 After hitting Enter, you should see a message indicating that Luke has been successfully added to PowerBake and the new entry should appear in the List View.
 
-![added luke into powerbake](images/added_luke.png)
+<img src="images/added_luke.png" alt="added luke into powerbake" width="800"/>
 
 1. The **Result Display Box** will show a message indicating that Luke has been successfully added.
 1. The **List View** will display the details of Luke.
@@ -262,7 +262,7 @@ To add the Croissant to PowerBake, use this [command](#glossary) in the Command 
 
 ```add pastry Croissant -pr 5.5```
 
-![Adding Croissant into powerbake](images/add_pastry.png)
+<img src="images/add_pastry.png" alt="Adding Croissant into powerbake" width="800"/>
 
 This command specifies the following details about the Croissant:
 - **Name:** Croissant
@@ -270,7 +270,7 @@ This command specifies the following details about the Croissant:
 
 Hitting Enter will display a message indicating that the Croissant has been **successfully added** to PowerBake and the new entry should appear in the List View.
 
-![added Croissant into powerbake](images/added_pastry.png)
+<img src="images/added_pastry.png" alt="added Croissant into powerbake" width="800"/>
 
 1. The **Result Display Box** will show a message indicating that the Croissant has been successfully added.
 1. The **List View** will display the details of the Croissant.
@@ -294,7 +294,7 @@ You can add multiple pastries in a single order by sequentialy pecifying the pas
 
 </box>
 
-![Adding order into powerbake](images/add_order.png)
+<img src="images/add_order.png" alt="Adding order into powerbake" width="800"/>
 
 This command specifies the following details about the order:
 - **Client:** Luke using the **index** of the client
@@ -303,7 +303,7 @@ This command specifies the following details about the order:
 
 Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake and the new entry should appear in the List View.
 
-![added order into powerbake](images/added_order.png)
+<img src="images/added_order.png" alt="added order into powerbake" width="800"/>
 
 <box type="info" seamless>
 
@@ -397,7 +397,7 @@ To add luke, simply type:
 **Before:**
 <img src="images/addclient1.png" alt="add client command" width="800"/>
 
-Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. 
+Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab.
 This allows you to easily keep track of client details systematically and efficiently.
 
 **After:**
@@ -573,7 +573,7 @@ The `exit` command does not require any parameters.
 
 ---
 
-## Storage 
+## Storage
 
 This section will go through how order, pastry and customer details are stored.
 

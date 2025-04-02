@@ -10,7 +10,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import powerbake.address.commons.core.LogsCenter;
-import powerbake.address.logic.Logic;
 import powerbake.address.model.order.Order;
 import powerbake.address.ui.UiPart;
 import powerbake.address.ui.pastrytab.PastryListPanel;

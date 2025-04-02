@@ -8,7 +8,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import powerbake.address.commons.core.LogsCenter;
-import powerbake.address.logic.Logic;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.ui.UiPart;
 

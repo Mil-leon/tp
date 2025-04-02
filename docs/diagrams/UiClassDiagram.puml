@@ -55,9 +55,6 @@ OrderCard .> Model
 OrderDetailsPanel .> Model
 UiManager -down-> Logic
 MainWindow -right-> Logic
-PersonListPanel -down--> Logic
-PastryListPanel -down-> Logic
-OrderListPanel -down--> Logic
 
 PersonListPanel -[hidden]left- PastryListPanel
 PastryListPanel -[hidden]left- OrderListPanel

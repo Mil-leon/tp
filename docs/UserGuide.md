@@ -452,9 +452,6 @@ Once `enter` is hit, a output message will be displayed of your success. Pastry 
 
 ---
 
-<<<<<<< HEAD
-### Deleting Client, Pastry or Order : `delete`
-=======
 ### Adding a order: `add order`
 
 The `add order` command is essential in keeping track of your client's order.
@@ -496,7 +493,6 @@ Once `enter` is hit, a output message will be displayed of your success. Order d
 ---
 
 ### Deleting Client, Pastry or Order: `delete`
->>>>>>> master
 
 The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients, pastries and orders.
 
@@ -720,11 +716,7 @@ After hitting `Enter`, you will see the third order updated from the list.
 
 ---
 
-<<<<<<< HEAD
 ### Viewing Client, Pastry or Order : `view`
-=======
-### Viewing Client, Pastry or Order: `view`
->>>>>>> master
 
 The `view` command offers a detailed insight of the client, pastry and order lists.
 

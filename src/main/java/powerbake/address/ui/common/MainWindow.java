@@ -152,13 +152,13 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     public void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        personListPanel = new PersonListPanel(logic);
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        pastryListPanel = new PastryListPanel(logic.getFilteredPastryList());
+        pastryListPanel = new PastryListPanel(logic);
         pastryListPanelPlaceholder.getChildren().add(pastryListPanel.getRoot());
 
-        orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
+        orderListPanel = new OrderListPanel(logic);
         orderListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
 
         orderDetailsPanel = new OrderDetailsPanel();

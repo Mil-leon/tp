@@ -217,6 +217,21 @@ public class AddressBook implements ReadOnlyAddressBook {
         return orders.asUnmodifiableObservableList();
     }
 
+    public int getOriginalIndex(Person person) {
+        requireNonNull(person);
+        return getPersonList().indexOf(person);
+    }
+
+    public int getOriginalIndex(Pastry pastry) {
+        requireNonNull(pastry);
+        return getPastryList().indexOf(pastry);
+    }
+
+    public int getOriginalIndex(Order order) {
+        requireNonNull(order);
+        return getOrderList().indexOf(order);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

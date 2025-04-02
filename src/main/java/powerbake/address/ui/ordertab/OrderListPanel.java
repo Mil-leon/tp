@@ -10,7 +10,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import powerbake.address.commons.core.LogsCenter;
-import powerbake.address.logic.Logic;
 import powerbake.address.model.order.Order;
 import powerbake.address.ui.UiPart;
 import powerbake.address.ui.pastrytab.PastryListPanel;
@@ -22,7 +21,6 @@ public class OrderListPanel extends UiPart<Region> {
     private static final String FXML = "OrderListPanel.fxml";
     private static final String CSS_BORDER = "-fx-border-width: 1px 1px 1px 1px;";
     private final Logger logger = LogsCenter.getLogger(PastryListPanel.class);
-    private final Logic logic;
 
     @FXML
     private ListView<Order> orderListView;
@@ -32,11 +30,8 @@ public class OrderListPanel extends UiPart<Region> {
     /**
      * Creates a {@code OrderListPanel} with the given {@code ObservableList}.
      */
-    public OrderListPanel(Logic logic) {
+    public OrderListPanel(ObservableList<Order> orderList) {
         super(FXML);
-        this.logic = logic;
-
-        ObservableList<Order> orderList = logic.getFilteredOrderList();
         orderListView.setItems(orderList);
         orderListView.setCellFactory(listView -> new OrderListViewCell());
 
@@ -68,8 +63,7 @@ public class OrderListPanel extends UiPart<Region> {
                 return;
             }
 
-            int originalIndex = logic.getOriginalIndex(order);
-            setGraphic(new OrderCard(order, originalIndex + 1).getRoot());
+            setGraphic(new OrderCard(order, getIndex() + 1).getRoot());
             setPrefHeight(70.0);
             if (getIndex() == 0) {
                 setStyle(CSS_BORDER);

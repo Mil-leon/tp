@@ -161,21 +161,6 @@ public class AddOrderCommandTest {
         }
 
         @Override
-        public int getOriginalIndex(Person person) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getOriginalIndex(Pastry pastry) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public int getOriginalIndex(Order order) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void deleteOrder(Order target) {
             throw new AssertionError("This method should not be called.");
         }

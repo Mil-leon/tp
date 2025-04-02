@@ -25,7 +25,7 @@ public class AddOrderCommandParser implements Parser<AddOrderCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_ORDER, PREFIX_PASTRY_NAME);
         // check
-        if (!arePrefixesPresent(argMultimap, PREFIX_ORDER)
+        if (!arePrefixesPresent(argMultimap, PREFIX_ORDER, PREFIX_PASTRY_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddOrderCommand.MESSAGE_USAGE));
         }

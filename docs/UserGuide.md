@@ -11,7 +11,7 @@
 <div style="page-break-after: always;"></div>
 
 ## **Introduction**
-This User Guide is designed to help you **get started with _PowerBake_**, a valuable tool for managing your bakery's clients, pastries, and orders. 
+This User Guide is designed to help you **get started with _PowerBake_**, a valuable tool for managing your bakery's clients, pastries, and orders.
 
 No matter if you're new to the business or already have experience running a bakery, this guide will be your go-to resource for efficiently tracking clients, pastries, and orders.
 
@@ -19,7 +19,7 @@ No matter if you're new to the business or already have experience running a bak
 
 **_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
 
-To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](#glossary). 
+To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](#glossary).
 
 <box type="info" seamless>
 
@@ -37,7 +37,7 @@ Using **_PowerBake_**, you can efficiently manage your bakery with:
 
 #### Prerequisite Knowledge
 
-This guide is designed to be accessible to all users, whether you’re a new or experienced user. 
+This guide is designed to be accessible to all users, whether you’re a new or experienced user.
 
 If you are a **new _PowerBake_** user:
 
@@ -49,7 +49,7 @@ If you are an **experienced _PowerBake_** user:
 - The [Command Summary](#command-summary) section provides a quick overview of all available commands in **_PowerBake_**.
 - The [Features](#features) section can give more specific insight as to the features of **_PowerBake_** and each command.
 
-Our goal is to make managing your bakery as smooth and efficient as possible, regardless of your level of experience. 
+Our goal is to make managing your bakery as smooth and efficient as possible, regardless of your level of experience.
 
 **For additional information**, you may refer to the [FAQ](#faq) section or the [Known Issues](#known-issues) section.
 
@@ -88,7 +88,7 @@ They can also appear [**in bold**](#links), [_in italics_](#links) or [**_both!_
 #### Code Blocks
 
 ```
-/* Large blocks of code can 
+/* Large blocks of code can
 */ be displayed in this way as well
 public static printCodeBlock (String code) {
   // do something
@@ -130,7 +130,7 @@ And yet another style of additional information.
 
 #### Warning
 
-Warnings can are shown typically as a box with an exclaimation mark as a symbol. 
+Warnings can are shown typically as a box with an exclaimation mark as a symbol.
 
 Here are some of the different styles of warnings you may see:
 
@@ -292,7 +292,7 @@ Now that you have PowerBake running, lets learn how to use it to manage your cus
 
 This section explains the detailed list of commands and its usages which are available for you to use.
 
-<box type="tip" seamless> 
+<box type="tip" seamless>
 
 If you are familiar with **_PowerBake_** and just need a **quick refresher** on the commands available, you can [click here](#command-summary) for the Command Summary below.
 
@@ -323,7 +323,7 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
   ```
    add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655
   ```
-  
+
 * Extraneous parameters for commands that do not take in parameters (`exit`) will be ignored.<br>
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
 </box>
@@ -550,7 +550,7 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-## Storage 
+## Storage
 
 This section will go through how order, pastry and customer details are stored.
 
@@ -559,7 +559,7 @@ This section will go through how order, pastry and customer details are stored.
 *PowerBake* data is saved automatically after any command that adds, deletes or edit. There is no need for any manual saving.
 
 
-### Editing the Data File 
+### Editing the Data File
 **CAUTION:**
 Adding data in the wrong format could lead to potential errors.
 

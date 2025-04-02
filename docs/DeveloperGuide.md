@@ -133,7 +133,7 @@ How the parsing works:
 The `Model` component,
 
 * stores the address book data.
-1. all `Person` objects (which are contained in a `UniquePersonList` object). 
+1. all `Person` objects (which are contained in a `UniquePersonList` object).
 2. all `Pastry` objects (which are contained in a `UniquePastryList` object).
 3. all `Order` objects (which are contained in a `UniqueOrderList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.

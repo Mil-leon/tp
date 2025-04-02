@@ -23,10 +23,10 @@ import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_SECOND_PASTRY;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.Messages;
@@ -35,9 +35,9 @@ import powerbake.address.logic.commands.EditCommand.EditPersonDescriptor;
 import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
 import powerbake.address.model.ModelManager;
+import powerbake.address.model.UserPrefs;
 import powerbake.address.model.order.Order;
 import powerbake.address.model.order.OrderItem;
-import powerbake.address.model.UserPrefs;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.EditPastryDescriptorBuilder;
@@ -294,24 +294,29 @@ public class EditCommandTest {
         orderItems.add(new OrderItem(pastry, 2));
         Order orderWithPerson = new Order(personToEdit, orderItems);
         model.addOrder(orderWithPerson);
-        
+
         // Prepare edit: Change the person's name
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
         EditCommand editCommand = new EditCommand("client", INDEX_FIRST_PERSON, descriptor, true);
-        
+
         // Create expected model with edited person and updated order
         Person editedPerson = new PersonBuilder(personToEdit).withName(VALID_NAME_BOB).build();
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(personToEdit, editedPerson);
-        
+
         // The expected model should have the order updated with the edited person
-        Order expectedUpdatedOrder = new Order(orderWithPerson.getOrderId(), editedPerson, orderItems, orderWithPerson.getOrderDate(), orderWithPerson.getStatus());
+        Order expectedUpdatedOrder = new Order(
+                orderWithPerson.getOrderId(),
+                editedPerson,
+                orderItems,
+                orderWithPerson.getOrderDate(),
+                orderWithPerson.getStatus());
         expectedModel.setOrder(orderWithPerson, expectedUpdatedOrder);
-        
+
         // Execute the edit command
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson));
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
-        
+
         // Additional verification: check that the order in the actual model has been updated
         Order updatedOrder = model.getFilteredOrderList().get(0);
         assertTrue(editedPerson.equals(updatedOrder.getCustomer()));

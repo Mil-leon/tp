@@ -437,27 +437,27 @@ Once `enter` is hit, a output message will be displayed of your success. Pastry 
 
 ---
 
-### Deleting Client or Pastry : `delete`
+### Deleting Client, Pastry or Order : `delete`
 
-The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients and pastries.
+The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients, pastries and orders.
 
 #### Command Usage
 
-Command: `delete client/pastry INDEX`
+Command: `delete client/pastry/order INDEX`
 
 #### Parameters:
 
-1. INDEX: Represents position of the client/pastry list that you wish to remove.
+1. INDEX: Represents position of the client/pastry/order list that you wish to remove.
 
 <box type="info" seamless>
 
 The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
-This corresponds to the position of the client/pastry displayed in list.
+This corresponds to the position of the client/pastry/order displayed in list.
 
 </box>
 
 ##### Example 1:
-If you want to remove the fifth client on the list, the command would look like this:
+If you want to remove the fifth **client** on the list, the command would look like this:
 
 ```
  delete client 5
@@ -467,7 +467,7 @@ If you want to remove the fifth client on the list, the command would look like 
 <img src="images/commands/deleteClient1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
-The remaining pastries will adjust their index numbers accordingly.
+The remaining clients will adjust their index numbers accordingly.
 
 **After:**
 <img src="images/commands/deleteClient2.png" alt="delete client" width="800"/>
@@ -480,13 +480,29 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-<img src="images/commands/deletePastry1.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry1.png" alt="delete pastry" width="800"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deletePastry2.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry2.png" alt="delete pastry" width="800"/>
+
+##### Example 3:
+If you want to remove the **third** order on the list, the command would look like this:
+
+```
+ delete order 3
+```
+
+**Before:**
+<img src="images/commands/deleteOrder1.png" alt="delete order" width="800"/>
+
+After hitting `Enter`, you will see the third order removed from the list.
+The remaining orders will adjust their index numbers accordingly.
+
+**After:**
+<img src="images/commands/deleteOrder2.png" alt="delete order" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -795,8 +811,9 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 |-----------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
 | **[Add Pastry](#adding-a-pastry-add-pastry)**                   | `add pastry NAME -pr PRICE`                                                | `add pastry Tart -pr 3.40`                                                    |
-| **[Delete Client](#deleting-client-or-pastry-delete)**          | `delete client INDEX`                                                      | `delete client 1`                                                             |
-| **[Delete Pastry](#deleting-client-or-pastry-delete)**          | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
+| **[Delete Client](#deleting-client-pastry-or-order-delete)**    | `delete client INDEX`                                                      | `delete client 1`                                                             |
+| **[Delete Pastry](#deleting-client-pastry-or-order-delete)**    | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
+| **[Delete Order](#deleting-client-pastry-or-order-delete)**     | `delete order INDEX`                                                       | `delete order 1`                                                              |
 | **[View Client](#viewing-client-or-pastry-view)**               | `view client`                                                              | `view client`                                                                 |
 | **[View Pastry](#viewing-client-or-pastry-view)**               | `view pastry`                                                              | `view pastry`                                                                 |
 | **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]` | `edit client 1 -n John -p 97432170`                                           |

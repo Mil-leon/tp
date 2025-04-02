@@ -26,7 +26,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         boolean isPastry = argMultimap.getValue(PREFIX_PASTRY_NOSPACE).isPresent();
         boolean isOrder = argMultimap.getValue(PREFIX_ORDER_NOSPACE).isPresent();
         if (!(isClient ^ isPastry ^ isOrder)
-                || !argMultimap.getPreamble().isEmpty()) {
+                || !argMultimap.getPreamble().isEmpty()
+                || (isClient & isPastry & isOrder)) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 

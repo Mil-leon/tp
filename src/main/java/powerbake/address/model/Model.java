@@ -87,6 +87,15 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
 
+    /** Returns original index of person in the full, unfiltered list */
+    int getOriginalIndex(Person person);
+
+    /** Returns original index of pastry in the full, unfiltered list */
+    int getOriginalIndex(Pastry pastry);
+
+    /** Returns original index of order in the full, unfiltered list */
+    int getOriginalIndex(Order order);
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.

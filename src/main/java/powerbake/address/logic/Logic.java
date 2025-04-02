@@ -41,6 +41,15 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of pastries */
     ObservableList<Order> getFilteredOrderList();
 
+    /** Returns original index of person in the full, unfiltered list */
+    int getOriginalIndex(Person person);
+
+    /** Returns original index of pastry in the full, unfiltered list */
+    int getOriginalIndex(Pastry pastry);
+
+    /** Returns original index of order in the full, unfiltered list */
+    int getOriginalIndex(Order order);
+
     /**
      * Returns the user prefs' address book file path.
      */

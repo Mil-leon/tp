@@ -6,8 +6,6 @@ import java.util.Arrays;
 
 import powerbake.address.logic.commands.FindCommand;
 import powerbake.address.logic.parser.exceptions.ParseException;
-import powerbake.address.model.person.NameContainsKeywordsPredicate;
-
 /**
  * Parses input arguments and creates a new FindCommand object
  */
@@ -25,9 +23,25 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        String[] nameKeywords = trimmedArgs.split("\\s+");
+        String[] splitArgs = trimmedArgs.split("\\s+");
 
-        return new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList(nameKeywords)));
+        if (splitArgs.length < 2) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
+
+        String[] nameKeywords = Arrays.copyOfRange(splitArgs, 1, splitArgs.length);
+
+        String commandWord = splitArgs[0];
+        boolean isClient = commandWord.equalsIgnoreCase("client");
+        boolean isPastry = commandWord.equalsIgnoreCase("pastry");
+        boolean isOrder = commandWord.equalsIgnoreCase("order");
+
+        if (!(isClient || isPastry || isOrder)) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
+
+        return new FindCommand(commandWord, nameKeywords);
     }
 
 }

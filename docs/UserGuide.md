@@ -778,12 +778,28 @@ If you wish to view the `order` details, the command would be:
  view order
 ```
 **Before:**
-<img src="images/commands/viewCommand3.png" alt="view order" width="800"/>
+<img src="images/commands/viewCommand3.png" alt="view order index" width="800"/>
 
 After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
 
 **After:**
-<img src="images/commands/viewCommand3b.png" alt="view order" width="800"/>
+<img src="images/commands/viewCommand3b.png" alt="view order index" width="800"/>
+
+Here, you can observe the general details regarding order, such as their order number, client name, status.
+
+##### Example 4:
+If you wish to view the specific `order` details, the command would be:
+
+```
+ view order INDEX
+```
+**Before:**
+<img src="images/commands/viewCommand4.png" alt="view order" width="800"/>
+
+After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand4b.png" alt="view order" width="800"/>
 
 Here, you can observe all the details regarding order, such as their order number, client name, pastry name, quantity and status.
 
@@ -792,7 +808,7 @@ Here, you can observe all the details regarding order, such as their order numbe
 
 Alternatively, you can switch between **client**, **pastry** and **order** by utilising the GUI button.
 
-<img src="images/commands/viewCommand4.png" alt="View using GUI" width="800"/>
+<img src="images/commands/viewCommand5.png" alt="View using GUI" width="800"/>
 
 </box>
 

@@ -231,7 +231,7 @@ This tutorial will guide you through the process of managing your bakery with **
 
 Imagine you hava a new client, **Luke**, who has just placed an order with you. Lets add him to PowerBake!
 
-To add him to PowerBake, use this [command](#glossary) in the Command Box
+To add him to PowerBake, use this command in the Command Box
 
 ```add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
 
@@ -258,7 +258,7 @@ After hitting Enter, you should see a message indicating that Luke has been succ
 
 So far we have created new a new client, **Luke**. Now, lets add a new pastry, **Croissant**, to PowerBake!
 
-To add the Croissant to PowerBake, use this [command](#glossary) in the Command Box and hit Enter:
+To add the Croissant to PowerBake, use this command in the Command Box and hit Enter:
 
 ```add pastry Croissant -pr 5.5```
 
@@ -283,14 +283,22 @@ Hitting Enter will display a message indicating that the Croissant has been **su
 
 Lets say **Luke** has placed an order for 2 **Croissants** and 2 **Apple Pies**. Lets add this order to PowerBake!
 
-To add the order to PowerBake, use this [command](#glossary) in the Command Box and hit Enter:
+First, we have to find the **index** of the client Luke using the command in the Command Box:
 
-```add order Luke -pn Croissant -q 2```
+```find client luke```
+
+<img src="images/find_luke.png" alt="Finding index of Luke" width="800"/>
+
+Here we find that the index of luke is **1**!
+
+To add the order to PowerBake, use this command in the Command Box and hit Enter:
+
+```add order 1 -pn Croissant -q 2 -pn Apple Pie -q 2```
 
 <box type="tip" >
 
 You can add multiple pastries in a single order by sequentialy pecifying the pastry and quantity for each pastry using the ```-pn``` and ```-q``` flags.
-**For Example:** ```add order Luke -pn Croissant -q 2 -pn Apple Pie -q 2 -pn Tart -q 3 ...```
+**For Example:** ```add order 1 -pn Croissant -q 2 -pn Apple Pie -q 2 -pn Tart -q 3 ...```
 
 </box>
 
@@ -301,9 +309,15 @@ This command specifies the following details about the order:
 - **Pastry:** Croissant using the ```-pn``` flag
 - **Quantity:** 2 using the ```-q``` flag
 
-Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake and the new entry should appear in the List View.
+Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake.
 
 <img src="images/added_order.png" alt="added order into powerbake" width="800"/>
+
+You can then view the order list using the command or clicking on the **order** tab:
+
+```view order```
+
+<img src="images/view_luke_order.png" alt="viewing the luke order" width="800"/>
 
 <box type="info" seamless>
 
@@ -336,7 +350,7 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   ```
-   add client NAME -p PHONE -a ADDRESS -e EMAIL -t TAGS
+   add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]
   ```
   `NAME`, `ADDRESS`, `EMAIL`, `PHONE` and `TAGS` are parameters which are to be replaced:
   ```
@@ -353,7 +367,8 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
   ```
   OR
   ```
-   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
+   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com
+  ```
 
 * Extraneous parameters for commands that do not take in parameters (`exit`) will be ignored.<br>
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
@@ -367,7 +382,7 @@ The `add client` command is essential in keeping track of your client base.
 It allows you to seamlessly add key details of your client into the record. These details will then be integrated into keeping track of orders in the future.
 
 #### Command Usage
-Command: `add client NAME -p PHONE -a ADDRESS -e EMAIL -t TAG`
+Command: `add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]`
 
 <box type="info" seamless>
 
@@ -437,7 +452,47 @@ Once `enter` is hit, a output message will be displayed of your success. Pastry 
 
 ---
 
-### Deleting Client or Pastry : `delete`
+### Adding a order: `add order`
+
+The `add order` command is essential in keeping track of your client's order.
+
+It allows you to create orders for clients with their ordered pastries.
+
+#### Command Usage
+Command: `add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]`
+
+<box type="tip" >
+
+You can add multiple pastries in a single order by sequentialy pecifying the pastry and quantity for each pastry using the ```-pn``` and ```-q``` flags.
+**For Example:** ```add order 1 -pn Croissant -q 2 -pn Apple Pie -q 2 -pn Tart -q 3 ...```
+
+</box>
+
+#### Parameters:
+
+1. `CLIENT_INDEX`: The index of the client based on the list shown
+2. `-pn PASTRY_NAME`: The name of the pastry to be added
+3. `-q Quantity`: The quantity of pastry to be added to the order
+
+##### Example:
+Adding a order for client `1` an order of `10 Brownie` and `20 Apple Pie` into PowerBake application.
+
+To add the Croissant, simply type
+`add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`
+
+**Before:**
+<img src="images/addOrderCommand1.png" alt="add order" width="800"/>
+
+Once `enter` is hit, a output message will be displayed of your success. Order details will also be displayed under the order's tab. This allows you to easily keep track of order details systematically and efficiently.
+
+**After:**
+<img src="images/addOrderCommand2.png" alt="add order result" width="800"/>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+### Deleting Client, Pastry or Order: `delete`
 
 The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients and pastries.
 
@@ -645,7 +700,7 @@ After hitting `Enter`, you will see the third order updated from the list.
 
 ---
 
-### Viewing Client or Pastry : `view`
+### Viewing Client, Pastry or Order: `view`
 
 The `view` command offers a detailed insight of the client and pastry list.
 
@@ -768,10 +823,12 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 <<<<<<< HEAD
 | Command                                                         | Usage                                                                      | Example                                                                       |
 |-----------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
 | **[Add Pastry](#adding-a-pastry-add-pastry)**                   | `add pastry NAME -pr PRICE`                                                | `add pastry Tart -pr 3.40`                                                    |
-| **[Delete Client](#deleting-client-or-pastry-delete)**          | `delete client INDEX`                                                      | `delete client 1`                                                             |
-| **[Delete Pastry](#deleting-client-or-pastry-delete)**          | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
+| **[Add Order](#adding-a-order-add-order)**                      | `add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]`                                                | `add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`                             |
+| **[Delete Client](#deleting-client-pastry-or-order-delete)**    | `delete client INDEX`                                                      | `delete client 1`                                                             |
+| **[Delete Pastry](#deleting-client-pastry-or-order-delete)**    | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
+| **[Delete Order](#deleting-client-pastry-or-order-delete)**     | `delete order INDEX`                                                      | `delete order 1`                                                             |
 | **[View Client](#viewing-client-or-pastry-view)**               | `view client`                                                              | `view client`                                                                 |
 | **[View Pastry](#viewing-client-or-pastry-view)**               | `view pastry`                                                              | `view pastry`                                                                 |
 | **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]` | `edit client 1 -n John -p 97432170`                                           |

@@ -281,7 +281,7 @@ Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
 5. -t TAG: Extra details of your client (Optional, any number of tags is allowed)
     * Example: `Spender`
 
-### Example:
+##### Example:
 Adding a client, `Luke`, into Powerbake application. He lives at `5 Sengkang Street` and his email address is `luke@gmail.com`. His phone number is `88776655`.
 
 To add luke, simply type:
@@ -312,7 +312,7 @@ Command: `add pastry NAME -pr PRICE`
 2. -pr PRICE: The price of your pastry, supports up to 2 decimal places.
     * Example: `5.50`, `5`
 
-### Example:
+##### Example:
 Adding a pastry, `Croissant`, into PowerBake application. Price is `5.50`.
 
 To add the Croissant, simply type
@@ -380,6 +380,159 @@ The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
 <img src="images/commands/deletePastry2.png" alt="delete client" width="800"/>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+### Editing Client, Pastry or Order Details : `edit`
+
+The `edit` command offers flexibility in managing details of Clients, Pastries or Orders in PowerBake.
+
+#### Command Usage
+
+To edit **Client** details: </br>
+```edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]```
+
+To edit **Pastry** details: </br>
+```edit pastry INDEX [-n NAME] [-pr PRICE]```
+
+To edit **Order** details: </br>
+```edit order INDEX -s STATUS```
+
+#### Parameters:
+
+1. `INDEX`: Represents position of the client/pastry/order list that you wish to edit.
+2. `-n NAME`: New name that you wish to edit to
+3. `-p PHONE`: New phone number that you wish to change
+4. `-e EMAIL`: New email that you wish to use
+5. `-a ADDRESS`: New address that you wish to update
+6. `-t TAGS`: New tags to be associated with the client
+7. `-n PASTRYNAME`: New pastry name to be edited to
+8. `-pr PRICE`: New price of the pastry to be updated to
+9. `-s STATUS`: New Status of the order to be updated to
+
+<box type="info" seamless>
+
+1. The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
+This corresponds to the position of the client/pastry displayed in list.
+
+2. At least one field needs to be edited.
+</box>
+
+##### Example 1:
+If you want to edit the name and phone of the first client on the list, the command would look like this:
+
+```
+ edit client 1 -n John -p 97432170
+```
+
+**Before:**
+<img src="images/commands/editCommand1.png" alt="edit client" width="800"/>
+
+After hitting `Enter`, you will see the first client edited on the list.
+
+**After:**
+<img src="images/commands/editCommand2.png" alt="edit client" width="800"/>
+
+##### Example 2:
+If you want to edit the price of the second **pastry** on the list, the command would look like this:
+
+```
+ edit pastry 2 -pr 9.00
+```
+
+**Before:**
+<img src="images/commands/editCommand3.png" alt="edit client" width="800"/>
+
+After hitting `Enter`, you will see the second pastry updated from the list.
+
+**After:**
+<img src="images/commands/editCommand4.png" alt="edit client" width="800"/>
+
+##### Example 3:
+If you want to edit the status of the third **order** on the list, the command would look like this:
+
+```
+ edit order 3 -s delivered
+```
+
+**Before:**
+<img src="images/commands/edutCommand5.png" alt="edit client" width="800"/>
+
+After hitting `Enter`, you will see the third order updated from the list.
+
+**After:**
+<img src="images/commands/editCommand6.png" alt="edit client" width="800"/>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+### Find Client, Pastry or Order : `find`
+
+The `find` command is a powerful tool to help you quickly search and locate specific client/pastry/order in PowerBake.
+
+#### Command Usage
+
+```find client/pastry/order KEYWORD [MORE_KEYWORDS]```
+
+#### Parameters:
+
+1. `client/pastry/order`: Represents which type of entity you wish to find from.
+2. `KEYWORD`: Returns searches that matches to the keyword
+
+
+<box type="info" seamless>
+
+At least one keyword needs to be provided.
+
+</box>
+
+##### Example 1:
+If you want to find the name of the first client on the list, the command would look like this:
+
+```
+find client Alex
+```
+
+**Before:**
+<img src="images/commands/editCommand1.png" alt="edit client" width="800"/>
+
+After hitting `Enter`, you will see the first client edited on the list.
+
+**After:**
+<img src="images/commands/editCommand2.png" alt="edit client" width="800"/>
+
+##### Example 2:
+If you want to find name of the second **pastry** on the list, the command would look like this:
+
+```
+ find pastry Brownie
+```
+
+**Before:**
+<img src="images/commands/editCommand3.png" alt="edit client" width="800"/>
+
+After hitting `Enter`, you will see the second pastry updated from the list.
+
+**After:**
+<img src="images/commands/editCommand4.png" alt="edit client" width="800"/>
+
+##### Example 3:
+If you want to find the third **order** on the list, the command would look like this:
+
+```
+ find order Charlotte
+```
+
+**Before:**
+<img src="images/commands/edutCommand5.png" alt="edit client" width="800"/>
+
+After hitting `Enter`, you will see the third order updated from the list.
+
+**After:**
+<img src="images/commands/editCommand6.png" alt="edit client" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -505,15 +658,21 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
-| Command                                                | Usage                                                  | Example                                                                       |
-|--------------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------|
-| **[Add Client](#adding-a-client-add-client)**          | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
-| **[Add Pastry](#adding-a-pastry-add-pastry)**          | `add pastry NAME -pr PRICE`                            | `add pastry Tart -pr 3.40`                                                    |
-| **[Delete Client](#deleting-client-or-pastry-delete)** | `delete client INDEX`                                  | `delete client 1`                                                             |
-| **[Delete Pastry](#deleting-client-or-pastry-delete)** | `delete pastry INDEX`                                  | `delete pastry 1`                                                             |
-| **[View Client](#viewing-client-or-pastry-view)**      | `view client`                                          | `view client`                                                                 |
-| **[View Pastry](#viewing-client-or-pastry-view)**      | `view pastry`                                          | `view pastry`                                                                 |
-| **[Exit](#exiting-the-program-exit)**                  | `exit`                                                 | `exit`                                                                        |
+| Command                                                         | Usage                                                                      | Example                                                                       |
+|-----------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Pastry](#adding-a-pastry-add-pastry)**                   | `add pastry NAME -pr PRICE`                                                | `add pastry Tart -pr 3.40`                                                    |
+| **[Delete Client](#deleting-client-or-pastry-delete)**          | `delete client INDEX`                                                      | `delete client 1`                                                             |
+| **[Delete Pastry](#deleting-client-or-pastry-delete)**          | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
+| **[View Client](#viewing-client-or-pastry-view)**               | `view client`                                                              | `view client`                                                                 |
+| **[View Pastry](#viewing-client-or-pastry-view)**               | `view pastry`                                                              | `view pastry`                                                                 |
+| **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]` | `edit client 1 -n John -p 97432170`                                           |
+| **[Edit Pastry](#editing-client-pastry-or-order-details-edit)** | `edit pastry INDEX [-n NAME] [-pr PRICE]`                                  | `edit pastry 2 -pr 9.00`                                                      |
+| **[Edit Order](#editing-client-pastry-or-order-details-edit)**  | `edit order INDEX -s STATUS`                                               | `edit order 3 -s delivered`                                                   |
+| **[Find Client](#find-client-pastry-or-order-find)**            | `find client KEYWORD [MORE_KEYWORD]`                                       | `find client Alex`                                                            |
+| **[Find Pastry](#find-client-pastry-or-order-find)**            | `find pastry KEYWORD [MORE_KEYWORD]`                                       | `find pastry Brownie`                                                         |
+| **[Find Order](#find-client-pastry-or-order-find)**             | `find order KEYWORD [MORE_KEYWORD]`                                        | `find order Charlotte`                                                        |
+| **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                     | `exit`                                                                        |
 
 --------------------------------------------------------------------------------------------------------------------
 

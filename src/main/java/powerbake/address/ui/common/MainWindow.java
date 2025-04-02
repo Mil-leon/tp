@@ -253,7 +253,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Listens for mouse clicks and switches tab accordingly.
-     * 
+     *
      * This fixes a bug where the {@code CommandResult}'s static variables
      * do not update upon mouse clicking the tab, which caused unwanted tab
      * switches to the last saved view upon command being entered.
@@ -263,12 +263,29 @@ public class MainWindow extends UiPart<Stage> {
             Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
             CommandResult commandResult = null;
             if (selectedTab == clientTab) {
-                commandResult = new CommandResult(String.format(ViewCommand.MESSAGE_SUCCESS, "client"), false, false, true, false, false);
-                resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+                commandResult = new CommandResult(
+                        String.format(ViewCommand.MESSAGE_SUCCESS, "client"),
+                        false,
+                        false,
+                        true,
+                        false,
+                        false);
             } else if (selectedTab == pastryTab) {
-                commandResult = new CommandResult(String.format(ViewCommand.MESSAGE_SUCCESS, "pastry"), false, false, false, true, false);
+                commandResult = new CommandResult(
+                        String.format(ViewCommand.MESSAGE_SUCCESS, "pastry"),
+                        false,
+                        false,
+                        false,
+                        true,
+                        false);
             } else {
-                commandResult = new CommandResult(String.format(ViewCommand.MESSAGE_SUCCESS, "order"), false, false, false, false, true);
+                commandResult = new CommandResult(
+                        String.format(ViewCommand.MESSAGE_SUCCESS, "order"),
+                        false,
+                        false,
+                        false,
+                        false,
+                        true);
             }
             assert commandResult != null;
             String feedbackToUser = commandResult.getFeedbackToUser();

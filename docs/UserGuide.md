@@ -19,11 +19,9 @@ No matter if you're new to the business or already have experience running a bak
 
 **_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
 
-To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](#glossary). 
-
 <box type="info" seamless>
 
-If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional GUI-based applications.
+If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional mouse-based applications.
 
 </box>
 
@@ -36,8 +34,6 @@ Using **_PowerBake_**, you can efficiently manage your bakery with:
 **_PowerBake_ is the perfect tool for small home bakery owners looking for a simple, efficient way to manage their business.**
 
 #### Prerequisite Knowledge
-
-This guide is designed to be accessible to all users, whether you’re a new or experienced user. 
 
 If you are a **new _PowerBake_** user:
 
@@ -53,7 +49,7 @@ Our goal is to make managing your bakery as smooth and efficient as possible, re
 
 **For additional information**, you may refer to the [FAQ](#faq) section or the [Known Issues](#known-issues) section.
 
-[Back to top](#user-guide)
+[^ Back to top](#powerbake-user-guide)
 
 __________________________________________________________________________________________________________________
 
@@ -73,104 +69,7 @@ On smaller screens, the **Page Navigation** menu is hidden by default. To displa
 
 ![Page Navigation Menu Hidden](images/tutorial/pageNavHidden.png)
 
-#### Hyperlinks
-
-Curious about hyperlinks? [Learn more here!](#glossary)
-
-[Hyperlinks are displayed in this style.](#links)
-
-They can also appear [**in bold**](#links), [_in italics_](#links) or [**_both!_**](#links)
-
-#### Code
-
-`Any code shown within the guide will appear in this style.`
-
-#### Code Blocks
-
-```
-/* Large blocks of code can 
-*/ be displayed in this way as well
-public static printCodeBlock (String code) {
-  // do something
-}
-```
-
-#### Information Boxes
-
-<box>
-
-This is an information box where additional details may be shared.
-
-This guide uses three types of boxes:
-* [Additional Information](#additional-information)
-* [Warning](#warning)
-* [Tips](#tips)
-</box>
-
-#### Additional Information
-
-Additional information are shown as a box with a **"i"** symbol.
-
-Here are some of the different styles of additional information you may see:
-
-<box type="info">
-
-This is an example of additional information.
-</box>
-
-<box type="info" light>
-
-Here’s another version of additional information.
-</box>
-
-<box type="info" seamless>
-
-And yet another style of additional information.
-</box>
-
-#### Warning
-
-Warnings can are shown typically as a box with an exclaimation mark as a symbol. 
-
-Here are some of the different styles of warnings you may see:
-
-<box type="warning">
-
-Warning! Please take caution!
-</box>
-
-<box type="warning" light>
-
-Warning Warning! Be alert!
-</box>
-
-<box type="warning" seamless>
-
-This is another warning style. Stay careful!
-</box>
-
-#### Tips
-
-Similarly, tips are shows within a box with a lightbulb as its symbol. These are useful **optional information** and you may skip these without any consequence.
-
-Here are some of the different styles of tips you may see:
-
-<box type="tip">
-
-Here are some useful tips. You can skip these if you're in a rush!
-</box>
-
-<box type="tip" light>
-
-These are additional tips, presented in a lighter format.
-</box>
-
-<box type="tip" seamless>
-
-And here’s another seamless format for tips.
-</box>
-
-[Return to top](#user-guide)
+[^ Back to top](#powerbake-user-guide)
 
 __________________________________________________________________________________________________________________
 
@@ -198,26 +97,22 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 <box type="info" light>
 
 **Dont Worry!** If you are not sure how to install java you can follow this [guide](https://www.java.com/en/download/help/download_options.html).
-<br>**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+
+**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 </box>
 
-1. Download the **latest** `PowerBake.jar` file from our [Github's latest release](https://github.com/AY2425S2-CS2103T-F13-2/tp/releases/latest).
+2. Download the **latest** `powerbake.jar` file from our [Github's latest release](https://github.com/AY2425S2-CS2103T-F13-2/tp/releases/latest).
 
-1. Find the file you have just downloaded. It is called `PowerBake.jar`.
-    - The file is likely to be found in your `Downloads` folder.
-    <br>([How to find the downloads folder](https://www.minitool.com/data-recovery/downloads-on-windows-mac-android-ios.html))
+3. Find the file you have just downloaded. It is called `powerbake.jar`.
 
-1. create a new folder to use as the [_home folder_](#glossary) for PowerBake.
-    - it is recommended to use a new & empty folder to prevent any data loss.
+4. Create a new folder to use as the [_home folder_](#glossary) for PowerBake.
 
-    <box type="info" seamless>
+    - It is recommended to use a new & empty folder to prevent any data loss.
+    - This folder can be created anywhere on your computer.
+<p></p>
 
-        This folder can be created anywhere on your computer
-
-    </box>
-
-1. Copy the file to the newly created folder.
+5. Copy the file to the newly created folder.
 
     <box type="info" seamless header="**How to copy the file into the new folder:**">
 
@@ -229,7 +124,7 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
     </box>
 
-1. **At the end you should have a empty folder with the `PowerBake.jar` file in it similar to this:**
+6. **At the end you should have a empty folder with the `powerbake.jar` file in it similar to this:**
 
     ![folder](images/powerbake_home_folder.png)|
 
@@ -245,7 +140,7 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
     <br>
 
-    <box type="tip" seamless header="**How to use the terminal:**">
+    <box type="info" seamless header="**How to use the terminal:**">
 
     If you are unsure about how to use the terminal you can follow this [guide](https://cs.colby.edu/maxwell/courses/tutorials/terminal).
 
@@ -265,26 +160,26 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
     </box>
 
-1. run the following command to start PowerBake:
+1. Run the following command to start PowerBake:
 
     ```
-    java -jar PowerBake.jar
+    java -jar powerbake.jar
     ```
 
-1. After a breif moment, you should see a window similar to this:
+1. After a brief moment, you should see a window similar to this:
 
-    <box type="info" light>
+    ![PowerBake](images/powerbake_home_page.png)
 
-    the first time you run PowerBake, it will contain [sample data](#glossary).<br>
+    <box type="info" seamless>
+
+    The first time you run PowerBake, it will contain [sample data](#glossary).<br>
     This helps you understand how the entries will appear and how the app will feel like when you start using it.
 
     </box>
 
-    ![PowerBake](images/powerbake_home_page.png)
-
 Now that you have PowerBake running, lets learn how to use it to manage your customers and orders in this [tutorial!](#tutorial)
 
-[Back to top](#powerbake-user-guide)
+[^ Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
 

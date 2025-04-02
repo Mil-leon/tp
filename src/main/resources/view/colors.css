@@ -1,0 +1,20 @@
+.root {
+    -dark-gray: #282A36;
+    -purple: #43287c;
+    -purple-border: #8876E6;
+    -dark-purple-border: rgba(136, 118, 230, 0.7); /* #8876E6, 70% opacity */
+    -purple-gray: #372f5e;
+    -dark-orange: #8d520f;
+    -orange: #F5911B;
+    -orange-border: rgba(245, 145, 27, 0.5);
+    -dark-orange-border: rgba(245, 145, 27, 0.1);
+    -orange-gray: #3b352d;
+    -yellow: #F8F189;
+
+    -status-pending: #C04F15;
+    -status-processing: #3c95be;
+    -status-ready: #00B050;
+    -status-cancelled: #828282;
+    -status-delivered: #3b9764;
+}
+

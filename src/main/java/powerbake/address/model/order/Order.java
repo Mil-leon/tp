@@ -92,6 +92,18 @@ public class Order {
                 .sum();
     }
 
+    /**
+     * Returns true if both orders have id.
+     */
+    public boolean isSameOrder(Order otherOrder) {
+        if (otherOrder == this) {
+            return true;
+        }
+
+        return otherOrder != null
+                && otherOrder.getOrderId().equals(this.getOrderId());
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {

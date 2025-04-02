@@ -45,12 +45,22 @@ public class AddOrderCommand extends AddCommand {
     private final ArrayList<ArrayList<String>> unformattedOrderList;
 
     /**
-     * Creates an AddOrderCommand to add the specified {@code Order}
+     * Creates an AddOrderCommand to add index and unformattedOrderList to generate {@code Order}
      */
     public AddOrderCommand(Index index, ArrayList<ArrayList<String>> unformattedOrderList) {
         requireNonNull(index);
         clientIndex = index;
         this.unformattedOrderList = unformattedOrderList;
+    }
+
+    /**
+     * Creates an AddOrderCommand to add the specified {@code Order}
+     */
+    public AddOrderCommand(Order order) {
+        requireNonNull(order);
+        toAddOrder = order;
+        clientIndex = null;
+        unformattedOrderList = null;
     }
 
     @Override

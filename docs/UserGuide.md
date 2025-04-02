@@ -661,24 +661,25 @@ After hitting `Enter`, you will see the third order updated from the list.
 
 ---
 
-### Viewing Client or Pastry : `view`
+### Viewing Client, Pastry or Order : `view`
 
-The `view` command offers a detailed insight of the client and pastry list.
+The `view` command offers a detailed insight of the client, pastry and order lists.
 
-An in-depth look to access client information easily, or to access the types of pastries available.
+An in-depth look to access client information, types of pastries available and orders made thus far.
 
 #### Command Usage
 
-**Command**: `view client/pastry`
+**Command**: `view client/pastry/order`
 
 #### Parameters:
 
 1. client: Access the client list.
 2. pastry: Access the pastry list.
+3. order: Access the order list
 
 <box type="info" seamless>
 
-The `view` command allows only either viewing client or viewing pastry.
+The `view` command allows only either viewing client, or viewing pastry, or viewing order.
 
 </box>
 
@@ -814,8 +815,9 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | **[Delete Client](#deleting-client-pastry-or-order-delete)**    | `delete client INDEX`                                                      | `delete client 1`                                                             |
 | **[Delete Pastry](#deleting-client-pastry-or-order-delete)**    | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
 | **[Delete Order](#deleting-client-pastry-or-order-delete)**     | `delete order INDEX`                                                       | `delete order 1`                                                              |
-| **[View Client](#viewing-client-or-pastry-view)**               | `view client`                                                              | `view client`                                                                 |
-| **[View Pastry](#viewing-client-or-pastry-view)**               | `view pastry`                                                              | `view pastry`                                                                 |
+| **[View Client](#viewing-client-pastry-or-order-view)**         | `view client`                                                              | `view client`                                                                 |
+| **[View Pastry](#viewing-client-pastry-or-order-view)**         | `view pastry`                                                              | `view pastry`                                                                 |
+| **[View Order](#viewing-client-pastry-or-order-view)**          | `view order`                                                               | `view order`                                                                  |
 | **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]` | `edit client 1 -n John -p 97432170`                                           |
 | **[Edit Pastry](#editing-client-pastry-or-order-details-edit)** | `edit pastry INDEX [-n NAME] [-pr PRICE]`                                  | `edit pastry 2 -pr 9.00`                                                      |
 | **[Edit Order](#editing-client-pastry-or-order-details-edit)**  | `edit order INDEX -s STATUS`                                               | `edit order 3 -s delivered`                                                   |

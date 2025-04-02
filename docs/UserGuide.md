@@ -357,13 +357,13 @@ If you want to remove the fifth client on the list, the command would look like 
 ```
 
 **Before:**
-<img src="images/commands/deleteCommand1.png" alt="delete client" width="800"/>
+<img src="images/commands/deleteClient1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteCommand2.png" alt="delete client" width="800"/>
+<img src="images/commands/deleteClient2.png" alt="delete client" width="800"/>
 
 ##### Example 2:
 If you want to remove the second **pastry** on the list, the command would look like this:
@@ -373,13 +373,13 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-<img src="images/commands/deleteCommand3.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteCommand4.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry2.png" alt="delete client" width="800"/>
 
 [Go to Command Summary](#command-summary)
 

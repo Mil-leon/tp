@@ -550,12 +550,12 @@ If you want to edit the price of the second **pastry** on the list, the command 
 ```
 
 **Before:**
-<img src="images/commands/editCommand3.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand3.png" alt="edit pastry" width="800"/>
 
 After hitting `Enter`, you will see the second pastry updated from the list.
 
 **After:**
-<img src="images/commands/editCommand4.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand4.png" alt="edit pastry" width="800"/>
 
 ##### Example 3:
 If you want to edit the status of the third **order** on the list, the command would look like this:
@@ -565,12 +565,12 @@ If you want to edit the status of the third **order** on the list, the command w
 ```
 
 **Before:**
-<img src="images/commands/edutCommand5.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand5.png" alt="edit order" width="800"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 
 **After:**
-<img src="images/commands/editCommand6.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand6.png" alt="edit order" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -604,12 +604,12 @@ find client Alex
 ```
 
 **Before:**
-<img src="images/commands/editCommand1.png" alt="edit client" width="800"/>
+<img src="images/commands/find_client1.png" alt="find client" width="800"/>
 
 After hitting `Enter`, you will see the first client edited on the list.
 
 **After:**
-<img src="images/commands/editCommand2.png" alt="edit client" width="800"/>
+<img src="images/commands/find_client2.png" alt="find client" width="800"/>
 
 ##### Example 2:
 If you want to find name of the second **pastry** on the list, the command would look like this:
@@ -619,12 +619,12 @@ If you want to find name of the second **pastry** on the list, the command would
 ```
 
 **Before:**
-<img src="images/commands/editCommand3.png" alt="edit client" width="800"/>
+<img src="images/commands/find_pastry1.png" alt="find pastry" width="800"/>
 
 After hitting `Enter`, you will see the second pastry updated from the list.
 
 **After:**
-<img src="images/commands/editCommand4.png" alt="edit client" width="800"/>
+<img src="images/commands/find_pastry2.png" alt="find pastry" width="800"/>
 
 ##### Example 3:
 If you want to find the third **order** on the list, the command would look like this:
@@ -634,12 +634,12 @@ If you want to find the third **order** on the list, the command would look like
 ```
 
 **Before:**
-<img src="images/commands/edutCommand5.png" alt="edit client" width="800"/>
+<img src="images/commands/find_order1.png" alt="find order" width="800"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 
 **After:**
-<img src="images/commands/editCommand6.png" alt="edit client" width="800"/>
+<img src="images/commands/find_order2.png" alt="find order" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -672,10 +672,14 @@ If you wish to view the `client` details, the command would be:
 ```
  view client
 ```
-
+**Before:**
 <img src="images/commands/viewCommand1.png" alt="view client" width="800"/>
 
 After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand1b.png" alt="view client" width="800"/>
+
 Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
 
 ##### Example 2:
@@ -685,16 +689,38 @@ If you wish to view the `pastry` details, the command would be:
  view pastry
 ```
 
+**Before:**
 <img src="images/commands/viewCommand2.png" alt="view pastry" width="800"/>
 
 After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand2b.png" alt="view pastry" width="800"/>
+
 Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.
+
+##### Example 3:
+If you wish to view the `order` details, the command would be:
+
+```
+ view order
+```
+**Before:**
+<img src="images/commands/viewCommand3.png" alt="view order" width="800"/>
+
+After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand3b.png" alt="view order" width="800"/>
+
+Here, you can observe all the details regarding order, such as their order number, client name, pastry name, quantity and status.
+
 
 <box type="tip" seamless>
 
-Alternatively, you can switch between **client** and **pastry** by utilising the GUI button.
+Alternatively, you can switch between **client**, **pastry** and **order** by utilising the GUI button.
 
-<img src="images/commands/viewCommand3.png" alt="delete client" width="800"/>
+<img src="images/commands/viewCommand4.png" alt="View using GUI" width="800"/>
 
 </box>
 
@@ -726,7 +752,7 @@ The `exit` command does not require any parameters.
 
 ---
 
-## Storage 
+## Storage
 
 This section will go through how order, pastry and customer details are stored.
 
@@ -765,7 +791,6 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
-<<<<<<< HEAD
 | Command                                                         | Usage                                                                      | Example                                                                       |
 |-----------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |

@@ -189,6 +189,21 @@ public class OrderTest {
     }
 
     @Test
+    public void isSameObject_returnsTrue() {
+        Order order = new Order(customer, orderItems);
+
+        assertTrue(order.isSameOrder(order));
+    }
+
+    @Test
+    public void isNullObject_returnsFalse() {
+        Order order = new Order(customer, orderItems);
+
+        assertFalse(order.isSameOrder(null));
+    }
+
+
+    @Test
     public void hashCode_sameOrderId_returnsSameHashCode() {
         OrderId orderId = new OrderId();
         Order order1 = new Order(orderId, customer, orderItems, LocalDateTime.now(), OrderStatus.PENDING);

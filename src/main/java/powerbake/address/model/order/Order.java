@@ -84,6 +84,20 @@ public class Order {
     }
 
     /**
+     * Returns if status is valid.
+     */
+    public static boolean isValidStatus(String status) {
+        return switch (status) {
+        case "PENDING" -> true;
+        case "PROCESSING" -> true;
+        case "READY" -> true;
+        case "DELIVERED" -> true;
+        case "CANCELLED" -> true;
+        default -> false;
+        };
+    }
+
+    /**
      * Calculates the total price of the order based on all order items.
      */
     public double getTotalPrice() {

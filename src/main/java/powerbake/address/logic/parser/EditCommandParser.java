@@ -7,6 +7,7 @@ import static powerbake.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PRICE;
+import static powerbake.address.logic.parser.CliSyntax.PREFIX_STATUS;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -16,6 +17,7 @@ import java.util.Set;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.commands.EditCommand;
+import powerbake.address.logic.commands.EditCommand.EditOrderDescriptor;
 import powerbake.address.logic.commands.EditCommand.EditPastryDescriptor;
 import powerbake.address.logic.commands.EditCommand.EditPersonDescriptor;
 import powerbake.address.logic.parser.exceptions.ParseException;
@@ -34,7 +36,7 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
-                args, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_PRICE, PREFIX_TAG, PREFIX_NAME
+                args, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_PRICE, PREFIX_TAG, PREFIX_NAME, PREFIX_STATUS
         );
 
         String[] preambleTokens = argMultimap.getPreamble().split("\\s+");
@@ -43,7 +45,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         String entityType = preambleTokens[0].trim().toLowerCase();
-        if (!(entityType.equals("client") || entityType.equals("pastry"))) {
+        if (!(entityType.equals("client") || entityType.equals("pastry") || entityType.equals("order"))) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
 
@@ -54,12 +56,15 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_PRICE, PREFIX_TAG);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
+                PREFIX_PRICE, PREFIX_TAG, PREFIX_STATUS);
 
         if (entityType.equals("client")) {
             return parseEditClientCommand(argMultimap, index);
-        } else {
+        } else if (entityType.equals("pastry")) {
             return parseEditPastryCommand(argMultimap, index);
+        } else {
+            return parseEditOrderCommand(argMultimap, index);
         }
     }
 
@@ -108,6 +113,23 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         return new EditCommand("pastry", index, editPastryDescriptor, false);
+    }
+
+    /**
+     * Parses arguments to create an EditCommand for an order.
+     */
+    private EditCommand parseEditOrderCommand(ArgumentMultimap argMultimap, Index index) throws ParseException {
+        EditOrderDescriptor editOrderDescriptor = new EditOrderDescriptor();
+
+        if (argMultimap.getValue(PREFIX_STATUS).isPresent()) {
+            editOrderDescriptor.setStatus(ParserUtil.parseOrderStatus(argMultimap.getValue(PREFIX_STATUS).get()));
+        }
+
+        if (!editOrderDescriptor.isAnyFieldEdited()) {
+            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED_ORDER);
+        }
+
+        return new EditCommand("order", index, editOrderDescriptor, false);
     }
 
     /**

@@ -84,21 +84,6 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public int getOriginalIndex(Person person) {
-        return model.getOriginalIndex(person);
-    }
-
-    @Override
-    public int getOriginalIndex(Pastry pastry) {
-        return model.getOriginalIndex(pastry);
-    }
-
-    @Override
-    public int getOriginalIndex(Order order) {
-        return model.getOriginalIndex(order);
-    }
-
-    @Override
     public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();
     }

@@ -219,7 +219,9 @@ Now that you have PowerBake running, lets learn how to use it to manage your cus
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Tutorial - Managing your Bakery with PowerBake!
+## Tutorial
+
+### Managing your Bakery with PowerBake!
 
 This tutorial will guide you through the process of managing your bakery with **PowerBake**. When you're done you'll be familiar with the typical workflow of PowerBake!
 

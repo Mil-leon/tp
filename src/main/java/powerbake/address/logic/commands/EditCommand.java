@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.CollectionUtil;
@@ -15,6 +16,7 @@ import powerbake.address.commons.util.ToStringBuilder;
 import powerbake.address.logic.Messages;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.Model;
+import powerbake.address.model.order.Order;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
@@ -111,6 +113,23 @@ public class EditCommand extends Command {
         }
 
         model.setPerson(personToEdit, editedPerson);
+        // Update all orders that reference this person
+        Stream<Order> ordersStream = model.getFilteredOrderList().stream();
+        ordersStream.filter((order) -> order.getCustomer().equals(personToEdit))
+            .forEach((order) -> {
+                model.setOrder(
+                        order,
+                        new Order(
+                            order.getOrderId(),
+                            editedPerson,
+                            order.getOrderItems(),
+                            order.getOrderDate(),
+                            order.getStatus()
+                            )
+                    );
+            }
+            );
+
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson)));
     }

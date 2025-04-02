@@ -443,12 +443,12 @@ If you want to edit the price of the second **pastry** on the list, the command 
 ```
 
 **Before:**
-<img src="images/commands/editCommand3.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand3.png" alt="edit pastry" width="800"/>
 
 After hitting `Enter`, you will see the second pastry updated from the list.
 
 **After:**
-<img src="images/commands/editCommand4.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand4.png" alt="edit pastry" width="800"/>
 
 ##### Example 3:
 If you want to edit the status of the third **order** on the list, the command would look like this:
@@ -458,12 +458,12 @@ If you want to edit the status of the third **order** on the list, the command w
 ```
 
 **Before:**
-<img src="images/commands/editCommand5.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand5.png" alt="edit order" width="800"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 
 **After:**
-<img src="images/commands/editCommand6.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand6.png" alt="edit order" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -497,12 +497,12 @@ find client Alex
 ```
 
 **Before:**
-<img src="images/commands/editCommand1.png" alt="edit client" width="800"/>
+<img src="images/commands/find_client1.png" alt="find client" width="800"/>
 
 After hitting `Enter`, you will see the first client edited on the list.
 
 **After:**
-<img src="images/commands/editCommand2.png" alt="edit client" width="800"/>
+<img src="images/commands/find_client2.png" alt="find client" width="800"/>
 
 ##### Example 2:
 If you want to find name of the second **pastry** on the list, the command would look like this:
@@ -512,12 +512,12 @@ If you want to find name of the second **pastry** on the list, the command would
 ```
 
 **Before:**
-<img src="images/commands/editCommand3.png" alt="edit client" width="800"/>
+<img src="images/commands/find_pastry1.png" alt="find pastry" width="800"/>
 
 After hitting `Enter`, you will see the second pastry updated from the list.
 
 **After:**
-<img src="images/commands/editCommand4.png" alt="edit client" width="800"/>
+<img src="images/commands/find_pastry2.png" alt="find pastry" width="800"/>
 
 ##### Example 3:
 If you want to find the third **order** on the list, the command would look like this:
@@ -527,12 +527,12 @@ If you want to find the third **order** on the list, the command would look like
 ```
 
 **Before:**
-<img src="images/commands/edutCommand5.png" alt="edit client" width="800"/>
+<img src="images/commands/find_order1.png" alt="find order" width="800"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 
 **After:**
-<img src="images/commands/editCommand6.png" alt="edit client" width="800"/>
+<img src="images/commands/find_order2.png" alt="find order" width="800"/>
 
 [Go to Command Summary](#command-summary)
 

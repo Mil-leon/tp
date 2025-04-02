@@ -6,6 +6,7 @@ import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY_NAME;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_QUANTITY;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import powerbake.address.commons.core.index.Index;
@@ -79,6 +80,7 @@ public class AddOrderCommand extends AddCommand {
     }
 
     private Person getValidClient(Model model) throws CommandException {
+        requireNonNull(clientIndex);
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (clientIndex.getZeroBased() >= lastShownList.size()) {
@@ -91,16 +93,25 @@ public class AddOrderCommand extends AddCommand {
     private ArrayList<OrderItem> getValidOrderItems(Model model) throws CommandException {
         List<Pastry> lastShownList = model.getFilteredPastryList();
         ArrayList<OrderItem> orderItems = new ArrayList<>();
+        requireNonNull(unformattedOrderList);
+        HashSet<String> uniquePastryNames = new HashSet<>();
+
         for (ArrayList<String> order : unformattedOrderList) {
+            // Check for valid pastry name
             if (lastShownList.stream().noneMatch(pastry -> pastry.getName().toString().equals(order.get(0)))) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED);
             }
-            // let any positive quantity pass by for now, fix by v1.5
             Pastry pastry = lastShownList.stream().filter(p -> p.getName().toString().equals(order.get(0)))
                     .findFirst().get();
+
+            // Check for duplicates
+            if (uniquePastryNames.contains(pastry.getName().toString())) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED);
+            }
             int quantity = Integer.parseInt(order.get(1));
             OrderItem newOrder = new OrderItem(pastry, quantity);
             orderItems.add(newOrder);
+            uniquePastryNames.add(pastry.getName().toString());
         }
 
         return orderItems;

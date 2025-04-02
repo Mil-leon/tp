@@ -102,6 +102,8 @@ This is a tip you can follow for your convenience!
 
 __________________________________________________________________________________________________________________
 
+<div style="page-break-after: always;"></div>
+
 ## Getting Started
 
 Lets learn how to get started with **PowerBake**! This guide will walk you through on how to [**install the application**](#installation) and
@@ -118,6 +120,8 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Installation
 
@@ -155,9 +159,11 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
 6. **At the end you should have a empty folder with the `powerbake.jar` file in it similar to this:**
 
-    <img src="images/powerbake_home_folder.png" alt="add client command" width="800"/>
+    <img src="images/powerbake_home_folder.png" alt="add client command" width="600"/>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Starting PowerBake
 
@@ -197,7 +203,7 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
 1. After a brief moment, you should see a window similar to this:
 
-    <img src="images/powerbake_home_page.png" alt="add client command" width="800"/>
+    <img src="images/powerbake_home_page.png" alt="add client command" width="600"/>
 
     <box type="info" seamless>
 
@@ -219,6 +225,8 @@ Now that you have PowerBake running, lets learn how to use it to manage your cus
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Tutorial
 
 ### Managing your Bakery with PowerBake!
@@ -235,7 +243,7 @@ To add him to PowerBake, use this command in the Command Box
 
 ```add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
 
-<img src="images/add_luke.png" alt="Add Luke" width="800"/>
+<img src="images/add_luke.png" alt="Add Luke" width="600"/>
 
 This command specifies the following details about Luke:
 - **Name:** Luke
@@ -245,7 +253,7 @@ This command specifies the following details about Luke:
 
 After hitting Enter, you should see a message indicating that Luke has been successfully added to PowerBake and the new entry should appear in the List View.
 
-<img src="images/added_luke.png" alt="added luke into powerbake" width="800"/>
+<img src="images/added_luke.png" alt="added luke into powerbake" width="600"/>
 
 1. The **Result Display Box** will show a message indicating that Luke has been successfully added.
 1. The **List View** will display the details of Luke.
@@ -262,7 +270,7 @@ To add the Croissant to PowerBake, use this command in the Command Box and hit E
 
 ```add pastry Croissant -pr 5.5```
 
-<img src="images/add_pastry.png" alt="Adding Croissant into powerbake" width="800"/>
+<img src="images/add_pastry.png" alt="Adding Croissant into powerbake" width="700"/>
 
 This command specifies the following details about the Croissant:
 - **Name:** Croissant
@@ -270,7 +278,7 @@ This command specifies the following details about the Croissant:
 
 Hitting Enter will display a message indicating that the Croissant has been **successfully added** to PowerBake and the new entry should appear in the List View.
 
-<img src="images/added_pastry.png" alt="added Croissant into powerbake" width="800"/>
+<img src="images/added_pastry.png" alt="added Croissant into powerbake" width="600"/>
 
 1. The **Result Display Box** will show a message indicating that the Croissant has been successfully added.
 1. The **List View** will display the details of the Croissant.
@@ -287,7 +295,7 @@ First, we have to find the **index** of the client Luke using the command in the
 
 ```find client luke```
 
-<img src="images/find_luke.png" alt="Finding index of Luke" width="800"/>
+<img src="images/find_luke.png" alt="Finding index of Luke" width="600"/>
 
 Here we find that the index of luke is **1**!
 
@@ -302,7 +310,7 @@ You can add multiple pastries in a single order by sequentialy pecifying the pas
 
 </box>
 
-<img src="images/add_order.png" alt="Adding order into powerbake" width="800"/>
+<img src="images/add_order.png" alt="Adding order into powerbake" width="600"/>
 
 This command specifies the following details about the order:
 - **Client:** Luke using the **index** of the client
@@ -311,13 +319,13 @@ This command specifies the following details about the order:
 
 Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake.
 
-<img src="images/added_order.png" alt="added order into powerbake" width="800"/>
+<img src="images/added_order.png" alt="added order into powerbake" width="600"/>
 
 You can then view the order list using the command or clicking on the **order** tab:
 
 ```view order```
 
-<img src="images/view_luke_order.png" alt="viewing the luke order" width="800"/>
+<img src="images/view_luke_order.png" alt="viewing the luke order" width="600"/>
 
 <box type="info" seamless>
 
@@ -333,6 +341,8 @@ New Orders **automatically** have the status of **Pending**.
 [^ Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -374,6 +384,7 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
 </box>
 
+<div style="page-break-after: always;"></div>
 
 ### Adding a Client: `add client`
 
@@ -410,13 +421,17 @@ To add luke, simply type:
 `add client Luke -p 88776655 -a 5 Sengkang Street -e luke@gmail.com`
 
 **Before:**
-<img src="images/addclient1.png" alt="add client command" width="800"/>
+<img src="images/addclient1.png" alt="add client command" width="600"/>
 
 Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab.
 This allows you to easily keep track of client details systematically and efficiently.
 
 **After:**
-<img src="images/addclient2.png" alt="add client result" width="800"/>
+<img src="images/addclient2.png" alt="add client result" width="600"/>
+
+---
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a Pastry: `add pastry`
 
@@ -441,16 +456,17 @@ To add the Croissant, simply type
 `add pastry Croissant -pr 5.5`
 
 **Before:**
-<img src="images/addpastry1.png" alt="add pastry" width="800"/>
+<img src="images/addpastry1.png" alt="add pastry" width="600"/>
 
 Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
 
 **After:**
-<img src="images/addpastry2.png" alt="add pastry result" width="800"/>
+<img src="images/addpastry2.png" alt="add pastry result" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
+<div style="page-break-after: always;"></div>
 
 ### Adding a order: `add order`
 
@@ -481,16 +497,18 @@ To add the Croissant, simply type
 `add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`
 
 **Before:**
-<img src="images/addOrderCommand1.png" alt="add order" width="800"/>
+<img src="images/addOrderCommand1.png" alt="add order" width="600"/>
 
 Once `enter` is hit, a output message will be displayed of your success. Order details will also be displayed under the order's tab. This allows you to easily keep track of order details systematically and efficiently.
 
 **After:**
-<img src="images/addOrderCommand2.png" alt="add order result" width="800"/>
+<img src="images/addOrderCommand2.png" alt="add order result" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Deleting Client, Pastry or Order: `delete`
 
@@ -519,13 +537,13 @@ If you want to remove the fifth **client** on the list, the command would look l
 ```
 
 **Before:**
-<img src="images/commands/deleteClient1.png" alt="delete client" width="800"/>
+<img src="images/commands/deleteClient1.png" alt="delete client" width="600"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
 The remaining clients will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteClient2.png" alt="delete client" width="800"/>
+<img src="images/commands/deleteClient2.png" alt="delete client" width="600"/>
 
 ##### Example 2:
 If you want to remove the second **pastry** on the list, the command would look like this:
@@ -535,13 +553,13 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-<img src="images/commands/deletePastry1.png" alt="delete pastry" width="800"/>
+<img src="images/commands/deletePastry1.png" alt="delete pastry" width="600"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deletePastry2.png" alt="delete pastry" width="800"/>
+<img src="images/commands/deletePastry2.png" alt="delete pastry" width="600"/>
 
 ##### Example 3:
 If you want to remove the **third** order on the list, the command would look like this:
@@ -551,17 +569,19 @@ If you want to remove the **third** order on the list, the command would look li
 ```
 
 **Before:**
-<img src="images/commands/deleteOrder1.png" alt="delete order" width="800"/>
+<img src="images/commands/deleteOrder1.png" alt="delete order" width="600"/>
 
 After hitting `Enter`, you will see the third order removed from the list.
 The remaining orders will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteOrder2.png" alt="delete order" width="800"/>
+<img src="images/commands/deleteOrder2.png" alt="delete order" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Editing Client, Pastry or Order Details : `edit`
 
@@ -606,12 +626,12 @@ If you want to edit the name and phone of the first client on the list, the comm
 ```
 
 **Before:**
-<img src="images/commands/editCommand1.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand1.png" alt="edit client" width="600"/>
 
 After hitting `Enter`, you will see the first client edited on the list.
 
 **After:**
-<img src="images/commands/editCommand2.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand2.png" alt="edit client" width="600"/>
 
 ##### Example 2:
 If you want to edit the price of the second **pastry** on the list, the command would look like this:
@@ -621,12 +641,12 @@ If you want to edit the price of the second **pastry** on the list, the command 
 ```
 
 **Before:**
-<img src="images/commands/editCommand3.png" alt="edit pastry" width="800"/>
+<img src="images/commands/editCommand3.png" alt="edit pastry" width="600"/>
 
 After hitting `Enter`, you will see the second pastry updated from the list.
 
 **After:**
-<img src="images/commands/editCommand4.png" alt="edit pastry" width="800"/>
+<img src="images/commands/editCommand4.png" alt="edit pastry" width="600"/>
 
 ##### Example 3:
 If you want to edit the status of the third **order** on the list, the command would look like this:
@@ -636,16 +656,18 @@ If you want to edit the status of the third **order** on the list, the command w
 ```
 
 **Before:**
-<img src="images/commands/editCommand5.png" alt="edit order" width="800"/>
+<img src="images/commands/editCommand5.png" alt="edit order" width="600"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 
 **After:**
-<img src="images/commands/editCommand6.png" alt="edit order" width="800"/>
+<img src="images/commands/editCommand6.png" alt="edit order" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Find Client, Pastry or Order : `find`
 
@@ -675,12 +697,12 @@ find client Alex
 ```
 
 **Before:**
-<img src="images/commands/find_client1.png" alt="find client" width="800"/>
+<img src="images/commands/find_client1.png" alt="find client" width="600"/>
 
 After hitting `Enter`, you will see the first client edited on the list.
 
 **After:**
-<img src="images/commands/find_client2.png" alt="find client" width="800"/>
+<img src="images/commands/find_client2.png" alt="find client" width="600"/>
 
 ##### Example 2:
 If you want to find name of the second **pastry** on the list, the command would look like this:
@@ -690,12 +712,12 @@ If you want to find name of the second **pastry** on the list, the command would
 ```
 
 **Before:**
-<img src="images/commands/find_pastry1.png" alt="find pastry" width="800"/>
+<img src="images/commands/find_pastry1.png" alt="find pastry" width="600"/>
 
 After hitting `Enter`, you will see the second pastry updated from the list.
 
 **After:**
-<img src="images/commands/find_pastry2.png" alt="find pastry" width="800"/>
+<img src="images/commands/find_pastry2.png" alt="find pastry" width="600"/>
 
 ##### Example 3:
 If you want to find the third **order** on the list, the command would look like this:
@@ -705,16 +727,18 @@ If you want to find the third **order** on the list, the command would look like
 ```
 
 **Before:**
-<img src="images/commands/find_order1.png" alt="find order" width="800"/>
+<img src="images/commands/find_order1.png" alt="find order" width="600"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 
 **After:**
-<img src="images/commands/find_order2.png" alt="find order" width="800"/>
+<img src="images/commands/find_order2.png" alt="find order" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ### Viewing Client, Pastry or Order : `view`
 
@@ -745,12 +769,12 @@ If you wish to view the `client` details, the command would be:
  view client
 ```
 **Before:**
-<img src="images/commands/viewCommand1.png" alt="view client" width="800"/>
+<img src="images/commands/viewCommand1.png" alt="view client" width="600"/>
 
 After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
 
 **After:**
-<img src="images/commands/viewCommand1b.png" alt="view client" width="800"/>
+<img src="images/commands/viewCommand1b.png" alt="view client" width="600"/>
 
 Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
 
@@ -762,12 +786,12 @@ If you wish to view the `pastry` details, the command would be:
 ```
 
 **Before:**
-<img src="images/commands/viewCommand2.png" alt="view pastry" width="800"/>
+<img src="images/commands/viewCommand2.png" alt="view pastry" width="600"/>
 
 After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
 
 **After:**
-<img src="images/commands/viewCommand2b.png" alt="view pastry" width="800"/>
+<img src="images/commands/viewCommand2b.png" alt="view pastry" width="600"/>
 
 Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.
 
@@ -778,12 +802,12 @@ If you wish to view the `order` details, the command would be:
  view order
 ```
 **Before:**
-<img src="images/commands/viewCommand3.png" alt="view order index" width="800"/>
+<img src="images/commands/viewCommand3.png" alt="view order index" width="600"/>
 
 After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
 
 **After:**
-<img src="images/commands/viewCommand3b.png" alt="view order index" width="800"/>
+<img src="images/commands/viewCommand3b.png" alt="view order index" width="600"/>
 
 Here, you can observe the general details regarding order, such as their order number, client name, status.
 
@@ -794,12 +818,12 @@ If you wish to view the specific `order` details, the command would be:
  view order INDEX
 ```
 **Before:**
-<img src="images/commands/viewCommand4.png" alt="view order" width="800"/>
+<img src="images/commands/viewCommand4.png" alt="view order" width="600"/>
 
 After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
 
 **After:**
-<img src="images/commands/viewCommand4b.png" alt="view order" width="800"/>
+<img src="images/commands/viewCommand4b.png" alt="view order" width="600"/>
 
 Here, you can observe all the details regarding order, such as their order number, client name, pastry name, quantity and status.
 
@@ -808,7 +832,7 @@ Here, you can observe all the details regarding order, such as their order numbe
 
 Alternatively, you can switch between **client**, **pastry** and **order** by utilising the GUI button.
 
-<img src="images/commands/viewCommand5.png" alt="View using GUI" width="800"/>
+<img src="images/commands/viewCommand5.png" alt="View using GUI" width="600"/>
 
 </box>
 
@@ -816,7 +840,7 @@ Alternatively, you can switch between **client**, **pastry** and **order** by ut
 
 ---
 
-
+<div style="page-break-after: always;"></div>
 
 ### Exiting the program : `exit`
 
@@ -839,6 +863,8 @@ The `exit` command does not require any parameters.
 [Go to Command Summary](#command-summary)
 
 ---
+
+<div style="page-break-after: always;"></div>
 
 ## Storage
 
@@ -864,6 +890,8 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
@@ -877,6 +905,8 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 | Command                                                         | Usage                                                                                 | Example                                                                       |
@@ -900,6 +930,8 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Glossary
 

@@ -282,15 +282,19 @@ Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
     * Example: `Spender`
 
 ### Example:
-Adding a client, **Luke**, into Powerbake application. He lives at **5 Sengkang Street** and his email address is **luke@gmail.com**. His phone number is **88776655**.
+Adding a client, `Luke`, into Powerbake application. He lives at `5 Sengkang Street` and his email address is `luke@gmail.com`. His phone number is `88776655`.
 
 To add luke, simply type:
 `add client Luke -a 5 Sengkang Street -e luke@gmail.com -p 88776655`
 
-![Adding luke into powerbake](images/addclient1.png)
+**Before:**
+<img src="images/addclient1.png" alt="add client command" width="800"/>
 
-Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. This allows you to easily keep track of client details systematically and efficiently.
-![Successfully added luke into powerbake](images/addclient2.png)
+Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. 
+This allows you to easily keep track of client details systematically and efficiently.
+
+**After:**
+<img src="images/addclient2.png" alt="add client result" width="800"/>
 
 ### Adding a Pastry: `add pastry`
 
@@ -309,15 +313,18 @@ Command: `add pastry NAME -pr PRICE`
     * Example: `5.50`, `5`
 
 ### Example:
-Adding a pastry, **Croissant**, into PowerBake application. Price is 5.50.
+Adding a pastry, `Croissant`, into PowerBake application. Price is `5.50`.
 
 To add the Croissant, simply type
 `add pastry Croissant -pr 5.5`
 
-![Adding Croissant into powerbake](images/addpastry1.png)
+**Before:**
+<img src="images/addpastry1.png" alt="add pastry" width="800"/>
 
 Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
-![Successfully added Croissant into powerbake](images/addpastry2.png)
+
+**After:**
+<img src="images/addpastry2.png" alt="add pastry result" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -329,11 +336,11 @@ The `delete` command is an essential tool in PowerBake, as it helps you maintain
 
 #### Command Usage
 
-**Command**: `delete client/pastry INDEX`
+Command: `delete client/pastry INDEX`
 
 #### Parameters:
 
-* **INDEX**: Represents position of the client/pastry list that you wish to remove.
+1. INDEX: Represents position of the client/pastry list that you wish to remove.
 
 <box type="info" seamless>
 
@@ -343,20 +350,20 @@ This corresponds to the position of the client/pastry displayed in list.
 </box>
 
 ##### Example 1:
-If you want to remove the fifth **client** on the list, the command would look like this:
+If you want to remove the fifth client on the list, the command would look like this:
 
 ```
  delete client 5
 ```
 
 **Before:**
-![Delete Command](images/commands/deleteCommand1.png)
+<img src="images/commands/deleteCommand1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-![Delete Command](images/commands/deleteCommand2.png)
+<img src="images/commands/deleteCommand2.png" alt="delete client" width="800"/>
 
 ##### Example 2:
 If you want to remove the second **pastry** on the list, the command would look like this:
@@ -366,13 +373,13 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-![Delete Command](images/commands/deleteCommand3.png)
+<img src="images/commands/deleteCommand3.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-![Delete Command](images/commands/deleteCommand4.png)
+<img src="images/commands/deleteCommand4.png" alt="delete client" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -390,8 +397,8 @@ An in-depth look to access client information easily, or to access the types of 
 
 #### Parameters:
 
-* **client**: Access the client list.
-* **pastry**: Access the pastry list.
+1. client: Access the client list.
+2. pastry: Access the pastry list.
 
 <box type="info" seamless>
 
@@ -400,25 +407,25 @@ The `view` command allows only either viewing client or viewing pastry.
 </box>
 
 ##### Example 1:
-If you wish to view the **client** details, the command would be:
+If you wish to view the `client` details, the command would be:
 
 ```
  view client
 ```
 
-![View Command](images/commands/viewCommand1.png)
+<img src="images/commands/viewCommand1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
 Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
 
 ##### Example 2:
-If you wish to view the **pastry** details, the command would be:
+If you wish to view the `pastry` details, the command would be:
 
 ```
  view pastry
 ```
 
-![View Command](images/commands/viewCommand2.png)
+<img src="images/commands/viewCommand2.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
 Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.
@@ -427,7 +434,7 @@ Here, you can observe all the details regarding pastry, such as the name and the
 
 Alternatively, you can switch between **client** and **pastry** by utilising the GUI button.
 
-![View Command](images/commands/viewCommand3.png)
+<img src="images/commands/viewCommand3.png" alt="delete client" width="800"/>
 
 </box>
 
@@ -459,21 +466,6 @@ The `exit` command does not require any parameters.
 
 ---
 
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
-
 ## Storage 
 
 This section will go through how order, pastry and customer details are stored.
@@ -487,7 +479,12 @@ This section will go through how order, pastry and customer details are stored.
 **CAUTION:**
 Adding data in the wrong format could lead to potential errors.
 
-*PowerBake* data is saved in [FILE LOCATION]/data/addressbook.json, experienced users can add or delete clients and pastries within the json file.
+*PowerBake* data is saved in `[JAR file location]/data/addressbook.json`., experienced users can add or delete clients and pastries within the json file.
+
+**Caution:**
+If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</box>
 
 
 

@@ -126,7 +126,7 @@ public class EditCommand extends Command {
                             order.getOrderDate(),
                             order.getStatus()
                             )
-                    );
+                        );
             }
             );
 

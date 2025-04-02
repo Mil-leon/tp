@@ -1,37 +1,27 @@
 package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static powerbake.address.testutil.Assert.assertThrows;
-import static powerbake.address.testutil.TypicalPersons.ALICE;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import powerbake.address.commons.core.GuiSettings;
-import powerbake.address.commons.core.index.Index;
-import powerbake.address.logic.Messages;
-import powerbake.address.logic.commands.exceptions.CommandException;
-import powerbake.address.logic.parser.ParserUtil;
 import powerbake.address.model.AddressBook;
 import powerbake.address.model.Model;
 import powerbake.address.model.ReadOnlyAddressBook;
 import powerbake.address.model.ReadOnlyUserPrefs;
 import powerbake.address.model.order.Order;
-import powerbake.address.model.order.OrderItem;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.OrderBuilder;
-import powerbake.address.testutil.PastryBuilder;
-import powerbake.address.testutil.PersonBuilder;
 
 public class AddOrderCommandTest {
 

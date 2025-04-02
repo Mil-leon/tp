@@ -11,7 +11,7 @@
 <div style="page-break-after: always;"></div>
 
 ## **Introduction**
-This User Guide is designed to help you **get started with _PowerBake_**, a valuable tool for managing your bakery's clients, pastries, and orders.
+This User Guide isrdesigned to help you **get started with _PowerBake_**, a valuable tool for managing your bakery's clients, pastries, and orders.
 
 No matter if you're new to the business or already have experience running a bakery, this guide will be your go-to resource for efficiently tracking clients, pastries, and orders.
 
@@ -155,7 +155,7 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
 6. **At the end you should have a empty folder with the `powerbake.jar` file in it similar to this:**
 
-    <img src="images/powerbake_home_folder.png" alt="add client command" width="800"/>
+    ![folder](images/powerbake_home_folder.png)|
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -197,7 +197,7 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
 1. After a brief moment, you should see a window similar to this:
 
-    <img src="images/powerbake_home_page.png" alt="add client command" width="800"/>
+    ![PowerBake](images/powerbake_home_page.png)
 
     <box type="info" seamless>
 
@@ -206,115 +206,7 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
     </box>
 
-    | Index | Component Name              | Description                                                   |
-    |-------|-----------------------------|---------------------------------------------------------------|
-    |1      | Command Box                 | You can type commands here and press `Enter` to execute them. |
-    |2      | Result Display Box          | Displays the result of executing a command.                   |
-    |3      | Current View                | Displays which tab you are currently viewing                  |
-    |4      | List View                   | Displays the information of the tab you have currently open   |
-
 Now that you have PowerBake running, lets learn how to use it to manage your customers and orders in this [tutorial!](#tutorial)
-
-[^ Back to top](#powerbake-user-guide)
-
---------------------------------------------------------------------------------------------------------------------
-
-## Tutorial
-
-### Managing your Bakery with PowerBake!
-
-This tutorial will guide you through the process of managing your bakery with **PowerBake**. When you're done you'll be familiar with the typical workflow of PowerBake!
-
-### Step 1: Adding a Client
-
-**Purpose:** Before we can start managing our bakery, we need to have a list of our [clients](#glossary).
-
-Imagine you hava a new client, **Luke**, who has just placed an order with you. Lets add him to PowerBake!
-
-To add him to PowerBake, use this [command](#glossary) in the Command Box
-
-```add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
-
-<img src="images/add_luke.png" alt="Add Luke" width="800"/>
-
-This command specifies the following details about Luke:
-- **Name:** Luke
-- **Phone Number:** 88776655 using the ```-p``` flag
-- **Address:** 5 Punggol Street using the ```-a``` flag
-- **Email**: luke@gmail.com using the ```-e``` flag
-
-After hitting Enter, you should see a message indicating that Luke has been successfully added to PowerBake and the new entry should appear in the List View.
-
-<img src="images/added_luke.png" alt="added luke into powerbake" width="800"/>
-
-1. The **Result Display Box** will show a message indicating that Luke has been successfully added.
-1. The **List View** will display the details of Luke.
-
-**Congrats!** You have successfully added your first client to PowerBake!
-
-### Step 2: Adding a Pastry
-
-**Purpose:** Now that we have a client, we need to add the pastries that we offer to our clients.
-
-So far we have created new a new client, **Luke**. Now, lets add a new pastry, **Croissant**, to PowerBake!
-
-To add the Croissant to PowerBake, use this [command](#glossary) in the Command Box and hit Enter:
-
-```add pastry Croissant -pr 5.5```
-
-<img src="images/add_pastry.png" alt="Adding Croissant into powerbake" width="800"/>
-
-This command specifies the following details about the Croissant:
-- **Name:** Croissant
-- **Price:** $5.50 using the ```-pr``` flag
-
-Hitting Enter will display a message indicating that the Croissant has been **successfully added** to PowerBake and the new entry should appear in the List View.
-
-<img src="images/added_pastry.png" alt="added Croissant into powerbake" width="800"/>
-
-1. The **Result Display Box** will show a message indicating that the Croissant has been successfully added.
-1. The **List View** will display the details of the Croissant.
-
-**Nice!** You have successfully added your **first pastry** to PowerBake!
-
-### Step 3: Adding an Order
-
-**Purpose:** Now that we have a **client** and a **pastry**, we can start taking **orders!**
-
-Lets say **Luke** has placed an order for 2 **Croissants** and 2 **Apple Pies**. Lets add this order to PowerBake!
-
-To add the order to PowerBake, use this [command](#glossary) in the Command Box and hit Enter:
-
-```add order Luke -pn Croissant -q 2```
-
-<box type="tip" >
-
-You can add multiple pastries in a single order by sequentialy pecifying the pastry and quantity for each pastry using the ```-pn``` and ```-q``` flags.
-**For Example:** ```add order Luke -pn Croissant -q 2 -pn Apple Pie -q 2 -pn Tart -q 3 ...```
-
-</box>
-
-<img src="images/add_order.png" alt="Adding order into powerbake" width="800"/>
-
-This command specifies the following details about the order:
-- **Client:** Luke using the **index** of the client
-- **Pastry:** Croissant using the ```-pn``` flag
-- **Quantity:** 2 using the ```-q``` flag
-
-Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake and the new entry should appear in the List View.
-
-<img src="images/added_order.png" alt="added order into powerbake" width="800"/>
-
-<box type="info" seamless>
-
-New Orders **automatically** have the status of **Pending**.
-
-</box>
-
-1. The **Result Display Box** will show a message indicating that the order has been successfully added.
-1. The **List View** will display the details of the order.
-
-**Good Job!** You have successfully added your **first order** to PowerBake! With this knowledge, you can now manage your bakery efficiently!
 
 [^ Back to top](#powerbake-user-guide)
 
@@ -336,24 +228,25 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   ```
-   add client NAME -p PHONE -a ADDRESS -e EMAIL -t TAGS
+   add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS
   ```
   `NAME`, `ADDRESS`, `EMAIL`, `PHONE` and `TAGS` are parameters which are to be replaced:
   ```
-   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com -t client
+   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client
   ```
 
 * Words in `[Square Brackets]` are **optional parameters**.<br>
   ```
-   add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]
+   add client NAME -a ADDRESS -e EMAIL -p PHONE [-t TAGS]
   ```
   `TAGS` is optional. You can use it like:
   ```
-   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com -t client
+   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client
   ```
   OR
   ```
-   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
+   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655
+  ```
 
 * Extraneous parameters for commands that do not take in parameters (`exit`) will be ignored.<br>
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
@@ -367,7 +260,7 @@ The `add client` command is essential in keeping track of your client base.
 It allows you to seamlessly add key details of your client into the record. These details will then be integrated into keeping track of orders in the future.
 
 #### Command Usage
-Command: `add client NAME -p PHONE -a ADDRESS -e EMAIL -t TAG`
+Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
 
 <box type="info" seamless>
 
@@ -392,7 +285,7 @@ Command: `add client NAME -p PHONE -a ADDRESS -e EMAIL -t TAG`
 Adding a client, `Luke`, into Powerbake application. He lives at `5 Sengkang Street` and his email address is `luke@gmail.com`. His phone number is `88776655`.
 
 To add luke, simply type:
-`add client Luke -p 88776655 -a 5 Sengkang Street -e luke@gmail.com`
+`add client Luke -a 5 Sengkang Street -e luke@gmail.com -p 88776655`
 
 **Before:**
 <img src="images/addclient1.png" alt="add client command" width="800"/>
@@ -694,7 +587,7 @@ Here, you can observe all the details regarding pastry, such as the name and the
 
 Alternatively, you can switch between **client** and **pastry** by utilising the GUI button.
 
-<img src="images/commands/viewCommand3.png" alt="delete client" width="800"/>
+<img src="images/commands/viewCommand3.png" alt="GUI button" width="800"/>
 
 </box>
 
@@ -726,7 +619,7 @@ The `exit` command does not require any parameters.
 
 ---
 
-## Storage 
+## Storage
 
 This section will go through how order, pastry and customer details are stored.
 
@@ -765,7 +658,6 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
-<<<<<<< HEAD
 | Command                                                         | Usage                                                                      | Example                                                                       |
 |-----------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |

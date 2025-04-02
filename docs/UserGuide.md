@@ -752,7 +752,7 @@ The `exit` command does not require any parameters.
 
 ---
 
-## Storage 
+## Storage
 
 This section will go through how order, pastry and customer details are stored.
 

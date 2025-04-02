@@ -10,6 +10,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import powerbake.address.commons.core.LogsCenter;
+import powerbake.address.logic.Logic;
 import powerbake.address.model.order.Order;
 import powerbake.address.ui.UiPart;
 import powerbake.address.ui.pastrytab.PastryListPanel;
@@ -19,7 +20,9 @@ import powerbake.address.ui.pastrytab.PastryListPanel;
  */
 public class OrderListPanel extends UiPart<Region> {
     private static final String FXML = "OrderListPanel.fxml";
+    private static final String CSS_BORDER = "-fx-border-width: 1px 1px 1px 1px;";
     private final Logger logger = LogsCenter.getLogger(PastryListPanel.class);
+    private final Logic logic;
 
     @FXML
     private ListView<Order> orderListView;
@@ -29,8 +32,11 @@ public class OrderListPanel extends UiPart<Region> {
     /**
      * Creates a {@code OrderListPanel} with the given {@code ObservableList}.
      */
-    public OrderListPanel(ObservableList<Order> orderList) {
+    public OrderListPanel(Logic logic) {
         super(FXML);
+        this.logic = logic;
+
+        ObservableList<Order> orderList = logic.getFilteredOrderList();
         orderListView.setItems(orderList);
         orderListView.setCellFactory(listView -> new OrderListViewCell());
 
@@ -59,13 +65,16 @@ public class OrderListPanel extends UiPart<Region> {
             if (empty || order == null) {
                 setGraphic(null);
                 setText(null);
-            } else {
-                setGraphic(new OrderCard(order, getIndex() + 1).getRoot());
-                setPrefHeight(70.0);
-                if (getIndex() == 0) {
-                    setStyle("-fx-border-width: 1px 1px 1px 1px;");
-                }
+                return;
+            }
+
+            int originalIndex = logic.getOriginalIndex(order);
+            setGraphic(new OrderCard(order, originalIndex + 1).getRoot());
+            setPrefHeight(70.0);
+            if (getIndex() == 0) {
+                setStyle(CSS_BORDER);
             }
         }
     }
+
 }

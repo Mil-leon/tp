@@ -61,7 +61,11 @@ public class ViewCommand extends Command {
         } else if (type.equals("pastry")) {
             model.updateFilteredPastryList(PREDICATE_SHOW_ALL_PASTRIES);
         } else if (type.equals("order")) {
-            model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+            if (index != null) {
+                // do nothing
+            } else {
+                model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+            }
         } else {
             // invalid type
             throw new CommandException(MESSAGE_USAGE);

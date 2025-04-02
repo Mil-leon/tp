@@ -27,9 +27,10 @@ public class ViewCommand extends Command {
             + COMMAND_WORD + " client (OR) "
             + COMMAND_WORD + " pastry (OR) "
             + COMMAND_WORD + " order (OR) "
-            + COMMAND_WORD + " order <index>";
+            + COMMAND_WORD + " order INDEX (must be a positive integer)";
 
     public static final String MESSAGE_SUCCESS = "Viewing full %1$s list";
+    public static final String MESSAGE_SUCCESS_INDEX = "Viewing %1$s at index %2$d";
 
     private final String type;
     private final Index index;
@@ -70,7 +71,7 @@ public class ViewCommand extends Command {
             if (index.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
             }
-            return new CommandResult(String.format(MESSAGE_SUCCESS, type), false, false,
+            return new CommandResult(String.format(MESSAGE_SUCCESS_INDEX, type, index.getOneBased()), false, false,
             type.equals("client"), type.equals("pastry"), type.equals("order"), index.getZeroBased());
         } else {
             return new CommandResult(String.format(MESSAGE_SUCCESS, type), false, false,

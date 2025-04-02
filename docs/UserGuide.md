@@ -413,7 +413,7 @@ If you wish to view the `client` details, the command would be:
  view client
 ```
 
-<img src="images/commands/viewCommand1.png" alt="delete client" width="800"/>
+<img src="images/commands/viewCommand1.png" alt="view client" width="800"/>
 
 After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
 Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
@@ -425,7 +425,7 @@ If you wish to view the `pastry` details, the command would be:
  view pastry
 ```
 
-<img src="images/commands/viewCommand2.png" alt="delete client" width="800"/>
+<img src="images/commands/viewCommand2.png" alt="view pastry" width="800"/>
 
 After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
 Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.

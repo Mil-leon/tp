@@ -29,7 +29,7 @@ public class ViewCommand extends Command {
             + COMMAND_WORD + " order (OR) "
             + COMMAND_WORD + " order <index>";
 
-    public static final String MESSAGE_SUCCESS = "Viewing full %1$s list";
+    public static final String MESSAGE_SUCCESS = "Viewing specific full %1$s list";
 
     private final String type;
     private final Index index;

@@ -35,6 +35,8 @@ Using **_PowerBake_**, you can efficiently manage your bakery with:
 
 #### Prerequisite Knowledge
 
+This guide is designed to be accessible to all users, whether you’re a new or experienced user. 
+
 If you are a **new _PowerBake_** user:
 
 - Do refer to the [Glossary](#glossary) section to understand the key terminologies used in the guide.
@@ -68,6 +70,33 @@ To quickly jump between sections, use the **Page Navigation** menu located on th
 On smaller screens, the **Page Navigation** menu is hidden by default. To display it, simply click the three-dot icon in the upper right corner.
 
 ![Page Navigation Menu Hidden](images/tutorial/pageNavHidden.png)
+
+#### Additional Info
+
+Additional information are shown as a box with a **"i"** symbol. 
+
+<box type="info" light>
+
+This is an example of additional information.
+</box>
+
+#### Warnings
+
+Warnings can are shown typically as a box with an exclamation mark as a symbol. 
+
+<box type="warning">
+
+This is another warning style. Stay careful!
+</box>
+
+#### Tips
+
+Similarly, tips are shows within a box with a lightbulb as its symbol.
+
+<box type="tip" light>
+
+This is a tip you can follow for your convenience!
+</box>
 
 [^ Back to top](#powerbake-user-guide)
 

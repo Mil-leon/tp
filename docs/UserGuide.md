@@ -357,13 +357,13 @@ If you want to remove the fifth client on the list, the command would look like 
 ```
 
 **Before:**
-<img src="images/commands/deleteCommand1.png" alt="delete client" width="800"/>
+<img src="images/commands/deleteClient1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteCommand2.png" alt="delete client" width="800"/>
+<img src="images/commands/deleteClient2.png" alt="delete client" width="800"/>
 
 ##### Example 2:
 If you want to remove the second **pastry** on the list, the command would look like this:
@@ -373,13 +373,13 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-<img src="images/commands/deleteCommand3.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteCommand4.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry2.png" alt="delete client" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -566,7 +566,7 @@ If you wish to view the `client` details, the command would be:
  view client
 ```
 
-<img src="images/commands/viewCommand1.png" alt="delete client" width="800"/>
+<img src="images/commands/viewCommand1.png" alt="view client" width="800"/>
 
 After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
 Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
@@ -578,7 +578,7 @@ If you wish to view the `pastry` details, the command would be:
  view pastry
 ```
 
-<img src="images/commands/viewCommand2.png" alt="delete client" width="800"/>
+<img src="images/commands/viewCommand2.png" alt="view pastry" width="800"/>
 
 After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
 Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.

@@ -494,25 +494,25 @@ Once `enter` is hit, a output message will be displayed of your success. Order d
 
 ### Deleting Client, Pastry or Order: `delete`
 
-The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients and pastries.
+The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients, pastries and orders.
 
 #### Command Usage
 
-Command: `delete client/pastry INDEX`
+Command: `delete client/pastry/order INDEX`
 
 #### Parameters:
 
-1. INDEX: Represents position of the client/pastry list that you wish to remove.
+1. INDEX: Represents position of the client/pastry/order list that you wish to remove.
 
 <box type="info" seamless>
 
 The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
-This corresponds to the position of the client/pastry displayed in list.
+This corresponds to the position of the client/pastry/order displayed in list.
 
 </box>
 
 ##### Example 1:
-If you want to remove the fifth client on the list, the command would look like this:
+If you want to remove the fifth **client** on the list, the command would look like this:
 
 ```
  delete client 5
@@ -522,7 +522,7 @@ If you want to remove the fifth client on the list, the command would look like 
 <img src="images/commands/deleteClient1.png" alt="delete client" width="800"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
-The remaining pastries will adjust their index numbers accordingly.
+The remaining clients will adjust their index numbers accordingly.
 
 **After:**
 <img src="images/commands/deleteClient2.png" alt="delete client" width="800"/>
@@ -535,13 +535,29 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-<img src="images/commands/deletePastry1.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry1.png" alt="delete pastry" width="800"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deletePastry2.png" alt="delete client" width="800"/>
+<img src="images/commands/deletePastry2.png" alt="delete pastry" width="800"/>
+
+##### Example 3:
+If you want to remove the **third** order on the list, the command would look like this:
+
+```
+ delete order 3
+```
+
+**Before:**
+<img src="images/commands/deleteOrder1.png" alt="delete order" width="800"/>
+
+After hitting `Enter`, you will see the third order removed from the list.
+The remaining orders will adjust their index numbers accordingly.
+
+**After:**
+<img src="images/commands/deleteOrder2.png" alt="delete order" width="800"/>
 
 [Go to Command Summary](#command-summary)
 
@@ -700,24 +716,25 @@ After hitting `Enter`, you will see the third order updated from the list.
 
 ---
 
-### Viewing Client, Pastry or Order: `view`
+### Viewing Client, Pastry or Order : `view`
 
-The `view` command offers a detailed insight of the client and pastry list.
+The `view` command offers a detailed insight of the client, pastry and order lists.
 
-An in-depth look to access client information easily, or to access the types of pastries available.
+An in-depth look to access client information, types of pastries available and orders made thus far.
 
 #### Command Usage
 
-**Command**: `view client/pastry`
+**Command**: `view client/pastry/order`
 
 #### Parameters:
 
 1. client: Access the client list.
 2. pastry: Access the pastry list.
+3. order: Access the order list
 
 <box type="info" seamless>
 
-The `view` command allows only either viewing client or viewing pastry.
+The `view` command allows only either viewing client, or viewing pastry, or viewing order.
 
 </box>
 
@@ -846,25 +863,25 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
-| Command                                                         | Usage                                                                      | Example                                                                       |
-|-----------------------------------------------------------------|----------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-| **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]`                     | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
-| **[Add Pastry](#adding-a-pastry-add-pastry)**                   | `add pastry NAME -pr PRICE`                                                | `add pastry Tart -pr 3.40`                                                    |
-| **[Add Order](#adding-a-order-add-order)**                      | `add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]`                                                | `add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`                             |
-| **[Delete Client](#deleting-client-pastry-or-order-delete)**    | `delete client INDEX`                                                      | `delete client 1`                                                             |
-| **[Delete Pastry](#deleting-client-pastry-or-order-delete)**    | `delete pastry INDEX`                                                      | `delete pastry 1`                                                             |
-| **[Delete Order](#deleting-client-pastry-or-order-delete)**     | `delete order INDEX`                                                      | `delete order 1`                                                             |
-| **[View Client](#viewing-client-pastry-or-order-view)**         | `view client`                                                              | `view client`                                                                 |
-| **[View Pastry](#viewing-client-pastry-or-order-view)**         | `view pastry`                                                              | `view pastry`                                                                 |
-| **[View Order](#viewing-client-pastry-or-order-view)**          | `view Order`                                                              | `view Order`                                                                 |
-| **[View Specific Order](#viewing-client-pastry-or-order-view)** | `view Order INDEX`                                                         | `view Order 1`                                                                 |
-| **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]` | `edit client 1 -n John -p 97432170`                                           |
-| **[Edit Pastry](#editing-client-pastry-or-order-details-edit)** | `edit pastry INDEX [-n NAME] [-pr PRICE]`                                  | `edit pastry 2 -pr 9.00`                                                      |
-| **[Edit Order](#editing-client-pastry-or-order-details-edit)**  | `edit order INDEX -s STATUS`                                               | `edit order 3 -s delivered`                                                   |
-| **[Find Client](#find-client-pastry-or-order-find)**            | `find client KEYWORD [MORE_KEYWORD]`                                       | `find client Alex`                                                            |
-| **[Find Pastry](#find-client-pastry-or-order-find)**            | `find pastry KEYWORD [MORE_KEYWORD]`                                       | `find pastry Brownie`                                                         |
-| **[Find Order](#find-client-pastry-or-order-find)**             | `find order KEYWORD [MORE_KEYWORD]`                                        | `find order Charlotte`                                                        |
-| **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                     | `exit`                                                                        |
+| Command                                                         | Usage                                                                                 | Example                                                                       |
+|-----------------------------------------------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]`                              | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Pastry](#adding-a-pastry-add-pastry)**                   | `add pastry NAME -pr PRICE`                                                           | `add pastry Tart -pr 3.40`                                                    |
+| **[Add Order](#adding-a-order-add-order)**                      | `add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]`    | `add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`                           |
+| **[Delete Client](#deleting-client-pastry-or-order-delete)**    | `delete client INDEX`                                                                 | `delete client 1`                                                             |
+| **[Delete Pastry](#deleting-client-pastry-or-order-delete)**    | `delete pastry INDEX`                                                                 | `delete pastry 1`                                                             |
+| **[Delete Order](#deleting-client-pastry-or-order-delete)**     | `delete order INDEX`                                                                  | `delete order 1`                                                              |
+| **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]`            | `edit client 1 -n John -p 97432170`                                           |
+| **[Edit Pastry](#editing-client-pastry-or-order-details-edit)** | `edit pastry INDEX [-n NAME] [-pr PRICE]`                                             | `edit pastry 2 -pr 9.00`                                                      |
+| **[Edit Order](#editing-client-pastry-or-order-details-edit)**  | `edit order INDEX -s STATUS`                                                          | `edit order 3 -s delivered`                                                   |
+| **[Find Client](#find-client-pastry-or-order-find)**            | `find client KEYWORD [MORE_KEYWORD]`                                                  | `find client Alex`                                                            |
+| **[Find Pastry](#find-client-pastry-or-order-find)**            | `find pastry KEYWORD [MORE_KEYWORD]`                                                  | `find pastry Brownie`                                                         |
+| **[Find Order](#find-client-pastry-or-order-find)**             | `find order KEYWORD [MORE_KEYWORD]`                                                   | `find order Charlotte`                                                        |
+| **[View Client](#viewing-client-pastry-or-order-view)**         | `view client`                                                                         | `view client`                                                                 |
+| **[View Pastry](#viewing-client-pastry-or-order-view)**         | `view pastry`                                                                         | `view pastry`                                                                 |
+| **[View Order](#viewing-client-pastry-or-order-view)**          | `view order`                                                                          | `view order`                                                                  |
+| **[View Specific Order](#viewing-client-pastry-or-order-view)** | `view order INDEX`                                                                    | `view order 1`                                                                |
+| **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
 
 --------------------------------------------------------------------------------------------------------------------
 

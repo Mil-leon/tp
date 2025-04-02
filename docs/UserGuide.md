@@ -458,7 +458,7 @@ If you want to edit the status of the third **order** on the list, the command w
 ```
 
 **Before:**
-<img src="images/commands/edutCommand5.png" alt="edit client" width="800"/>
+<img src="images/commands/editCommand5.png" alt="edit client" width="800"/>
 
 After hitting `Enter`, you will see the third order updated from the list.
 

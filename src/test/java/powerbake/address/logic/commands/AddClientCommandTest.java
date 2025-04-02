@@ -181,7 +181,23 @@ public class AddClientCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        @Override
         public ObservableList<Order> getFilteredOrderList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getOriginalIndex(Person person) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getOriginalIndex(Pastry pastry) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getOriginalIndex(Order order) {
             throw new AssertionError("This method should not be called.");
         }
 

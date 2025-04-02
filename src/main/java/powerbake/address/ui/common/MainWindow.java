@@ -255,8 +255,8 @@ public class MainWindow extends UiPart<Stage> {
      * Listens for mouse clicks and switches tab accordingly.
      * 
      * This fixes a bug where the {@code CommandResult}'s static variables
-     * do not update upon mouse clicking the tab, which caused random tab
-     * switches upon command being entered.
+     * do not update upon mouse clicking the tab, which caused unwanted tab
+     * switches to the last saved view upon command being entered.
      */
     private void setTabClickListener() {
         tabPane.setOnMouseClicked(event -> {

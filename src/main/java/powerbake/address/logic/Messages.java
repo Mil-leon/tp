@@ -21,6 +21,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX = "The pastry index provided is invalid";
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED = "The pastry name provided is invalid";
+    public static final String MESSAGE_REPEATED_PASTRY_IN_ORDER = "The pastry name is repeated in order command";
     public static final String MESSAGE_INVALID_ORDER_DISPLAYED_INDEX = "The order index provided is invalid";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastries listed!";

@@ -106,7 +106,7 @@ public class AddOrderCommand extends AddCommand {
 
             // Check for duplicates
             if (uniquePastryNames.contains(pastry.getName().toString())) {
-                throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED);
+                throw new CommandException(Messages.MESSAGE_REPEATED_PASTRY_IN_ORDER);
             }
             int quantity = Integer.parseInt(order.get(1));
             OrderItem newOrder = new OrderItem(pastry, quantity);

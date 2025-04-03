@@ -1,8 +1,6 @@
 package powerbake.address.logic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static powerbake.address.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
-import static powerbake.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static powerbake.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static powerbake.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static powerbake.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
@@ -55,13 +53,16 @@ public class LogicManagerTest {
     @Test
     public void execute_invalidCommandFormat_throwsParseException() {
         String invalidCommand = "uicfhmowqewca";
-        assertParseException(invalidCommand, MESSAGE_UNKNOWN_COMMAND);
+        assertParseException(invalidCommand, Messages.MESSAGE_UNKNOWN_COMMAND);
     }
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = "delete client 1";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandException(deleteCommand, String.format(
+                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     @Test

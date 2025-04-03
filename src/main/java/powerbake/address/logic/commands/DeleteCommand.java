@@ -124,7 +124,10 @@ public class DeleteCommand extends Command {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(
+                        Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                        Messages.MESSAGE_INVALID_INDEX)
+                    );
         }
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
@@ -143,7 +146,10 @@ public class DeleteCommand extends Command {
         List<Pastry> lastShownList = model.getFilteredPastryList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX);
+            throw new CommandException(String.format(
+                        Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
+                        Messages.MESSAGE_INVALID_INDEX)
+                    );
         }
 
         Pastry pastryToDelete = lastShownList.get(targetIndex.getZeroBased());
@@ -162,7 +168,10 @@ public class DeleteCommand extends Command {
         List<Order> lastShownList = model.getFilteredOrderList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+            throw new CommandException(String.format(
+                        Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
+                        Messages.MESSAGE_INVALID_INDEX)
+                    );
         }
 
         Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());

@@ -1,7 +1,6 @@
 package powerbake.address.logic.parser;
 
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static powerbake.address.logic.Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX;
 import static powerbake.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -59,22 +58,31 @@ public class ViewCommandParserTest {
     @Test
     public void parse_invalidIndex_failure() {
         // invalid index
-        assertParseFailure(parser, "order 0",
-                String.format(MESSAGE_INVALID_ORDER_DISPLAYED_INDEX, ParserUtil.MESSAGE_INVALID_INDEX));
+        assertParseFailure(parser, "order 0", String.format(
+                    MESSAGE_INVALID_COMMAND_FORMAT,
+                    ParserUtil.MESSAGE_INVALID_INDEX
+                    )
+                    + "\n" + ViewCommand.MESSAGE_USAGE);
     }
 
     @Test
     public void parse_invalidIndexNegative_failure() {
         // invalid index
-        assertParseFailure(parser, "order -1",
-                String.format(MESSAGE_INVALID_ORDER_DISPLAYED_INDEX, ParserUtil.MESSAGE_INVALID_INDEX));
+        assertParseFailure(parser, "order -1", String.format(
+                    MESSAGE_INVALID_COMMAND_FORMAT,
+                    ParserUtil.MESSAGE_INVALID_INDEX
+                    )
+                    + "\n" + ViewCommand.MESSAGE_USAGE);
     }
 
     @Test
     public void parse_invalidIndexNonNumeric_failure() {
         // invalid index
-        assertParseFailure(parser, "order a",
-                String.format(MESSAGE_INVALID_ORDER_DISPLAYED_INDEX, ParserUtil.MESSAGE_INVALID_INDEX));
+        assertParseFailure(parser, "order a", String.format(
+                    MESSAGE_INVALID_COMMAND_FORMAT,
+                    ParserUtil.MESSAGE_INVALID_INDEX
+                    )
+                    + "\n" + ViewCommand.MESSAGE_USAGE);
     }
 
     @Test

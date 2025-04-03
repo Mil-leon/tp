@@ -19,6 +19,7 @@ No matter if you're new to the business or already have experience running a bak
 
 **_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
 
+
 <box type="info" seamless>
 
 If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional mouse-based applications.

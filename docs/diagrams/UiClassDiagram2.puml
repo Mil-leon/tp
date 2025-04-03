@@ -1,0 +1,36 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+package UI <<Rectangle>>{
+    Class "{abstract}\nUiPart" as UiPart
+    Class MainWindow
+    Class HelpWindow
+    Class ResultDisplay
+    Class PersonListPanel
+    Class PastryListPanel
+    Class OrderListPanel
+    Class OrderDetailsPanel
+    Class PersonCard
+    Class PastryCard
+    Class OrderCard
+    Class StatusBarFooter
+    Class CommandBox
+}
+
+MainWindow -right-|> UiPart
+CommandBox -up-|> UiPart
+HelpWindow -down-|> UiPart
+StatusBarFooter -down-|> UiPart
+ResultDisplay -down-|> UiPart
+PersonListPanel -down-|> UiPart
+PastryListPanel -down-|> UiPart
+OrderDetailsPanel -left-|> UiPart
+PersonCard -up-|> UiPart
+PastryCard -up-|> UiPart
+OrderListPanel -up-|> UiPart
+OrderCard -up-|> UiPart
+
+@enduml

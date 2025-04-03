@@ -18,16 +18,23 @@ public class Messages {
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
-    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The person index provided is invalid";
+    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The client index provided is invalid";
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX = "The pastry index provided is invalid";
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED = "The pastry name provided is invalid";
     public static final String MESSAGE_REPEATED_PASTRY_IN_ORDER = "The pastry name is repeated in order command";
     public static final String MESSAGE_INVALID_ORDER_DISPLAYED_INDEX = "The order index provided is invalid";
-    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
+    public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d client listed!";
     public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastries listed!";
+    public static final String MESSAGE_ORDERS_LISTED_OVERVIEW = "%1$d orders listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_ENTITY = "Invalid entity. Only 'client' and 'pastry' are supported.";
+    public static final String MESSAGE_CONSTRAINTS_ORDERSTATUS =
+            "Order status should only be either: pending, "
+                    + "processing, "
+                    + "ready, "
+                    + "delivered, "
+                    + "cancelled";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -83,6 +90,7 @@ public class Messages {
                     .append("; Quantity: ")
                     .append(orderItem.getQuantity());
         }
+        builder.append("; Status: ").append(order.getStatus());
         return builder.toString();
     }
 

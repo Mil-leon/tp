@@ -37,7 +37,7 @@ public class PriceTest {
         // valid amounts
         assertTrue(Price.isValidPrice("911")); // number without decimal
         assertTrue(Price.isValidPrice("93121534")); // long number without decimal
-        assertTrue(Price.isValidPrice("6.5")); // numbe with 1 decimal
+        assertTrue(Price.isValidPrice("6.5")); // number with 1 decimal
         assertTrue(Price.isValidPrice("123.57")); // number with 2 decimal places
         assertTrue(Price.isValidPrice("124293843.57")); // long number with 2 decimal places
     }

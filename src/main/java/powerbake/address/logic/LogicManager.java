@@ -83,7 +83,6 @@ public class LogicManager implements Logic {
         return model.getFilteredOrderList();
     }
 
-
     @Override
     public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();

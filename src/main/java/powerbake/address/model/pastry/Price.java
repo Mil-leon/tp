@@ -21,7 +21,7 @@ public class Price {
     public Price(String amount) {
         requireNonNull(amount);
         checkArgument(isValidPrice(amount), MESSAGE_CONSTRAINTS);
-        this.amount = amount;
+        this.amount = String.format("%.2f", Double.valueOf(amount));
     }
 
     /**

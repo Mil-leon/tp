@@ -16,6 +16,7 @@ import powerbake.address.ui.UiPart;
  */
 public class PastryListPanel extends UiPart<Region> {
     private static final String FXML = "PastryListPanel.fxml";
+    private static final String CSS_BORDER = "-fx-border-width: 1px 1px 1px 1px;";
     private final Logger logger = LogsCenter.getLogger(PastryListPanel.class);
 
     @FXML
@@ -41,11 +42,12 @@ public class PastryListPanel extends UiPart<Region> {
             if (empty || pastry == null) {
                 setGraphic(null);
                 setText(null);
-            } else {
-                setGraphic(new PastryCard(pastry, getIndex() + 1).getRoot());
-                if (getIndex() == 0) {
-                    setStyle("-fx-border-width: 1px 1px 1px 1px;");
-                }
+                return;
+            }
+
+            setGraphic(new PastryCard(pastry, getIndex() + 1).getRoot());
+            if (getIndex() == 0) {
+                setStyle(CSS_BORDER);
             }
         }
     }

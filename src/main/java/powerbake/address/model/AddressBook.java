@@ -3,6 +3,7 @@ package powerbake.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import javafx.collections.ObservableList;
 import powerbake.address.commons.util.ToStringBuilder;
@@ -127,7 +128,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean hasPastry(Pastry pastry) {
         requireNonNull(pastry);
-        return pastries.contains(pastry);
+        Stream<Pastry> duplicatePastry = pastries.asUnmodifiableObservableList()
+                .stream()
+                .filter(existing_pastry ->
+                        pastry.getName()
+                                .toString()
+                                .equalsIgnoreCase(existing_pastry
+                                        .getName()
+                                        .toString()));
+        return duplicatePastry.findAny().isPresent();
     }
 
     /**

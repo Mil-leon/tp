@@ -19,11 +19,10 @@ No matter if you're new to the business or already have experience running a bak
 
 **_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
 
-To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](#glossary).
 
 <box type="info" seamless>
 
-If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional GUI-based applications.
+If you type quickly, **_PowerBake_** helps you process orders and manage your business faster than traditional mouse-based applications.
 
 </box>
 
@@ -53,7 +52,7 @@ Our goal is to make managing your bakery as smooth and efficient as possible, re
 
 **For additional information**, you may refer to the [FAQ](#faq) section or the [Known Issues](#known-issues) section.
 
-[Back to top](#user-guide)
+[^ Back to top](#powerbake-user-guide)
 
 __________________________________________________________________________________________________________________
 
@@ -73,106 +72,38 @@ On smaller screens, the **Page Navigation** menu is hidden by default. To displa
 
 ![Page Navigation Menu Hidden](images/tutorial/pageNavHidden.png)
 
-#### Hyperlinks
-
-Curious about hyperlinks? [Learn more here!](#glossary)
-
-[Hyperlinks are displayed in this style.](#links)
-
-They can also appear [**in bold**](#links), [_in italics_](#links) or [**_both!_**](#links)
-
-#### Code
-
-`Any code shown within the guide will appear in this style.`
-
-#### Code Blocks
-
-```
-/* Large blocks of code can
-*/ be displayed in this way as well
-public static printCodeBlock (String code) {
-  // do something
-}
-```
-
-#### Information Boxes
-
-<box>
-
-This is an information box where additional details may be shared.
-
-This guide uses three types of boxes:
-* [Additional Information](#additional-information)
-* [Warning](#warning)
-* [Tips](#tips)
-</box>
-
-#### Additional Information
+#### Additional Info
 
 Additional information are shown as a box with a **"i"** symbol.
 
-Here are some of the different styles of additional information you may see:
-
-<box type="info">
+<box type="info" light>
 
 This is an example of additional information.
 </box>
 
-<box type="info" light>
+#### Warnings
 
-Here’s another version of additional information.
-</box>
-
-<box type="info" seamless>
-
-And yet another style of additional information.
-</box>
-
-#### Warning
-
-Warnings can are shown typically as a box with an exclaimation mark as a symbol.
-
-Here are some of the different styles of warnings you may see:
+Warnings can are shown typically as a box with an exclamation mark as a symbol.
 
 <box type="warning">
-
-Warning! Please take caution!
-</box>
-
-<box type="warning" light>
-
-Warning Warning! Be alert!
-</box>
-
-<box type="warning" seamless>
 
 This is another warning style. Stay careful!
 </box>
 
 #### Tips
 
-Similarly, tips are shows within a box with a lightbulb as its symbol. These are useful **optional information** and you may skip these without any consequence.
-
-Here are some of the different styles of tips you may see:
-
-<box type="tip">
-
-Here are some useful tips. You can skip these if you're in a rush!
-</box>
+Similarly, tips are shows within a box with a lightbulb as its symbol.
 
 <box type="tip" light>
 
-These are additional tips, presented in a lighter format.
+This is a tip you can follow for your convenience!
 </box>
 
-<box type="tip" seamless>
-
-And here’s another seamless format for tips.
-</box>
-
-[Return to top](#user-guide)
+[^ Back to top](#powerbake-user-guide)
 
 __________________________________________________________________________________________________________________
+
+<div style="page-break-after: always;"></div>
 
 ## Getting Started
 
@@ -191,6 +122,8 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ### Installation
 
 1. Ensure you have Java `17` or above installed.
@@ -198,26 +131,22 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 <box type="info" light>
 
 **Dont Worry!** If you are not sure how to install java you can follow this [guide](https://www.java.com/en/download/help/download_options.html).
-<br>**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+
+**Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
 </box>
 
-1. Download the **latest** `PowerBake.jar` file from our [Github's latest release](https://github.com/AY2425S2-CS2103T-F13-2/tp/releases/latest).
+2. Download the **latest** `powerbake.jar` file from our [Github's latest release](https://github.com/AY2425S2-CS2103T-F13-2/tp/releases/latest).
 
-1. Find the file you have just downloaded. It is called `PowerBake.jar`.
-    - The file is likely to be found in your `Downloads` folder.
-    <br>([How to find the downloads folder](https://www.minitool.com/data-recovery/downloads-on-windows-mac-android-ios.html))
+3. Find the file you have just downloaded. It is called `powerbake.jar`.
 
-1. create a new folder to use as the [_home folder_](#glossary) for PowerBake.
-    - it is recommended to use a new & empty folder to prevent any data loss.
+4. Create a new folder to use as the [_home folder_](#glossary) for PowerBake.
 
-    <box type="info" seamless>
+    - It is recommended to use a new & empty folder to prevent any data loss.
+    - This folder can be created anywhere on your computer.
+<p></p>
 
-        This folder can be created anywhere on your computer
-
-    </box>
-
-1. Copy the file to the newly created folder.
+5. Copy the file to the newly created folder.
 
     <box type="info" seamless header="**How to copy the file into the new folder:**">
 
@@ -229,11 +158,13 @@ Lets learn how to get started with **PowerBake**! This guide will walk you throu
 
     </box>
 
-1. **At the end you should have a empty folder with the `PowerBake.jar` file in it similar to this:**
+6. **At the end you should have a empty folder with the `powerbake.jar` file in it similar to this:**
 
-    ![folder](images/powerbake_home_folder.png)|
+    <img src="images/powerbake_home_folder.png" alt="add client command" width="600"/>
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ### Starting PowerBake
 
@@ -245,7 +176,7 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
     <br>
 
-    <box type="tip" seamless header="**How to use the terminal:**">
+    <box type="info" seamless header="**How to use the terminal:**">
 
     If you are unsure about how to use the terminal you can follow this [guide](https://cs.colby.edu/maxwell/courses/tutorials/terminal).
 
@@ -265,28 +196,154 @@ Now that you have installed PowerBake, lets learn how to launch it!
 
     </box>
 
-1. run the following command to start PowerBake:
+1. Run the following command to start PowerBake:
 
     ```
-    java -jar PowerBake.jar
+    java -jar powerbake.jar
     ```
 
-1. After a breif moment, you should see a window similar to this:
+1. After a brief moment, you should see a window similar to this:
 
-    <box type="info" light>
+    <img src="images/powerbake_home_page.png" alt="add client command" width="600"/>
 
-    the first time you run PowerBake, it will contain [sample data](#glossary).<br>
+    <box type="info" seamless>
+
+    The first time you run PowerBake, it will contain [sample data](#glossary).<br>
     This helps you understand how the entries will appear and how the app will feel like when you start using it.
 
     </box>
 
-    ![PowerBake](images/powerbake_home_page.png)
+    | Index | Component Name              | Description                                                   |
+    |-------|-----------------------------|---------------------------------------------------------------|
+    |1      | Command Box                 | You can type commands here and press `Enter` to execute them. |
+    |2      | Result Display Box          | Displays the result of executing a command.                   |
+    |3      | Current View                | Displays which tab you are currently viewing                  |
+    |4      | List View                   | Displays the information of the tab you have currently open   |
 
 Now that you have PowerBake running, lets learn how to use it to manage your customers and orders in this [tutorial!](#tutorial)
 
-[Back to top](#powerbake-user-guide)
+[^ Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
+
+## Tutorial
+
+### Managing your Bakery with PowerBake!
+
+This tutorial will guide you through the process of managing your bakery with **PowerBake**. When you're done you'll be familiar with the typical workflow of PowerBake!
+
+### Step 1: Adding a Client
+
+**Purpose:** Before we can start managing our bakery, we need to have a list of our [clients](#glossary).
+
+Imagine you hava a new client, **Luke**, who has just placed an order with you. Lets add him to PowerBake!
+
+To add him to PowerBake, use this command in the Command Box
+
+```add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com   ```
+
+<img src="images/add_luke.png" alt="Add Luke" width="600"/>
+
+This command specifies the following details about Luke:
+- **Name:** Luke
+- **Phone Number:** 88776655 using the ```-p``` flag
+- **Address:** 5 Punggol Street using the ```-a``` flag
+- **Email**: luke@gmail.com using the ```-e``` flag
+
+After hitting Enter, you should see a message indicating that Luke has been successfully added to PowerBake and the new entry should appear in the List View.
+
+<img src="images/added_luke.png" alt="added luke into powerbake" width="600"/>
+
+1. The **Result Display Box** will show a message indicating that Luke has been successfully added.
+1. The **List View** will display the details of Luke.
+
+**Congrats!** You have successfully added your first client to PowerBake!
+
+### Step 2: Adding a Pastry
+
+**Purpose:** Now that we have a client, we need to add the pastries that we offer to our clients.
+
+So far we have created new a new client, **Luke**. Now, lets add a new pastry, **Croissant**, to PowerBake!
+
+To add the Croissant to PowerBake, use this command in the Command Box and hit Enter:
+
+```add pastry Croissant -pr 5.5```
+
+<img src="images/add_pastry.png" alt="Adding Croissant into powerbake" width="700"/>
+
+This command specifies the following details about the Croissant:
+- **Name:** Croissant
+- **Price:** $5.50 using the ```-pr``` flag
+
+Hitting Enter will display a message indicating that the Croissant has been **successfully added** to PowerBake and the new entry should appear in the List View.
+
+<img src="images/added_pastry.png" alt="added Croissant into powerbake" width="600"/>
+
+1. The **Result Display Box** will show a message indicating that the Croissant has been successfully added.
+1. The **List View** will display the details of the Croissant.
+
+**Nice!** You have successfully added your **first pastry** to PowerBake!
+
+### Step 3: Adding an Order
+
+**Purpose:** Now that we have a **client** and a **pastry**, we can start taking **orders!**
+
+Lets say **Luke** has placed an order for 2 **Croissants** and 2 **Apple Pies**. Lets add this order to PowerBake!
+
+First, we have to find the **index** of the client Luke using the command in the Command Box:
+
+```find client luke```
+
+<img src="images/find_luke.png" alt="Finding index of Luke" width="600"/>
+
+Here we find that the index of luke is **1**!
+
+To add the order to PowerBake, use this command in the Command Box and hit Enter:
+
+```add order 1 -pn Croissant -q 2 -pn Apple Pie -q 2```
+
+<box type="tip" >
+
+You can add multiple pastries in a single order by sequentialy pecifying the pastry and quantity for each pastry using the ```-pn``` and ```-q``` flags.
+**For Example:** ```add order 1 -pn Croissant -q 2 -pn Apple Pie -q 2 -pn Tart -q 3 ...```
+
+</box>
+
+<img src="images/add_order.png" alt="Adding order into powerbake" width="600"/>
+
+This command specifies the following details about the order:
+- **Client:** Luke using the **index** of the client
+- **Pastry:** Croissant using the ```-pn``` flag
+- **Quantity:** 2 using the ```-q``` flag
+
+Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake.
+
+<img src="images/added_order.png" alt="added order into powerbake" width="600"/>
+
+You can then view the order list using the command or clicking on the **order** tab:
+
+```view order```
+
+<img src="images/view_luke_order.png" alt="viewing the luke order" width="600"/>
+
+<box type="info" seamless>
+
+New Orders **automatically** have the status of **Pending**.
+
+</box>
+
+1. The **Result Display Box** will show a message indicating that the order has been successfully added.
+1. The **List View** will display the details of the order.
+
+**Good Job!** You have successfully added your **first order** to PowerBake! With this knowledge, you can now manage your bakery efficiently!
+
+[^ Back to top](#powerbake-user-guide)
+
+--------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Features
 
@@ -304,30 +361,31 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   ```
-   add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS
+   add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]
   ```
   `NAME`, `ADDRESS`, `EMAIL`, `PHONE` and `TAGS` are parameters which are to be replaced:
   ```
-   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client
+   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com -t client
   ```
 
 * Words in `[Square Brackets]` are **optional parameters**.<br>
   ```
-   add client NAME -a ADDRESS -e EMAIL -p PHONE [-t TAGS]
+   add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]
   ```
   `TAGS` is optional. You can use it like:
   ```
-   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client
+   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com -t client
   ```
   OR
   ```
-   add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655
+   add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com
   ```
 
 * Extraneous parameters for commands that do not take in parameters (`exit`) will be ignored.<br>
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
 </box>
 
+<div style="page-break-after: always;"></div>
 
 ### Adding a Client: `add client`
 
@@ -336,7 +394,7 @@ The `add client` command is essential in keeping track of your client base.
 It allows you to seamlessly add key details of your client into the record. These details will then be integrated into keeping track of orders in the future.
 
 #### Command Usage
-Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
+Command: `add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]`
 
 <box type="info" seamless>
 
@@ -357,16 +415,24 @@ Command: `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAG`
 5. -t TAG: Extra details of your client (Optional, any number of tags is allowed)
     * Example: `Spender`
 
-### Example:
-Adding a client, **Luke**, into Powerbake application. He lives at **5 Sengkang Street** and his email address is **luke@gmail.com**. His phone number is **88776655**.
+##### Example:
+Adding a client, `Luke`, into Powerbake application. He lives at `5 Sengkang Street` and his email address is `luke@gmail.com`. His phone number is `88776655`.
 
 To add luke, simply type:
-`add client Luke -a 5 Sengkang Street -e luke@gmail.com -p 88776655`
+`add client Luke -p 88776655 -a 5 Sengkang Street -e luke@gmail.com`
 
-![Adding luke into powerbake](images/addclient1.png)
+**Before:**
+<img src="images/addclient1.png" alt="add client command" width="600"/>
 
-Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab. This allows you to easily keep track of client details systematically and efficiently.
-![Successfully added luke into powerbake](images/addclient2.png)
+Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab.
+This allows you to easily keep track of client details systematically and efficiently.
+
+**After:**
+<img src="images/addclient2.png" alt="add client result" width="600"/>
+
+---
+
+<div style="page-break-after: always;"></div>
 
 ### Adding a Pastry: `add pastry`
 
@@ -384,37 +450,83 @@ Command: `add pastry NAME -pr PRICE`
 2. -pr PRICE: The price of your pastry, supports up to 2 decimal places.
     * Example: `5.50`, `5`
 
-### Example:
-Adding a pastry, **Croissant**, into PowerBake application. Price is 5.50.
+##### Example:
+Adding a pastry, `Croissant`, into PowerBake application. Price is `5.50`.
 
 To add the Croissant, simply type
 `add pastry Croissant -pr 5.5`
 
-![Adding Croissant into powerbake](images/addpastry1.png)
+**Before:**
+<img src="images/addpastry1.png" alt="add pastry" width="600"/>
 
 Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
-![Successfully added Croissant into powerbake](images/addpastry2.png)
+
+**After:**
+<img src="images/addpastry2.png" alt="add pastry result" width="600"/>
+
+[Go to Command Summary](#command-summary)
+
+---
+<div style="page-break-after: always;"></div>
+
+### Adding a order: `add order`
+
+The `add order` command is essential in keeping track of your client's order.
+
+It allows you to create orders for clients with their ordered pastries.
+
+#### Command Usage
+Command: `add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]`
+
+<box type="tip" >
+
+You can add multiple pastries in a single order by sequentialy pecifying the pastry and quantity for each pastry using the ```-pn``` and ```-q``` flags.
+**For Example:** ```add order 1 -pn Croissant -q 2 -pn Apple Pie -q 2 -pn Tart -q 3 ...```
+
+</box>
+
+#### Parameters:
+
+1. `CLIENT_INDEX`: The index of the client based on the list shown
+2. `-pn PASTRY_NAME`: The name of the pastry to be added
+3. `-q Quantity`: The quantity of pastry to be added to the order
+
+##### Example:
+Adding a order for client `1` an order of `10 Brownie` and `20 Apple Pie` into PowerBake application.
+
+To add the Croissant, simply type
+`add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`
+
+**Before:**
+<img src="images/addOrderCommand1.png" alt="add order" width="600"/>
+
+Once `enter` is hit, a output message will be displayed of your success. Order details will also be displayed under the order's tab. This allows you to easily keep track of order details systematically and efficiently.
+
+**After:**
+<img src="images/addOrderCommand2.png" alt="add order result" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
 
-### Deleting Client or Pastry : `delete`
+<div style="page-break-after: always;"></div>
 
-The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients and pastries.
+### Deleting Client, Pastry or Order: `delete`
+
+The `delete` command is an essential tool in PowerBake, as it helps you maintain a clean and relevant list of clients, pastries and orders.
 
 #### Command Usage
 
-**Command**: `delete client/pastry INDEX`
+Command: `delete client/pastry/order INDEX`
 
 #### Parameters:
 
-* **INDEX**: Represents position of the client/pastry list that you wish to remove.
+1. INDEX: Represents position of the client/pastry/order list that you wish to remove.
 
 <box type="info" seamless>
 
 The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
-This corresponds to the position of the client/pastry displayed in list.
+This corresponds to the position of the client/pastry/order displayed in list.
 
 </box>
 
@@ -426,13 +538,13 @@ If you want to remove the fifth **client** on the list, the command would look l
 ```
 
 **Before:**
-![Delete Command](images/commands/deleteCommand1.png)
+<img src="images/commands/deleteClient1.png" alt="delete client" width="600"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
-The remaining pastries will adjust their index numbers accordingly.
+The remaining clients will adjust their index numbers accordingly.
 
 **After:**
-![Delete Command](images/commands/deleteCommand2.png)
+<img src="images/commands/deleteClient2.png" alt="delete client" width="600"/>
 
 ##### Example 2:
 If you want to remove the second **pastry** on the list, the command would look like this:
@@ -442,68 +554,286 @@ If you want to remove the second **pastry** on the list, the command would look 
 ```
 
 **Before:**
-![Delete Command](images/commands/deleteCommand3.png)
+<img src="images/commands/deletePastry1.png" alt="delete pastry" width="600"/>
 
 After hitting `Enter`, you will see the second pastry removed from the list.
 The remaining pastries will adjust their index numbers accordingly.
 
 **After:**
-![Delete Command](images/commands/deleteCommand4.png)
+<img src="images/commands/deletePastry2.png" alt="delete pastry" width="600"/>
+
+##### Example 3:
+If you want to remove the **third** order on the list, the command would look like this:
+
+```
+ delete order 3
+```
+
+**Before:**
+<img src="images/commands/deleteOrder1.png" alt="delete order" width="600"/>
+
+After hitting `Enter`, you will see the third order removed from the list.
+The remaining orders will adjust their index numbers accordingly.
+
+**After:**
+<img src="images/commands/deleteOrder2.png" alt="delete order" width="600"/>
 
 [Go to Command Summary](#command-summary)
 
 ---
 
-### Viewing Client or Pastry : `view`
+<div style="page-break-after: always;"></div>
 
-The `view` command offers a detailed insight of the client and pastry list.
+### Editing Client, Pastry or Order Details : `edit`
 
-An in-depth look to access client information easily, or to access the types of pastries available.
+The `edit` command offers flexibility in managing details of Clients, Pastries or Orders in PowerBake.
 
 #### Command Usage
 
-**Command**: `view client/pastry`
+To edit **Client** details: </br>
+```edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]```
+
+To edit **Pastry** details: </br>
+```edit pastry INDEX [-n NAME] [-pr PRICE]```
+
+To edit **Order** details: </br>
+```edit order INDEX -s STATUS```
 
 #### Parameters:
 
-* **client**: Access the client list.
-* **pastry**: Access the pastry list.
+1. `INDEX`: Represents position of the client/pastry/order list that you wish to edit.
+2. `-n NAME`: New name that you wish to edit to
+3. `-p PHONE`: New phone number that you wish to change
+4. `-e EMAIL`: New email that you wish to use
+5. `-a ADDRESS`: New address that you wish to update
+6. `-t TAGS`: New tags to be associated with the client
+7. `-n PASTRYNAME`: New pastry name to be edited to
+8. `-pr PRICE`: New price of the pastry to be updated to
+9. `-s STATUS`: New Status of the order to be updated to
 
 <box type="info" seamless>
 
-The `view` command allows only either viewing client or viewing pastry.
+1. The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
+This corresponds to the position of the client/pastry displayed in list.
+
+2. At least one field needs to be edited.
+</box>
+
+##### Example 1:
+If you want to edit the name and phone of the first client on the list, the command would look like this:
+
+```
+ edit client 1 -n John -p 97432170
+```
+
+**Before:**
+<img src="images/commands/editCommand1.png" alt="edit client" width="600"/>
+
+After hitting `Enter`, you will see the first client edited on the list.
+
+**After:**
+<img src="images/commands/editCommand2.png" alt="edit client" width="600"/>
+
+##### Example 2:
+If you want to edit the price of the second **pastry** on the list, the command would look like this:
+
+```
+ edit pastry 2 -pr 9.00
+```
+
+**Before:**
+<img src="images/commands/editCommand3.png" alt="edit pastry" width="600"/>
+
+After hitting `Enter`, you will see the second pastry updated from the list.
+
+**After:**
+<img src="images/commands/editCommand4.png" alt="edit pastry" width="600"/>
+
+##### Example 3:
+If you want to edit the status of the third **order** on the list, the command would look like this:
+
+```
+ edit order 3 -s delivered
+```
+
+**Before:**
+<img src="images/commands/editCommand5.png" alt="edit order" width="600"/>
+
+After hitting `Enter`, you will see the third order updated from the list.
+
+**After:**
+<img src="images/commands/editCommand6.png" alt="edit order" width="600"/>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Find Client, Pastry or Order : `find`
+
+The `find` command is a powerful tool to help you quickly search and locate specific client/pastry/order in PowerBake.
+
+#### Command Usage
+
+```find client/pastry/order KEYWORD [MORE_KEYWORDS]```
+
+#### Parameters:
+
+1. `client/pastry/order`: Represents which type of entity you wish to find from.
+2. `KEYWORD`: Returns searches that matches to the keyword
+
+
+<box type="info" seamless>
+
+At least one keyword needs to be provided.
 
 </box>
 
 ##### Example 1:
-If you wish to view the **client** details, the command would be:
+If you want to find the name of the first client on the list, the command would look like this:
+
+```
+find client Alex
+```
+
+**Before:**
+<img src="images/commands/find_client1.png" alt="find client" width="600"/>
+
+After hitting `Enter`, you will see the first client edited on the list.
+
+**After:**
+<img src="images/commands/find_client2.png" alt="find client" width="600"/>
+
+##### Example 2:
+If you want to find name of the second **pastry** on the list, the command would look like this:
+
+```
+ find pastry Brownie
+```
+
+**Before:**
+<img src="images/commands/find_pastry1.png" alt="find pastry" width="600"/>
+
+After hitting `Enter`, you will see the second pastry updated from the list.
+
+**After:**
+<img src="images/commands/find_pastry2.png" alt="find pastry" width="600"/>
+
+##### Example 3:
+If you want to find the third **order** on the list, the command would look like this:
+
+```
+ find order Charlotte
+```
+
+**Before:**
+<img src="images/commands/find_order1.png" alt="find order" width="600"/>
+
+After hitting `Enter`, you will see the third order updated from the list.
+
+**After:**
+<img src="images/commands/find_order2.png" alt="find order" width="600"/>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Viewing Client, Pastry or Order : `view`
+
+The `view` command offers a detailed insight of the client, pastry and order lists.
+
+An in-depth look to access client information, types of pastries available and orders made thus far.
+
+#### Command Usage
+
+**Command**: `view client/pastry/order`
+
+#### Parameters:
+
+1. client: Access the client list.
+2. pastry: Access the pastry list.
+3. order: Access the order list
+
+<box type="info" seamless>
+
+The `view` command allows only either viewing client, or viewing pastry, or viewing order.
+
+</box>
+
+##### Example 1:
+If you wish to view the `client` details, the command would be:
 
 ```
  view client
 ```
-
-![View Command](images/commands/viewCommand1.png)
+**Before:**
+<img src="images/commands/viewCommand1.png" alt="view client" width="600"/>
 
 After hitting `Enter`, you will see the client details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand1b.png" alt="view client" width="600"/>
+
 Here, you can observe all the details regarding client, such as their name, address, email address, phone number and tag.
 
 ##### Example 2:
-If you wish to view the **pastry** details, the command would be:
+If you wish to view the `pastry` details, the command would be:
 
 ```
  view pastry
 ```
 
-![View Command](images/commands/viewCommand2.png)
+**Before:**
+<img src="images/commands/viewCommand2.png" alt="view pastry" width="600"/>
 
 After hitting `Enter`, you will see the pastry details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand2b.png" alt="view pastry" width="600"/>
+
 Here, you can observe all the details regarding pastry, such as the name and the price of the pastry.
+
+##### Example 3:
+If you wish to view the `order` details, the command would be:
+
+```
+ view order
+```
+**Before:**
+<img src="images/commands/viewCommand3.png" alt="view order index" width="600"/>
+
+After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand3b.png" alt="view order index" width="600"/>
+
+Here, you can observe the general details regarding order, such as their order number, client name, status.
+
+##### Example 4:
+If you wish to view the specific `order` details, the command would be:
+
+```
+ view order INDEX
+```
+**Before:**
+<img src="images/commands/viewCommand4.png" alt="view order" width="600"/>
+
+After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
+
+**After:**
+<img src="images/commands/viewCommand4b.png" alt="view order" width="600"/>
+
+Here, you can observe all the details regarding order, such as their order number, client name, pastry name, quantity and status.
+
 
 <box type="tip" seamless>
 
-Alternatively, you can switch between **client** and **pastry** by utilising the GUI button.
+Alternatively, you can switch between **client**, **pastry** and **order** by utilising the GUI button.
 
-![View Command](images/commands/viewCommand3.png)
+<img src="images/commands/viewCommand5.png" alt="View using GUI" width="600"/>
 
 </box>
 
@@ -511,7 +841,7 @@ Alternatively, you can switch between **client** and **pastry** by utilising the
 
 ---
 
-
+<div style="page-break-after: always;"></div>
 
 ### Exiting the program : `exit`
 
@@ -535,20 +865,7 @@ The `exit` command does not require any parameters.
 
 ---
 
-### Saving the data
-
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Editing the data file
-
-AddressBook data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
+<div style="page-break-after: always;"></div>
 
 ## Storage
 
@@ -563,11 +880,18 @@ This section will go through how order, pastry and customer details are stored.
 **CAUTION:**
 Adding data in the wrong format could lead to potential errors.
 
-*PowerBake* data is saved in [FILE LOCATION]/data/addressbook.json, experienced users can add or delete clients and pastries within the json file.
+*PowerBake* data is saved in `[JAR file location]/data/addressbook.json`., experienced users can add or delete clients and pastries within the json file.
+
+**Caution:**
+If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+</box>
 
 
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -583,29 +907,43 @@ Adding data in the wrong format could lead to potential errors.
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Command summary
-| Command                                                | Usage                                                  | Example                                                                       |
-|--------------------------------------------------------|--------------------------------------------------------|-------------------------------------------------------------------------------|
-| **[Add Client](#adding-a-client-add-client)**          | `add client NAME -a ADDRESS -e EMAIL -p PHONE -t TAGS` | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
-| **[Add Pastry](#adding-a-pastry-add-pastry)**          | `add pastry NAME -pr PRICE`                            | `add pastry Tart -pr 3.40`                                                    |
-| **[Delete Client](#deleting-client-or-pastry-delete)** | `delete client INDEX`                                  | `delete client 1`                                                             |
-| **[Delete Pastry](#deleting-client-or-pastry-delete)** | `delete pastry INDEX`                                  | `delete pastry 1`                                                             |
-| **[View Client](#viewing-client-or-pastry-view)**      | `view client`                                          | `view client`                                                                 |
-| **[View Pastry](#viewing-client-or-pastry-view)**      | `view pastry`                                          | `view pastry`                                                                 |
-| **[Exit](#exiting-the-program-exit)**                  | `exit`                                                 | `exit`                                                                        |
+| Command                                                         | Usage                                                                                 | Example                                                                       |
+|-----------------------------------------------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| **[Add Client](#adding-a-client-add-client)**                   | `add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]`                              | `add client Luke -a 5 Punggol Street -e luke@gmail.com -p 88776655 -t client` |
+| **[Add Pastry](#adding-a-pastry-add-pastry)**                   | `add pastry NAME -pr PRICE`                                                           | `add pastry Tart -pr 3.40`                                                    |
+| **[Add Order](#adding-a-order-add-order)**                      | `add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]`    | `add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`                           |
+| **[Delete Client](#deleting-client-pastry-or-order-delete)**    | `delete client INDEX`                                                                 | `delete client 1`                                                             |
+| **[Delete Pastry](#deleting-client-pastry-or-order-delete)**    | `delete pastry INDEX`                                                                 | `delete pastry 1`                                                             |
+| **[Delete Order](#deleting-client-pastry-or-order-delete)**     | `delete order INDEX`                                                                  | `delete order 1`                                                              |
+| **[Edit Client](#editing-client-pastry-or-order-details-edit)** | `edit client INDEX [-n NAME] [-p PHONE] [-e EMAIL] [-a ADDRESS] [-t TAGS]`            | `edit client 1 -n John -p 97432170`                                           |
+| **[Edit Pastry](#editing-client-pastry-or-order-details-edit)** | `edit pastry INDEX [-n NAME] [-pr PRICE]`                                             | `edit pastry 2 -pr 9.00`                                                      |
+| **[Edit Order](#editing-client-pastry-or-order-details-edit)**  | `edit order INDEX -s STATUS`                                                          | `edit order 3 -s delivered`                                                   |
+| **[Find Client](#find-client-pastry-or-order-find)**            | `find client KEYWORD [MORE_KEYWORD]`                                                  | `find client Alex`                                                            |
+| **[Find Pastry](#find-client-pastry-or-order-find)**            | `find pastry KEYWORD [MORE_KEYWORD]`                                                  | `find pastry Brownie`                                                         |
+| **[Find Order](#find-client-pastry-or-order-find)**             | `find order KEYWORD [MORE_KEYWORD]`                                                   | `find order Charlotte`                                                        |
+| **[View Client](#viewing-client-pastry-or-order-view)**         | `view client`                                                                         | `view client`                                                                 |
+| **[View Pastry](#viewing-client-pastry-or-order-view)**         | `view pastry`                                                                         | `view pastry`                                                                 |
+| **[View Order](#viewing-client-pastry-or-order-view)**          | `view order`                                                                          | `view order`                                                                  |
+| **[View Specific Order](#viewing-client-pastry-or-order-view)** | `view order INDEX`                                                                    | `view order 1`                                                                |
+| **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Glossary
 
 | Term                              | Explanation                                                                                                                                                                                                    |
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Client/Customer                   | A client/customer in a bakery is a regular or business customer who places orders for baked goods, often in bulk or on a recurring basis.                                                                      |
-| Command                           | A user input that directs LetsGetHired to carry out a particular action.                                                                                                                                       |
+| Command                           | A user input that directs Powerbake to carry out a particular action.                                                                                                                                       |
 | Command Line Interface (CLI)      | An interface where users interact with a system by entering text commands into a terminal or console.                                                                                                          |
 | Command Terminal                  | A text-based interface for interacting with the computer. Examples include the Command Prompt on Windows, Terminal on macOS, and bash on Linux.                                                                |
 | Graphical User Interface (GUI)    | An interface that enables users to engage with a system using visual elements like icons and other graphical indicators.                                                                                       |
-| Home folder                       | The folder where Powerbake's' is saved. The home folder is used to store data files used by Powerbake.                                                                                                         |
+| Home folder                       | The folder where Powerbake is saved. The home folder is used to store data files used by Powerbake.                                                                                                         |
 | Hyperlink                         | A clickable reference on a webpage that directs users to another location or file, either on the same page or a different one.                                                                                 |
 | JSON (JavaScript Object Notation) | A simple, human-readable data format used for data exchange that is easily parsed and generated by machines.                                                                                                   |
 | Local storage                     | Local storage in an application refers to a method of storing data on a user's device, allowing the application to save information persistently without requiring a server connection.                        |
@@ -613,3 +951,4 @@ Adding data in the wrong format could lead to potential errors.
 | Orders                            | Orders in a bakery refer to customer requests for specific baked goods, either for immediate purchase or scheduled pickup/delivery, often including custom or bulk requests.                                   |
 | Parameter                         | A variable in a command that stands in for a specific piece of information that must be supplied when the command is executed.                                                                                 |
 | Pastries                          | Pastries in a bakery refer to baked goods made from dough or batter, often enriched with butter, sugar, and fillings like cream, fruit, or chocolate, including items such as croissants, danishes, and tarts. |
+| Person                            | Used interchangeably between client or customers in development |

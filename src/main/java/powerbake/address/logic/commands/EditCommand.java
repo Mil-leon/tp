@@ -2,6 +2,7 @@ package powerbake.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +18,9 @@ import powerbake.address.logic.Messages;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.model.Model;
 import powerbake.address.model.order.Order;
+import powerbake.address.model.order.OrderId;
+import powerbake.address.model.order.OrderItem;
+import powerbake.address.model.order.OrderStatus;
 import powerbake.address.model.pastry.Pastry;
 import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
@@ -39,18 +43,24 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the client or pastry identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the client, pastry"
+            + " or order status identified "
             + "by the index number used in the displayed list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: TYPE (client/pastry), INDEX (must be a positive integer), FIELDS\n"
             + "Example for client: edit client 1 -n John -p 91234567 -e johndoe@example.com\n"
-            + "Example for pastry: edit pastry 2 -n Croissant -pr 3.50";
+            + "Example for pastry: edit pastry 2 -n Croissant -pr 3.50\n"
+            + "Example for order: edit order 2 -s delivered";
 
     public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
     public static final String MESSAGE_EDIT_PASTRY_SUCCESS = "Edited Pastry: %1$s";
+    public static final String MESSAGE_EDIT_ORDER_SUCCESS = "Edited Order: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
+    public static final String MESSAGE_NOT_EDITED_ORDER = "Please type in the Status to change to: "
+            + "pending, processing, ready, delivered, cancelled";
     public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the address book.";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in the bakery.";
+    public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in the bakery.";
 
     private final String entityType;
     private final Index index;
@@ -72,8 +82,10 @@ public class EditCommand extends Command {
         this.index = targetIndex;
         if (isClient) {
             this.editDescriptor = new EditPersonDescriptor((EditPersonDescriptor) editDescriptor);
-        } else {
+        } else if (entityType.equals("pastry")) {
             this.editDescriptor = new EditPastryDescriptor((EditPastryDescriptor) editDescriptor);
+        } else {
+            this.editDescriptor = new EditOrderDescriptor((EditOrderDescriptor) editDescriptor);
         }
     }
 
@@ -86,6 +98,8 @@ public class EditCommand extends Command {
             return editClient(model);
         case "pastry":
             return editPastry(model);
+        case "order":
+            return editOrder(model);
         default:
             throw new CommandException(Messages.MESSAGE_INVALID_ENTITY);
         }
@@ -161,6 +175,32 @@ public class EditCommand extends Command {
     }
 
     /**
+     * Edits a pastry at the specified index and updates its fields.
+     *
+     * @param model The model containing the pastry list.
+     * @return The result message indicating a successful edit.
+     * @throws CommandException If the specified index is invalid or if it causes duplication.
+     */
+    private CommandResult editOrder(Model model) throws CommandException {
+        List<Order> lastShownList = model.getFilteredOrderList();
+
+        if (index.getZeroBased() >= lastShownList.size()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+        }
+
+        Order orderToEdit = model.getFilteredOrderList().get(index.getZeroBased());
+        Order editedOrder = createEditedOrder(orderToEdit, (EditOrderDescriptor) editDescriptor);
+
+        if (!orderToEdit.isSameOrder(editedOrder) && model.hasOrder(editedOrder)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ORDER);
+        }
+
+        model.setOrder(orderToEdit, editedOrder);
+        model.updateFilteredOrderList(Model.PREDICATE_SHOW_ALL_ORDERS);
+        return new CommandResult(String.format(MESSAGE_EDIT_ORDER_SUCCESS, Messages.format(editedOrder)));
+    }
+
+    /**
      * Creates a new Person object with updated details.
      */
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editDescriptor) {
@@ -185,6 +225,21 @@ public class EditCommand extends Command {
         Price updatedPrice = editDescriptor.getPrice().orElse(pastryToEdit.getPrice());
 
         return new Pastry(updatedName, updatedPrice);
+    }
+
+    /**
+     * Creates a new Order object with updated details.
+     */
+    private static Order createEditedOrder(Order orderToEdit, EditOrderDescriptor editDescriptor) {
+        assert orderToEdit != null;
+
+        OrderId orderId = orderToEdit.getOrderId();
+        powerbake.address.model.person.Person customer = orderToEdit.getCustomer();
+        List<OrderItem> orderItems = orderToEdit.getOrderItems();
+        LocalDateTime dateTime = orderToEdit.getOrderDate();
+        OrderStatus updatedStatus = editDescriptor.getStatus().orElse(orderToEdit.getStatus());
+
+        return new Order(orderId, customer, orderItems, dateTime, updatedStatus);
     }
 
     @Override
@@ -414,6 +469,80 @@ public class EditCommand extends Command {
             return new ToStringBuilder(this)
                     .add("name", name)
                     .add("price", price)
+                    .toString();
+        }
+    }
+
+    /**
+     * Descriptor for editing the details of an order.
+     */
+    public static class EditOrderDescriptor {
+        private OrderStatus status;
+
+        /**
+         * Constructs an empty {@code EditOrderDescriptor}.
+         */
+        public EditOrderDescriptor() {}
+
+        /**
+         * Constructs a new {@code EditOrderDescriptor} copied from another {@code EditOrderDescriptor}.
+         *
+         * @param toCopy The {@code EditOrderDescriptor} to copy from.
+         */
+        public EditOrderDescriptor(EditOrderDescriptor toCopy) {
+            setStatus(toCopy.status);
+        }
+
+        /**
+         * Checks if any field in this descriptor has been edited.
+         *
+         * @return {@code true} if at least one field is edited, {@code false} otherwise.
+         */
+        public boolean isAnyFieldEdited() {
+            return status != null;
+        }
+
+        /**
+         * Sets the name of the pastry.
+         *
+         * @param status The name to be set.
+         */
+        public void setStatus(OrderStatus status) {
+            this.status = status;
+        }
+
+        /**
+         * Retrieves the name of the pastry, if set.
+         *
+         * @return An {@code Optional} containing the pastry name, or an empty {@code Optional} if not set.
+         */
+        public Optional<OrderStatus> getStatus() {
+            return Optional.ofNullable(status);
+        }
+
+        /**
+         * Compares this {@code EditPastryDescriptor} to another object for equality.
+         *
+         * @param other The other object to compare to.
+         * @return {@code true} if the other object is an instance of {@code EditPastryDescriptor} and
+         *         has the same name and price, {@code false} otherwise.
+         */
+        @Override
+        public boolean equals(Object other) {
+            if (other == this) {
+                return true;
+            }
+            if (!(other instanceof EditOrderDescriptor e)) {
+                return false;
+            }
+            return getStatus().equals(e.getStatus())
+                    && getStatus().equals(e.getStatus());
+        }
+
+        @Override
+        public String toString() {
+            return new ToStringBuilder(this)
+                    .add("status", status)
                     .toString();
         }
     }

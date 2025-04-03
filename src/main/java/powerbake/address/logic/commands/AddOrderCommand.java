@@ -30,6 +30,7 @@ public class AddOrderCommand extends AddCommand {
             + ": Adds a order to the address book. "
             + "Parameters: "
             + PREFIX_ORDER + "CLIENT_INDEX "
+            + PREFIX_PASTRY_NAME + "PASTRY NAME " + PREFIX_QUANTITY + "QUANTITY "
             + "[" + PREFIX_PASTRY_NAME + "PASTRY NAME " + PREFIX_QUANTITY + "QUANTITY]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ORDER + "1 "
@@ -98,16 +99,26 @@ public class AddOrderCommand extends AddCommand {
 
         for (ArrayList<String> order : unformattedOrderList) {
             // Check for valid pastry name
-            if (lastShownList.stream().noneMatch(pastry -> pastry.getName().toString().equals(order.get(0)))) {
+            if (lastShownList.stream()
+                    .noneMatch(pastry -> pastry
+                            .getName()
+                            .toString()
+                            .equals(order.get(0)))) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED);
             }
-            Pastry pastry = lastShownList.stream().filter(p -> p.getName().toString().equals(order.get(0)))
+
+            Pastry pastry = lastShownList.stream()
+                    .filter(existingPastry -> existingPastry
+                            .getName()
+                            .toString()
+                            .equals(order.get(0)))
                     .findFirst().get();
 
             // Check for duplicates
             if (uniquePastryNames.contains(pastry.getName().toString())) {
                 throw new CommandException(Messages.MESSAGE_REPEATED_PASTRY_IN_ORDER);
             }
+            // Create and add order Object
             int quantity = Integer.parseInt(order.get(1));
             OrderItem newOrder = new OrderItem(pastry, quantity);
             orderItems.add(newOrder);

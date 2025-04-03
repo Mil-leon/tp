@@ -29,7 +29,7 @@ public class ViewCommand extends Command {
             + COMMAND_WORD + " order (OR) "
             + COMMAND_WORD + " order <index>";
 
-    public static final String MESSAGE_SUCCESS = "Viewing full %1$s list";
+    public static final String MESSAGE_SUCCESS = "Viewing specific full %1$s list";
 
     private final String type;
     private final Index index;
@@ -61,7 +61,11 @@ public class ViewCommand extends Command {
         } else if (type.equals("pastry")) {
             model.updateFilteredPastryList(PREDICATE_SHOW_ALL_PASTRIES);
         } else if (type.equals("order")) {
-            model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+            if (index != null) {
+                // do nothing
+            } else {
+                model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+            }
         } else {
             // invalid type
             throw new CommandException(MESSAGE_USAGE);

@@ -44,7 +44,7 @@ public class DeleteCommand extends Command {
      * Describes the expected syntax and provides an example.
      */
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the client/pastry identified by the index in the displayed list.\n"
+            + ": Deletes the client/pastry/order identified by the index in the displayed list.\n"
             + "Parameters: TYPE (client/pastry/order) INDEX (must be a positive integer)\n"
             + "Example: delete client 1\n"
             + "Example: delete pastry 2\n"

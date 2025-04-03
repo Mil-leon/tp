@@ -36,6 +36,7 @@ import powerbake.address.ui.persontab.PersonListPanel;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
+    private static final String TAB_SWITCH_MESSAGE = "Viewing %1$s list";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -308,7 +309,7 @@ public class MainWindow extends UiPart<Stage> {
         }
 
         CommandResult commandResult = new CommandResult(
-                String.format(ViewCommand.MESSAGE_SUCCESS, tabName),
+                String.format(TAB_SWITCH_MESSAGE, tabName),
                 false, false, showClient, showPastry, showOrder
         );
         String feedbackToUser = commandResult.getFeedbackToUser();

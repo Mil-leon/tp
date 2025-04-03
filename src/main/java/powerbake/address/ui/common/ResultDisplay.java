@@ -17,6 +17,9 @@ public class ResultDisplay extends UiPart<Region> {
     @FXML
     private TextArea resultDisplay;
 
+    /**
+     * Creates a {@code ResultDisplay} to display the command result.
+     */
     public ResultDisplay() {
         super(FXML);
         resultDisplay.setWrapText(true);

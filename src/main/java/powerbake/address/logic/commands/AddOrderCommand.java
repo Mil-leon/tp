@@ -30,6 +30,7 @@ public class AddOrderCommand extends AddCommand {
             + ": Adds a order to the address book. "
             + "Parameters: "
             + PREFIX_ORDER + "CLIENT_INDEX "
+            + PREFIX_PASTRY_NAME + "PASTRY NAME " + PREFIX_QUANTITY + "QUANTITY "
             + "[" + PREFIX_PASTRY_NAME + "PASTRY NAME " + PREFIX_QUANTITY + "QUANTITY]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ORDER + "1 "

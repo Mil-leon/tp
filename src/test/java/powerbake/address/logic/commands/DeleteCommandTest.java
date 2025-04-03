@@ -117,7 +117,10 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredPersonList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_CLIENT.toString().trim(), outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model, String.format(
+                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     /**
@@ -129,7 +132,10 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredPastryList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_PASTRY.toString().trim(), outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model, String.format(
+                    Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     /**
@@ -141,7 +147,10 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredOrderList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_ORDER.toString().trim(), outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+        assertCommandFailure(deleteCommand, model, String.format(
+                    Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     /**

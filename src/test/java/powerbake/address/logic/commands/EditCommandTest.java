@@ -243,7 +243,10 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(PREFIX_CLIENT.toString().trim(),
                 outOfBoundIndex, descriptor, true);
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, String.format(
+                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     @Test
@@ -254,7 +257,10 @@ public class EditCommandTest {
         EditCommand editCommand1 = new EditCommand(PREFIX_PASTRY.toString().trim(),
                 outOfBoundPastry, descriptor1, false);
 
-        assertCommandFailure(editCommand1, model, Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand1, model, String.format(
+                    Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     /**
@@ -271,7 +277,10 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(PREFIX_CLIENT.toString().trim(), outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build(), true);
 
-        assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand, model, String.format(
+                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
 
         showPastryAtIndex(model, INDEX_FIRST_PASTRY);
         Index outOfBoundIndex1 = INDEX_SECOND_PASTRY;
@@ -281,7 +290,10 @@ public class EditCommandTest {
         EditCommand editCommand1 = new EditCommand(PREFIX_PASTRY.toString().trim(), outOfBoundIndex1,
                 new EditPastryDescriptorBuilder().withName(VALID_NAME_CHOCOLATECROISSANT).build(), false);
 
-        assertCommandFailure(editCommand1, model, Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX);
+        assertCommandFailure(editCommand1, model, String.format(
+                    Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
+                    Messages.MESSAGE_INVALID_INDEX
+                    ));
     }
 
     @Test

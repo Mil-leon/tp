@@ -464,7 +464,7 @@ Once `enter` is hit, a output message will be displayed of your success. Pastry 
 **After:**
 <img src="images/addpastry2.png" alt="add pastry result" width="600"/>
 
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
 
 ---
 <div style="page-break-after: always;"></div>
@@ -505,7 +505,7 @@ Once `enter` is hit, a output message will be displayed of your success. Order d
 **After:**
 <img src="images/addOrderCommand2.png" alt="add order result" width="600"/>
 
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
 
 ---
 
@@ -578,7 +578,7 @@ The remaining orders will adjust their index numbers accordingly.
 **After:**
 <img src="images/commands/deleteOrder2.png" alt="delete order" width="600"/>
 
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
 
 ---
 
@@ -664,7 +664,7 @@ After hitting `Enter`, you will see the third order updated from the list.
 **After:**
 <img src="images/commands/editCommand6.png" alt="edit order" width="600"/>
 
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
 
 ---
 
@@ -735,7 +735,7 @@ After hitting `Enter`, you will see the third order updated from the list.
 **After:**
 <img src="images/commands/find_order2.png" alt="find order" width="600"/>
 
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
 
 ---
 
@@ -837,31 +837,7 @@ Alternatively, you can switch between **client**, **pastry** and **order** by ut
 
 </box>
 
-[Go to Command Summary](#command-summary)
-
----
-
-<div style="page-break-after: always;"></div>
-
-### Exiting the program : `exit`
-
-The `exit` command is designed to let you have a swift way of **closing PowerBake**.
-
-It is a simple command, where the application terminates gracefully while safeguarding all the data and changes you have made.
-
-#### Command Usage
-
-**Command**: `exit`
-
-#### Parameters:
-
-<box type="info" seamless>
-
-The `exit` command does not require any parameters.
-
-</box>
-
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
 
 ---
 
@@ -889,7 +865,31 @@ Do be careful, as this command irreversibly deletes ALL entries, and the operati
 
 </box>
 
-[Go to Command Summary](#command-summary)
+[^ Back to top](#powerbake-user-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Exiting the program : `exit`
+
+The `exit` command is designed to let you have a swift way of **closing PowerBake**.
+
+It is a simple command, where the application terminates gracefully while safeguarding all the data and changes you have made.
+
+#### Command Usage
+
+**Command**: `exit`
+
+#### Parameters:
+
+<box type="info" seamless>
+
+The `exit` command does not require any parameters.
+
+</box>
+
+[^ Back to top](#powerbake-user-guide)
 
 ---
 
@@ -956,8 +956,8 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | **[View Pastry](#viewing-client-pastry-or-order-view)**         | `view pastry`                                                                         | `view pastry`                                                                 |
 | **[View Order](#viewing-client-pastry-or-order-view)**          | `view order`                                                                          | `view order`                                                                  |
 | **[View Specific Order](#viewing-client-pastry-or-order-view)** | `view order INDEX`                                                                    | `view order 1`                                                                |
-| **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
 | **[Clear](#clearing-all-entries-clear)**                        | `clear`                                                                               | `clear`                                                                       |
+| **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
 
 --------------------------------------------------------------------------------------------------------------------
 

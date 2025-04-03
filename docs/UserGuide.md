@@ -915,7 +915,7 @@ If your changes to the data file makes its format invalid, AddressBook will disc
 Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
-
+[^ Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -932,6 +932,8 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
+
+[^ Back to top](#powerbake-user-guide)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -959,6 +961,8 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | **[Clear](#clearing-all-entries-clear)**                        | `clear`                                                                               | `clear`                                                                       |
 | **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
 
+[^ Back to top](#powerbake-user-guide)
+
 --------------------------------------------------------------------------------------------------------------------
 
 <div style="page-break-after: always;"></div>
@@ -981,3 +985,7 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | Parameter                         | A variable in a command that stands in for a specific piece of information that must be supplied when the command is executed.                                                                                 |
 | Pastries                          | Pastries in a bakery refer to baked goods made from dough or batter, often enriched with butter, sugar, and fillings like cream, fruit, or chocolate, including items such as croissants, danishes, and tarts. |
 | Person                            | Used interchangeably between client or customers in development |
+
+[^ Back to top](#powerbake-user-guide)
+
+---

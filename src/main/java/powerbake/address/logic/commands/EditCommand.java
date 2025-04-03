@@ -47,7 +47,7 @@ public class EditCommand extends Command {
             + " or order status identified "
             + "by the index number used in the displayed list. "
             + "Existing values will be overwritten by the input values. \n"
-            + "Parameters: TYPE (client/pastry), INDEX (must be a positive integer), FIELDS\n"
+            + "Parameters: TYPE (client/pastry/order), INDEX (must be a positive integer), FIELDS\n"
             + "Example for client: edit client 1 -n John -p 91234567 -e johndoe@example.com\n"
             + "Example for pastry: edit pastry 2 -n Croissant -pr 3.50\n"
             + "Example for order: edit order 2 -s delivered";
@@ -67,7 +67,7 @@ public class EditCommand extends Command {
             + "-pr: Price of the pastry to edit \n";
 
     public static final String MESSAGE_NOT_EDITED_ORDER = "Please type in the Status to change to: "
-            + "pending, processing, ready, delivered, cancelled";
+            + "pending, processing, ready, delivered or cancelled";
     public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the address book.";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in the bakery.";
     public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in the bakery.";

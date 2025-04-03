@@ -179,9 +179,8 @@ public class ParserUtil {
         String trimmedPastryName = splitOrder[0].trim();
         String trimmedQuantity = splitOrder[1].trim();
         // check if quantity is an integer
-        if (!StringUtil.isNonZeroUnsignedInteger(trimmedQuantity)) {
-            // change this in v1.5
-            throw new ParseException("Quantity must be a positive integer");
+        if (!StringUtil.isValidIntegerQuantity(trimmedQuantity)) {
+            throw new ParseException("Quantity must be a positive integer between 1 - 999");
         }
         ArrayList<String> unformattedOrder = new ArrayList<>() {
             {

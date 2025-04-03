@@ -21,7 +21,7 @@ public class AddPastryCommand extends AddCommand {
             + ": Adds a pastry to Powerbake. "
             + "Parameters: "
             + PREFIX_PASTRY + "NAME "
-            + PREFIX_PRICE + "PRICE "
+            + PREFIX_PRICE + "PRICE " + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_PASTRY + "Croissant "
             + PREFIX_PRICE + "5.99 ";

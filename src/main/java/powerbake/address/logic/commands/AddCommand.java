@@ -11,7 +11,7 @@ public abstract class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a person, pastry or order to address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a client, pastry or order to address book. "
             + "Type "
             + COMMAND_WORD + " " + PREFIX_CLIENT
             + "or "

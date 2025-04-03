@@ -57,7 +57,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_NAME,
-                PREFIX_PRICE, PREFIX_TAG, PREFIX_STATUS);
+                PREFIX_PRICE, PREFIX_STATUS);
 
         if (entityType.equals("client")) {
             return parseEditClientCommand(argMultimap, index);

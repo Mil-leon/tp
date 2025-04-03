@@ -69,7 +69,7 @@
     -fx-border-radius: 5px;
     -fx-border-style: dotted;
     -fx-text-fill: white;
-    -fx-font-family: "Segoe UI Light";
+    -fx-font-family: "Segoe UI Semilight";
     -fx-font-size: 11pt;
 }
 
@@ -81,6 +81,32 @@
 
 .text-area .viewport {
     -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar:vertical {
+    -fx-pref-width: 0.80em;
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar:vertical > .track {
+    -fx-background-color: -dark-gray;
+    -fx-border-radius: 5px;
+}
+
+.text-area .scroll-bar:vertical > .thumb {
+    -fx-background-color: -orange-border;
+}
+
+.text-area .scroll-bar:vertical > .increment-button,
+.text-area .scroll-bar:vertical > .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0 0 0 0 , 0 0 0 0, 0 0 0 0, 0 0 0 0 0;
+    -fx-padding: 0 0 0 0;
+}
+
+.text-area .scroll-bar:vertical > .increment-button > .increment-arrow,
+.text-area .scroll-bar:vertical > .decrement-button > .decrement-arrow {
+    -fx-padding: 0 0 0 0;
 }
 
 /* ************** */

@@ -82,7 +82,7 @@ public class Messages {
      */
     public static String format(Order order) {
         final StringBuilder builder = new StringBuilder();
-        builder.append("; Client Name: ")
+        builder.append(" Client Name: ")
                 .append(order.getCustomer().getName().toString());
         List<OrderItem> orderList = order.getOrderItems();
         for (OrderItem orderItem : orderList) {

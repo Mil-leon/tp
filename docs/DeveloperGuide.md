@@ -71,16 +71,9 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Due to the sheer number of components inhering from `UIPart`, the inheritance has not been shown. To be clear, the classes inheriting from the abstract `UIPart` are:
-* `MainWindow`
-* `CommandBox`
-* `StatusBarFooter`
-* `ResultDisplay`
-* `HelpWindow`
-* `PersonListPanel` and its child `PersonCard`
-* `PastryListPanel` and its child `PastryCard`
-* `OrderListPanel` and its child `OrderCard`
-* `OrderDetailsPanel`
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Due to the sheer number of components inhering fromthe abstract `UiPart` class, the inheritance has been shown in the diagram below instead.
+
+<puml src="diagrams/UiClassDiagram2.puml" alt="Inheritance from UiPart class"/>
 
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/ui/common/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
@@ -133,7 +126,7 @@ How the parsing works:
 The `Model` component,
 
 * stores the address book data.
-1. all `Person` objects (which are contained in a `UniquePersonList` object). 
+1. all `Person` objects (which are contained in a `UniquePersonList` object).
 2. all `Pastry` objects (which are contained in a `UniquePastryList` object).
 3. all `Order` objects (which are contained in a `UniqueOrderList` object).
 * stores the currently 'selected' `Person` objects (e.g., results of a search query) as a separate _filtered_ list which is exposed to outsiders as an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.

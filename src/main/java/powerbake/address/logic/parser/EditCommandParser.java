@@ -89,7 +89,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editPersonDescriptor::setTags);
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED_CLIENT);
         }
 
         return new EditCommand("client", index, editPersonDescriptor, true);
@@ -109,7 +109,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         if (!editPastryDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(EditCommand.MESSAGE_NOT_EDITED_PASTRY);
         }
 
         return new EditCommand("pastry", index, editPastryDescriptor, false);

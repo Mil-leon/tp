@@ -444,38 +444,155 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file or run `java -jar powerbake.jar`
+   Expected: Shows the GUI with a set of sample clients, pastry and order.
 
-1. Saving window preferences
 
-   1. Resize the window to an optimum size. Move the window to a different location. Close the window.
+### Adding a Client 
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+1. Pre-requisite: Launched the app
 
-1. _{ more test cases …​ }_
+2. Test case: `add client Baobao -p 12345678 -e bao@gmail.com -a Sengkang Central`.  
+   Expected: New client is added and displayed in client scrolling panel. Success message is displayed.
 
-### Deleting a person
+3. Test case: `add client Baobao -p 12345678`  
+   Expected: Error message is displayed. Correct format is displayed in display box.
 
-1. Deleting a person while all persons are being shown
+4. Other incorrect delete commands to try: `add Client`, `add baobao`  
+   Expected: Similar to previous.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+### Adding a Pastry
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Pre-requisite: Launched the app
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+2. Test case: `add pastry Croissant -pr 5.00`.  
+   Expected: New pastry is added and displayed in pastry scrolling panel. Success message is displayed.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+3. Test case: `add pastry Croissant`  
+   Expected: Error message is displayed. Correct format is displayed in display box.
 
-1. _{ more test cases …​ }_
+4. Other incorrect delete commands to try: `add Pastry`, `add pastry Bao -pr 5.111`  
+   Expected: Similar to previous.
 
-### Saving data
+### Adding an Order
 
-1. Dealing with missing/corrupted data files
+1. Pre-requisite:
+   1. Launched the app
+   2. Add at least one Client and Pastry
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+2. Test case: `add order 1 -pn Croissant -q 100`.  
+   Expected: New order for client of index 1 is added and displayed in order scrolling panel. Success message is shown.
 
-1. _{ more test cases …​ }_
+3. Test case: `add order 1`  
+   Expected: Error message is displayed. Correct format is displayed in display box.
+
+4. Other incorrect delete commands to try: `add order 1 -pn Croissant`, `add order`  
+   Expected: Similar to previous.
+
+### Delete a Client
+
+1. Pre-requisite:
+   1. Launched the app
+   2. Have at least one client
+
+2. Test case: `delete client 1`.  
+   Expected: Delete client of index one and removed from client scrolling panel. Success message displayed.
+
+2. Test case: `delete client -1`.  
+   Expected: Error message displaying invalid index.
+
+4. Other incorrect delete commands to try: `delete Client`   
+   Expected: Similar to previous.
+
+### Delete a Pastry
+
+1. Pre-requisite:
+    1. Launched the app
+    2. Have at least one pastry
+
+2. Same as client command above
+
+### Delete an Order
+
+1. Pre-requisite:
+    1. Launched the app
+    2. Have at least one order
+
+2. Same as client command above
+
+### Edit a Client
+
+1. Pre-requisite:
+    1. Launched the app
+    2. Have at least one client
+
+2. Test case: `edit client 1 -n Bobby`.  
+   Expected: Edit client's name of index one to Bobby. Success message displayed.
+
+2. Test case: `edit client Bobby`.  
+   Expected: Error message displaying invalid format.
+
+4. Other incorrect delete commands to try: `edit client 1`   
+   Expected: Similar to previous.
+
+### Edit a Pastry
+
+1. Pre-requisite:
+    1. Launched the app
+    2. Have at least one pastry
+
+2. Test case: `edit pastry 1 -n Pie`.  
+   Expected: Edit Pastry's name of index one to Pie. Success message displayed.
+
+2. Test case: `edit pastry Pie`.  
+   Expected: Error message displaying invalid format.
+
+4. Other incorrect delete commands to try: `edit pastry`   
+   Expected: Similar to previous.
+
+### Edit a Order
+
+1. Pre-requisite:
+    1. Launched the app
+    2. Have at least one order
+
+2. Test case: `edit order 1 -s delivered`.  
+   Expected: Edit order's status to delivered. Success message displayed.
+
+2. Test case: `edit order 1`.  
+   Expected: Error message displaying invalid format.
+
+4. Other incorrect delete commands to try: `edit order`   
+   Expected: Similar to previous.
+
+### Find a Client
+
+1. Pre-requisite:
+    1. Launched the app
+
+2. Test case: `find client Bobby`.  
+   Expected: Display client list with matching keywords.
+
+2. Test case: `find Bobby`.  
+   Expected: Error message displaying invalid format.
+
+   
+### Find a Pastry, Order
+
+1. Same as with finding a client above.
+
+### View all Clients
+
+1. Pre-requisite:
+    1. Launched the app
+
+2. Test case: `view client`.  
+   Expected: Display full client list.
+
+2. Test case: `view`.  
+   Expected: Error message displaying invalid format.
+
+
+### View all Pastry, Orders
+
+1. Same as with viewing a client above.

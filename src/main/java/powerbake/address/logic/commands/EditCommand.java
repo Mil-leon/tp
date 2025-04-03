@@ -46,7 +46,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the client, pastry"
             + " or order status identified "
             + "by the index number used in the displayed list. "
-            + "Existing values will be overwritten by the input values.\n"
+            + "Existing values will be overwritten by the input values. \n"
             + "Parameters: TYPE (client/pastry), INDEX (must be a positive integer), FIELDS\n"
             + "Example for client: edit client 1 -n John -p 91234567 -e johndoe@example.com\n"
             + "Example for pastry: edit pastry 2 -n Croissant -pr 3.50\n"

@@ -38,6 +38,8 @@ public class OrderListPanel extends UiPart<Region> {
         // Bind selected order to property
         orderListView.getSelectionModel().selectedItemProperty().addListener((observable, oldOrder, newOrder) -> {
             selectedOrderProperty.set(newOrder);
+            // scroll to selected order
+            orderListView.scrollTo(newOrder);
         });
     }
 

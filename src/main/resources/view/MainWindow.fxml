@@ -46,7 +46,7 @@
             </VBox.margin>
           </AnchorPane>
           <!--   ResultDisplay Placeholder -->
-          <AnchorPane fx:id="resultDisplayPlaceholder" prefHeight="100.0" prefWidth="200.0">
+          <AnchorPane fx:id="resultDisplayPlaceholder" prefHeight="140.0" prefWidth="200.0">
             <padding>
               <Insets left="10.0" right="10.0" top="10.0"/>
             </padding>

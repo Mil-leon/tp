@@ -12,7 +12,7 @@
 
 **_PowerBake_** is a **desktop application** designed to help small home bakery businesses **track clients, manage pastry inventory, and organize orders efficiently**.
 
-To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](UserGuide.html#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](UserGuide.html#glossary). 
+To enhance speed and productivity, **_PowerBake_** is **optimized for a [Command Line Interface (CLI)](UserGuide.html#glossary)** while still providing the benefits of a [Graphical User Interface (GUI)](UserGuide.html#glossary).
 
 <box type="info" seamless>
 

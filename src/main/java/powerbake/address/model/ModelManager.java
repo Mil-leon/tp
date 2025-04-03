@@ -211,24 +211,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public int getOriginalIndex(Person person) {
-        requireNonNull(person);
-        return addressBook.getOriginalIndex(person);
-    }
-
-    @Override
-    public int getOriginalIndex(Pastry pastry) {
-        requireNonNull(pastry);
-        return addressBook.getOriginalIndex(pastry);
-    }
-
-    @Override
-    public int getOriginalIndex(Order order) {
-        requireNonNull(order);
-        return addressBook.getOriginalIndex(order);
-    }
-
-    @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;

@@ -20,6 +20,5 @@ public class CliSyntax {
     public static final Prefix PREFIX_NAME = new Prefix("-n ");
     public static final Prefix PREFIX_PASTRY_NAME = new Prefix("-pn ");
     public static final Prefix PREFIX_QUANTITY = new Prefix("-q ");
-
-
+    public static final Prefix PREFIX_STATUS = new Prefix("-s ");
 }

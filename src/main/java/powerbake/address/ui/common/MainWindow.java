@@ -19,6 +19,7 @@ import powerbake.address.commons.core.GuiSettings;
 import powerbake.address.commons.core.LogsCenter;
 import powerbake.address.logic.Logic;
 import powerbake.address.logic.commands.CommandResult;
+import powerbake.address.logic.commands.ViewCommand;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.ui.UiPart;
@@ -152,13 +153,13 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     public void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic);
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        pastryListPanel = new PastryListPanel(logic);
+        pastryListPanel = new PastryListPanel(logic.getFilteredPastryList());
         pastryListPanelPlaceholder.getChildren().add(pastryListPanel.getRoot());
 
-        orderListPanel = new OrderListPanel(logic);
+        orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
         orderListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
 
         orderDetailsPanel = new OrderDetailsPanel();
@@ -195,6 +196,7 @@ public class MainWindow extends UiPart<Stage> {
         SplitPane.setResizableWithParent(orderListPanelPlaceholder, false);
         SplitPane.setResizableWithParent(orderDetailsPanelPlaceholder, false);
 
+        setTabClickListener();
     }
 
     /**
@@ -247,6 +249,49 @@ public class MainWindow extends UiPart<Stage> {
 
     public OrderListPanel getOrderListPanel() {
         return orderListPanel;
+    }
+
+    /**
+     * Listens for mouse clicks and switches tab accordingly.
+     *
+     * This fixes a bug where the {@code CommandResult}'s static variables
+     * do not update upon mouse clicking the tab, which caused unwanted tab
+     * switches to the last saved view upon command being entered.
+     */
+    private void setTabClickListener() {
+        tabPane.setOnMouseClicked(event -> {
+            Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
+            CommandResult commandResult = null;
+            if (selectedTab == clientTab) {
+                commandResult = new CommandResult(
+                        String.format(ViewCommand.MESSAGE_SUCCESS, "client"),
+                        false,
+                        false,
+                        true,
+                        false,
+                        false);
+            } else if (selectedTab == pastryTab) {
+                commandResult = new CommandResult(
+                        String.format(ViewCommand.MESSAGE_SUCCESS, "pastry"),
+                        false,
+                        false,
+                        false,
+                        true,
+                        false);
+            } else {
+                commandResult = new CommandResult(
+                        String.format(ViewCommand.MESSAGE_SUCCESS, "order"),
+                        false,
+                        false,
+                        false,
+                        false,
+                        true);
+            }
+            assert commandResult != null;
+            String feedbackToUser = commandResult.getFeedbackToUser();
+            logger.info("Result: " + feedbackToUser);
+            resultDisplay.setFeedbackToUser(feedbackToUser);
+        });
     }
 
     /**

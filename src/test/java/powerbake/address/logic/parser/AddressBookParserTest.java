@@ -25,7 +25,6 @@ import powerbake.address.logic.commands.FindCommand;
 import powerbake.address.logic.commands.HelpCommand;
 import powerbake.address.logic.commands.ViewCommand;
 import powerbake.address.logic.parser.exceptions.ParseException;
-import powerbake.address.model.person.NameContainsKeywordsPredicate;
 import powerbake.address.model.person.Person;
 import powerbake.address.testutil.EditPersonDescriptorBuilder;
 import powerbake.address.testutil.PersonBuilder;
@@ -73,10 +72,12 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_find() throws Exception {
-        List<String> keywords = Arrays.asList("foo", "bar", "baz");
+        String commandWord = "client";
+        List<String> args = Arrays.asList(commandWord, "foo", "bar", "baz");
+        String[] keywords = args.subList(1, args.size()).toArray(new String[0]);
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " " + args.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(commandWord, keywords), command);
     }
 
     @Test

@@ -18,11 +18,11 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Finds all clients/pastry whose names and orders with client names that contain any of "
-            + "\nthe specified keywords (case-insensitive) and displays them as a list with actual index numbers.\n"
+            + "the specified keywords (case-insensitive) and displays them as a list with actual index numbers.\n"
             + "Parameters: TYPE (client/pastry/order) KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " client alice bob charlie\n"
             + "Example: " + COMMAND_WORD + " pastry croissant\n"
-            + "Example: " + COMMAND_WORD + " order alice\n";
+            + "Example: " + COMMAND_WORD + " order alice";
 
     private final String commandWord;
     private final String[] nameKeywords;

@@ -259,7 +259,10 @@ public class MainWindow extends UiPart<Stage> {
      * Listens for mouse clicks and switches tab accordingly.
      */
     private void setTabClickListener() {
-        tabPane.setOnMouseClicked(event -> setLastSavedTab(tabPane.getSelectionModel().getSelectedItem()));
+        tabPane.setOnMouseClicked(event -> {
+            setLastSavedTab(tabPane.getSelectionModel().getSelectedItem());
+            commandBox.requestFocus();
+        });
     }
 
     /**

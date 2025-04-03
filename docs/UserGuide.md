@@ -856,7 +856,7 @@ After hitting `Enter`, you will see the second pastry updated from the list.
 <img src="images/commands/find_pastry2.png" alt="find pastry" width="600" class="center"/>
 
 ##### Example 3:
-If you want to find the third **order** on the list, the command would look like this:
+If you want to find the **order** that belongs to a **client** on the list, the command would look like this:
 
 ```
  find order Charlotte
@@ -865,7 +865,7 @@ If you want to find the third **order** on the list, the command would look like
 **Before:**
 <img src="images/commands/find_order1.png" alt="find order" width="600" class="center"/>
 
-After hitting `Enter`, you will see the third order updated from the list.
+After hitting `Enter`, you will see the only the orders that belongs to **Charlotte** shows up.
 
 **After:**
 <img src="images/commands/find_order2.png" alt="find order" width="600" class="center"/>
@@ -897,7 +897,7 @@ The `clear` command does not require any parameters.
 
 <box type="warning">
 
-Do be careful, as this command irreversibly deletes ALL entries. This the operation cannot be undone. 
+Do be careful, as this command irreversibly deletes ALL entries. This the operation cannot be undone.
 
 </box>
 

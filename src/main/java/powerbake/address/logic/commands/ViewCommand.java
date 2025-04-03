@@ -32,6 +32,8 @@ public class ViewCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Viewing full %1$s list";
     public static final String MESSAGE_SUCCESS_INDEX = "Viewing %1$s at index %2$d";
 
+    public static final String MESSAGE_FAILURE_ORDER_INDEX = "The index provided is out of range.";
+
     private final String type;
     private final Index index;
 
@@ -56,24 +58,25 @@ public class ViewCommand extends Command {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
 
-
         if (type.equals("client")) {
             model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         } else if (type.equals("pastry")) {
             model.updateFilteredPastryList(PREDICATE_SHOW_ALL_PASTRIES);
         } else if (type.equals("order")) {
-            if (index != null) {
-                // do nothing
-            } else {
+            if (index == null) {
                 model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
             }
         } else {
             // invalid type
             throw new CommandException(MESSAGE_USAGE);
         }
+
         if (index != null) {
             if (index.getZeroBased() >= lastShownList.size()) {
-                throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+                throw new CommandException(String.format(
+                            Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
+                            MESSAGE_FAILURE_ORDER_INDEX)
+                        );
             }
             return new CommandResult(String.format(MESSAGE_SUCCESS_INDEX, type, index.getOneBased()), false, false,
             type.equals("client"), type.equals("pastry"), type.equals("order"), index.getZeroBased());

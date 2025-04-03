@@ -2,6 +2,7 @@ package powerbake.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static powerbake.address.logic.Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.logic.commands.ViewCommand;
@@ -45,7 +46,7 @@ public class ViewCommandParser implements Parser<ViewCommand> {
                 index = ParserUtil.parseIndex(parts[1]);
                 parts[0] = parts[0] + "num";
             } catch (ParseException e) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ViewCommand.MESSAGE_USAGE));
+                throw new ParseException(String.format(MESSAGE_INVALID_ORDER_DISPLAYED_INDEX, e.getMessage()));
             }
         }
 

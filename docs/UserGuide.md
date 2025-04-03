@@ -867,6 +867,34 @@ The `exit` command does not require any parameters.
 
 <div style="page-break-after: always;"></div>
 
+### Clearing all entries : `clear`
+
+The `clear` command **deletes** all clients, pastries and orders in PowerBake.
+
+#### Command Usage
+
+**Command**: `clear`
+
+#### Parameters:
+
+<box type="info" seamless>
+
+The `clear` command does not require any parameters.
+
+</box>
+
+<box type="warning">
+
+Do be careful, as this command irreversibly deletes ALL entries, and the operation cannot be undone. 
+
+</box>
+
+[Go to Command Summary](#command-summary)
+
+---
+
+<div style="page-break-after: always;"></div>
+
 ## Storage
 
 This section will go through how order, pastry and customer details are stored.
@@ -929,6 +957,7 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 | **[View Order](#viewing-client-pastry-or-order-view)**          | `view order`                                                                          | `view order`                                                                  |
 | **[View Specific Order](#viewing-client-pastry-or-order-view)** | `view order INDEX`                                                                    | `view order 1`                                                                |
 | **[Exit](#exiting-the-program-exit)**                           | `exit`                                                                                | `exit`                                                                        |
+| **[Clear](#clearing-all-entries-clear)**                        | `clear`                                                                               | `clear`                                                                       |
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -20,7 +20,6 @@ import powerbake.address.commons.core.GuiSettings;
 import powerbake.address.commons.core.LogsCenter;
 import powerbake.address.logic.Logic;
 import powerbake.address.logic.commands.CommandResult;
-import powerbake.address.logic.commands.ViewCommand;
 import powerbake.address.logic.commands.exceptions.CommandException;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.ui.UiPart;

@@ -22,7 +22,7 @@ public class FindCommand extends Command {
             + "Parameters: TYPE (client/pastry/order) KEYWORD [MORE_KEYWORDS]...\n"
             + "Example: " + COMMAND_WORD + " client alice bob charlie\n"
             + "Example: " + COMMAND_WORD + " pastry croissant\n"
-            + "Example: " + COMMAND_WORD + " order alice\n";
+            + "Example: " + COMMAND_WORD + " order alice";
 
     private final String commandWord;
     private final String[] nameKeywords;

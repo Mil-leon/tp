@@ -10,7 +10,10 @@ import java.util.Set;
 
 import powerbake.address.commons.core.index.Index;
 import powerbake.address.commons.util.StringUtil;
+import powerbake.address.logic.Messages;
 import powerbake.address.logic.parser.exceptions.ParseException;
+import powerbake.address.model.order.Order;
+import powerbake.address.model.order.OrderStatus;
 import powerbake.address.model.pastry.Price;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
@@ -139,6 +142,7 @@ public class ParserUtil {
         }
         return new powerbake.address.model.pastry.Name(trimmedName);
     }
+
     /**
      * Parses a {@code String price} into a {@code Price}.
      * Leading and trailing whitespaces will be trimmed.
@@ -198,5 +202,19 @@ public class ParserUtil {
         return unformattedOrderList;
     }
 
+    /**
+     * Parses a {@code String price} into a {@code Price}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code price} is invalid.
+     */
+    public static OrderStatus parseOrderStatus(String status) throws ParseException {
+        requireNonNull(status);
+        String trimmedStatus = status.trim();
+        if (!Order.isValidStatus(trimmedStatus.toUpperCase())) {
+            throw new ParseException(Messages.MESSAGE_CONSTRAINTS_ORDERSTATUS);
+        }
 
+        return OrderStatus.valueOf(trimmedStatus.toUpperCase());
+    }
 }

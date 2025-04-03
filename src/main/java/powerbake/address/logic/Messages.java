@@ -29,6 +29,12 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";
     public static final String MESSAGE_INVALID_ENTITY = "Invalid entity. Only 'client' and 'pastry' are supported.";
+    public static final String MESSAGE_CONSTRAINTS_ORDERSTATUS =
+            "Order status should only be either: pending, "
+                    + "processing, "
+                    + "ready, "
+                    + "delivered, "
+                    + "cancelled";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
@@ -84,6 +90,7 @@ public class Messages {
                     .append("; Quantity: ")
                     .append(orderItem.getQuantity());
         }
+        builder.append("; Status: ").append(order.getStatus());
         return builder.toString();
     }
 

@@ -9,8 +9,8 @@ import static powerbake.address.commons.util.AppUtil.checkArgument;
  */
 public class Address {
 
-    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank. " +
-            "It should be between 5 - 100 characters.";
+    public static final String MESSAGE_CONSTRAINTS = "Addresses can take any values, and it should not be blank. "
+            + "It should be between 5 - 100 characters.";
 
     /*
      * The first character of the address must not be a whitespace,

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -74,7 +75,6 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane orderDetailsPanelPlaceholder;
 
-
     @FXML
     private AnchorPane statusbarPlaceholder;
 
@@ -92,6 +92,8 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private SplitPane splitPane;
+
+    private CommandBox commandBox;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -176,6 +178,7 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+        this.commandBox = commandBox;
 
         AnchorPane.setTopAnchor(commandBox.getRoot(), 0.0);
         AnchorPane.setBottomAnchor(commandBox.getRoot(), 0.0);
@@ -197,6 +200,7 @@ public class MainWindow extends UiPart<Stage> {
         SplitPane.setResizableWithParent(orderDetailsPanelPlaceholder, false);
 
         setTabClickListener();
+        setTabSwitchShortcut();
     }
 
     /**
@@ -253,45 +257,63 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Listens for mouse clicks and switches tab accordingly.
-     *
-     * This fixes a bug where the {@code CommandResult}'s static variables
-     * do not update upon mouse clicking the tab, which caused unwanted tab
-     * switches to the last saved view upon command being entered.
      */
     private void setTabClickListener() {
-        tabPane.setOnMouseClicked(event -> {
-            Tab selectedTab = tabPane.getSelectionModel().getSelectedItem();
-            CommandResult commandResult = null;
-            if (selectedTab == clientTab) {
-                commandResult = new CommandResult(
-                        String.format(ViewCommand.MESSAGE_SUCCESS, "client"),
-                        false,
-                        false,
-                        true,
-                        false,
-                        false);
-            } else if (selectedTab == pastryTab) {
-                commandResult = new CommandResult(
-                        String.format(ViewCommand.MESSAGE_SUCCESS, "pastry"),
-                        false,
-                        false,
-                        false,
-                        true,
-                        false);
-            } else {
-                commandResult = new CommandResult(
-                        String.format(ViewCommand.MESSAGE_SUCCESS, "order"),
-                        false,
-                        false,
-                        false,
-                        false,
-                        true);
+        tabPane.setOnMouseClicked(event -> setLastSavedTab(tabPane.getSelectionModel().getSelectedItem()));
+    }
+
+    /**
+     * Listens for Ctrl-Tab keyboard shortcut and switches tabs accordingly.
+     */
+    private void setTabSwitchShortcut() {
+        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.isControlDown() && event.getCode().toString().equals("TAB")) {
+                SingleSelectionModel<Tab> model = tabPane.getSelectionModel();
+                int currentIndex = model.getSelectedIndex();
+                int nextIndex = (currentIndex + 1) % tabPane.getTabs().size();
+                model.select(nextIndex);
+                commandBox.requestFocus();
+                setLastSavedTab(model.getSelectedItem());
+                event.consume();
             }
-            assert commandResult != null;
-            String feedbackToUser = commandResult.getFeedbackToUser();
-            logger.info("Result: " + feedbackToUser);
-            resultDisplay.setFeedbackToUser(feedbackToUser);
         });
+    }
+
+    /**
+     * Updates the last saved tab selection to prevent unintended tab switches.
+     *
+     * This fixes a bug where the {@code CommandResult}'s static variables
+     * do not update upon mouse click/keyboard shortcut to change tab,
+     * which caused unwanted tab switches to the last saved view upon command being entered.
+     *
+     * @param selectedTab The tab that has been selected.
+     * @see #setTabClickListener()
+     * @see #setTabSwitchShortcut()
+     */
+    private void setLastSavedTab(Tab selectedTab) {
+        String tabName;
+        boolean showClient = false;
+        boolean showPastry = false;
+        boolean showOrder = false;
+
+        if (selectedTab == clientTab) {
+            tabName = "client";
+            showClient = true;
+        } else if (selectedTab == pastryTab) {
+            tabName = "pastry";
+            showPastry = true;
+        } else {
+            tabName = "order";
+            showOrder = true;
+        }
+
+        CommandResult commandResult = new CommandResult(
+                String.format(ViewCommand.MESSAGE_SUCCESS, tabName),
+                false, false, showClient, showPastry, showOrder
+        );
+        String feedbackToUser = commandResult.getFeedbackToUser();
+        logger.info("Result: " + feedbackToUser);
+        resultDisplay.setFeedbackToUser(feedbackToUser);
     }
 
     /**

@@ -65,4 +65,18 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns true if {@code s} represents an integer between 1 - 999
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isValidIntegerQuantity(String s) {
+        requireNonNull(s);
+        try {
+            int value = Integer.parseInt(s);
+            return value > 0 && value <= 999 && !s.startsWith("+");
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 }

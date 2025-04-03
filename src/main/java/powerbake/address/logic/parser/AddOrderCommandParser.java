@@ -40,8 +40,7 @@ public class AddOrderCommandParser implements Parser<AddOrderCommand> {
                     argMultimap.getAllValues(PREFIX_PASTRY_NAME));
             return new AddOrderCommand(index, unformattedOrderList);
         } catch (ParseException e) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddOrderCommand.MESSAGE_USAGE), e);
+            throw new ParseException(e.getMessage());
         }
     }
 

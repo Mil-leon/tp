@@ -45,6 +45,24 @@ public class StringUtilTest {
         assertTrue(StringUtil.isNonZeroUnsignedInteger("10"));
     }
 
+    @Test
+    public void isValidIntegerQuantity() {
+        // empty string
+        assertFalse(StringUtil.isValidIntegerQuantity(""));
+
+        // negative number check
+        assertFalse(StringUtil.isValidIntegerQuantity("-5"));
+        assertFalse(StringUtil.isValidIntegerQuantity("-99999"));
+
+        // over 999 check
+        assertFalse(StringUtil.isValidIntegerQuantity("1000"));
+        assertFalse(StringUtil.isValidIntegerQuantity("10000000000"));
+
+        // between 1 - 999
+        assertTrue(StringUtil.isValidIntegerQuantity("50"));
+        assertTrue(StringUtil.isValidIntegerQuantity("999"));
+    }
+
 
     //---------------- Tests for containsWordIgnoreCase --------------------------------------
 

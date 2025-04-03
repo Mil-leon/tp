@@ -13,6 +13,19 @@ mark {
   width: 100%;
 }
 
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+.center-normal {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Scrollbar */
 
 .slim-scroll::-webkit-scrollbar {

@@ -25,7 +25,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED = "The pastry name provided is invalid";
     public static final String MESSAGE_REPEATED_PASTRY_IN_ORDER = "The pastry name is repeated in order command";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d client(s) listed!";
-    public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastry(ies)listed!";
+    public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastry(ies) listed!";
     public static final String MESSAGE_ORDERS_LISTED_OVERVIEW = "%1$d order(s) listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
                 "Multiple values specified for the following single-valued field(s): ";

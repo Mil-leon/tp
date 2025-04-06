@@ -155,7 +155,65 @@ Classes used by multiple components are in the `powerbake.address.commons` packa
 
 ## **Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
+This section describes how some noteworthy features were implemented.
+
+### `add order` - Add Order
+
+This command enables the addition of an Order for a specified Client in the Model. Its implementation involves validating client existence, pastry availability, and coordinating updates between the Model and UI components.
+
+As a refresher, this is the add order command as described in the User Guide:
+
+<box type="info" seamless>
+
+Format: add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]
+
+Example: add order 1 -pn Croissant -q 10 -pn Apple Pie -q 20 adds an order for the client at index 1
+with 10 Croissants and 20 Apple Pies.
+
+</box>
+
+#### Overview
+
+When executed, this command parses user input and creates an internal representation of the order data. The sequence proceeds as follows:
+
+1. **Parse Command and Validate Client**:
+   - The input command text is parsed to identify the client index and order details
+   - The system validates that the client index exists in the current filtered client list
+   - If the client is found, the process continues with validating pastry items
+
+2. **Validate Pastry Items**:
+   - For each pastry name specified, the system checks if it exists in the current pastry list
+   - The system ensures no duplicate pastry entries exist in a single order
+   - Valid quantities are checked for each pastry
+
+3. **Create and Add Order**:
+   - A new Order object is created with the validated client and a list of OrderItem objects
+   - Each OrderItem contains a reference to a Pastry and its quantity
+   - The order is automatically assigned a "pending" status
+
+4. **Model Update**:
+   - The model adds the new order to the address book, which updates the internal list of orders
+   - This triggers observers to notify relevant UI components
+
+5. **Automatic UI Refresh**:
+   - The OrderListPanel UI component, which observes changes in the list of orders, detects the addition and refreshes its display
+   - The UI reflects this change by showing a new OrderCard for the recently added order
+
+<box type="tip" seamless>
+
+The Order implementation uses a unique identifier (OrderId) that's automatically generated to ensure orders can be uniquely identified in the system, even when multiple orders come from the same client.
+
+</box>
+
+#### Sequence Diagram
+
+<puml src="diagrams/AddOrderDiagram.puml" width="1000" />
+
+<box type="info" seamless>
+
+Note: due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+
+</box>
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -212,12 +270,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `PowerBake` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: View Customer Details**
+**Use case: View Client Details**
 
 <u>MSS</u>
 
-1.  User requests to list all customers
-2.  PowerBake shows a list of customers
+1.  User requests to list all clients
+2.  PowerBake shows a list of clients
 
     Use case ends.
 
@@ -227,21 +285,48 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-**Use case: Add Customer**
+**Use case: Add Client**
 
 <u>MSS</u>
 
-1.  User types add customer command into PowerBake
-2.  PowerBake adds customer details
+1.  User types add client command into PowerBake
+2.  PowerBake adds client details
 
     Use case ends.
 
-**Use case: Delete Customer**
+**Use case: Edit Client**
 
 <u>MSS</u>
 
-1.  User types delete customer command (with index) into PowerBake
-2.  PowerBake delete customer details
+1. User types edit client command with details into PowerBake
+2. PowerBake updates the client details
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+* 1b. No fields are specified for editing
+  * 1b1. PowerBake prints error message
+
+  Use case ends.
+
+* 1c. Format of edited fields is invalid
+  * 1c1. PowerBake prints error message
+
+  Use case ends.
+
+
+**Use case: Delete Client**
+
+<u>MSS</u>
+
+1.  User types delete client command (with index) into PowerBake
+2.  PowerBake delete client details
 
     Use case ends.
 
@@ -249,6 +334,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. Index is invalid
   * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: Find Client**
+
+<u>MSS</u>
+
+1. User types find client command with keyword into PowerBake
+2. PowerBake displays clients matching the keyword
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 2a. No clients match the keyword
+  * 2a1. PowerBake shows an empty list
 
   Use case ends.
 
@@ -276,6 +377,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+**Use case: Edit Pastry**
+
+<u>MSS</u>
+
+1. User types edit pastry command with details into PowerBake
+2. PowerBake updates the pastry details
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+* 1b. No fields are specified for editing
+  * 1b1. PowerBake prints error message
+
+  Use case ends.
+
+* 1c. Format of edited fields is invalid
+  * 1c1. PowerBake prints error message
+
+  Use case ends.
+
 **Use case: Delete Pastries**
 
 <u>MSS</u>
@@ -289,6 +416,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. Index is invalid
   * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: Find Pastry**
+
+<u>MSS</u>
+
+1. User types find pastry command with keyword into PowerBake
+2. PowerBake displays pastries matching the keyword
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 2a. No pastries match the keyword
+  * 2a1. PowerBake shows an empty list
 
   Use case ends.
 
@@ -328,26 +471,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-* 1c. The quantity provided is invalid 
+* 1c. The quantity provided is invalid
     * 1c1. PowerBake shows an error message
 
     Use case ends.
-
-**Use case: Delete Order**
-
-<u>MSS</u>
-
-1. User types delete order command (with index) into PowerBake
-2. PowerBake deletes order 
-
-   Use case ends.
-
-<u>Extensions</u>
-
-* 1a. Index is invalid
-  * 1a1. PowerBake prints error message
-
-  Use case ends.
 
 **Use case: Edit Order**
 
@@ -370,6 +497,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+**Use case: Delete Order**
+
+<u>MSS</u>
+
+1. User types delete order command (with index) into PowerBake
+2. PowerBake deletes order
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
 **Use case: Find Order**
 
 <u>MSS</u>
@@ -386,97 +529,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-**Use case: Find Customer**
-
-<u>MSS</u>
-
-1. User types find client command with keyword into PowerBake
-2. PowerBake displays clients matching the keyword
-
-   Use case ends.
-
-<u>Extensions</u>
-
-* 2a. No clients match the keyword
-  * 2a1. PowerBake shows an empty list
-
-  Use case ends.
-
-**Use case: Find Pastry**
-
-<u>MSS</u>
-
-1. User types find pastry command with keyword into PowerBake
-2. PowerBake displays pastries matching the keyword
-
-   Use case ends.
-
-<u>Extensions</u>
-
-* 2a. No pastries match the keyword
-  * 2a1. PowerBake shows an empty list
-
-  Use case ends.
-
-**Use case: Edit Customer**
-
-<u>MSS</u>
-
-1. User types edit client command with details into PowerBake
-2. PowerBake updates the client details
-
-   Use case ends.
-
-<u>Extensions</u>
-
-* 1a. Index is invalid
-  * 1a1. PowerBake prints error message
-
-  Use case ends.
-
-* 1b. No fields are specified for editing
-  * 1b1. PowerBake prints error message
-
-  Use case ends.
-
-* 1c. Format of edited fields is invalid
-  * 1c1. PowerBake prints error message
-
-  Use case ends.
-
-**Use case: Edit Pastry**
-
-<u>MSS</u>
-
-1. User types edit pastry command with details into PowerBake
-2. PowerBake updates the pastry details
-
-   Use case ends.
-
-<u>Extensions</u>
-
-* 1a. Index is invalid
-  * 1a1. PowerBake prints error message
-
-  Use case ends.
-
-* 1b. No fields are specified for editing
-  * 1b1. PowerBake prints error message
-
-  Use case ends.
-
-* 1c. Format of edited fields is invalid
-  * 1c1. PowerBake prints error message
-
-  Use case ends.
-
 ### Non-Functional Requirements
 
 1. The system shall provide a graphical user interface compatible with major operating systems.
 1. The system must function offline with full capabilities.
 1. All data must persist between sessions, requiring no re-entry of client or pastry information.
 1. The interface must be intuitive enough that users unfamiliar with computers can navigate it with minimal confusion.
-1. The system must load order and customer pages in under 2 seconds, even when handling 500+ entries.
+1. The system must load order and client pages in under 2 seconds, even when handling 500+ entries.
 
 ### Glossary
 

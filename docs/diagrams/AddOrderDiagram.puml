@@ -1,0 +1,103 @@
+@startuml
+!include style.puml
+skinparam ArrowFontStyle plain
+
+Actor user as user USER_COLOR
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as Logic LOGIC_COLOR
+participant ":AddOrderCommand" as AddOrderCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+participant "orderItems:ArrayList<OrderItem>" as OrderItems MODEL_COLOR
+participant "orderItem:OrderItem" as OrderItem MODEL_COLOR
+participant "order:Order" as Order MODEL_COLOR
+end box
+
+box UI UI_COLOR_T1
+participant "OrderListPanel" as OrderListPanel UI_COLOR
+end box
+
+user -[USER_COLOR]> Logic : add order command
+activate Logic LOGIC_COLOR
+
+Logic -[LOGIC_COLOR]> AddOrderCommand : execute
+activate AddOrderCommand LOGIC_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]> AddOrderCommand : getValidClient(model)
+activate AddOrderCommand LOGIC_COLOR_T1
+AddOrderCommand -[LOGIC_COLOR]> Model : getFilteredPersonList()
+activate Model MODEL_COLOR
+Model -[MODEL_COLOR]-> AddOrderCommand : personList
+deactivate Model MODEL_COLOR
+AddOrderCommand -[LOGIC_COLOR]-> AddOrderCommand : personWhoOrdered
+deactivate AddOrderCommand LOGIC_COLOR_T1
+
+AddOrderCommand -[LOGIC_COLOR]> AddOrderCommand : getValidOrderItems(model)
+activate AddOrderCommand LOGIC_COLOR_T1
+AddOrderCommand -[LOGIC_COLOR]> Model : getFilteredPastryList()
+activate Model MODEL_COLOR
+Model -[MODEL_COLOR]-> AddOrderCommand : pastryList
+deactivate Model MODEL_COLOR
+
+create OrderItems MODEL_COLOR
+AddOrderCommand -[LOGIC_COLOR]> OrderItems : new ArrayList<>()
+activate OrderItems MODEL_COLOR
+OrderItems -[MODEL_COLOR]-> AddOrderCommand
+deactivate OrderItems MODEL_COLOR
+
+loop for each pastry-quantity pair
+  create OrderItem MODEL_COLOR
+  AddOrderCommand -[LOGIC_COLOR]> OrderItem : new OrderItem(pastry, quantity)
+  activate OrderItem MODEL_COLOR
+  OrderItem -[MODEL_COLOR]-> AddOrderCommand
+  deactivate OrderItem MODEL_COLOR
+  
+  AddOrderCommand -[LOGIC_COLOR]> OrderItems : add(orderItem)
+  activate OrderItems MODEL_COLOR
+  OrderItems -[MODEL_COLOR]-> AddOrderCommand
+  deactivate OrderItems MODEL_COLOR
+end
+AddOrderCommand -[LOGIC_COLOR]-> AddOrderCommand : orderList
+deactivate AddOrderCommand LOGIC_COLOR_T1
+
+create Order MODEL_COLOR
+AddOrderCommand -[LOGIC_COLOR]> Order : new Order(personWhoOrdered, orderList)
+activate Order MODEL_COLOR
+Order -[MODEL_COLOR]-> AddOrderCommand : toAddOrder
+deactivate Order MODEL_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]> Model : hasOrder(toAddOrder)
+activate Model MODEL_COLOR
+Model -[MODEL_COLOR]-> AddOrderCommand : false
+deactivate Model MODEL_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]> Model : addOrder(toAddOrder)
+activate Model MODEL_COLOR
+Model -[MODEL_COLOR]> OrderListPanel : Listener triggered
+note left: Filtered order list is updated
+activate OrderListPanel UI_COLOR
+OrderListPanel -[UI_COLOR]> OrderListPanel : refresh ListView
+OrderListPanel -[UI_COLOR]-> Model
+deactivate OrderListPanel UI_COLOR
+Model -[MODEL_COLOR]-> AddOrderCommand
+deactivate Model MODEL_COLOR
+
+create CommandResult LOGIC_COLOR
+AddOrderCommand -[LOGIC_COLOR]> CommandResult : new CommandResult("New order added: " + order)
+activate CommandResult LOGIC_COLOR
+CommandResult -[LOGIC_COLOR]-> AddOrderCommand : result
+deactivate CommandResult LOGIC_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]-> Logic : result
+deactivate AddOrderCommand LOGIC_COLOR
+
+destroy AddOrderCommand
+Logic -[LOGIC_COLOR]> : saveAddressBook()
+]-[STORAGE_COLOR]-> Logic
+Logic -[LOGIC_COLOR]-> user : result
+deactivate Logic LOGIC_COLOR
+@enduml

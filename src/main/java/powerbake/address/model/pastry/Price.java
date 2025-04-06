@@ -9,7 +9,7 @@ import static powerbake.address.commons.util.AppUtil.checkArgument;
  */
 public class Price {
     public static final String MESSAGE_CONSTRAINTS =
-        "Prices should only contain digits, such as 3, 6.5 or 123.57";
+        "Prices should only contain digits and possibly a decimal point, such as 3, 6.5 or 123.57";
     public static final String VALIDATION_REGEX = "^\\d+(.\\d{1,2})?$";
     public final String amount;
 

@@ -55,7 +55,7 @@ loop for each pastry-quantity pair
   activate OrderItem MODEL_COLOR
   OrderItem -[MODEL_COLOR]-> AddOrderCommand
   deactivate OrderItem MODEL_COLOR
-  
+
   AddOrderCommand -[LOGIC_COLOR]> OrderItems : add(orderItem)
   activate OrderItems MODEL_COLOR
   OrderItems -[MODEL_COLOR]-> AddOrderCommand

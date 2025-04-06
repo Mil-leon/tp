@@ -33,7 +33,7 @@ Refer to the guide [_Setting up and getting started_](https://ay2425s2-cs2103t-f
 
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
-Given below is a quick overview of main components and how they interact with each other.
+Below is a quick overview of main components and how they interact with each other.
 
 **Main components of the architecture**
 
@@ -255,16 +255,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |----------|---------------|------------------------------------------------------|--------------------------------------------------------------------------|
 | `* * *`  | Bakery Owner  | add client details                                   | I can keep track of their delivery location and order details            |
 | `* * *`  | Bakery Owner  | delete client details                                | I can get rid of irrelevant clients                                      |
-| `* * *`  | Bakery Owner  | I can create new pastries                            | I can when I make new pastries I can add them to the list of availabe pastries |
+| `* * *`  | Bakery Owner  | I can create new pastries                            | I can when I make new pastries I can add them to the list of available pastries |
 | `* * *`  | Bakery Owner  | I can delete pastries                                | I can remove no longer available pastries                                |
 | `* * *`  | Bakery Owner  | I can create new orders                              | I can keep track of my current orders                                    |
-| `* * *`  | Bakery Owner  | I can delete orders                                  | I can remove no longer relavant orders                                   |
-| `* * *`  | Bakery Owner  | view a list of pasteries                             | I can access the types of pasteries I have                               |
+| `* * *`  | Bakery Owner  | I can delete orders                                  | I can remove no longer relevant orders                                   |
+| `* * *`  | Bakery Owner  | view a list of pastries                             | I can access the types of pastries I have                               |
 | `* * *`  | Bakery Owner  | view a list of clients                               | I can access the client information easily                               |
 | `* * *`  | Bakery Owner  | view a list of orders                                | I can access the order information easily                                |
 | `* * *`  | Bakery Owner  | access the system via a GUI on macOS/Linux           | I don’t need specialized hardware/software to manage my business         |
 | `* * *`  | Bakery Owner  | use the system offline                               | I can have access to the system at all times                             |
-| `* *`    | Bakery Owner  | come back to the system with all my previous entries | I do not have to re-enter all client and pasteries entries every time    |
+| `* *`    | Bakery Owner  | come back to the system with all my previous entries | I do not have to re-enter all client and pastries entries every time    |
 
 ### Use cases
 
@@ -827,7 +827,7 @@ testers are expected to do more *exploratory* testing.
 
 1. **Enhance client and pastry name validation**
 
-Currently, PowerBake only allows alphanemeric characters and spaces in client and pastry names. This is a limitation as
+Currently, PowerBake only allows alphanumeric characters and spaces in client and pastry names. This is a limitation as
 some names may contain special characters such as slashes, hyphens, accented characters and different languages. In the future, we will enhance the validation to allow these characters.
 so that names such as Nagaratnam s/o Suppiah, Anya Taylor-Joy, Sergio Pérez, etc.. can be added to our system. Additionally, PowerBake currently allows for multiple consecutive spaces in
 names. This should not be allowed as it leads to inconsistent formatting and validation.

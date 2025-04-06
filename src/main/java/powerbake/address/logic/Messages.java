@@ -22,7 +22,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX = "The pastry index provided is invalid. %1$s";
     public static final String MESSAGE_INVALID_ORDER_DISPLAYED_INDEX = "The order index provided is invalid. %1$s";
     public static final String MESSAGE_INVALID_INDEX = "The index provided is out of range.";
-    public static final String MESSAGE_INVALID_PASTRY_DISPLAYED = "The pastry name provided is invalid";
+    public static final String MESSAGE_INVALID_PASTRY_DISPLAYED = "The pastry does not exist.";
     public static final String MESSAGE_REPEATED_PASTRY_IN_ORDER = "The pastry name is repeated in order command";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d client listed!";
     public static final String MESSAGE_PASTRIES_LISTED_OVERVIEW = "%1$d pastries listed!";

@@ -21,7 +21,7 @@
 
 ## **Setting up, getting started**
 
-Refer to the guide [_Setting up and getting started_](SettingUp.md).
+Refer to the guide [_Setting up and getting started_](https://ay2425s2-cs2103t-f13-2.github.io/tp/SettingUp.html).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -73,7 +73,7 @@ The **API** of this component is specified in [`Ui.java`](https://github.com/AY2
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Due to the sheer number of components inhering fromthe abstract `UiPart` class, the inheritance has been shown in the diagram below instead.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Such as methods which help load the FXML files. Due to the sheer number of components inhering from the abstract `UiPart` class, the inheritance has been shown in the diagram below instead.
 
 <puml src="diagrams/UiClassDiagram2.puml" alt="Inheritance from UiPart class"/>
 
@@ -122,7 +122,7 @@ How the parsing works:
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/model/Model.java)
 
-<puml src="diagrams/ModelClassDiagram.puml" width="1000" />
+<puml src="diagrams/ModelClassDiagram.puml" width="1000"/>
 
 
 The `Model` component,
@@ -157,17 +157,15 @@ Classes used by multiple components are in the `powerbake.address.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-_{To be added}_
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Documentation, logging, testing, configuration, dev-ops**
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+* [Documentation guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Documentation.html)
+* [Testing guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Testing.html)
+* [Logging guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Logging.html)
+* [Configuration guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Configuration.html)
+* [DevOps guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/DevOps.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -187,7 +185,7 @@ _{To be added}_
 **Value proposition**: Keeping track of customers and their orders is hard for small business owners, this provides them with fast access to their orders that they can track.
 
 * Provides a customer list where they are able to track customers and their orders
-* Provides a order list so they can keep track of customers orders
+* Provides an order list so they can keep track of customers orders
 * Daily pastry list (Products list)
 
 ### User stories
@@ -205,8 +203,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | Bakery Owner  | access the system via a GUI on macOS/Linux           | I don’t need specialized hardware/software to manage my business         |
 | `* * *`  | Bakery Owner  | use the system offline                               | I can have access to the system at all times                             |
 | `* *`    | Bakery Owner  | come back to the system with all my previous entries | I do not have to re-enter all client and pasteries entries every time    |
-
-*{More to be added}*
 
 ### Use cases
 
@@ -292,21 +288,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
-*{More to be added}*
-
 ### Non-Functional Requirements
 
-1. The system shall provide a graphical user interface compatible with macOS and Linux operating systems.
-2. The system must function offline with full capabilities.
-3. All data must persist between sessions, requiring no re-entry of client or pastry information.
-4. Customer data including addresses and payment details must be encrypted using industry-standard encryption.
-5. The interface must be intuitive enough that users unfamiliar with computers can navigate it with minimal confusion.
-6. The system must load order and customer pages in under 2 seconds, even when handling 500+ entries.
-7. Daily automatic backups of order histories and customer data must be performed.
-8. Access to customer details must be restricted to authorized users only.
-9. The system must implement appropriate authentication mechanisms to ensure data security.
-
-*{More to be added}*
+1. The system shall provide a graphical user interface compatible with Windows, macOS and Linux operating systems.
+1. The system must function offline with full capabilities.
+1. All data must persist between sessions, requiring no re-entry of client or pastry information.
+1. The interface must be intuitive enough that users unfamiliar with computers can navigate it with minimal confusion.
+1. The system must load order and customer pages in under 2 seconds, even when handling 500+ entries.
 
 ### Glossary
 
@@ -346,36 +334,48 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
     1. Download the jar file and copy into an empty folder
-
     1. Double-click the jar file or run `java -jar powerbake.jar`
-       Expected: Shows the GUI with a set of sample clients, pastry and order.
 
+    Expected: Shows the GUI with a set of sample clients, pastry and order.
+
+1. Shutdown
+
+    1. Click "File" in the top left-hand corner of the GUI
+    1. Click "Exit" in the drop-down menu
+
+    Expected: The app shuts down and all data is saved.
 
 ### Adding a Client
 
 1. Pre-requisite: Launched the app
 
-2. Test case: `add client Baobao -p 12345678 -e bao@gmail.com -a Sengkang Central`.  
+2. Test case: `add client Baobao -p 12345678 -e bao@gmail.com -a Sengkang Central`.
+
    Expected: New client is added and displayed in client scrolling panel. Success message is displayed.
 
-3. Test case: `add client Baobao -p 12345678`  
+3. Test case: `add client Baobao -p 12345678`
+
    Expected: Error message is displayed. Correct format is displayed in display box.
 
-4. Other incorrect delete commands to try: `add Client`, `add baobao`  
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `add Client`, `add baobao`
+
+   Expected: Error message is displayed. Correct format is displayed in display box.
 
 ### Adding a Pastry
 
 1. Pre-requisite: Launched the app
 
-2. Test case: `add pastry Croissant -pr 5.00`.  
+2. Test case: `add pastry Croissant -pr 5.00`.
+
    Expected: New pastry is added and displayed in pastry scrolling panel. Success message is displayed.
 
-3. Test case: `add pastry Croissant`  
+3. Test case: `add pastry Croissant`
+
    Expected: Error message is displayed. Correct format is displayed in display box.
 
-4. Other incorrect delete commands to try: `add Pastry`, `add pastry Bao -pr 5.111`  
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `add Pastry`, `add pastry Bao -pr 5.111`
+
+   Expected: Error message is displayed. Correct format is displayed in display box.
 
 ### Adding an Order
 
@@ -383,14 +383,17 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Add at least one Client and Pastry
 
-2. Test case: `add order 1 -pn Croissant -q 100`.  
+2. Test case: `add order 1 -pn Croissant -q 100`.
+
    Expected: New order for client of index 1 is added and displayed in order scrolling panel. Success message is shown.
 
-3. Test case: `add order 1`  
+3. Test case: `add order 1`
+
    Expected: Error message is displayed. Correct format is displayed in display box.
 
-4. Other incorrect delete commands to try: `add order 1 -pn Croissant`, `add order`  
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `add order 1 -pn Croissant`, `add order`
+
+   Expected: Error message is displayed. Correct format is displayed in display box.
 
 ### Delete a Client
 
@@ -398,14 +401,17 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one client
 
-2. Test case: `delete client 1`.  
+2. Test case: `delete client 1`.
+
    Expected: Delete client of index one and removed from client scrolling panel. Success message displayed.
 
-2. Test case: `delete client -1`.  
+2. Test case: `delete client -1`.
+
    Expected: Error message displaying invalid index.
 
-4. Other incorrect delete commands to try: `delete Client`   
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `delete Client`
+
+   Expected: Error message displaying invalid index.
 
 ### Delete a Pastry
 
@@ -413,7 +419,17 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one pastry
 
-2. Same as client command above
+1. Test case: delete pastry 1.
+
+    Expected: Delete pastry of index one and removed from pastry scrolling panel. Success message displayed.
+
+1. Test case: delete pastry -1.
+
+    Expected: Error message displaying invalid index.
+
+1. Other incorrect delete commands to try: delete Pastry
+
+    Expected: Error message displaying invalid format.bove
 
 ### Delete an Order
 
@@ -421,7 +437,17 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one order
 
-2. Same as client command above
+1. Test case: delete order 1.
+
+    Expected: Delete order of index one and removed from order scrolling panel. Success message displayed.
+
+1. Test case: delete order -1.
+
+    Expected: Error message displaying invalid index.
+
+1. Other incorrect delete commands to try: delete Order
+
+    Expected: Error message displaying invalid format.
 
 ### Edit a Client
 
@@ -429,14 +455,17 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one client
 
-2. Test case: `edit client 1 -n Bobby`.  
+2. Test case: `edit client 1 -n Bobby`.
+
    Expected: Edit client's name of index one to Bobby. Success message displayed.
 
-2. Test case: `edit client Bobby`.  
+2. Test case: `edit client Bobby`.
+
    Expected: Error message displaying invalid format.
 
-4. Other incorrect delete commands to try: `edit client 1`   
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `edit client 1`
+
+   Expected: Error message displaying invalid format.
 
 ### Edit a Pastry
 
@@ -444,58 +473,102 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one pastry
 
-2. Test case: `edit pastry 1 -n Pie`.  
+2. Test case: `edit pastry 1 -n Pie`.
+
    Expected: Edit Pastry's name of index one to Pie. Success message displayed.
 
-2. Test case: `edit pastry Pie`.  
+2. Test case: `edit pastry Pie`.
+
    Expected: Error message displaying invalid format.
 
-4. Other incorrect delete commands to try: `edit pastry`   
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `edit pastry`
 
-### Edit a Order
+   Expected: Error message displaying invalid format.
+
+### Edit an Order
 
 1. Pre-requisite:
     1. Launched the app
     2. Have at least one order
 
-2. Test case: `edit order 1 -s delivered`.  
+2. Test case: `edit order 1 -s delivered`.
+
    Expected: Edit order's status to delivered. Success message displayed.
 
-2. Test case: `edit order 1`.  
+2. Test case: `edit order 1`.
+
    Expected: Error message displaying invalid format.
 
-4. Other incorrect delete commands to try: `edit order`   
-   Expected: Similar to previous.
+4. Other incorrect commands to try: `edit order`
+
+   Expected: Error message displaying invalid format.
 
 ### Find a Client
 
 1. Pre-requisite:
     1. Launched the app
 
-2. Test case: `find client Bobby`.  
+2. Test case: `find client Bobby`.
+
    Expected: Display client list with matching keywords.
 
-2. Test case: `find Bobby`.  
+2. Test case: `find Bobby`.
+
    Expected: Error message displaying invalid format.
 
 
-### Find a Pastry, Order
+### Find a Pastry
 
-1. Same as with finding a client above.
+1. Pre-requisite:
+    1. Launched the app
+
+1. Test case: `find pastry Croissant`.
+
+    Expected: Display pastry list with matching keywords.
+
+1. Test case: `find Croissant`
+
+    Expected: Error message displaying invalid format.
+
+### Find an Order
+
+1. Pre-requisite:
+    1. Launched the app
+
+2. Test case: `find order Bobby`.
+
+   Expected: Display client list with matching keywords.
+
+2. Test case: `find Bobby`.
+
+   Expected: Error message displaying invalid format.
 
 ### View all Clients
 
 1. Pre-requisite:
     1. Launched the app
 
-2. Test case: `view client`.  
+2. Test case: `view client`.
+
    Expected: Display full client list.
 
-2. Test case: `view`.  
-   Expected: Error message displaying invalid format.
+2. Test case: `view`.
 
+   Expected: Error message displaying invalid format.
 
 ### View all Pastry, Orders
 
-1. Same as with viewing a client above.
+1. Pre-requisite:
+    1. Launched the app
+
+1. Test case: view pastry.
+
+    Expected: Display full pastry list.
+
+1.  Test case: view order.
+
+    Expected: Display full order list.
+
+1. Test case: view.
+
+    Expected: Error message displaying invalid format.

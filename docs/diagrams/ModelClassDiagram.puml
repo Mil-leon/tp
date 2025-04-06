@@ -19,8 +19,8 @@ Class Address
 Class Email
 Class Name
 Class Phone
-}
 Class Tag
+}
 
 Package Pastry as ModelPastry <<Rectangle>> {
 Class UniquePastryList
@@ -59,7 +59,7 @@ ModelManager --> "~* filtered" Pastry
 ModelManager --> "~* filtered" Order
 
 AddressBook *--> "1" UniquePersonList
-UniquePersonList --> "~* all" Person
+UniquePersonList -left-> "~* all" Person
 Person *--> Name
 Person *--> Phone
 Person *--> Email
@@ -67,12 +67,12 @@ Person *--> Address
 Person *--> "*" Tag
 
 AddressBook *--> "1" UniquePastryList
-UniquePastryList --> "~* all" Pastry
+UniquePastryList -right-> "~* all" Pastry
 Pastry *--> PName
 Pastry *--> Price
 
 AddressBook *--> "1" UniqueOrderList
-UniqueOrderList --> "~* all" Order
+UniqueOrderList -right-> "~* all" Order
 Order *--> OrderId
 Order *--> OrderStatus
 Order *--> LocalDateTime

@@ -175,31 +175,35 @@ This section describes some noteworthy details on how certain features are imple
 
 **Target user profile**:
 
-* is a small home bakery
-* sells their own pastries online through home deliveries
-* prefer desktop apps over other types
-* can type fast
-* prefers typing to mouse interactions
-* is reasonably comfortable using CLI apps
+* Is a small home bakery
+* Sells their own pastries online through home deliveries
+* Prefers desktop apps over other types
+* Can type fast
+* Prefers typing to mouse interactions
+* Is reasonably comfortable using CLI apps
+* Uses English as their main language
 
 **Value proposition**: Keeping track of customers and their orders is hard for small business owners, this provides them with fast access to their orders that they can track.
 
 * Provides a customer list where they are able to track customers and their orders
 * Provides an order list so they can keep track of customers orders
-* Daily pastry list (Products list)
+* Provides a pastry list so they can keep track of their pastries
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …        | I want to …                                          | So that I can…                                                           |
+| Priority | As a …        | I want to …                                          | So that ...                                                              |
 |----------|---------------|------------------------------------------------------|--------------------------------------------------------------------------|
 | `* * *`  | Bakery Owner  | add client details                                   | I can keep track of their delivery location and order details            |
 | `* * *`  | Bakery Owner  | delete client details                                | I can get rid of irrelevant clients                                      |
-| `* * *`  | Bakery Owner  | I can create new pastries                            | when I make new pastries I can add them to the list of availabe pastries |
+| `* * *`  | Bakery Owner  | I can create new pastries                            | I can when I make new pastries I can add them to the list of availabe pastries |
 | `* * *`  | Bakery Owner  | I can delete pastries                                | I can remove no longer available pastries                                |
+| `* * *`  | Bakery Owner  | I can create new orders                              | I can keep track of my current orders                                    |
+| `* * *`  | Bakery Owner  | I can delete orders                                  | I can remove no longer relavant orders                                   |
 | `* * *`  | Bakery Owner  | view a list of pasteries                             | I can access the types of pasteries I have                               |
 | `* * *`  | Bakery Owner  | view a list of clients                               | I can access the client information easily                               |
+| `* * *`  | Bakery Owner  | view a list of orders                                | I can access the order information easily                                |
 | `* * *`  | Bakery Owner  | access the system via a GUI on macOS/Linux           | I don’t need specialized hardware/software to manage my business         |
 | `* * *`  | Bakery Owner  | use the system offline                               | I can have access to the system at all times                             |
 | `* *`    | Bakery Owner  | come back to the system with all my previous entries | I do not have to re-enter all client and pasteries entries every time    |
@@ -210,87 +214,265 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: View Customer Details**
 
-**MSS**
+<u>MSS</u>
 
 1.  User requests to list all customers
 2.  PowerBake shows a list of customers
 
     Use case ends.
 
-**Extensions**
+<u>Extensions</u>
 
 * 2a. The list is empty.
 
   Use case ends.
 
-* Use case: Add Customer
+**Use case: Add Customer**
 
-**MSS**
+<u>MSS</u>
 
 1.  User types add customer command into PowerBake
 2.  PowerBake adds customer details
 
     Use case ends.
 
+**Use case: Delete Customer**
 
-* Use case: Delete Customer
-**MSS**
+<u>MSS</u>
 
 1.  User types delete customer command (with index) into PowerBake
 2.  PowerBake delete customer details
 
     Use case ends.
 
-**Extensions**
+<u>Extensions</u>
 
 * 1a. Index is invalid
-* 1a1. PowerBake prints error message
+  * 1a1. PowerBake prints error message
 
   Use case ends.
 
 **Use case: View Pastries Details**
 
-**MSS**
+<u>MSS</u>
 
 1.  User requests to list all pastries
 2.  PowerBake shows a list of pastries
 
     Use case ends.
 
-**Extensions**
+<u>Extensions</u>
 
 * 2a. The list is empty.
 
   Use case ends.
 
-* Use case: Add Pastries
+**Use case: Add Pastries**
 
-**MSS**
+<u>MSS</u>
 
 1.  User types add pastries command into PowerBake
 2.  PowerBake adds pastries details
 
     Use case ends.
 
+**Use case: Delete Pastries**
 
-* Use case: Delete Pastries
-  **MSS**
+<u>MSS</u>
 
 1.  User types delete pastries command (with index) into PowerBake
 2.  PowerBake delete pastries details
 
     Use case ends.
 
-**Extensions**
+<u>Extensions</u>
 
 * 1a. Index is invalid
-* 1a1. PowerBake prints error message
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: View Orders**
+
+<u>MSS</u>
+
+1. User requests to list all orders
+2. PowerBake shows a list of orders
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+**Use case: Add Order**
+
+<u>MSS</u>
+
+1. User types add order command into PowerBake
+2. PowerBake adds order details
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. The client index is invalid
+    * 1a1. PowerBake shows an error message
+
+    Use case ends.
+
+* 1b. The pastry name provided doesn't exist
+    * 1b1. PowerBake shows an error message
+
+    Use case ends.
+
+* 1c. The quantity provided is invalid 
+    * 1c1. PowerBake shows an error message
+
+    Use case ends.
+
+**Use case: Delete Order**
+
+<u>MSS</u>
+
+1. User types delete order command (with index) into PowerBake
+2. PowerBake deletes order 
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: Edit Order**
+
+<u>MSS</u>
+
+1. User types edit order command with status into PowerBake
+2. PowerBake updates the order status
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+* 1b. Status value is invalid
+  * 1b1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: Find Order**
+
+<u>MSS</u>
+
+1. User types find order command with keyword into PowerBake
+2. PowerBake displays orders matching the keyword
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 2a. No orders match the keyword
+  * 2a1. PowerBake shows an empty list
+
+  Use case ends.
+
+**Use case: Find Customer**
+
+<u>MSS</u>
+
+1. User types find client command with keyword into PowerBake
+2. PowerBake displays clients matching the keyword
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 2a. No clients match the keyword
+  * 2a1. PowerBake shows an empty list
+
+  Use case ends.
+
+**Use case: Find Pastry**
+
+<u>MSS</u>
+
+1. User types find pastry command with keyword into PowerBake
+2. PowerBake displays pastries matching the keyword
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 2a. No pastries match the keyword
+  * 2a1. PowerBake shows an empty list
+
+  Use case ends.
+
+**Use case: Edit Customer**
+
+<u>MSS</u>
+
+1. User types edit client command with details into PowerBake
+2. PowerBake updates the client details
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+* 1b. No fields are specified for editing
+  * 1b1. PowerBake prints error message
+
+  Use case ends.
+
+* 1c. Format of edited fields is invalid
+  * 1c1. PowerBake prints error message
+
+  Use case ends.
+
+**Use case: Edit Pastry**
+
+<u>MSS</u>
+
+1. User types edit pastry command with details into PowerBake
+2. PowerBake updates the pastry details
+
+   Use case ends.
+
+<u>Extensions</u>
+
+* 1a. Index is invalid
+  * 1a1. PowerBake prints error message
+
+  Use case ends.
+
+* 1b. No fields are specified for editing
+  * 1b1. PowerBake prints error message
+
+  Use case ends.
+
+* 1c. Format of edited fields is invalid
+  * 1c1. PowerBake prints error message
 
   Use case ends.
 
 ### Non-Functional Requirements
 
-1. The system shall provide a graphical user interface compatible with Windows, macOS and Linux operating systems.
+1. The system shall provide a graphical user interface compatible with major operating systems.
 1. The system must function offline with full capabilities.
 1. All data must persist between sessions, requiring no re-entry of client or pastry information.
 1. The interface must be intuitive enough that users unfamiliar with computers can navigate it with minimal confusion.
@@ -419,11 +601,11 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one pastry
 
-1. Test case: delete pastry 1.
+1. Test case: `delete pastry 1`.
 
     Expected: Delete pastry of index one and removed from pastry scrolling panel. Success message displayed.
 
-1. Test case: delete pastry -1.
+1. Test case: `delete pastry -1`.
 
     Expected: Error message displaying invalid index.
 
@@ -437,11 +619,11 @@ testers are expected to do more *exploratory* testing.
     1. Launched the app
     2. Have at least one order
 
-1. Test case: delete order 1.
+1. Test case: `delete order 1`.
 
     Expected: Delete order of index one and removed from order scrolling panel. Success message displayed.
 
-1. Test case: delete order -1.
+1. Test case: `delete order -1`.
 
     Expected: Error message displaying invalid index.
 
@@ -556,19 +738,109 @@ testers are expected to do more *exploratory* testing.
 
    Expected: Error message displaying invalid format.
 
-### View all Pastry, Orders
+### View all Pastry
 
 1. Pre-requisite:
     1. Launched the app
 
-1. Test case: view pastry.
+1. Test case: `view pastry`.
 
     Expected: Display full pastry list.
 
-1.  Test case: view order.
+1. Test case: `view`.
+
+    Expected: Error message displaying invalid format.
+
+### View all Orders
+
+1.  Test case: `view order`.
 
     Expected: Display full order list.
 
-1. Test case: view.
+1. Test case: `view`.
 
     Expected: Error message displaying invalid format.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Appendix: planned enhancements**
+
+1. **Enhance client and pastry name validation**
+
+Currently, PowerBake only allows alphanemeric characters and spaces in client and pastry names. This is a limitation as
+some names may contain special characters such as slashes, hyphens, accented characters and different languages. In the future, we will enhance the validation to allow these characters.
+so that names such as Nagaratnam s/o Suppiah, Anya Taylor-Joy, Sergio Pérez, etc.. can be added to our system. Additionally, PowerBake currently allows for multiple consecutive spaces in
+names. This should not be allowed as it leads to inconsistent formatting and validation.
+
+Proposed Changes:
+- loosen restrictions to allow for special characters and accented characters. widening the scope of names that can be added to the system.
+- Trim consecutive spaces to a single space. This will ensure that names are formatted consistently and correctly.
+
+These changes are expected to improve PowerBake's consistency and usability.
+
+2. **Include command overview in the help pop-up**
+
+Currently, the help pop-up only contains a link to the User Guide online. However this could be unintuitive as users have to copy the link and open the browser to access the User Guide.
+Information such as an overview of the commands should be readily available in the help pop-up. This will allow users to quickly access the information they need without having to leave the app.
+
+Proposed Changes:
+- Add a command overview to the help pop-up.
+
+This will provide users with a quick reference to the available commands and their usage.
+
+3. **Enhance add order functionality with batch processing**
+
+Currently, users can only create one order at a time, requiring separate command executions for multiple clients even when they're ordering the same pastries. This is inefficient for bakery owners who often process similar bulk orders for different clients.
+
+Proposed Changes:
+- Implement a new batch order command syntax that allows multiple client orders to be created simultaneously
+- Enable specifying multiple client indices when the pastry selections are identical
+- Add validation to ensure all client indices are valid before processing any orders
+
+These improvements would significantly reduce the time spent on data entry for bakery owners who process multiple similar orders in a single session.
+
+4. **Improve email validation for clients**
+
+PowerBake's current email validation doesn't fully verify that email addresses contain valid top-level domains (TLDs). This can lead to accepting technically invalid email addresses that won't function for client communications.
+
+Proposed Changes:
+- Enhance email validation to verify the presence of a valid TLD (e.g., .com, .org, .net)
+
+This improvement will help ensure that client contact information is accurate and functional, reducing communication failures.
+
+5. **Enhance order editing capabilities**
+
+Currently, PowerBake only allows changing the status of an existing order using the "edit order" command. If a baker  wants to modify an order by changing the quantity or removing a pastry item,
+the entire order must be deleted and recreated. This process is time-consuming and can lead to errors.
+
+Proposed Changes:
+- Extend the existing "edit order" command to allow modification of individual pastry quantities
+- Add functionality to remove specific pastry items from an existing order
+- Enable addition of new pastry items to an already created order
+
+These enhancements will make order management more flexible and efficient, improving customer service and reducing the chances of data entry errors.
+
+6. **Enhance order search functionality with filtering and sorting capabilities**
+
+The current search functionality for orders only allows finding orders by client name. This limitation makes it difficult to quickly locate orders
+based on other important criteria such as order status, date, or pastry type.
+
+Proposed Changes:
+- Extend the find order command to support additional search parameters including order status, pastry types, and date ranges
+- Implement sorting capabilities for search results based on different order attributes (date, status, client name)
+- Add combined filtering options to narrow search results using multiple criteria simultaneously
+
+These improvements will give bakery owners more powerful tools to manage their order workflow, especially when dealing with a large volume of orders.
+
+7. **Make certain fields optional when adding clients**
+
+Currently, these fields (name, phone, address, email) are mandatory when adding a client. However, there may be situations where certain information is not available at the time of client creation,
+such as some clients who may lack an email address.
+
+Proposed Changes:
+- Make the email and address fields optional when adding a new client
+- Provide visual indicators in the UI for clients with incomplete information
+- Add the ability to update client profiles later when the missing information becomes available
+
+These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.

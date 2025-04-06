@@ -103,7 +103,7 @@ public class AddOrderCommand extends AddCommand {
                     .noneMatch(pastry -> pastry
                             .getName()
                             .toString()
-                            .equals(order.get(0)))) {
+                            .equalsIgnoreCase(order.get(0)))) {
                 throw new CommandException(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED);
             }
 
@@ -111,7 +111,7 @@ public class AddOrderCommand extends AddCommand {
                     .filter(existingPastry -> existingPastry
                             .getName()
                             .toString()
-                            .equals(order.get(0)))
+                            .equalsIgnoreCase(order.get(0)))
                     .findFirst().get();
 
             // Check for duplicates

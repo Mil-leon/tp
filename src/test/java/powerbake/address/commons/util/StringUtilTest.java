@@ -45,6 +45,8 @@ public class StringUtilTest {
         assertTrue(StringUtil.isNonZeroUnsignedInteger("10"));
     }
 
+    //---------------- Tests for isValidIntegerQuantity --------------------------------------
+
     @Test
     public void isValidIntegerQuantity() {
         // empty string
@@ -62,6 +64,8 @@ public class StringUtilTest {
         assertTrue(StringUtil.isValidIntegerQuantity("50"));
         assertTrue(StringUtil.isValidIntegerQuantity("999"));
     }
+
+    //---------------- Tests for isValidPrice --------------------------------------
 
     @Test
     public void isValidPrice() {

@@ -15,6 +15,7 @@ import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFail
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPastryAtIndex;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static powerbake.address.logic.commands.EditCommand.MESSAGE_USAGE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
@@ -243,10 +244,8 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(PREFIX_CLIENT.toString().trim(),
                 outOfBoundIndex, descriptor, true);
 
-        assertCommandFailure(editCommand, model, String.format(
-                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(editCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
     }
 
     @Test
@@ -257,10 +256,8 @@ public class EditCommandTest {
         EditCommand editCommand1 = new EditCommand(PREFIX_PASTRY.toString().trim(),
                 outOfBoundPastry, descriptor1, false);
 
-        assertCommandFailure(editCommand1, model, String.format(
-                    Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(editCommand1, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
     }
 
     /**
@@ -277,10 +274,8 @@ public class EditCommandTest {
         EditCommand editCommand = new EditCommand(PREFIX_CLIENT.toString().trim(), outOfBoundIndex,
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build(), true);
 
-        assertCommandFailure(editCommand, model, String.format(
-                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(editCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
 
         showPastryAtIndex(model, INDEX_FIRST_PASTRY);
         Index outOfBoundIndex1 = INDEX_SECOND_PASTRY;
@@ -290,10 +285,8 @@ public class EditCommandTest {
         EditCommand editCommand1 = new EditCommand(PREFIX_PASTRY.toString().trim(), outOfBoundIndex1,
                 new EditPastryDescriptorBuilder().withName(VALID_NAME_CHOCOLATECROISSANT).build(), false);
 
-        assertCommandFailure(editCommand1, model, String.format(
-                    Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(editCommand1, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
     }
 
     @Test

@@ -8,6 +8,7 @@ import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSucc
 import static powerbake.address.logic.commands.CommandTestUtil.showOrderAtIndex;
 import static powerbake.address.logic.commands.CommandTestUtil.showPastryAtIndex;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static powerbake.address.logic.commands.DeleteCommand.MESSAGE_USAGE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
@@ -117,10 +118,8 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredPersonList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_CLIENT.toString().trim(), outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, String.format(
-                    Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(deleteCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
     }
 
     /**
@@ -132,10 +131,8 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredPastryList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_PASTRY.toString().trim(), outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, String.format(
-                    Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(deleteCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
     }
 
     /**
@@ -147,10 +144,8 @@ public class DeleteCommandTest {
         Index outOfBoundIndex = Index.fromZeroBased(model.getFilteredOrderList().size() + 1);
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_ORDER.toString().trim(), outOfBoundIndex);
 
-        assertCommandFailure(deleteCommand, model, String.format(
-                    Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
-                    Messages.MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(deleteCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
     }
 
     /**

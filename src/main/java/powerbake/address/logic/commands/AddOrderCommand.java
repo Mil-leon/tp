@@ -85,7 +85,10 @@ public class AddOrderCommand extends AddCommand {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (clientIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(
+                        Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                        Messages.MESSAGE_INVALID_INDEX)
+                    );
         }
 
         return lastShownList.get(clientIndex.getZeroBased());

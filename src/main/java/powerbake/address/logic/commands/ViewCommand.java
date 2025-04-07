@@ -77,7 +77,7 @@ public class ViewCommand extends Command {
                         );
             }
             return new CommandResult(String.format(MESSAGE_SUCCESS_INDEX, type, index.getOneBased()), false, false,
-            type.equals("client"), type.equals("pastry"), type.equals("order"), index.getZeroBased());
+                    type.equals("client"), type.equals("pastry"), type.equals("order"), index.getZeroBased());
         } else {
             return new CommandResult(String.format(MESSAGE_SUCCESS, type), false, false,
                     type.equals("client"), type.equals("pastry"), type.equals("order"));

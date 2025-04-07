@@ -77,7 +77,8 @@ public class AddOrderCommand extends AddCommand {
         }
 
         model.addOrder(toAddOrder);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddOrder)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddOrder)),
+                false, false, false, false, true, model.getFilteredOrderList().size() - 1);
     }
 
     private Person getValidClient(Model model) throws CommandException {

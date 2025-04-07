@@ -49,7 +49,8 @@ public class AddPastryCommand extends AddCommand {
         }
 
         model.addPastry(toAddPastry);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddPastry)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddPastry)),
+                false, false, false, true, false);
     }
 
     @Override

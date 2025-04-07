@@ -424,6 +424,16 @@ If you are familiar with **_PowerBake_** and just need a **quick refresher** on 
 
 * Extraneous parameters for commands that do not take in parameters (`exit`) will be ignored.<br>
   e.g. if the command specifies `exit 123`, it will be interpreted as `exit`.
+
+* Command words such as `add` and `find` are case-insensitive. <br> 
+  e.g. both the commands below are treated the same:
+  ```
+    add client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com
+  ```
+  ```
+    aDD client Luke -p 88776655 -a 5 Punggol Street -e luke@gmail.com
+  ```
+
 </box>
 
 [^ Back to top](#powerbake-user-guide)

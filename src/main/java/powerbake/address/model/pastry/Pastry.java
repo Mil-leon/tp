@@ -45,7 +45,7 @@ public class Pastry {
         }
 
         Pastry otherPastry = (Pastry) other;
-        return this.name.equals(otherPastry.name);
+        return this.name.toString().equalsIgnoreCase(otherPastry.name.toString());
     }
 
     /**

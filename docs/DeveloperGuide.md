@@ -880,17 +880,17 @@ Proposed Changes:
 
 These enhancements will make order management more flexible and efficient, improving customer service and reducing the chances of data entry errors.
 
-6. **Enhance order search functionality with filtering and sorting capabilities**
+6. **Enhance search functionality with filtering and sorting capabilities**
 
-The current search functionality for orders only allows finding orders by client name. This limitation makes it difficult to quickly locate orders
-based on other important criteria such as order status, date, or pastry type.
+The current search functionality for clients/pastries/orders only allows searching by name. This limitation makes it difficult to quickly locate items
+based on other important criteria such as phone number, address, price, order status, date, pastry type, etc...
 
 Proposed Changes:
-- Extend the find order command to support additional search parameters including order status, pastry types, and date ranges
-- Implement sorting capabilities for search results based on different order attributes (date, status, client name)
+- Extend the find command to support additional search parameters including phone number, address, price, order status, date, pastry type, etc...
+- Implement sorting capabilities for search results based on different attributes (phone number, price, order date, etc...)
 - Add combined filtering options to narrow search results using multiple criteria simultaneously
 
-These improvements will give bakery owners more powerful tools to manage their order workflow, especially when dealing with a large volume of orders.
+These improvements will give bakery owners more powerful tools to manage their workflow, especially when dealing with a large volume of items.
 
 7. **Make certain fields optional when adding clients**
 
@@ -903,3 +903,16 @@ Proposed Changes:
 - Add the ability to update client profiles later when the missing information becomes available
 
 These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.
+
+8. **Enhance Safety of the "clear" command**
+
+Currently, after hitting Enter, the "clear" command will immediately delete all data without any confirmation. This can lead to accidental data loss if a user mistakenly types "clear" instead of another command.
+This could lead to loss of data if there is any user error or misconception. 
+
+Proposed Changes:
+- Implement a confirmation dialog that appears when the user types "clear" and hits Enter
+- The confirmation dialog will clearly state the consequences of the action and require the user to confirm before proceeding
+
+These changes will make the "clear" command safer to use and reduce the risk of accidental data loss.
+
+

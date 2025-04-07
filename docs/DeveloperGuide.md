@@ -209,6 +209,13 @@ The Order implementation uses a unique identifier (OrderId) that's automatically
 
 <puml src="diagrams/AddOrderDiagram.puml" width="1000" />
 
+**This sequence diagram shows the overall flow of the `add order` command.**
+
+<puml src="diagrams/AddOrderDiagramSubDiagramValidOrderItems.puml" width="700" />
+
+
+<puml src="diagrams/AddOrderDiagramSubDiagramSaveToStorage.puml" width="700" />
+
 <box type="info" seamless>
 
 Note: due to a limitation of PlantUML, the lifeline reaches the end of diagram.
@@ -829,26 +836,16 @@ testers are expected to do more *exploratory* testing.
 
 Currently, PowerBake only allows alphanumeric characters and spaces in client and pastry names. This is a limitation as
 some names may contain special characters such as slashes, hyphens, accented characters and different languages. In the future, we will enhance the validation to allow these characters.
-so that names such as Nagaratnam s/o Suppiah, Anya Taylor-Joy, Sergio Pérez, etc.. can be added to our system. Additionally, PowerBake currently allows for multiple consecutive spaces in
+so that names such as Janet Smith-Johnson, Mike O'Leary, María José, etc.. can be added to our system. Additionally, PowerBake currently allows for multiple consecutive spaces in
 names. This should not be allowed as it leads to inconsistent formatting and validation.
 
 Proposed Changes:
-- loosen restrictions to allow for special characters and accented characters. widening the scope of names that can be added to the system.
+- Allow for special characters and accented characters. widening the scope of valid names that can be added to the system.
 - Trim consecutive spaces to a single space. This will ensure that names are formatted consistently and correctly.
 
 These changes are expected to improve PowerBake's consistency and usability.
 
-2. **Include command overview in the help pop-up**
-
-Currently, the help pop-up only contains a link to the User Guide online. However this could be unintuitive as users have to copy the link and open the browser to access the User Guide.
-Information such as an overview of the commands should be readily available in the help pop-up. This will allow users to quickly access the information they need without having to leave the app.
-
-Proposed Changes:
-- Add a command overview to the help pop-up.
-
-This will provide users with a quick reference to the available commands and their usage.
-
-3. **Enhance add order functionality with batch processing**
+1. **Enhance add order functionality with batch processing**
 
 Currently, users can only create one order at a time, requiring separate command executions for multiple clients even when they're ordering the same pastries. This is inefficient for bakery owners who often process similar bulk orders for different clients.
 
@@ -859,7 +856,29 @@ Proposed Changes:
 
 These improvements would significantly reduce the time spent on data entry for bakery owners who process multiple similar orders in a single session.
 
-4. **Improve email validation for clients**
+1. **Include command overview in the help pop-up**
+
+Currently, the help pop-up only contains a link to the User Guide online. However this could be unintuitive as users have to copy the link and open the browser to access the User Guide.
+Information such as an overview of the commands should be readily available in the help pop-up. This will allow users to quickly access the information they need without having to leave the app.
+
+Proposed Changes:
+- Add a command overview to the help pop-up.
+
+This will provide users with a quick reference to the available commands and their usage.
+
+1. **Make certain fields optional when adding clients**
+
+Currently, these fields (name, phone, address, email) are mandatory when adding a client. However, there may be situations where certain information is not available at the time of client creation,
+such as some clients who may lack an email address.
+
+Proposed Changes:
+- Make the email and address fields optional when adding a new client
+- Provide visual indicators in the UI for clients with incomplete information
+- Add the ability to update client profiles later when the missing information becomes available
+
+These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.
+
+1. **Improve email validation for clients**
 
 PowerBake's current email validation doesn't fully verify that email addresses contain valid top-level domains (TLDs). This can lead to accepting technically invalid email addresses that won't function for client communications.
 
@@ -868,7 +887,7 @@ Proposed Changes:
 
 This improvement will help ensure that client contact information is accurate and functional, reducing communication failures.
 
-5. **Enhance order editing capabilities**
+1. **Enhance order editing capabilities**
 
 Currently, PowerBake only allows changing the status of an existing order using the "edit order" command. If a baker  wants to modify an order by changing the quantity or removing a pastry item,
 the entire order must be deleted and recreated. This process is time-consuming and can lead to errors.
@@ -892,18 +911,6 @@ Proposed Changes:
 
 These improvements will give bakery owners more powerful tools to manage their workflow, especially when dealing with a large volume of items.
 
-7. **Make certain fields optional when adding clients**
-
-Currently, these fields (name, phone, address, email) are mandatory when adding a client. However, there may be situations where certain information is not available at the time of client creation,
-such as some clients who may lack an email address.
-
-Proposed Changes:
-- Make the email and address fields optional when adding a new client
-- Provide visual indicators in the UI for clients with incomplete information
-- Add the ability to update client profiles later when the missing information becomes available
-
-These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.
-
 8. **Enhance Safety of the "clear" command**
 
 Currently, after hitting Enter, the "clear" command will immediately delete all data without any confirmation. This can lead to accidental data loss if a user mistakenly types "clear" instead of another command.
@@ -914,5 +921,3 @@ Proposed Changes:
 - The confirmation dialog will clearly state the consequences of the action and require the user to confirm before proceeding
 
 These changes will make the "clear" command safer to use and reduce the risk of accidental data loss.
-
-

@@ -903,3 +903,16 @@ Proposed Changes:
 - Add the ability to update client profiles later when the missing information becomes available
 
 These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.
+
+8. **Enhance Safety of the "clear" command**
+
+Currently, after hitting Enter, the "clear" command will immediately delete all data without any confirmation. This can lead to accidental data loss if a user mistakenly types "clear" instead of another command.
+This could lead to loss of data if there is any user error or misconception. 
+
+Proposed Changes:
+- Implement a confirmation dialog that appears when the user types "clear" and hits Enter
+- The confirmation dialog will clearly state the consequences of the action and require the user to confirm before proceeding
+
+These changes will make the "clear" command safer to use and reduce the risk of accidental data loss.
+
+

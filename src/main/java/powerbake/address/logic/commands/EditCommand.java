@@ -68,7 +68,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_NOT_EDITED_ORDER = "Please type in the Status to change to: "
             + "pending, processing, ready, delivered or cancelled";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the address book, "
+            + "duplicate clients are check exclusively by phone number";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in the bakery.";
     public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in the bakery.";
 

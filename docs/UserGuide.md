@@ -495,8 +495,10 @@ Refer to the [Parameters](#parameters) section for more details about the parame
 
 <box type="info" seamless>
 
-- All fields except for `TAG` are compulsory and must be not empty.
+- All fields (except for `TAG`) are compulsory and must be not empty.
+
 - `TAG` can be left blank, you can add as many tags as you want.
+
 - PowerBake checks for duplicate `clients` using `PHONE` number. Adding of duplicate clients will be ignored and an error message will be shown. 
 
 </box>
@@ -546,6 +548,7 @@ Refer to the [Parameters](#parameters) section for more details about the parame
 <box type="info" seamless>
 
 - All fields are compulsory and must not be empty.
+
 - PowerBake checks for duplicate `pastry` using `PASTRY_NAME`, this check is case-insensitive. Adding of duplicate pastries will be ignored and an error message will be shown. 
 
 </box>
@@ -576,7 +579,7 @@ You can use the [`edit` command](#editing-client-pastry-or-order-details--edit) 
 ---
 <div style="page-break-after: always;"></div>
 
-### Adding an order: `add order`
+### Adding an Order: `add order`
 
 The `add order` command allows you to create orders for clients with their ordered pastries.
 
@@ -659,6 +662,7 @@ Refer to the [Parameters](#parameters) section for more details about the parame
 
 - The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
 This corresponds to the position of the client/pastry/order currently displayed in the list.
+
 - Deleting a `client` or a `pastry` will not delete the related `order`. 
 <br>The reasoning behind this is that PowerBake assumes that orders are mutually agreed upon creation and are purely meant for tracking order fufillment, therefore, the order should maintain its integrity using its original form.
 

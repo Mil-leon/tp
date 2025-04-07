@@ -22,7 +22,7 @@ public class ViewCommand extends Command {
     public static final String COMMAND_WORD = "view";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": views all clients/pastries in address book, depending on the type specified.\n"
+            + ": views all clients/pastries in PowerBake, depending on the type specified.\n"
             + "Example: "
             + COMMAND_WORD + " client (OR) "
             + COMMAND_WORD + " pastry (OR) "
@@ -77,7 +77,7 @@ public class ViewCommand extends Command {
                         );
             }
             return new CommandResult(String.format(MESSAGE_SUCCESS_INDEX, type, index.getOneBased()), false, false,
-            type.equals("client"), type.equals("pastry"), type.equals("order"), index.getZeroBased());
+                    type.equals("client"), type.equals("pastry"), type.equals("order"), index.getZeroBased());
         } else {
             return new CommandResult(String.format(MESSAGE_SUCCESS, type), false, false,
                     type.equals("client"), type.equals("pastry"), type.equals("order"));

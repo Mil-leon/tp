@@ -14,11 +14,12 @@ public class StringUtil {
 
     /**
      * Returns true if the {@code sentence} contains the {@code word}.
-     *   Ignores case, but a full word match is required.
+     *   Ignores case, and only a partial word match is required.
      *   <br>examples:<pre>
      *       containsWordIgnoreCase("ABc def", "abc") == true
      *       containsWordIgnoreCase("ABc def", "DEF") == true
-     *       containsWordIgnoreCase("ABc def", "AB") == false //not a full word match
+     *       containsWordIgnoreCase("ABc def", "AB") == true
+     *       containsWordIgnoreCase("ABc def", "abcd") == false # bigger than word
      *       </pre>
      * @param sentence cannot be null
      * @param word cannot be null, cannot be empty, must be a single word
@@ -35,7 +36,7 @@ public class StringUtil {
         String[] wordsInPreppedSentence = preppedSentence.split("\\s+");
 
         return Arrays.stream(wordsInPreppedSentence)
-                .anyMatch(preppedWord::equalsIgnoreCase);
+                .anyMatch(w -> w.toLowerCase().contains(preppedWord.toLowerCase()));
     }
 
     /**
@@ -75,6 +76,20 @@ public class StringUtil {
         try {
             int value = Integer.parseInt(s);
             return value > 0 && value <= 999 && !s.startsWith("+");
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if {@code s} represents a double between 1 - 999
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isValidPrice(String s) {
+        requireNonNull(s);
+        try {
+            double value = Double.parseDouble(s);
+            return value > 0.0 && value <= 999.99 && !s.startsWith("+");
         } catch (NumberFormatException nfe) {
             return false;
         }

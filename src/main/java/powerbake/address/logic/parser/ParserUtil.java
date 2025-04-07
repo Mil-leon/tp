@@ -158,6 +158,9 @@ public class ParserUtil {
         if (!Price.isValidPrice(trimmedPrice)) {
             throw new ParseException(Price.MESSAGE_CONSTRAINTS);
         }
+        if (!StringUtil.isValidPrice(trimmedPrice)) {
+            throw new ParseException("Price must be positive and less than 1000");
+        }
         return new Price(trimmedPrice);
     }
 

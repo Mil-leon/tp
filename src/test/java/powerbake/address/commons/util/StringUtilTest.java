@@ -45,6 +45,8 @@ public class StringUtilTest {
         assertTrue(StringUtil.isNonZeroUnsignedInteger("10"));
     }
 
+    //---------------- Tests for isValidIntegerQuantity --------------------------------------
+
     @Test
     public void isValidIntegerQuantity() {
         // empty string
@@ -61,6 +63,33 @@ public class StringUtilTest {
         // between 1 - 999
         assertTrue(StringUtil.isValidIntegerQuantity("50"));
         assertTrue(StringUtil.isValidIntegerQuantity("999"));
+    }
+
+    //---------------- Tests for isValidPrice --------------------------------------
+
+    @Test
+    public void isValidPrice() {
+        // empty string
+        assertFalse(StringUtil.isValidPrice(""));
+        assertFalse(StringUtil.isValidPrice(" "));
+
+        // negative number check
+        assertFalse(StringUtil.isValidPrice("-5"));
+        assertFalse(StringUtil.isValidPrice("-99999"));
+
+        // boundary case
+        assertFalse(StringUtil.isValidPrice("0"));
+
+        // between 1 - 999.99
+        assertTrue(StringUtil.isValidPrice("50"));
+
+        // boundary case
+        assertTrue(StringUtil.isValidPrice("999.99"));
+
+        // over 999.99 check
+        assertFalse(StringUtil.isValidPrice("1000"));
+        assertFalse(StringUtil.isValidPrice("10000000000"));
+        assertFalse(StringUtil.isValidPrice("1000.00"));
     }
 
 
@@ -111,9 +140,9 @@ public class StringUtilTest {
      *   - last word in sentence
      *   - middle word in sentence
      *   - matches multiple words
+     *   - partial match of word in sentence
      *
      * Possible scenarios returning false:
-     *   - query word matches part of a sentence word
      *   - sentence word matches part of the query word
      *
      * The test method below tries to verify all above with a reasonably low number of test cases.
@@ -127,11 +156,11 @@ public class StringUtilTest {
         assertFalse(StringUtil.containsWordIgnoreCase("    ", "123"));
 
         // Matches a partial word only
-        assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc", "bb")); // Sentence word bigger than query word
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa bbb ccc", "bb")); // Sentence word bigger than query word
         assertFalse(StringUtil.containsWordIgnoreCase("aaa bbb ccc", "bbbb")); // Query word bigger than sentence word
 
         // Matches word in the sentence, different upper/lower case letters
-        assertTrue(StringUtil.containsWordIgnoreCase("aaa bBb ccc", "Bbb")); // First word (boundary case)
+        assertTrue(StringUtil.containsWordIgnoreCase("aaa bBb ccc", "Aaa")); // First word (boundary case)
         assertTrue(StringUtil.containsWordIgnoreCase("aaa bBb ccc@1", "CCc@1")); // Last word (boundary case)
         assertTrue(StringUtil.containsWordIgnoreCase("  AAA   bBb   ccc  ", "aaa")); // Sentence has extra spaces
         assertTrue(StringUtil.containsWordIgnoreCase("Aaa", "aaa")); // Only one word in sentence (boundary case)

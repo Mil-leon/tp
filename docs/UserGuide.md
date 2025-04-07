@@ -202,7 +202,9 @@ Now that you have installed PowerBake, lets learn how to launch it!
     java -jar powerbake.jar
     ```
 
-1. After a brief moment, you should see a window similar to this:
+<div style="page-break-after: always;"></div>
+
+4. After a brief moment, you should see a window similar to this:
 
     <img src="images/powerbake_home_page.png" alt="add client command" width="600" class="center"/>
 
@@ -254,7 +256,7 @@ This command specifies the following details about Luke:
 
 After hitting `Enter`, you should see a message indicating that Luke has been successfully added to PowerBake and the new entry should appear in the List View.
 
-<img src="images/added_luke.png" alt="added luke into powerbake" width="600" class="center"/>
+<img src="images/added_luke.png" alt="added luke into powerbake" width="50%" class="center-normal"/>
 
 1. The **Result Display Box** will show a message indicating that Luke has been successfully added.
 1. The **List View** will display the details of Luke.
@@ -286,6 +288,9 @@ Hitting Enter will display a message indicating that the Croissant has been **su
 
 **Nice!** You have successfully added your **first pastry** to PowerBake!
 
+<div style="page-break-after: always;"></div>
+
+
 ### Step 3: Adding an Order
 
 **Purpose:** Now that we have a **client** and a **pastry**, we can start taking **orders!**
@@ -298,9 +303,19 @@ First, we have to find the **index** of the client Luke using the command in the
 find client luke
 ```
 
-<img src="images/find_luke.png" alt="Finding index of Luke" width="600" class="center"/>
+<img src="images/find_luke.png" alt="Finding index of Luke" width="50%" class="center-normal"/>
 
 Here we find that the index of luke is **1**!
+
+<box type="warning">
+
+Do note that when using the `find` command, the indexes of clients may change. 
+
+Make sure the index you use in the next step corresponds to the correctly in the list to the client you want to edit!
+
+</box>
+
+<div style="page-break-after: always;"></div>
 
 To add the order to PowerBake, use this command in the Command Box and hit Enter:
 
@@ -323,7 +338,10 @@ This command specifies the following details about the order:
 
 Hitting Enter will display a message indicating that the order has been **successfully added** to PowerBake.
 
-<img src="images/added_order.png" alt="added order into powerbake" width="600" class="center"/>
+<img src="images/added_order.png" alt="added order into powerbake" width="50%" class="center-normal"/>
+
+
+<div style="page-break-after: always;"></div>
 
 You can then view the order list using the command or clicking on the **order** tab:
 
@@ -336,7 +354,7 @@ You can view the order in detail by finding the order index in the GUI and typin
 view order INDEX
 ```
 
-<img src="images/view_luke_order.png" alt="viewing the luke order" width="600" class="center"/>
+<img src="images/view_luke_order.png" alt="viewing the luke order" width="50%" class="center-normal"/>
 
 <box type="info" seamless>
 
@@ -350,8 +368,6 @@ New Orders **automatically** have the status of **Pending**.
 **Good Job!** You have successfully added your **first order** to PowerBake! With this knowledge, you can now manage your bakery efficiently!
 
 ### Step 4: Clearing PowerBake
-
-**Purpose:** We can make sure PowerBake is clean of any dummy data that it starts with.
 
 This step is optional but if you wish to start with a clean slate, use the following command in the Command Box:
 
@@ -463,24 +479,37 @@ add client NAME -p PHONE -a ADDRESS -e EMAIL [-t TAGS]
 2. `-a ADDRESS`: The address of your client, 5 - 100 characters
 3. `-e EMAIL`: The email address of you client, follows valid format
 4. `-p PHONE`: 8-digit phone number of your client
-5. `-t TAG`: Extra details of your client (Optional, any number of tags is allowed)
+5. `-t TAG`: Extra details of your client
+
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
 
 <box type="info" seamless>
 
-**Info:** TAG can be left blank, you can add as many tags as you want.
+- All fields except for `TAG` are compulsory and must be not empty.
+- `TAG` can be left blank, you can add as many tags as you want.
+- PowerBake checks for duplicate `clients` using `PHONE` number. Adding of duplicate clients will be ignored and an error message will be shown. 
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ##### Example:
 Adding a client, `Luke`, into Powerbake application. He lives at `5 Sengkang Street` and his email address is `luke@gmail.com`. His phone number is `88776655`.
 
 To add luke, simply type:
-`add client Luke -p 88776655 -a 5 Sengkang Street -e luke@gmail.com`
+```
+add client Luke -p 88776655 -a 5 Sengkang Street -e luke@gmail.com
+```
 
-Once `enter` is hit, a output message will be displayed of your success. His details will also be displayed under the client's tab.
-This allows you to easily keep track of client details systematically and efficiently.
+Once `enter` is hit, a output message will be displayed of your success.
 
 <img src="images/addclient2.png" alt="add client result" width="600" class="center"/>
+<br>
+<box type="tip">
+
+You can use the [`edit` command](#editing-client-pastry-or-order-details--edit) to change the client details if you made a mistake here.
+
+</box>
 
 [^ Back to top](#powerbake-user-guide)
 
@@ -502,15 +531,35 @@ add pastry PASTRY_NAME -pr PRICE
 1. `PASTRY_NAME`: The name of your pastry.
 2. `-pr PRICE`: The price of your pastry, supports up to 2 decimal places.
 
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
+
+<box type="info" seamless>
+
+- All fields are compulsory and must not be empty.
+- PowerBake checks for duplicate `pastry` using `PASTRY_NAME`, this check is case-insensitive. Adding of duplicate pastries will be ignored and an error message will be shown. 
+
+</box>
+
+<div style="page-break-after: always;"></div>
+
 ##### Example:
 Adding a pastry, `Croissant`, into PowerBake application. Price is `5.50`.
 
 To add the Croissant, simply type
-`add pastry Croissant -pr 5.5`
+```
+add pastry Croissant -pr 5.5
+```
 
-Once `enter` is hit, a output message will be displayed of your success. Pastry details will also be displayed under the pastry's tab. This allows you to easily keep track of pastry details systematically and efficiently.
+Once `enter` is hit, a output message will be displayed of your success.
 
 <img src="images/addpastry2.png" alt="add pastry result" width="600" class="center"/>
+
+<br>
+<box type="tip">
+
+You can use the [`edit` command](#editing-client-pastry-or-order-details--edit) to change the pastry details if you made a mistake here.
+
+</box>
 
 [^ Back to top](#powerbake-user-guide)
 
@@ -532,6 +581,14 @@ add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]
 2. `-pn PASTRY_NAME`: The name of the pastry to be added
 3. `-q Quantity`: The quantity of pastry to be added to the order
 
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
+
+<box type="info" seamless>
+
+- All orders added are always considered unique.
+
+</box>
+
 <box type="tip">
 
 You can add multiple pastries in a single order by sequentialy specifying the pastry and quantity for each pastry by using the ```-pn``` and ```-q``` flags.
@@ -540,15 +597,30 @@ You can add multiple pastries in a single order by sequentialy specifying the pa
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ##### Example:
 Adding an order for client `1` an order of `10 Brownie` and `20 Apple Pie` into PowerBake application.
 
 To add the Croissant, simply type
-`add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20`
+```
+add order 1 -pn Brownie -q 10 -pn Apple Pie -q 20
+```
 
-Once `enter` is hit, a output message will be displayed of your success. Order details will also be displayed under the order's tab. This allows you to easily keep track of order details systematically and efficiently.
+Once `enter` is hit, a output message will be displayed of your success.
 
 <img src="images/addOrderCommand2.png" alt="add order result" width="600" class="center"/>
+
+<br>
+<box type="tip">
+
+PowerBake assumes that once an order is created, it has been mutually agreed upon and is intended solely for fulfillment.
+
+Therefore, if you made a mistake here, you should use the [`delete` command](#deleting-client-pastry-or-order-delete) and add the correct order again.
+
+You can use the [`edit` command](#editing-client-pastry-or-order-details--edit) to change **only the status** of the order.
+
+</box>
 
 [^ Back to top](#powerbake-user-guide)
 
@@ -570,12 +642,25 @@ delete client/pastry/order INDEX
 
 1. `INDEX`: Represents position of the client/pastry/order list that you wish to remove.
 
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
+
+
 <box type="info" seamless>
 
-The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
-This corresponds to the position of the client/pastry/order displayed in list.
+- The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
+This corresponds to the position of the client/pastry/order currently displayed in the list.
+- Deleting a `client` or a `pastry` will not delete the related `order`. 
+<br>The reasoning behind this is that PowerBake assumes that orders are mutually agreed upon creation and are purely meant for tracking order fufillment, therefore, the order should maintain its integrity using its original form.
 
 </box>
+
+<box type="warning">
+
+Do be careful, as this command irreversibly deletes the selected entry. This the operation cannot be undone.
+
+</box>
+
+<div style="page-break-after: always;"></div>
 
 ##### Example 1:
 If you want to remove the fifth **client** on the list, the command would look like this:
@@ -585,13 +670,15 @@ If you want to remove the fifth **client** on the list, the command would look l
 ```
 
 **Before:**
-<img src="images/commands/deleteClient1.png" alt="delete client" width="600" class="center"/>
+<img src="images/commands/deleteClient1.png" alt="delete client" width="60%" class="center-normal"/>
 
 After hitting `Enter`, you will see the fifth client removed from the list.
 The remaining clients will adjust their index numbers accordingly.
 
 **After:**
-<img src="images/commands/deleteClient2.png" alt="delete client" width="600" class="center"/>
+<img src="images/commands/deleteClient2.png" alt="delete client" width="60%" class="center-normal"/>
+
+<div style="page-break-after: always;"></div>
 
 ##### Example 2:
 If you want to remove the second **pastry** on the list, the command would look like this:
@@ -652,12 +739,17 @@ edit order INDEX -s STATUS
 8. `-pr PRICE`: New price of the **pastry** to be updated to
 9. `-s STATUS`: New Status of the **order** to be updated to
 
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
+
 <box type="info" seamless>
 
-1. The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
-This corresponds to the position of the client/pastry displayed in list.
+- The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
+This corresponds to the position of the client/pastry/order currently displayed in the list.
 
-2. At least one field needs to be edited.
+- At least one field needs to be edited.
+
+- Editing `client` will update the related `orders` to allow update of contact details. However, editing a `pastry` will not update the values in the related `orders`.
+<br>This is to maintain the integrity of the original order details, ensuring that what was agreed upon at the time of ordering remains unchanged, even if the pastry's information is later modified.
 
 </box>
 
@@ -720,6 +812,8 @@ view order INDEX
 3. `order`: Access the order list.
 4. `INDEX`: The order index shown on the list that you wish to view.
 
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
+
 <box type="info" seamless>
 
 The `view` command allows only either viewing client, or viewing pastry, or viewing order or viewing specific orders.
@@ -728,6 +822,8 @@ The `INDEX` should be positive integer. For instance: `1`, `2`, etc. </br>
 This corresponds to the position of the client/pastry displayed in list.
 
 </box>
+
+<div style="page-break-after: always;"></div>
 
 ##### Example 1:
 If you wish to view the `client` details, the command would be:
@@ -762,6 +858,8 @@ If you wish to view the `order` details, the command would be:
 After hitting `Enter`, you will see the order details being displayed on the GUI. </br>
 
 Here, you can observe the general details regarding order, such as their order number, client name, status.
+
+<div style="page-break-after: always;"></div>
 
 ##### Example 4:
 If you wish to view the specific `order` details, the command would be:
@@ -807,11 +905,28 @@ find client/pastry/order KEYWORD [MORE_KEYWORDS]
 #### Parameters:
 
 1. `client/pastry/order`: Represents which type of entity you wish to find from.
-2. `KEYWORD`: Returns searches that matches to the keyword
+2. `KEYWORD`: Returns searches that matches or partially matching to the keyword
+
+Refer to the [Parameters](#parameters) section for more details about the parameters and their individual constraints.
 
 <box type="info" seamless>
 
-At least one keyword needs to be provided.
+- At least one keyword needs to be provided.
+- The matching is case-insensitive.
+- The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+- Entry matching at least one keyword will be returned (i.e. OR search). 
+    - e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+- Finds the `client/pastry/order` with matching or partially matching `KEYWORD`.
+    - e.g `ha` will still return `Hans Bo`
+- `find order` searches based on the `NAME` of the `client` who placed the order.
+
+</box>
+
+<box type="warning">
+
+When you use the `find` command, it filters the list and displays only matching entries, which may change the order and number of items shown. 
+<br>As a result, the indexes in this filtered list will differ from those in the original, unfiltered list.
+<br>Therefore, any command that uses `INDEX` or `CLIENT_INDEX` must refer to the index as shown in the currently displayed (filtered) list — not the full list — to ensure it targets the correct entry.
 
 </box>
 
@@ -821,16 +936,24 @@ To reset any of the list use the **[view](#viewing-client-pastry-or-order-view)*
 
 </box>
 
+<div style="page-break-after: always;"></div>
+
 ##### Example 1:
 If you want to find the name of the first client on the list, the command would look like this:
 
 ```
 find client Alex
 ```
+OR
+```
+find client lex
+```
 
-After hitting `Enter`, you will see the first client edited on the list.
+After hitting `Enter`, the list will return `Alex Yeoh`.
 
-<img src="images/commands/find_client2.png" alt="find client" width="600" class="center"/>
+<img src="images/commands/find_client2.png" alt="find client" width="60%" class="center-normal"/>
+
+<div style="page-break-after: always;"></div>
 
 ##### Example 2:
 If you want to find name of the **Brownie and Apple Pie pastry** on the list, the command would look like this:
@@ -839,9 +962,12 @@ If you want to find name of the **Brownie and Apple Pie pastry** on the list, th
 find pastry Brownie Apple
 ```
 
-After hitting `Enter`, you will see the second pastry updated from the list.
+After hitting `Enter`, the list will be updated to match the search.
 
-<img src="images/commands/find_pastry2.png" alt="find pastry" width="600" class="center"/>
+<img src="images/commands/find_pastry2.png" alt="find pastry" width="60%" class="center-normal"/>
+
+<div style="page-break-after: always;"></div>
+
 
 ##### Example 3:
 If you want to find the **order** that belongs to a **client** on the list, the command would look like this:
@@ -852,7 +978,7 @@ find order Charlotte
 
 After hitting `Enter`, you will see the only the orders that belongs to **Charlotte** shows up.
 
-<img src="images/commands/find_order2.png" alt="find order" width="600" class="center"/>
+<img src="images/commands/find_order2.png" alt="find order" width="60%" class="center-normal"/>
 
 
 [^ Back to top](#powerbake-user-guide)
@@ -963,8 +1089,8 @@ Adding data in the wrong format could lead to potential errors.
 *PowerBake* data is saved in `[JAR file location]/data/addressbook.json`, experienced users can add or delete clients and pastries within the json file.
 
 **Caution:**
-If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+If your changes to the data file makes its format invalid, PowerBake will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
+Furthermore, certain edits can cause the PowerBake to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </box>
 
 [^ Back to top](#powerbake-user-guide)
@@ -987,7 +1113,7 @@ java -version
 <box>
 <img src="images/windows_java.png" alt="java version on windows" class="center"/>
 
-The command will display openjdk version "17.0.xx" or java version "17.0.xx" on the first line of the output, indicating that Java 17 is installed. The minor version numbers (the last two digits) may differ from ours.
+The command will display `openjdk version 17.0.13` or `java version 17.0.13` on the first line of the output, indicating that Java 17 is installed. The minor version numbers (the last two digits) may differ from ours.
 </box>
 
 ##### **Q**: How do I open up the command terminal?
@@ -1004,7 +1130,11 @@ The command will display openjdk version "17.0.xx" or java version "17.0.xx" on 
 ##### **Q**: Can I use two instances of PowerBake simultaneously on the same computer? 
 - **A**: Currently we advise against using more than one instance of PowerBake at a single time as it may lead to data lost and corruption between the two instances.
 
+[^ Back to top](#powerbake-user-guide)
+
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## Known issues
 
@@ -1060,7 +1190,7 @@ The command will display openjdk version "17.0.xx" or java version "17.0.xx" on 
 | JSON (JavaScript Object Notation) | A simple, human-readable data format used for data exchange that is easily parsed and generated by machines.                                                                                                   |
 | Local Storage                     | Local storage in an application refers to a method of storing data on a user's device, allowing the application to save information persistently without requiring a server connection.                        |
 | Mainstream OS                     | Mainstream operating systems such as Windows, macOS and Linux.                                                                                                                                                        |
-| Orders                            | Orders in a bakery refer to customer requests for specific baked goods, either for immediate purchase or scheduled pickup/delivery, often including custom or bulk requests.                                   |
+| Orders                            | Orders in a bakery refer to customer requests for specific baked goods, either for immediate purchase or scheduled pickup/delivery, often including custom or bulk requests. <br>PowerBake assumes orders are mutually agreed upon creation and orders are used purely for order fufillment. |
 | Parameter                         | A variable in a command that stands in for a specific piece of information that must be supplied when the command is executed.                                                                                 |
 | Pastry                            | A Pastry in a bakery refers to baked goods made from dough or batter, often enriched with butter, sugar, and fillings like cream, fruit, or chocolate, including items such as croissants, danishes, and tarts. |
 | Person                            | Used interchangeably between client or customers in development |

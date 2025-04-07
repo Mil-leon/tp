@@ -880,17 +880,17 @@ Proposed Changes:
 
 These enhancements will make order management more flexible and efficient, improving customer service and reducing the chances of data entry errors.
 
-6. **Enhance order search functionality with filtering and sorting capabilities**
+6. **Enhance search functionality with filtering and sorting capabilities**
 
-The current search functionality for orders only allows finding orders by client name. This limitation makes it difficult to quickly locate orders
-based on other important criteria such as order status, date, or pastry type.
+The current search functionality for clients/pastries/orders only allows searching by name. This limitation makes it difficult to quickly locate items
+based on other important criteria such as phone number, address, price, order status, date, pastry type, etc...
 
 Proposed Changes:
-- Extend the find order command to support additional search parameters including order status, pastry types, and date ranges
-- Implement sorting capabilities for search results based on different order attributes (date, status, client name)
+- Extend the find command to support additional search parameters including phone number, address, price, order status, date, pastry type, etc...
+- Implement sorting capabilities for search results based on different attributes (phone number, price, order date, etc...)
 - Add combined filtering options to narrow search results using multiple criteria simultaneously
 
-These improvements will give bakery owners more powerful tools to manage their order workflow, especially when dealing with a large volume of orders.
+These improvements will give bakery owners more powerful tools to manage their workflow, especially when dealing with a large volume of items.
 
 7. **Make certain fields optional when adding clients**
 

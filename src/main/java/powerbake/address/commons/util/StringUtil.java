@@ -79,4 +79,18 @@ public class StringUtil {
             return false;
         }
     }
+
+    /**
+     * Returns true if {@code s} represents a double between 1 - 999
+     * @throws NullPointerException if {@code s} is null.
+     */
+    public static boolean isValidPrice(String s) {
+        requireNonNull(s);
+        try {
+            double value = Double.parseDouble(s);
+            return value > 0.0 && value <= 999.99 && !s.startsWith("+");
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
 }

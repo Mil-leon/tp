@@ -45,6 +45,8 @@ public class StringUtilTest {
         assertTrue(StringUtil.isNonZeroUnsignedInteger("10"));
     }
 
+    //---------------- Tests for isValidIntegerQuantity --------------------------------------
+
     @Test
     public void isValidIntegerQuantity() {
         // empty string
@@ -61,6 +63,33 @@ public class StringUtilTest {
         // between 1 - 999
         assertTrue(StringUtil.isValidIntegerQuantity("50"));
         assertTrue(StringUtil.isValidIntegerQuantity("999"));
+    }
+
+    //---------------- Tests for isValidPrice --------------------------------------
+
+    @Test
+    public void isValidPrice() {
+        // empty string
+        assertFalse(StringUtil.isValidPrice(""));
+        assertFalse(StringUtil.isValidPrice(" "));
+
+        // negative number check
+        assertFalse(StringUtil.isValidPrice("-5"));
+        assertFalse(StringUtil.isValidPrice("-99999"));
+
+        // boundary case
+        assertFalse(StringUtil.isValidPrice("0"));
+
+        // between 1 - 999.99
+        assertTrue(StringUtil.isValidPrice("50"));
+
+        // boundary case
+        assertTrue(StringUtil.isValidPrice("999.99"));
+
+        // over 999.99 check
+        assertFalse(StringUtil.isValidPrice("1000"));
+        assertFalse(StringUtil.isValidPrice("10000000000"));
+        assertFalse(StringUtil.isValidPrice("1000.00"));
     }
 
 

@@ -23,7 +23,11 @@
 
 Refer to the guide [_Setting up and getting started_](https://ay2425s2-cs2103t-f13-2.github.io/tp/SettingUp.html).
 
+[^ Back to top](#powerbake-developer-guide)
+
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-after: always;"></div>
 
 ## **Design**
 
@@ -59,7 +63,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
-* implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+* implements its functionality using a concrete `{Component Name}Manager` class which follows the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
@@ -67,13 +71,19 @@ For example, the `Logic` component defines its API in the `Logic.java` interface
 
 The sections below give more details of each component.
 
-### UI component
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### UI Component
 
 The **API** of this component is specified in [`Ui.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/ui/Ui.java)
 
 <puml src="diagrams/UiClassDiagram.puml" alt="Structure of the UI Component"/>
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Such as methods which help load the FXML files. Due to the sheer number of components inhering from the abstract `UiPart` class, the inheritance has been shown in the diagram below instead.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`, `PastryListPanel` and etc.. All these, including the `MainWindow`, inherit from the abstract `UiPart` class which captures the commonalities between classes that represent parts of the visible GUI. Such as methods which help load the FXML files. Due to the sheer number of components inhering from the abstract `UiPart` class, the inheritance has been shown in the diagram below instead.
 
 <puml src="diagrams/UiClassDiagram2.puml" alt="Inheritance from UiPart class"/>
 
@@ -86,7 +96,13 @@ The `UI` component,
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
 
-### Logic component
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Logic Component
 
 **API** : [`Logic.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/logic/Logic.java)
 
@@ -119,7 +135,13 @@ How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
 
-### Model component
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Model Component
 **API** : [`Model.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/model/Model.java)
 
 <puml src="diagrams/ModelClassDiagram.puml" width="1000"/>
@@ -136,7 +158,13 @@ The `Model` component,
 * stores a `UserPref` object that represents the user’s preferences. This is exposed to the outside as a `ReadOnlyUserPref` objects.
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they should make sense on their own without depending on other components)
 
-### Storage component
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Storage Component
 
 **API** : [`Storage.java`](https://github.com/AY2425S2-CS2103T-F13-2/tp/blob/master/src/main/java/powerbake/address/storage/Storage.java)
 
@@ -147,11 +175,16 @@ The `Storage` component,
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only the functionality of only one is needed).
 * depends on some classes in the `Model` component (because the `Storage` component's job is to save/retrieve objects that belong to the `Model`)
 
-### Common classes
+
+### Common Classes
 
 Classes used by multiple components are in the `powerbake.address.commons` package.
 
---------------------------------------------------------------------------------------------------------------------
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
 
 ## **Implementation**
 
@@ -165,10 +198,16 @@ As a refresher, this is the add order command as described in the User Guide:
 
 <box type="info" seamless>
 
-Format: add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]
+Format: 
+```
+add order CLIENT_INDEX -pn PASTRY_NAME -q QUANTITY [-pn PASTRY_NAME -q QUANTITY]
+```
 
-Example: add order 1 -pn Croissant -q 10 -pn Apple Pie -q 20 adds an order for the client at index 1
-with 10 Croissants and 20 Apple Pies.
+Example: 
+```
+add order 1 -pn Croissant -q 10 -pn Apple Pie -q 20 
+```
+adds an order for the client at index 1 with 10 Croissants and 20 Apple Pies.
 
 </box>
 
@@ -177,29 +216,29 @@ with 10 Croissants and 20 Apple Pies.
 When executed, this command parses user input and creates an internal representation of the order data. The sequence proceeds as follows:
 
 1. **Parse Command and Validate Client**:
-   - The input command text is parsed to identify the client index and order details
-   - The system validates that the client index exists in the current filtered client list
-   - If the client is found, the process continues with validating pastry items
+   - The input command text is parsed to identify the client index and order details.
+   - The system validates that the client index exists in the current filtered client list.
+   - If the client is found, the process continues with validating pastry items.
 
 2. **Validate Pastry Items**:
-   - For each pastry name specified, the system checks if it exists in the current pastry list
-   - The system ensures no duplicate pastry entries exist in a single order
-   - Valid quantities are checked for each pastry
+   - For each pastry name specified, the system checks if it exists in the current pastry list.
+   - The system ensures no duplicate pastry entries exist in a single order.
+   - Valid quantities are checked for each pastry.
 
 3. **Create and Add Order**:
-   - A new Order object is created with the validated client and a list of OrderItem objects
-   - Each OrderItem contains a reference to a Pastry and its quantity
-   - The order is automatically assigned a "pending" status
+   - A new Order object is created with the validated client and a list of OrderItem objects.
+   - Each OrderItem contains a reference to a Pastry and its quantity.
+   - The order is automatically assigned a "pending" status.
 
 4. **Model Update**:
-   - The model adds the new order to the address book, which updates the internal list of orders
-   - This triggers observers to notify relevant UI components
+   - The model adds the new order to the address book, which updates the internal list of orders.
+   - This triggers observers to notify relevant UI components.
 
 5. **Automatic UI Refresh**:
-   - The OrderListPanel UI component, which observes changes in the list of orders, detects the addition and refreshes its display
-   - The UI reflects this change by showing a new OrderCard for the recently added order
+   - The OrderListPanel UI component, which observes changes in the list of orders, detects the addition and refreshes its display.
+   - The UI reflects this change by showing a new OrderCard for the recently added order.
 
-<box type="tip" seamless>
+<box type="tip">
 
 The Order implementation uses a unique identifier (OrderId) that's automatically generated to ensure orders can be uniquely identified in the system, even when multiple orders come from the same client.
 
@@ -213,7 +252,6 @@ The Order implementation uses a unique identifier (OrderId) that's automatically
 
 <puml src="diagrams/AddOrderDiagramSubDiagramValidOrderItems.puml" width="700" />
 
-
 <puml src="diagrams/AddOrderDiagramSubDiagramSaveToStorage.puml" width="700" />
 
 <box type="info" seamless>
@@ -222,9 +260,13 @@ Note: due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 
 </box>
 
---------------------------------------------------------------------------------------------------------------------
+[^ Back to top](#powerbake-developer-guide)
 
-## **Documentation, logging, testing, configuration, dev-ops**
+---
+
+<div style="page-break-after: always;"></div>
+
+## **Documentation, Logging, Testing, Configuration, Dev-ops**
 
 * [Documentation guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Documentation.html)
 * [Testing guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Testing.html)
@@ -232,11 +274,15 @@ Note: due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 * [Configuration guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/Configuration.html)
 * [DevOps guide](https://ay2425s2-cs2103t-f13-2.github.io/tp/DevOps.html)
 
---------------------------------------------------------------------------------------------------------------------
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Requirements**
 
-### Product scope
+### Product Scope
 
 **Target user profile**:
 
@@ -254,7 +300,7 @@ Note: due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 * Provides an order list so they can keep track of customers orders
 * Provides a pastry list so they can keep track of their pastries
 
-### User stories
+### User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -273,7 +319,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | Bakery Owner  | use the system offline                               | I can have access to the system at all times                             |
 | `* *`    | Bakery Owner  | come back to the system with all my previous entries | I do not have to re-enter all client and pastries entries every time    |
 
-### Use cases
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
+### Use Cases
 
 (For all use cases below, the **System** is the `PowerBake` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -292,6 +344,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: Add Client**
 
 <u>MSS</u>
@@ -300,6 +354,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  PowerBake adds client details
 
     Use case ends.
+
+---
 
 **Use case: Edit Client**
 
@@ -327,6 +383,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
 
 **Use case: Delete Client**
 
@@ -344,6 +401,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: Find Client**
 
 <u>MSS</u>
@@ -360,6 +419,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: View Pastries Details**
 
 <u>MSS</u>
@@ -375,6 +436,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: Add Pastries**
 
 <u>MSS</u>
@@ -383,6 +446,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  PowerBake adds pastries details
 
     Use case ends.
+
+---
 
 **Use case: Edit Pastry**
 
@@ -410,6 +475,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: Delete Pastries**
 
 <u>MSS</u>
@@ -425,6 +492,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1a1. PowerBake prints error message
 
   Use case ends.
+
+---
 
 **Use case: Find Pastry**
 
@@ -442,6 +511,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: View Orders**
 
 <u>MSS</u>
@@ -456,6 +527,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
+
+---
 
 **Use case: Add Order**
 
@@ -483,6 +556,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+---
+
 **Use case: Edit Order**
 
 <u>MSS</u>
@@ -504,6 +579,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
 **Use case: Delete Order**
 
 <u>MSS</u>
@@ -519,6 +596,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1a1. PowerBake prints error message
 
   Use case ends.
+
+---
 
 **Use case: Find Order**
 
@@ -536,6 +615,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case ends.
 
+---
+
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
+
 ### Non-Functional Requirements
 
 1. The system shall provide a graphical user interface compatible with major operating systems.
@@ -543,6 +630,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1. All data must persist between sessions, requiring no re-entry of client or pastry information.
 1. The interface must be intuitive enough that users unfamiliar with computers can navigate it with minimal confusion.
 1. The system must load order and client pages in under 2 seconds, even when handling 500+ entries.
+
+[^ Back to top](#powerbake-developer-guide)
+
+---
+
+<div style="page-break-after: always;"></div>
 
 ### Glossary
 
@@ -564,9 +657,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Person                            | Used interchangeably between client or customers in development |
 
 
---------------------------------------------------------------------------------------------------------------------
+[^ Back to top](#powerbake-developer-guide)
 
-## **Appendix: Instructions for manual testing**
+---
+
+<div style="page-break-after: always;"></div>
+
+## **Appendix: Instructions for Manual Testing**
 
 Given below are instructions to test the app manually.
 
@@ -577,7 +674,7 @@ testers are expected to do more *exploratory* testing.
 
 </box>
 
-### Launch and shutdown
+### Launch and Shutdown
 
 1. Initial launch
 
@@ -828,96 +925,96 @@ testers are expected to do more *exploratory* testing.
     Expected: Error message displaying invalid format.
 
 
---------------------------------------------------------------------------------------------------------------------
+[^ Back to top](#powerbake-developer-guide)
 
-## **Appendix: planned enhancements**
+---
 
-1. **Enhance client and pastry name validation**
+<div style="page-break-after: always;"></div>
 
-Currently, PowerBake only allows alphanumeric characters and spaces in client and pastry names. This is a limitation as
-some names may contain special characters such as slashes, hyphens, accented characters and different languages. In the future, we will enhance the validation to allow these characters.
-so that names such as Janet Smith-Johnson, Mike O'Leary, María José, etc.. can be added to our system. Additionally, PowerBake currently allows for multiple consecutive spaces in
-names. This should not be allowed as it leads to inconsistent formatting and validation.
+## **Appendix: Planned Enhancements**
 
-Proposed Changes:
-- Allow for special characters and accented characters. widening the scope of valid names that can be added to the system.
-- Trim consecutive spaces to a single space. This will ensure that names are formatted consistently and correctly.
-
-These changes are expected to improve PowerBake's consistency and usability.
-
-1. **Enhance add order functionality with batch processing**
-
-Currently, users can only create one order at a time, requiring separate command executions for multiple clients even when they're ordering the same pastries. This is inefficient for bakery owners who often process similar bulk orders for different clients.
-
-Proposed Changes:
-- Implement a new batch order command syntax that allows multiple client orders to be created simultaneously
-- Enable specifying multiple client indices when the pastry selections are identical
-- Add validation to ensure all client indices are valid before processing any orders
-
-These improvements would significantly reduce the time spent on data entry for bakery owners who process multiple similar orders in a single session.
-
-1. **Include command overview in the help pop-up**
+##### 1. **Improve `help` Command Pop-up to Include Command Overview**
 
 Currently, the help pop-up only contains a link to the User Guide online. However this could be unintuitive as users have to copy the link and open the browser to access the User Guide.
 Information such as an overview of the commands should be readily available in the help pop-up. This will allow users to quickly access the information they need without having to leave the app.
 
-Proposed Changes:
+**Proposed Changes**:
 - Add a command overview to the help pop-up.
 
 This will provide users with a quick reference to the available commands and their usage.
 
-1. **Make certain fields optional when adding clients**
+##### 2. **Enhance Client and Pastry `NAME` Validation**
 
-Currently, these fields (name, phone, address, email) are mandatory when adding a client. However, there may be situations where certain information is not available at the time of client creation,
-such as some clients who may lack an email address.
+Currently, PowerBake only allows alphanumeric characters and spaces in client and pastry names. This is a limitation as
+some names may contain special characters such as slashes, hyphens, accented characters and different languages. In the future, we will enhance the validation to allow these characters so that names such as Janet Smith-Johnson, Mike O'Leary, María José and etc. can be added to our system. 
 
-Proposed Changes:
-- Make the email and address fields optional when adding a new client
-- Provide visual indicators in the UI for clients with incomplete information
-- Add the ability to update client profiles later when the missing information becomes available
+Additionally, PowerBake currently allows for multiple consecutive spaces in names. This should not be allowed as it leads to inconsistent formatting and validation.
 
-These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.
+**Proposed Changes**:
+- Allow for special characters and accented characters, widening the scope of valid names that can be added to the system.
+- Trim consecutive spaces to a single space. This will ensure that names are formatted consistently and correctly.
 
-1. **Improve email validation for clients**
+These changes are expected to improve PowerBake's consistency and usability especially when used with other languages.
 
-PowerBake's current email validation doesn't fully verify that email addresses contain valid top-level domains (TLDs). This can lead to accepting technically invalid email addresses that won't function for client communications.
+##### 3. **Improve `EMAIL` Validation for Clients**
 
-Proposed Changes:
-- Enhance email validation to verify the presence of a valid TLD (e.g., .com, .org, .net)
+PowerBake's current email validation doesn't fully verify that email addresses it receives are actually valid. <br>One example of this is that invalid emails that do not contain valid top-level domains (TLDs) can be added. This can lead to accepting technically invalid email addresses that won't function for client communications.
+
+**Proposed Changes**:
+- Explore different email validations techniques like using [Apache Commons Validator](https://commons.apache.org/proper/commons-validator/) to enhance email validation.
 
 This improvement will help ensure that client contact information is accurate and functional, reducing communication failures.
 
-1. **Enhance order editing capabilities**
+##### 4. **Make Certain Fields Optional when Adding Clients**
 
-Currently, PowerBake only allows changing the status of an existing order using the "edit order" command. If a baker  wants to modify an order by changing the quantity or removing a pastry item,
-the entire order must be deleted and recreated. This process is time-consuming and can lead to errors.
+Currently, parameters `NAME`, `PHONE`, `ADDRESS` and `EMAIL` are mandatory when adding a client. However, there may be situations where certain information is not available at the time of client creation,
+such as some clients who may lack an email address.
 
-Proposed Changes:
-- Extend the existing "edit order" command to allow modification of individual pastry quantities
-- Add functionality to remove specific pastry items from an existing order
-- Enable addition of new pastry items to an already created order
+**Proposed Changes**:
+- Make the email and address fields optional when adding a new client.
+- Provide visual indicators in the UI for clients with incomplete information.
+- Add the ability to update client profiles later when the missing information becomes available.
 
-These enhancements will make order management more flexible and efficient, improving customer service and reducing the chances of data entry errors.
+These changes will make the client registration process more flexible and accommodate various business scenarios where complete information may not be immediately available.
 
-6. **Enhance search functionality with filtering and sorting capabilities**
+##### 5. **Enhance Add Order Functionality with Batch Processing**
+
+Currently, users can only create one order at a time, requiring separate command executions for multiple clients even when they're ordering the same pastries. This is inefficient for bakery owners who often process similar bulk orders for different clients.
+
+**Proposed Changes**:
+- Implement a new batch order command syntax that allows multiple client orders to be created simultaneously.
+- Enable specifying multiple client indices when the pastry selections are identical.
+- Add validation to ensure all client indices are valid before processing any orders.
+
+These improvements would significantly reduce the time spent on data entry for bakery owners who process multiple similar orders in a single session.
+
+##### 6. **Enhance Search Functionality with Filtering and Sorting Capabilities**
 
 The current search functionality for clients/pastries/orders only allows searching by name. This limitation makes it difficult to quickly locate items
-based on other important criteria such as phone number, address, price, order status, date, pastry type, etc...
+based on other important criteria such as phone number, address, price, order status, date, pastry type and etc..
 
-Proposed Changes:
-- Extend the find command to support additional search parameters including phone number, address, price, order status, date, pastry type, etc...
-- Implement sorting capabilities for search results based on different attributes (phone number, price, order date, etc...)
-- Add combined filtering options to narrow search results using multiple criteria simultaneously
+**Proposed Changes**:
+- Extend the find command to support additional search parameters including phone number, address, price, order status, date, pastry type and etc..
+- Implement sorting capabilities for search results based on different attributes (phone number, price, order, date and etc.).
+- Add combined filtering options to narrow search results using multiple criteria simultaneously.
 
 These improvements will give bakery owners more powerful tools to manage their workflow, especially when dealing with a large volume of items.
 
-8. **Enhance Safety of the "clear" command**
+##### 7. **Enhance Safety of the `clear` Command**
 
-Currently, after hitting Enter, the "clear" command will immediately delete all data without any confirmation. This can lead to accidental data loss if a user mistakenly types "clear" instead of another command.
-This could lead to loss of data if there is any user error or misconception. 
+Currently, after hitting Enter, the `clear` command will immediately delete all data without any confirmation. <br>This can lead to accidental data loss if there is any user error or misconception. 
 
-Proposed Changes:
-- Implement a confirmation dialog that appears when the user types "clear" and hits Enter
-- The confirmation dialog will clearly state the consequences of the action and require the user to confirm before proceeding
+**Proposed Changes**:
+- Implement a confirmation dialog that appears when the user types `clear` and hits `Enter`.
+- The confirmation dialog will clearly state the consequences of the action and require the user to confirm before proceeding.
 
-These changes will make the "clear" command safer to use and reduce the risk of accidental data loss.
+These changes will make the `clear` command safer to use and reduce the risk of accidental data loss.
+
+##### 8. **Enhance Versatility of the `clear` Command**
+
+Currently, the `clear` command will delete **ALL** stored data. <br>This may not be the ideal usage of the command as users may only want to clear a specific list (e.g clearing only the client list instead of all lists). 
+
+**Proposed Changes**:
+- Implementation of `clear` command to take in arguments such as `client`, `pastry` and `order` to specify which list to clear.
+
+These changes will make the `clear` command more versatile to use and not as destructive.

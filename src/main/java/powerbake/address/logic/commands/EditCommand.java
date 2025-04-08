@@ -68,7 +68,6 @@ public class EditCommand extends Command {
             + "-n: Name of the pastry to edit \n"
             + "-pr: Price of the pastry to edit \n";
 
-
     public static final String MESSAGE_NOT_EDITED_ORDER = "Please use the -s flag and type in the STATUS to change to:"
             + " pending, processing, ready, delivered or cancelled"
             + "\n"
@@ -135,7 +134,7 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 
@@ -182,7 +181,7 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 
@@ -212,7 +211,7 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 

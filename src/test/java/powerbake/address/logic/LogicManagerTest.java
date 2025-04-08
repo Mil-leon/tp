@@ -5,7 +5,6 @@ import static powerbake.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
 import static powerbake.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static powerbake.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static powerbake.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-import static powerbake.address.logic.commands.DeleteCommand.MESSAGE_USAGE;
 import static powerbake.address.testutil.Assert.assertThrows;
 import static powerbake.address.testutil.TypicalPersons.AMY;
 
@@ -61,7 +60,7 @@ public class LogicManagerTest {
     public void execute_commandExecutionError_throwsCommandException() {
         String deleteCommand = "delete client 1";
         assertCommandException(deleteCommand, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     @Test

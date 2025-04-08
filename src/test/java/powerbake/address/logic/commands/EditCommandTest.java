@@ -15,7 +15,6 @@ import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFail
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPastryAtIndex;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static powerbake.address.logic.commands.EditCommand.MESSAGE_USAGE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
 import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
@@ -245,7 +244,7 @@ public class EditCommandTest {
                 outOfBoundIndex, descriptor, true);
 
         assertCommandFailure(editCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     @Test
@@ -257,7 +256,7 @@ public class EditCommandTest {
                 outOfBoundPastry, descriptor1, false);
 
         assertCommandFailure(editCommand1, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     /**
@@ -275,7 +274,7 @@ public class EditCommandTest {
                 new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build(), true);
 
         assertCommandFailure(editCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
 
         showPastryAtIndex(model, INDEX_FIRST_PASTRY);
         Index outOfBoundIndex1 = INDEX_SECOND_PASTRY;
@@ -286,7 +285,7 @@ public class EditCommandTest {
                 new EditPastryDescriptorBuilder().withName(VALID_NAME_CHOCOLATECROISSANT).build(), false);
 
         assertCommandFailure(editCommand1, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     @Test

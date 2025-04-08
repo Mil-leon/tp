@@ -78,7 +78,7 @@ public class ViewCommandTest {
     public void execute_invalidIndex_throwsCommandException() {
         assertCommandFailure(new ViewCommand(Index.fromOneBased(9999)), model,
                 String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                        Messages.MESSAGE_INVALID_INDEX));
     }
 
     @Test

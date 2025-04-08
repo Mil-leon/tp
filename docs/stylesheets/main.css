@@ -150,6 +150,39 @@ mark {
   img {
       zoom: 0.8;  /* might not work on some browsers */
   }
+
+  .page-nav-print::before {
+    content: "Table of Contents";
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: underline;
+    color: #333;
+  }
+
+  .page-nav-print * {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* PowerBake header */
+  .page-nav-print nav a {
+    display:none;
+  }
+
+  .page-nav-print nav nav a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #F5911B !important;
+    display: block;
+  }
+
+  .page-nav-print nav nav nav a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #8876E6 !important;
+    display: block;
+    margin-left: 32px !important;
+  }
 }
 
 h2,

@@ -11,7 +11,7 @@ public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters and spaces, and it should not be blank"
-                    + "\nIf you need to include terms like \"s/o\" or \"d/o\" in a name," 
+                    + "\nIf you need to include terms like \"s/o\" or \"d/o\" in a name,"
                     + " please use alternatives such as \"s o\" or \"son of\" instead.";
 
     /*

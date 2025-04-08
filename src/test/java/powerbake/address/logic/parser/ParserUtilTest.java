@@ -2,7 +2,6 @@ package powerbake.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static powerbake.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static powerbake.address.testutil.Assert.assertThrows;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
@@ -13,6 +12,7 @@ import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 
+import powerbake.address.logic.Messages;
 import powerbake.address.logic.parser.exceptions.ParseException;
 import powerbake.address.model.person.Address;
 import powerbake.address.model.person.Email;
@@ -43,7 +43,7 @@ public class ParserUtilTest {
 
     @Test
     public void parseIndex_outOfRangeInput_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_INVALID_INDEX, ()
+        assertThrows(ParseException.class, Messages.MESSAGE_INVALID_INDEX, ()
             -> ParserUtil.parseIndex(Long.toString(Integer.MAX_VALUE + 1)));
     }
 

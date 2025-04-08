@@ -3,11 +3,10 @@ package powerbake.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static powerbake.address.logic.Messages.MESSAGE_INVALID_INDEX;
-import static powerbake.address.logic.Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
+import static powerbake.address.logic.commands.ViewCommand.MESSAGE_USAGE;
 import static powerbake.address.testutil.TypicalAddressBook.getTypicalAddressBook;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
 import static powerbake.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
@@ -16,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import powerbake.address.commons.core.index.Index;
+import powerbake.address.logic.Messages;
 import powerbake.address.model.Model;
 import powerbake.address.model.ModelManager;
 import powerbake.address.model.UserPrefs;
@@ -71,15 +71,14 @@ public class ViewCommandTest {
 
     @Test
     public void execute_invalidType_throwsCommandException() {
-        assertCommandFailure(new ViewCommand("apple"), model, ViewCommand.MESSAGE_USAGE);
+        assertCommandFailure(new ViewCommand("apple"), model, MESSAGE_USAGE);
     }
 
     @Test
     public void execute_invalidIndex_throwsCommandException() {
-        assertCommandFailure(new ViewCommand(Index.fromOneBased(9999)), model, String.format(
-                    MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
-                    MESSAGE_INVALID_INDEX
-                    ));
+        assertCommandFailure(new ViewCommand(Index.fromOneBased(9999)), model,
+                String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX));
     }
 
     @Test

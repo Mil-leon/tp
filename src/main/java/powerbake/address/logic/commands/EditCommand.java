@@ -158,7 +158,8 @@ public class EditCommand extends Command {
             );
 
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson)),
+                false, false, true, false, false);
     }
 
     /**
@@ -187,7 +188,8 @@ public class EditCommand extends Command {
 
         model.setPastry(pastryToEdit, editedPastry);
         model.updateFilteredPastryList(Model.PREDICATE_SHOW_ALL_PASTRIES);
-        return new CommandResult(String.format(MESSAGE_EDIT_PASTRY_SUCCESS, Messages.format(editedPastry)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PASTRY_SUCCESS, Messages.format(editedPastry)),
+                false, false, false, true, false);
     }
 
     /**
@@ -216,7 +218,8 @@ public class EditCommand extends Command {
 
         model.setOrder(orderToEdit, editedOrder);
         model.updateFilteredOrderList(Model.PREDICATE_SHOW_ALL_ORDERS);
-        return new CommandResult(String.format(MESSAGE_EDIT_ORDER_SUCCESS, Messages.format(editedOrder)));
+        return new CommandResult(String.format(MESSAGE_EDIT_ORDER_SUCCESS, Messages.format(editedOrder)),
+                false, false, false, false, true, index.getZeroBased());
     }
 
     /**

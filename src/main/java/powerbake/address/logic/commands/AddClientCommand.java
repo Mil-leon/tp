@@ -58,7 +58,8 @@ public class AddClientCommand extends AddCommand {
         }
 
         model.addPerson(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)),
+                false, false, true, false, true);
     }
 
     @Override

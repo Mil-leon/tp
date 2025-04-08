@@ -69,9 +69,10 @@ public class EditCommand extends Command {
             + "-pr: Price of the pastry to edit \n";
 
 
-    public static final String MESSAGE_NOT_EDITED_ORDER = "Ensure Index is valid and "
-            + "please type in the Status to change to: "
-            + "-s pending, -s processing, -s ready, -s delivered or -s cancelled";
+    public static final String MESSAGE_NOT_EDITED_ORDER = "Please use the -s flag and type in the STATUS to change to:"
+            + " pending, processing, ready, delivered or cancelled"
+            + "\n"
+            + "Example: edit order 2 -s delivered";
     public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake"
             + "duplicate clients are checked exclusively by phone number";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in PowerBake.";

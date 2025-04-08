@@ -72,7 +72,8 @@ public class EditCommand extends Command {
             + " pending, processing, ready, delivered or cancelled"
             + "\n"
             + "Example: edit order 2 -s delivered";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake"
+            + "duplicate clients are checked exclusively by phone number";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in PowerBake.";
     public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in PowerBake.";
 

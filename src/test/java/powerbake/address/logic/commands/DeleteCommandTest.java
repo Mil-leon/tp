@@ -8,7 +8,6 @@ import static powerbake.address.logic.commands.CommandTestUtil.assertCommandSucc
 import static powerbake.address.logic.commands.CommandTestUtil.showOrderAtIndex;
 import static powerbake.address.logic.commands.CommandTestUtil.showPastryAtIndex;
 import static powerbake.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static powerbake.address.logic.commands.DeleteCommand.MESSAGE_USAGE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
@@ -119,7 +118,7 @@ public class DeleteCommandTest {
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_CLIENT.toString().trim(), outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     /**
@@ -132,7 +131,7 @@ public class DeleteCommandTest {
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_PASTRY.toString().trim(), outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     /**
@@ -145,7 +144,7 @@ public class DeleteCommandTest {
         DeleteCommand deleteCommand = new DeleteCommand(PREFIX_ORDER.toString().trim(), outOfBoundIndex);
 
         assertCommandFailure(deleteCommand, model, String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE));
+                Messages.MESSAGE_INVALID_INDEX));
     }
 
     /**

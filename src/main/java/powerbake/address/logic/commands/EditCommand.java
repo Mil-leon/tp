@@ -68,10 +68,10 @@ public class EditCommand extends Command {
             + "-n: Name of the pastry to edit \n"
             + "-pr: Price of the pastry to edit \n";
 
-
-    public static final String MESSAGE_NOT_EDITED_ORDER = "Ensure Index is valid and "
-            + "please type in the Status to change to: "
-            + "-s pending, -s processing, -s ready, -s delivered or -s cancelled";
+    public static final String MESSAGE_NOT_EDITED_ORDER = "Please use the -s flag and type in the STATUS to change to:"
+            + " pending, processing, ready, delivered or cancelled"
+            + "\n"
+            + "Example: edit order 2 -s delivered";
     public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake.";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in PowerBake.";
     public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in PowerBake.";
@@ -133,7 +133,7 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 
@@ -180,7 +180,7 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 
@@ -210,7 +210,7 @@ public class EditCommand extends Command {
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 

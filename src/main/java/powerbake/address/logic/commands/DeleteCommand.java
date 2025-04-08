@@ -126,7 +126,7 @@ public class DeleteCommand extends Command {
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 
@@ -149,7 +149,7 @@ public class DeleteCommand extends Command {
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 
@@ -172,7 +172,7 @@ public class DeleteCommand extends Command {
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
                         Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                        Messages.MESSAGE_INVALID_INDEX)
                     );
         }
 

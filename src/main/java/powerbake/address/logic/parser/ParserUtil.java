@@ -139,7 +139,7 @@ public class ParserUtil {
         requireNonNull(name);
         String trimmedName = name.trim();
         if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            throw new ParseException(powerbake.address.model.pastry.Name.MESSAGE_CONSTRAINTS);
         }
         return new powerbake.address.model.pastry.Name(trimmedName);
     }

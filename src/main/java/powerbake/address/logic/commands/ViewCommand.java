@@ -73,7 +73,7 @@ public class ViewCommand extends Command {
             if (index.getZeroBased() >= lastShownList.size()) {
                 throw new CommandException(String.format(
                             Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                            Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
+                            Messages.MESSAGE_INVALID_INDEX)
                         );
             }
             return new CommandResult(String.format(MESSAGE_SUCCESS_INDEX, type, index.getOneBased()), false, false,

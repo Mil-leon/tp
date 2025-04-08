@@ -330,7 +330,7 @@ public class DeleteCommandParserTest {
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
             assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
+                    Messages.MESSAGE_INVALID_INDEX), e.getMessage());
         }
     }
 
@@ -350,7 +350,7 @@ public class DeleteCommandParserTest {
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
             assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
+                    Messages.MESSAGE_INVALID_INDEX), e.getMessage());
         }
     }
 
@@ -370,7 +370,7 @@ public class DeleteCommandParserTest {
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
             assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
+                    Messages.MESSAGE_INVALID_INDEX), e.getMessage());
         }
     }
 
@@ -390,7 +390,7 @@ public class DeleteCommandParserTest {
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
             assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
-                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
+                    Messages.MESSAGE_INVALID_INDEX), e.getMessage());
         }
     }
 }

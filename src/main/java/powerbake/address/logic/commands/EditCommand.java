@@ -72,7 +72,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED_ORDER = "Ensure Index is valid and "
             + "please type in the Status to change to: "
             + "-s pending, -s processing, -s ready, -s delivered or -s cancelled";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake"
+            + "duplicate clients are checked exclusively by phone number";
     public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in PowerBake.";
     public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in PowerBake.";
 

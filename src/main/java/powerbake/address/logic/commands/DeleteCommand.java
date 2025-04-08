@@ -125,14 +125,15 @@ public class DeleteCommand extends Command {
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
-                        Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                        Messages.MESSAGE_INVALID_INDEX)
+                        Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
                     );
         }
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deletePerson(personToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete.getName()));
+        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, personToDelete.getName()),
+                false, false, true, false, false);
     }
 
     /**
@@ -147,14 +148,15 @@ public class DeleteCommand extends Command {
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
-                        Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
-                        Messages.MESSAGE_INVALID_INDEX)
+                        Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
                     );
         }
 
         Pastry pastryToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deletePastry(pastryToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PASTRY_SUCCESS, pastryToDelete.getName()));
+        return new CommandResult(String.format(MESSAGE_DELETE_PASTRY_SUCCESS, pastryToDelete.getName()),
+                false, false, false, true, false);
     }
 
     /**
@@ -169,8 +171,8 @@ public class DeleteCommand extends Command {
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
-                        Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
-                        Messages.MESSAGE_INVALID_INDEX)
+                        Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
                     );
         }
 
@@ -195,7 +197,8 @@ public class DeleteCommand extends Command {
                 orderDate,
                 orderToDelete.getCustomer().getName(),
                 orderItemsString,
-                price));
+                price),
+                false, false, false, false, true);
     }
 
     /**

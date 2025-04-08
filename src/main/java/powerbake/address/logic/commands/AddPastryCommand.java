@@ -20,7 +20,7 @@ public class AddPastryCommand extends AddCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + " " + PREFIX_PASTRY
             + ": Adds a pastry to Powerbake. "
             + "Parameters: "
-            + PREFIX_PASTRY + "NAME "
+            + "PASTRY_NAME "
             + PREFIX_PRICE + "PRICE " + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_PASTRY + "Croissant "
@@ -49,7 +49,8 @@ public class AddPastryCommand extends AddCommand {
         }
 
         model.addPastry(toAddPastry);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddPastry)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddPastry)),
+                false, false, false, true, false);
     }
 
     @Override

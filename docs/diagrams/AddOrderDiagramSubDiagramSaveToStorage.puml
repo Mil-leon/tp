@@ -1,0 +1,23 @@
+@startuml
+!include style.puml
+mainframe sd Add order and save to storage
+skinparam ArrowFontStyle plain
+
+participant ":AddOrderCommand" as AddOrderCommand LOGIC_COLOR
+participant ":Model" as Model MODEL_COLOR
+participant "OrderListPanel" as OrderListPanel UI_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]> Model : addOrder(toAddOrder)
+activate Model MODEL_COLOR
+
+Model -[MODEL_COLOR]> OrderListPanel : Listener triggered
+note left: Filtered order list is updated
+activate OrderListPanel UI_COLOR
+OrderListPanel -[UI_COLOR]> OrderListPanel : refresh ListView
+OrderListPanel -[UI_COLOR]-> Model
+deactivate OrderListPanel UI_COLOR
+
+Model -[MODEL_COLOR]-> AddOrderCommand
+deactivate Model MODEL_COLOR
+
+@enduml

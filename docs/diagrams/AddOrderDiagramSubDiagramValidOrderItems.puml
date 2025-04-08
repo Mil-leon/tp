@@ -1,0 +1,41 @@
+@startuml
+!include style.puml
+mainframe sd Get valid order items
+skinparam ArrowFontStyle plain
+
+participant ":AddOrderCommand" as AddOrderCommand LOGIC_COLOR
+participant ":Model" as Model MODEL_COLOR
+participant "orderItems:ArrayList<OrderItem>" as OrderItems MODEL_COLOR
+participant "orderItem:OrderItem" as OrderItem MODEL_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]> AddOrderCommand : getValidOrderItems(model)
+activate AddOrderCommand LOGIC_COLOR
+
+AddOrderCommand -[LOGIC_COLOR]> Model : getFilteredPastryList()
+activate Model MODEL_COLOR
+Model -[MODEL_COLOR]-> AddOrderCommand : pastryList
+deactivate Model MODEL_COLOR
+
+create OrderItems MODEL_COLOR
+AddOrderCommand -[LOGIC_COLOR]> OrderItems : new ArrayList<>()
+activate OrderItems MODEL_COLOR
+OrderItems -[MODEL_COLOR]-> AddOrderCommand
+deactivate OrderItems MODEL_COLOR
+
+loop for each pastry-quantity pair
+  create OrderItem MODEL_COLOR
+  AddOrderCommand -[LOGIC_COLOR]> OrderItem : new OrderItem(pastry, quantity)
+  activate OrderItem MODEL_COLOR
+  OrderItem -[MODEL_COLOR]-> AddOrderCommand
+  deactivate OrderItem MODEL_COLOR
+
+  AddOrderCommand -[LOGIC_COLOR]> OrderItems : add(orderItem)
+  activate OrderItems MODEL_COLOR
+  OrderItems -[MODEL_COLOR]-> AddOrderCommand
+  deactivate OrderItems MODEL_COLOR
+end
+
+AddOrderCommand -[LOGIC_COLOR]-> AddOrderCommand : orderList
+deactivate AddOrderCommand LOGIC_COLOR
+
+@enduml

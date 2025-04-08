@@ -8,6 +8,7 @@ import static powerbake.address.logic.parser.CommandParserTestUtil.assertParseSu
 import org.junit.jupiter.api.Test;
 
 import powerbake.address.commons.core.index.Index;
+import powerbake.address.logic.Messages;
 import powerbake.address.logic.commands.ViewCommand;
 
 public class ViewCommandParserTest {
@@ -60,7 +61,7 @@ public class ViewCommandParserTest {
         // invalid index
         assertParseFailure(parser, "order 0", String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
                     + "\n" + ViewCommand.MESSAGE_USAGE);
     }
@@ -70,7 +71,7 @@ public class ViewCommandParserTest {
         // invalid index
         assertParseFailure(parser, "order -1", String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
                     + "\n" + ViewCommand.MESSAGE_USAGE);
     }
@@ -80,7 +81,7 @@ public class ViewCommandParserTest {
         // invalid index
         assertParseFailure(parser, "order a", String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
                     + "\n" + ViewCommand.MESSAGE_USAGE);
     }

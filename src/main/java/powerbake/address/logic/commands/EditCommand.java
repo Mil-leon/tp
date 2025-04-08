@@ -55,23 +55,27 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
     public static final String MESSAGE_EDIT_PASTRY_SUCCESS = "Edited Pastry: %1$s";
     public static final String MESSAGE_EDIT_ORDER_SUCCESS = "Edited Order: %1$s";
-    public static final String MESSAGE_NOT_EDITED_CLIENT = "At least one field to edit must be provided. \n"
+    public static final String MESSAGE_NOT_EDITED_CLIENT = "Ensure Index is valid and "
+            + "at least one field to edit must be provided. \n"
             + "-n: Name of the client to edit \n"
             + "-p: Phone of the client to edit \n"
             + "-e: Email of the client to edit \n"
             + "-a: Address of the client to edit \n"
             + "-t: Tags of the client to edit \n";
 
-    public static final String MESSAGE_NOT_EDITED_PASTRY = "At least one field to edit must be provided. \n"
+    public static final String MESSAGE_NOT_EDITED_PASTRY = "Ensure Index is valid and "
+            + "at least one field to edit must be provided. \n"
             + "-n: Name of the pastry to edit \n"
             + "-pr: Price of the pastry to edit \n";
 
-    public static final String MESSAGE_NOT_EDITED_ORDER = "Please type in the Status to change to: "
-            + "pending, processing, ready, delivered or cancelled";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the address book, "
-            + "duplicate clients are checked exclusively by phone number";
-    public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in the bakery.";
-    public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in the bakery.";
+
+    public static final String MESSAGE_NOT_EDITED_ORDER = "Ensure Index is valid and "
+            + "please type in the Status to change to: "
+            + "-s pending, -s processing, -s ready, -s delivered or -s cancelled";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in PowerBake";
+    public static final String MESSAGE_DUPLICATE_PASTRY = "This pastry already exists in PowerBake.";
+    public static final String MESSAGE_DUPLICATE_ORDER = "This order already exists in PowerBake.";
+
 
     private final String entityType;
     private final Index index;
@@ -128,8 +132,8 @@ public class EditCommand extends Command {
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
-                        Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
-                        Messages.MESSAGE_INVALID_INDEX)
+                        Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
                     );
         }
 
@@ -159,7 +163,8 @@ public class EditCommand extends Command {
             );
 
         model.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
-        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson)));
+        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, Messages.format(editedPerson)),
+                false, false, true, false, false);
     }
 
     /**
@@ -174,8 +179,8 @@ public class EditCommand extends Command {
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
-                        Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX,
-                        Messages.MESSAGE_INVALID_INDEX)
+                        Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
                     );
         }
 
@@ -188,7 +193,8 @@ public class EditCommand extends Command {
 
         model.setPastry(pastryToEdit, editedPastry);
         model.updateFilteredPastryList(Model.PREDICATE_SHOW_ALL_PASTRIES);
-        return new CommandResult(String.format(MESSAGE_EDIT_PASTRY_SUCCESS, Messages.format(editedPastry)));
+        return new CommandResult(String.format(MESSAGE_EDIT_PASTRY_SUCCESS, Messages.format(editedPastry)),
+                false, false, false, true, false);
     }
 
     /**
@@ -203,8 +209,8 @@ public class EditCommand extends Command {
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(String.format(
-                        Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX,
-                        Messages.MESSAGE_INVALID_INDEX)
+                        Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                        Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE)
                     );
         }
 
@@ -217,7 +223,8 @@ public class EditCommand extends Command {
 
         model.setOrder(orderToEdit, editedOrder);
         model.updateFilteredOrderList(Model.PREDICATE_SHOW_ALL_ORDERS);
-        return new CommandResult(String.format(MESSAGE_EDIT_ORDER_SUCCESS, Messages.format(editedOrder)));
+        return new CommandResult(String.format(MESSAGE_EDIT_ORDER_SUCCESS, Messages.format(editedOrder)),
+                false, false, false, false, true, index.getZeroBased());
     }
 
     /**

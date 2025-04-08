@@ -30,8 +30,8 @@ public class AddOrderCommand extends AddCommand {
             + ": Adds a order to the address book. "
             + "Parameters: "
             + PREFIX_ORDER + "CLIENT_INDEX "
-            + PREFIX_PASTRY_NAME + "PASTRY NAME " + PREFIX_QUANTITY + "QUANTITY "
-            + "[" + PREFIX_PASTRY_NAME + "PASTRY NAME " + PREFIX_QUANTITY + "QUANTITY]...\n"
+            + PREFIX_PASTRY_NAME + "PASTRY_NAME " + PREFIX_QUANTITY + "QUANTITY "
+            + "[" + PREFIX_PASTRY_NAME + "PASTRY_NAME " + PREFIX_QUANTITY + "QUANTITY]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ORDER + "1 "
             + PREFIX_PASTRY_NAME + "Croissant "
@@ -77,7 +77,8 @@ public class AddOrderCommand extends AddCommand {
         }
 
         model.addOrder(toAddOrder);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddOrder)));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAddOrder)),
+                false, false, false, false, true, model.getFilteredOrderList().size() - 1);
     }
 
     private Person getValidClient(Model model) throws CommandException {
@@ -85,7 +86,10 @@ public class AddOrderCommand extends AddCommand {
         List<Person> lastShownList = model.getFilteredPersonList();
 
         if (clientIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(String.format(
+                        Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                        Messages.MESSAGE_INVALID_INDEX)
+                    );
         }
 
         return lastShownList.get(clientIndex.getZeroBased());

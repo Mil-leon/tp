@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.fail;
 import static powerbake.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static powerbake.address.logic.commands.DeleteCommand.MESSAGE_USAGE;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_CLIENT;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_ORDER;
 import static powerbake.address.logic.parser.CliSyntax.PREFIX_PASTRY;
@@ -100,19 +101,19 @@ public class DeleteCommandParserTest {
         assertParseFailure(parser, PREFIX_CLIENT + "a",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
 
         assertParseFailure(parser, PREFIX_CLIENT.toString().trim(),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
 
         assertParseFailure(parser, PREFIX_CLIENT + "1 extraStuffHere",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
     }
 
     /**
@@ -123,19 +124,19 @@ public class DeleteCommandParserTest {
         assertParseFailure(parser, PREFIX_PASTRY + "a",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
 
         assertParseFailure(parser, PREFIX_PASTRY.toString().trim(),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
 
         assertParseFailure(parser, PREFIX_PASTRY + "1 extraStuffHere",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
     }
 
     /**
@@ -146,19 +147,19 @@ public class DeleteCommandParserTest {
         assertParseFailure(parser, PREFIX_ORDER + "a",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
 
         assertParseFailure(parser, PREFIX_ORDER.toString().trim(),
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, MESSAGE_USAGE));
 
         assertParseFailure(parser, PREFIX_ORDER + "1 extraStuffHere",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
     }
 
     /**
@@ -190,21 +191,21 @@ public class DeleteCommandParserTest {
         assertParseFailure(parser, PREFIX_CLIENT + "-1",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
         assertParseFailure(parser, PREFIX_PASTRY + "-1",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
         assertParseFailure(parser, PREFIX_ORDER + "-1",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                    + "\n" + DeleteCommand.MESSAGE_USAGE);
+                    + "\n" + MESSAGE_USAGE);
     }
 
     /**
@@ -215,24 +216,24 @@ public class DeleteCommandParserTest {
         assertParseFailure(parser, PREFIX_CLIENT + "0",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                + "\n" + DeleteCommand.MESSAGE_USAGE);
+                + "\n" + MESSAGE_USAGE);
 
         assertParseFailure(parser, PREFIX_PASTRY + "0",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                + "\n" + DeleteCommand.MESSAGE_USAGE);
+                + "\n" + MESSAGE_USAGE);
 
 
         assertParseFailure(parser, PREFIX_ORDER + "0",
                 String.format(
                     MESSAGE_INVALID_COMMAND_FORMAT,
-                    ParserUtil.MESSAGE_INVALID_INDEX
+                    Messages.MESSAGE_INVALID_INDEX
                     )
-                + "\n" + DeleteCommand.MESSAGE_USAGE);
+                + "\n" + MESSAGE_USAGE);
     }
 
     /**
@@ -328,8 +329,8 @@ public class DeleteCommandParserTest {
             deleteCommand.execute(model);
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
-            assertEquals(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, Messages.MESSAGE_INVALID_INDEX),
-                    e.getMessage());
+            assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
         }
     }
 
@@ -348,8 +349,8 @@ public class DeleteCommandParserTest {
             deleteCommand.execute(model);
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
-            assertEquals(String.format(Messages.MESSAGE_INVALID_PASTRY_DISPLAYED_INDEX, Messages.MESSAGE_INVALID_INDEX),
-                    e.getMessage());
+            assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
         }
     }
 
@@ -368,8 +369,8 @@ public class DeleteCommandParserTest {
             deleteCommand.execute(model);
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
-            assertEquals(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX, Messages.MESSAGE_INVALID_INDEX),
-                    e.getMessage());
+            assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
         }
     }
 
@@ -388,8 +389,8 @@ public class DeleteCommandParserTest {
             deleteCommand.execute(model);
             fail("Expected CommandException to be thrown");
         } catch (CommandException e) {
-            assertEquals(String.format(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX, Messages.MESSAGE_INVALID_INDEX),
-                    e.getMessage());
+            assertEquals(String.format(Messages.MESSAGE_INVALID_COMMAND_FORMAT,
+                    Messages.MESSAGE_INVALID_INDEX + "\n" + MESSAGE_USAGE), e.getMessage());
         }
     }
 }
